@@ -63,9 +63,11 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - ObjectMapper (3.5.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - ObjectMapper (~> 3.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -80,6 +82,7 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - nanopb
+    - ObjectMapper
 
 SPEC CHECKSUMS:
   Firebase: a2b5951f30ff38fd3b3bdae9c7d340f940fd3c51
@@ -93,7 +96,8 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: e6fa721757b147d7f1481d7367b8dab3e9010889
   GoogleUtilities: 64b5e3982b1b01bda26712affd5c523ef32563cf
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
 
-PODFILE CHECKSUM: 0a1e7ac5fcc9f4ecabf38792bd58cd529f2c35f7
+PODFILE CHECKSUM: 8c65ef99339b17646244fe7b40f2b20ecf238058
 
 COCOAPODS: 1.5.3
