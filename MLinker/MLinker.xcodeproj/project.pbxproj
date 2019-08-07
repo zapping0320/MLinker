@@ -12,6 +12,8 @@
 		0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B422FA2E1800B55D21 /* Main.storyboard */; };
 		0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */; };
 		0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B922FA2E1F00B55D21 /* LaunchScreen.storyboard */; };
+		0B44C4C622FB80E900B55D21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4C522FB80E800B55D21 /* GoogleService-Info.plist */; };
+		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B44C4BA22FA2E1F00B55D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B44C4BC22FA2E1F00B55D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B44C4C522FB80E800B55D21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Users/bmwe3/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLinker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
+		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				0B44C4AF22FA2E1800B55D21 /* MLinker */,
 				0B44C4AE22FA2E1700B55D21 /* Products */,
+				E3D034AFCBEA09F01A3CC530 /* Pods */,
+				5ED431E42908BA123B355FDF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +72,7 @@
 				0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */,
 				0B44C4B922FA2E1F00B55D21 /* LaunchScreen.storyboard */,
 				0B44C4BC22FA2E1F00B55D21 /* Info.plist */,
+				0B44C4C522FB80E800B55D21 /* GoogleService-Info.plist */,
 			);
 			path = MLinker;
 			sourceTree = "<group>";
@@ -88,6 +98,23 @@
 			path = CommonControls;
 			sourceTree = "<group>";
 		};
+		5ED431E42908BA123B355FDF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3D034AFCBEA09F01A3CC530 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */,
+				98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -95,9 +122,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B44C4BF22FA2E1F00B55D21 /* Build configuration list for PBXNativeTarget "MLinker" */;
 			buildPhases = (
+				340B5B69C5642EDDF971DAB3 /* [CP] Check Pods Manifest.lock */,
 				0B44C4A922FA2E1700B55D21 /* Sources */,
 				0B44C4AA22FA2E1700B55D21 /* Frameworks */,
 				0B44C4AB22FA2E1700B55D21 /* Resources */,
+				69BD7AE6BBA82CE884879667 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,12 +176,62 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */,
+				0B44C4C622FB80E900B55D21 /* GoogleService-Info.plist in Resources */,
 				0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */,
 				0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		340B5B69C5642EDDF971DAB3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MLinker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69BD7AE6BBA82CE884879667 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-MLinker/Pods-MLinker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-MLinker/Pods-MLinker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0B44C4A922FA2E1700B55D21 /* Sources */ = {
@@ -304,6 +383,7 @@
 		};
 		0B44C4C022FA2E1F00B55D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -322,6 +402,7 @@
 		};
 		0B44C4C122FA2E1F00B55D21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
