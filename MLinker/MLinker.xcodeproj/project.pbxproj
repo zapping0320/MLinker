@@ -15,6 +15,10 @@
 		0B44C4C622FB80E900B55D21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4C522FB80E800B55D21 /* GoogleService-Info.plist */; };
 		0B44C4C822FB868300B55D21 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4C722FB868300B55D21 /* UserModel.swift */; };
 		0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4C922FB86DA00B55D21 /* ChatModel.swift */; };
+		0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CB230210C700B55D21 /* UsersViewController.swift */; };
+		0B44C4CE230210D600B55D21 /* ChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CD230210D600B55D21 /* ChatRoomsViewController.swift */; };
+		0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CF2302115100B55D21 /* ConselingChatRoomsViewController.swift */; };
+		0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4D12302115D00B55D21 /* SettingViewController.swift */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +33,10 @@
 		0B44C4C522FB80E800B55D21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Users/bmwe3/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B44C4C722FB868300B55D21 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0B44C4C922FB86DA00B55D21 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		0B44C4CB230210C700B55D21 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		0B44C4CD230210D600B55D21 /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
+		0B44C4CF2302115100B55D21 /* ConselingChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConselingChatRoomsViewController.swift; sourceTree = "<group>"; };
+		0B44C4D12302115D00B55D21 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLinker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +101,10 @@
 		0B44C4C322FA310600B55D21 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				0B44C4CB230210C700B55D21 /* UsersViewController.swift */,
+				0B44C4CD230210D600B55D21 /* ChatRoomsViewController.swift */,
+				0B44C4CF2302115100B55D21 /* ConselingChatRoomsViewController.swift */,
+				0B44C4D12302115D00B55D21 /* SettingViewController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -247,7 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B44C4B322FA2E1800B55D21 /* ViewController.swift in Sources */,
+				0B44C4CE230210D600B55D21 /* ChatRoomsViewController.swift in Sources */,
 				0B44C4C822FB868300B55D21 /* UserModel.swift in Sources */,
+				0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */,
+				0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */,
+				0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */,
 				0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */,
 				0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */,
 			);
