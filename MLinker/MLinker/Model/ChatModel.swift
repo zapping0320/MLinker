@@ -26,6 +26,7 @@ class ChatModel: Mappable {
         }
     }
     
+    public var isIncludeAdminAccount: Bool
     public var users: Dictionary<String,Bool> = [:]
     public var comments : Dictionary<String, Comment> = [:]
     

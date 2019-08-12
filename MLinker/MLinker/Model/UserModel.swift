@@ -14,4 +14,5 @@ class UserModel: NSObject {
     var name: String?
     //pushtoken
     var comment:String?
+    var isAdminAccount : int
 }
