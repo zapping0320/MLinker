@@ -21,6 +21,8 @@
 		0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4D12302115D00B55D21 /* SettingViewController.swift */; };
 		0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4DA230212E700B55D21 /* SignInViewController.swift */; };
 		0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4DB230212E700B55D21 /* SignUpViewController.swift */; };
+		0B44C4E42302165400B55D21 /* SigninStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */; };
+		0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4E32302165400B55D21 /* SignUp.storyboard */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		0B44C4D12302115D00B55D21 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0B44C4DA230212E700B55D21 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0B44C4DB230212E700B55D21 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SigninStoryboard.storyboard; sourceTree = "<group>"; };
+		0B44C4E32302165400B55D21 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLinker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 		0B44C4D9230212E700B55D21 /* SignControls */ = {
 			isa = PBXGroup;
 			children = (
+				0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */,
+				0B44C4E32302165400B55D21 /* SignUp.storyboard */,
 				0B44C4DA230212E700B55D21 /* SignInViewController.swift */,
 				0B44C4DB230212E700B55D21 /* SignUpViewController.swift */,
 			);
@@ -209,7 +215,9 @@
 			files = (
 				0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */,
 				0B44C4C622FB80E900B55D21 /* GoogleService-Info.plist in Resources */,
+				0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */,
 				0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */,
+				0B44C4E42302165400B55D21 /* SigninStoryboard.storyboard in Resources */,
 				0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
