@@ -19,6 +19,8 @@
 		0B44C4CE230210D600B55D21 /* ChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CD230210D600B55D21 /* ChatRoomsViewController.swift */; };
 		0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CF2302115100B55D21 /* ConselingChatRoomsViewController.swift */; };
 		0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4D12302115D00B55D21 /* SettingViewController.swift */; };
+		0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4DA230212E700B55D21 /* SignInViewController.swift */; };
+		0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4DB230212E700B55D21 /* SignUpViewController.swift */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		0B44C4CD230210D600B55D21 /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
 		0B44C4CF2302115100B55D21 /* ConselingChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConselingChatRoomsViewController.swift; sourceTree = "<group>"; };
 		0B44C4D12302115D00B55D21 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0B44C4DA230212E700B55D21 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		0B44C4DB230212E700B55D21 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLinker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 		0B44C4AF22FA2E1800B55D21 /* MLinker */ = {
 			isa = PBXGroup;
 			children = (
+				0B44C4D9230212E700B55D21 /* SignControls */,
 				0B44C4C422FA312000B55D21 /* CommonControls */,
 				0B44C4C322FA310600B55D21 /* TabBar */,
 				0B44C4C222FA30F900B55D21 /* Model */,
@@ -114,6 +119,15 @@
 			children = (
 			);
 			path = CommonControls;
+			sourceTree = "<group>";
+		};
+		0B44C4D9230212E700B55D21 /* SignControls */ = {
+			isa = PBXGroup;
+			children = (
+				0B44C4DA230212E700B55D21 /* SignInViewController.swift */,
+				0B44C4DB230212E700B55D21 /* SignUpViewController.swift */,
+			);
+			path = SignControls;
 			sourceTree = "<group>";
 		};
 		5ED431E42908BA123B355FDF /* Frameworks */ = {
@@ -262,7 +276,9 @@
 				0B44C4CE230210D600B55D21 /* ChatRoomsViewController.swift in Sources */,
 				0B44C4C822FB868300B55D21 /* UserModel.swift in Sources */,
 				0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */,
+				0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */,
 				0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */,
+				0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */,
 				0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */,
 				0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */,
 				0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */,
