@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Users-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="UsersViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,13 +20,13 @@
                         <color key="backgroundColor" red="0.38654898030000001" green="0.75559884430000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="oSS-Oo-AdO"/>
+                    <tabBarItem key="tabBarItem" title="Users" id="oSS-Oo-AdO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1068" y="-248"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="o69-tP-gnX">
             <objects>
                 <viewController id="yWR-DC-Q81" customClass="SettingViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,13 +36,13 @@
                         <color key="backgroundColor" red="1" green="0.9021650819" blue="0.55611881340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="7EF-ra-Qhl"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Yp2-Tp-8jk"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="Yp2-Tp-8jk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INA-6k-A2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="158" y="848"/>
         </scene>
-        <!--Item-->
+        <!--Chats-->
         <scene sceneID="dfb-VQ-epU">
             <objects>
                 <viewController id="0nr-6v-8m5" customClass="ChatRoomsViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,13 +52,13 @@
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="uxn-1s-wmB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="EaL-98-XAm"/>
+                    <tabBarItem key="tabBarItem" title="Chats" id="EaL-98-XAm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSB-SW-BU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1086" y="455"/>
         </scene>
-        <!--Item-->
+        <!--Counseling-->
         <scene sceneID="gMO-r4-2ye">
             <objects>
                 <viewController id="cGY-BZ-gTf" customClass="ConselingChatRoomsViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                         <color key="backgroundColor" red="0.54021114029999995" green="1" blue="0.64958068410000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="gla-2M-8oK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="to8-mb-9bo"/>
+                    <tabBarItem key="tabBarItem" title="Counseling" id="to8-mb-9bo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaZ-DK-TeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,6 +80,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ka5-ba-21D" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dEP-Sp-sum">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
