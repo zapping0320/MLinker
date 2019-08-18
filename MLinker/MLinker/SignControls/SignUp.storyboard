@@ -63,7 +63,7 @@
                                     <action selector="signupApiCAll:" destination="tnH-fR-ltX" eventType="touchUpInside" id="uGa-jF-VM9"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3J-aZ-jcL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="k3J-aZ-jcL">
                                 <rect key="frame" x="157" y="155" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="L4k-gZ-tBK"/>
@@ -79,7 +79,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="signupApiCAll:" destination="tnH-fR-ltX" eventType="touchUpInside" id="43R-Ky-1j5"/>
+                                    <action selector="popVC:" destination="tnH-fR-ltX" eventType="touchUpInside" id="16F-xe-lOS"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3HR-ti-0XP">
@@ -120,8 +120,10 @@
                     </view>
                     <connections>
                         <outlet property="SignUpButton" destination="W0B-NY-ct3" id="UxZ-ET-g8F"/>
+                        <outlet property="cancelButton" destination="4uH-hQ-NyY" id="Nq6-Z9-0rf"/>
                         <outlet property="email" destination="3HR-ti-0XP" id="hgf-sq-2q1"/>
                         <outlet property="password" destination="fdQ-0m-CEE" id="CdM-uy-0m1"/>
+                        <outlet property="profileImageView" destination="k3J-aZ-jcL" id="Ilm-e0-hdL"/>
                         <outlet property="userName" destination="s3C-l1-UBv" id="xB9-Rn-TfB"/>
                     </connections>
                 </viewController>
@@ -130,4 +132,7 @@
             <point key="canvasLocation" x="12" y="140"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="18" height="18"/>
+    </resources>
 </document>

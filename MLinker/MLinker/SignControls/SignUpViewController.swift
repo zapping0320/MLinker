@@ -8,59 +8,52 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var SignUpButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    var isPickedProfileImage: Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         SignUpButton.layer.cornerRadius = SignUpButton.bounds.size.height / 2
         SignUpButton.layer.borderWidth = 1
         SignUpButton.layer.borderColor = UIColor.blue.cgColor
+        
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
     }
+    
+    
+    @objc func pickProfileImage() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        
+        self.present(imagePicker, animated: true, completion:  nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.isPickedProfileImage = true
+        profileImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     @IBAction func popVC(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func signupApiCAll(_ sender: Any) {
-//        let param = [
-//            "userName"  : userName.text ?? "",
-//            "password"  : password.text ?? "",
-//            "email"     : email.text ?? ""
-//        ]
-//
-//        //HTTP Method -> POST
-//        if let url = URL(string: "http://localhost:3000/loginUsers") {
-//            var request = URLRequest.init(url: url)
-//
-//            request.httpMethod = "POST"
-//            request.httpBody = param.queryString.data(using: .utf8)
-//
-//            URLSession.shared.dataTask(with: request) { (data, response, error) in
-//                guard let data = data else {
-//                    return
-//                }
-//
-//                let decoder = JSONDecoder()
-//                do {
-//                    let user = try decoder.decode(LoginUser.self, from: data)
-//
-//                    User.shared.info = user
-//
-//                    self.dismiss(animated: true, completion: nil)
-//
-//                    NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "UserInfoLoad"), object: nil)
-//
-//                }catch {
-//                    //error
-//                    print("error = \(error)")
-//                }
-//
-//
-//            }.resume()
-//        }
-//
+
     }
 }
