@@ -119,11 +119,11 @@
                         <viewLayoutGuide key="safeArea" id="sCQ-oO-Grz"/>
                     </view>
                     <connections>
-                        <outlet property="SignUpButton" destination="W0B-NY-ct3" id="UxZ-ET-g8F"/>
                         <outlet property="cancelButton" destination="4uH-hQ-NyY" id="Nq6-Z9-0rf"/>
                         <outlet property="email" destination="3HR-ti-0XP" id="hgf-sq-2q1"/>
                         <outlet property="password" destination="fdQ-0m-CEE" id="CdM-uy-0m1"/>
                         <outlet property="profileImageView" destination="k3J-aZ-jcL" id="Ilm-e0-hdL"/>
+                        <outlet property="signupButton" destination="W0B-NY-ct3" id="UxZ-ET-g8F"/>
                         <outlet property="userName" destination="s3C-l1-UBv" id="xB9-Rn-TfB"/>
                     </connections>
                 </viewController>

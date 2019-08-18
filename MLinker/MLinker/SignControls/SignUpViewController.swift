@@ -11,10 +11,11 @@ import UIKit
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var SignUpButton: UIButton!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var userName: UITextField!
+    
+    @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
     var isPickedProfileImage: Bool = false
@@ -22,13 +23,19 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        SignUpButton.layer.cornerRadius = SignUpButton.bounds.size.height / 2
-        SignUpButton.layer.borderWidth = 1
-        SignUpButton.layer.borderColor = UIColor.blue.cgColor
         
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
+
+        //set style at buttons
+        signupButton.layer.cornerRadius = signupButton.bounds.size.height / 2
+        signupButton.layer.borderWidth = 1
+        signupButton.layer.borderColor = UIColor.blue.cgColor
+        
+        cancelButton.layer.cornerRadius = signupButton.bounds.size.height / 2
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = UIColor.blue.cgColor
+     
     }
     
     
