@@ -10,6 +10,7 @@ import UIKit
 
 class UserModel: NSObject {
     var uid : String?
+    var email : String?
     var profileURL : String?
     var name: String?
     //pushtoken
