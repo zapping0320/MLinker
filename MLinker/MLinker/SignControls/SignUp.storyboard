@@ -26,13 +26,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21i-KM-MSM">
-                                <rect key="frame" x="177" y="104" width="60" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="169" y="104" width="76" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s3C-l1-UBv">
-                                <rect key="frame" x="10" y="415" width="394" height="35"/>
+                                <rect key="frame" x="10" y="420.5" width="394" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="zEu-L0-XV4"/>
                                 </constraints>
@@ -41,7 +41,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdQ-0m-CEE">
-                                <rect key="frame" x="10" y="350" width="394" height="35"/>
+                                <rect key="frame" x="10" y="355.5" width="394" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="8xI-Im-C0S"/>
                                 </constraints>
@@ -50,7 +50,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0B-NY-ct3">
-                                <rect key="frame" x="10" y="480" width="394" height="50"/>
+                                <rect key="frame" x="10" y="485.5" width="394" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="U2c-jv-2r1"/>
@@ -64,14 +64,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="k3J-aZ-jcL">
-                                <rect key="frame" x="157" y="155" width="100" height="100"/>
+                                <rect key="frame" x="157" y="160.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="L4k-gZ-tBK"/>
                                     <constraint firstAttribute="width" constant="100" id="rCe-uT-rxS"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uH-hQ-NyY">
-                                <rect key="frame" x="10" y="560" width="394" height="50"/>
+                                <rect key="frame" x="10" y="565.5" width="394" height="50"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rb4-Vq-1bo"/>
@@ -83,7 +83,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3HR-ti-0XP">
-                                <rect key="frame" x="10" y="285" width="394" height="35"/>
+                                <rect key="frame" x="10" y="290.5" width="394" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Y5p-eJ-V5g"/>
                                 </constraints>

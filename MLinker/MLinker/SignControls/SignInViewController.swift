@@ -9,10 +9,8 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-
-    let loginURLString = "http://localhost:3000/loginUsers"
     
-    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
