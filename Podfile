@@ -10,4 +10,5 @@ target 'MLinker' do
   # Pods for MLinker
 	pod 'Firebase/Analytics'
 	pod 'ObjectMapper', '~> 3.4'
+	pod 'Firebase/RemoteConfig'
 end
