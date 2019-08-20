@@ -19,10 +19,12 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         SignInButton.layer.cornerRadius = SignInButton.bounds.size.height / 2
         SignInButton.layer.borderWidth = 1
         SignInButton.layer.borderColor = UIColor.blue.cgColor
+        
+        setSignInButtonEnabled(value: false)
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
@@ -32,10 +34,33 @@ class SignInViewController: UIViewController {
             (auth, user)
             in
             if(user != nil) {
-               self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
+    }
+    
+    @IBAction func signInInfoChanged(_ sender: Any) {
+        if(self.emailTextField.text?.isEmpty == false && self.passwordTextField.text?.isEmpty == false)
+        {
+            setSignInButtonEnabled(value: true)
+        }else {
+            setSignInButtonEnabled(value: false)
+        }
+    }
+    
+    func setSignInButtonEnabled(value : Bool) {
+        if(value){
+            SignInButton.isEnabled = true
+            SignInButton.layer.borderColor = UIColor.blue.cgColor
+            SignInButton.setTitleColor(.white, for: .normal)
+        }
+        else
+        {
+            SignInButton.isEnabled = false
+            SignInButton.layer.borderColor = UIColor.gray.cgColor
+            SignInButton.setTitleColor(.gray, for: .normal)
+        }
     }
     
     @IBAction func dismissVC(_ sender: Any) {
@@ -67,8 +92,8 @@ class SignInViewController: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        self.emailTextField.text? = "bmwe3@hanmail.net"
-        self.passwordTextField.text? = "@1234asdf"
+        //self.emailTextField.text? = "bmwe3@hanmail.net"
+        //self.passwordTextField.text? = "@1234asdf"
     }
 }
 
