@@ -13,4 +13,5 @@ target 'MLinker' do
 	pod 'Firebase/RemoteConfig'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
+	pod 'Firebase/Storage'
 end

@@ -15,6 +15,9 @@ PODS:
   - Firebase/RemoteConfig (6.7.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 4.3.0)
+  - Firebase/Storage (6.7.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 3.4.0)
   - FirebaseABTesting (3.1.0):
     - FirebaseAnalyticsInterop (~> 1.3)
     - FirebaseCore (~> 6.1)
@@ -63,6 +66,10 @@ PODS:
     - GoogleUtilities/Environment (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - Protobuf (~> 3.5)
+  - FirebaseStorage (3.4.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleAppMeasurement (6.1.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -106,6 +113,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - Firebase/RemoteConfig
+  - Firebase/Storage
   - ObjectMapper (~> 3.4)
 
 SPEC REPOS:
@@ -122,6 +130,7 @@ SPEC REPOS:
     - FirebaseDatabase
     - FirebaseInstanceID
     - FirebaseRemoteConfig
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -145,6 +154,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 518cd94286de2ee999e19383a2a6ae04c81ce993
   FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
   FirebaseRemoteConfig: 938b338e9e56f73b4e3880213cc01287b8582468
+  FirebaseStorage: 618dd8fd886b30adf6e5d1915b1f5c18cb5c3944
   GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
   GoogleDataTransport: 9c3d63ed82f882a9a74d4be67dd7ad01bf046102
   GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
@@ -155,6 +165,6 @@ SPEC CHECKSUMS:
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
 
-PODFILE CHECKSUM: 7700220cb1936f5a9deca8206ce3e32d4fae5041
+PODFILE CHECKSUM: e9825aa9c2fb9895a16d990eda60b6dc75332cd3
 
 COCOAPODS: 1.5.3
