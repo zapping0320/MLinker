@@ -33,7 +33,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="signInInfoChanged:" destination="jPA-NW-ylS" eventType="editingDidEnd" id="xyI-Uw-645"/>
+                                    <action selector="signInInfoChanged:" destination="jPA-NW-ylS" eventType="editingChanged" id="htb-xh-jcv"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p3r-ZQ-5r0">
@@ -45,7 +45,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
-                                    <action selector="signInInfoChanged:" destination="jPA-NW-ylS" eventType="editingDidEnd" id="tup-iS-Dp1"/>
+                                    <action selector="signInInfoChanged:" destination="jPA-NW-ylS" eventType="editingChanged" id="8Dz-uI-hTf"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpp-NT-Us9">

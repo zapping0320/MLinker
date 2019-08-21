@@ -11,11 +11,11 @@ import UIKit
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
     
-    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
     var isPickedProfileImage: Bool = false
@@ -28,11 +28,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
 
         //set style at buttons
-        signupButton.layer.cornerRadius = signupButton.bounds.size.height / 2
-        signupButton.layer.borderWidth = 1
-        signupButton.layer.borderColor = UIColor.blue.cgColor
+        signUpButton.layer.cornerRadius = signUpButton.bounds.size.height / 2
+        signUpButton.layer.borderWidth = 1
+        signUpButton.layer.borderColor = UIColor.blue.cgColor
+        setSignUpButtonEnabled(value: false)
         
-        cancelButton.layer.cornerRadius = signupButton.bounds.size.height / 2
+        cancelButton.layer.cornerRadius = signUpButton.bounds.size.height / 2
         cancelButton.layer.borderWidth = 1
         cancelButton.layer.borderColor = UIColor.blue.cgColor
      
@@ -60,7 +61,34 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func signUpInfoChanged(_ sender: Any) {
+        if(emailTextField.text?.isEmpty == true ||
+            passwordTextField.text?.isEmpty == true ||
+            userNameTextField.text?.isEmpty == true)
+        {
+            setSignUpButtonEnabled(value: false)
+        }
+        else
+        {
+            setSignUpButtonEnabled(value: true)
+        }
+    }
+    
+    func setSignUpButtonEnabled(value : Bool) {
+        if(value){
+            signUpButton.isEnabled = true
+            signUpButton.layer.borderColor = UIColor.blue.cgColor
+            signUpButton.setTitleColor(.white, for: .normal)
+        }
+        else
+        {
+            signUpButton.isEnabled = false
+            signUpButton.layer.borderColor = UIColor.gray.cgColor
+            signUpButton.setTitleColor(.gray, for: .normal)
+        }
+    }
+    
     @IBAction func signupApiCAll(_ sender: Any) {
-
+        
     }
 }

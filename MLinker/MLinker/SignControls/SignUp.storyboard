@@ -39,6 +39,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="signUpInfoChanged:" destination="tnH-fR-ltX" eventType="editingChanged" id="9pN-lj-6yI"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdQ-0m-CEE">
                                 <rect key="frame" x="10" y="355.5" width="394" height="35"/>
@@ -48,6 +51,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="signUpInfoChanged:" destination="tnH-fR-ltX" eventType="editingChanged" id="nIf-A7-ixt"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0B-NY-ct3">
                                 <rect key="frame" x="10" y="485.5" width="394" height="50"/>
@@ -90,6 +96,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="signUpInfoChanged:" destination="tnH-fR-ltX" eventType="editingChanged" id="390-yp-eiB"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.42268639460000001" green="0.74532666260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,11 +129,11 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="4uH-hQ-NyY" id="Nq6-Z9-0rf"/>
-                        <outlet property="email" destination="3HR-ti-0XP" id="hgf-sq-2q1"/>
-                        <outlet property="password" destination="fdQ-0m-CEE" id="CdM-uy-0m1"/>
+                        <outlet property="emailTextField" destination="3HR-ti-0XP" id="hgf-sq-2q1"/>
+                        <outlet property="passwordTextField" destination="fdQ-0m-CEE" id="CdM-uy-0m1"/>
                         <outlet property="profileImageView" destination="k3J-aZ-jcL" id="Ilm-e0-hdL"/>
-                        <outlet property="signupButton" destination="W0B-NY-ct3" id="UxZ-ET-g8F"/>
-                        <outlet property="userName" destination="s3C-l1-UBv" id="xB9-Rn-TfB"/>
+                        <outlet property="signUpButton" destination="W0B-NY-ct3" id="UxZ-ET-g8F"/>
+                        <outlet property="userNameTextField" destination="s3C-l1-UBv" id="xB9-Rn-TfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaU-J1-iyp" userLabel="First Responder" sceneMemberID="firstResponder"/>
