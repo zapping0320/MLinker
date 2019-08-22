@@ -22,7 +22,7 @@
                                 <rect key="frame" x="30" y="54" width="30" height="30"/>
                                 <state key="normal" title="←"/>
                                 <connections>
-                                    <action selector="popVC:" destination="tnH-fR-ltX" eventType="touchUpInside" id="9tQ-5l-Hsp"/>
+                                    <action selector="cancel:" destination="tnH-fR-ltX" eventType="touchUpInside" id="9tQ-5l-Hsp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21i-KM-MSM">
@@ -50,7 +50,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="signUpInfoChanged:" destination="tnH-fR-ltX" eventType="editingChanged" id="nIf-A7-ixt"/>
                                 </connections>
@@ -66,7 +66,7 @@
                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="signupApiCAll:" destination="tnH-fR-ltX" eventType="touchUpInside" id="uGa-jF-VM9"/>
+                                    <action selector="signUp:" destination="tnH-fR-ltX" eventType="touchUpInside" id="uGa-jF-VM9"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="k3J-aZ-jcL">
@@ -85,7 +85,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="popVC:" destination="tnH-fR-ltX" eventType="touchUpInside" id="16F-xe-lOS"/>
+                                    <action selector="cancel:" destination="tnH-fR-ltX" eventType="touchUpInside" id="16F-xe-lOS"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3HR-ti-0XP">

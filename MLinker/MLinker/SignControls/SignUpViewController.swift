@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -57,9 +58,14 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         
     }
     
-    @IBAction func popVC(_ sender: Any) {
+    @IBAction func cancel(_ sender: Any) {
+        popVC()
+    }
+    
+    func popVC() {
         self.navigationController?.popViewController(animated: true)
     }
+    
     
     @IBAction func signUpInfoChanged(_ sender: Any) {
         if(emailTextField.text?.isEmpty == true ||
@@ -88,7 +94,58 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         }
     }
     
-    @IBAction func signupApiCAll(_ sender: Any) {
-        
+    @IBAction func signUp(_ sender: Any) {
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, error) in
+            guard let user = authResult?.user, error == nil else {
+                return
+            }
+            let uid = user.uid
+            
+            Database.database().reference().child("users").child(uid).setValue(["name": self.userNameTextField.text!, "uid": uid] ) {
+                (error:Error?, ref:DatabaseReference) in
+                if let error = error {
+                    print("Data could not be saved: \(error).")
+                } else {
+                    print("Data saved successfully!")
+                    
+                    if(self.isPickedProfileImage == false)
+                    {
+                        self.popVC()
+                    }
+                    
+                    let image = self.profileImageView.image?.jpegData(compressionQuality: 0.1)
+                    
+                    let storageRef = Storage.storage().reference()
+                    
+                    var userDownloadURL:String?
+                    
+                    storageRef.child("profileImages").child(uid).putData(image!, metadata: nil, completion: { (metadata, error) in
+                        
+                        guard let _ = metadata else {
+                            // Uh-oh, an error occurred!
+                            return
+                        }
+                        storageRef.child("profileImages").child(uid).downloadURL{ (url, error) in
+                            guard let downloadURL = url else {
+                                // Uh-oh, an error occurred!
+                                return
+                            }
+                            userDownloadURL = downloadURL.absoluteString
+                            Database.database().reference().child("users").child(uid).updateChildValues(["profileURL": userDownloadURL!] ) {
+                                (error:Error?, ref:DatabaseReference) in
+                                if let error = error {
+                                    print("profileURL could not be saved: \(error).")
+                                } else {
+                                    print("profileURL saved successfully!")
+                                }
+                                self.popVC()
+                            }
+                            
+                        }
+                    })
+                }
+            }
+            
+        }
     }
 }
