@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B16821D23133B97004F8089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16821C23133B97004F8089 /* ViewController.swift */; };
 		0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4B022FA2E1800B55D21 /* AppDelegate.swift */; };
 		0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B422FA2E1800B55D21 /* Main.storyboard */; };
 		0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B16821C23133B97004F8089 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0B44C4AD22FA2E1700B55D21 /* MLinker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLinker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B44C4B022FA2E1800B55D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B44C4B522FA2E1800B55D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				0B44C4C322FA310600B55D21 /* TabBar */,
 				0B44C4C222FA30F900B55D21 /* Model */,
 				0B44C4B022FA2E1800B55D21 /* AppDelegate.swift */,
+				0B16821C23133B97004F8089 /* ViewController.swift */,
 				0B44C4B422FA2E1800B55D21 /* Main.storyboard */,
 				0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */,
 				0B44C4B922FA2E1F00B55D21 /* LaunchScreen.storyboard */,
@@ -290,6 +293,7 @@
 				0B44C4C822FB868300B55D21 /* UserModel.swift in Sources */,
 				0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */,
 				0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */,
+				0B16821D23133B97004F8089 /* ViewController.swift in Sources */,
 				0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */,
 				0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */,
 				0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */,

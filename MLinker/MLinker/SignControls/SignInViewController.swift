@@ -34,7 +34,8 @@ class SignInViewController: UIViewController {
             (auth, user)
             in
             if(user != nil) {
-                self.dismiss(animated: true, completion: nil)
+                let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewTabBarController") as! UITabBarController
+                self.present(mainVC, animated: false, completion: nil)
             }
         }
         
@@ -62,10 +63,6 @@ class SignInViewController: UIViewController {
             SignInButton.setTitleColor(.gray, for: .normal)
         }
     }
-    
-    @IBAction func dismissVC(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
   
     @IBAction func moveToSignup(_ sender: Any) {
         let signupVC = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController")
@@ -92,8 +89,9 @@ class SignInViewController: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        //self.emailTextField.text? = "bmwe3@hanmail.net"
-        //self.passwordTextField.text? = "@1234asdf"
+        self.emailTextField.text? = "bmwe3@hanmail.net"
+        self.passwordTextField.text? = "@1234asdf"
+        setSignInButtonEnabled(value: true)
     }
 }
 
