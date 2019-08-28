@@ -13,16 +13,16 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var SignInButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
     
     let firebaseAuth = Auth.auth()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SignInButton.layer.cornerRadius = SignInButton.bounds.size.height / 2
-        SignInButton.layer.borderWidth = 1
-        SignInButton.layer.borderColor = UIColor.blue.cgColor
+        signInButton.layer.cornerRadius = signInButton.bounds.size.height / 2
+        signInButton.layer.borderWidth = 1
+        signInButton.layer.borderColor = UIColor.blue.cgColor
         
         setSignInButtonEnabled(value: false)
         
@@ -52,15 +52,15 @@ class SignInViewController: UIViewController {
     
     func setSignInButtonEnabled(value : Bool) {
         if(value){
-            SignInButton.isEnabled = true
-            SignInButton.layer.borderColor = UIColor.blue.cgColor
-            SignInButton.setTitleColor(.white, for: .normal)
+            signInButton.isEnabled = true
+            signInButton.layer.borderColor = UIColor.blue.cgColor
+            signInButton.setTitleColor(.white, for: .normal)
         }
         else
         {
-            SignInButton.isEnabled = false
-            SignInButton.layer.borderColor = UIColor.gray.cgColor
-            SignInButton.setTitleColor(.gray, for: .normal)
+            signInButton.isEnabled = false
+            signInButton.layer.borderColor = UIColor.gray.cgColor
+            signInButton.setTitleColor(.gray, for: .normal)
         }
     }
   
