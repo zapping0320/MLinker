@@ -40,6 +40,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    @IBAction func popupAddFriend(_ sender: Any) {
+        let addFriendVC = UIStoryboard(name: "AddFriend", bundle: nil).instantiateViewController(withIdentifier: "addFriend")
+        self.present(addFriendVC, animated: true, completion: nil)
+    }
 }
 
 
