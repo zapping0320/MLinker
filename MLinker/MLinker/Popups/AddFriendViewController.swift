@@ -39,6 +39,17 @@ class AddFriendViewController: UIViewController {
         }
     }
 
+    @IBAction func emailTextChanged(_ sender: Any) {
+        if(self.friendEmailTextField.text?.isEmpty == false)
+        {
+            setApplyButtonEnabled(value: true)
+        }
+        else
+        {
+            setApplyButtonEnabled(value: false)
+        }
+    }
+    
     @IBAction func dismissVC(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
