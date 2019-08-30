@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class AddFriendViewController: UIViewController {
 
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var friendEmailTextField: UITextField!
+    
+     var currnetUserUid: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +26,8 @@ class AddFriendViewController: UIViewController {
         setApplyButtonEnabled(value: false)
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        self.currnetUserUid = Auth.auth().currentUser?.uid
 
     }
     
@@ -55,6 +61,67 @@ class AddFriendViewController: UIViewController {
     }
     
     @IBAction func applyFriendShip(_ sender: Any) {
+     
+        let friendshipModel = self.getFriendshipModel()
+        if(friendshipModel != nil)
+        {
+            var popupMessage:String = ""
+            if(friendshipModel?.status == FriendStatus.Requesting)
+            {
+                popupMessage = "You'd already requested friendship."
+            }
+            else if(friendshipModel?.status == FriendStatus.ReceivingRequest)
+            {
+                popupMessage = "You'd already received friendship."
+            }
+            else if(friendshipModel?.status == FriendStatus.Connected)
+            {
+                popupMessage = "You'd already made friendship."
+            }
+            
+            let alert = UIAlertController(title: "FriendShip", message: popupMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            
+//            let createRoomInfo : Dictionary<String, Any> = [
+//                "users": [
+//                    uid!: true,
+//                    destinationUid!: true
+//                ]
+//            ]
+//                Database.database().reference().child("friendships").childByAutoId().setValue(createRoomInfo) {
+//                    (err, ref) in
+//                    if(err == nil) {
+//                        //request friendship
+//                    }
+//                }
+//
+//            }
+        }
+    }
+    
+    func getFriendshipModel() -> FriendshipModel? {
         
+        var friendshipModel:FriendshipModel?
+        
+        Database.database().reference().child("friendships").queryOrdered(byChild: "users/" + self.currnetUserUid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let friendshipDic = item.value as? [String:AnyObject] {
+                    friendshipModel = FriendshipModel(JSON: friendshipDic)
+                    if(friendshipModel?.friendEmail == self.friendEmailTextField.text)
+                    {
+                        break
+                    }
+                }
+                
+            }
+        }
+        
+        return friendshipModel
     }
 }
