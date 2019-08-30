@@ -28,6 +28,7 @@
 		0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4E8230AFE5500B55D21 /* UIColor.swift */; };
 		0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF1759231727D400CD6561 /* AddFriendViewController.swift */; };
 		0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF175D2317287000CD6561 /* AddFriend.storyboard */; };
+		0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		0B44C4E8230AFE5500B55D21 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		0BFF1759231727D400CD6561 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		0BFF175D2317287000CD6561 /* AddFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriend.storyboard; sourceTree = "<group>"; };
+		0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipListModel.swift; sourceTree = "<group>"; };
 		1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLinker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				0B44C4C722FB868300B55D21 /* UserModel.swift */,
 				0B44C4C922FB86DA00B55D21 /* ChatModel.swift */,
+				0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				0B16821D23133B97004F8089 /* ViewController.swift in Sources */,
 				0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */,
 				0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */,
+				0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */,
 				0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */,
 				0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */,
 				0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */,
