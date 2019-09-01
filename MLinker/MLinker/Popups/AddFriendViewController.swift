@@ -86,21 +86,33 @@ class AddFriendViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
         else {
-            
-//            let createRoomInfo : Dictionary<String, Any> = [
-//                "users": [
-//                    uid!: true,
-//                    destinationUid!: true
-//                ]
-//            ]
-//                Database.database().reference().child("friendships").childByAutoId().setValue(createRoomInfo) {
-//                    (err, ref) in
-//                    if(err == nil) {
-//                        //request friendship
-//                    }
-//                }
+            let requestInfo : Dictionary<String, Any> = [
+                "ownerUserId" : self.currnetUserUid!
+            ]
+
+            Database.database().reference().child("friendships").childByAutoId().setValue(requestInfo) {
+                (err, ref) in
+                if(err == nil) {
+                    //request friendship
+//                    let reqeustValue : Dictionary<String, Any> = [
+//                        "status" : 1,
+//                        "friendId" : "",
+//                        "friendEmail" : self.friendEmailTextField.text!,
+//                        "timestamp" : ServerValue.timestamp()
+//                        
+//                    ]
 //
-//            }
+//                    Database.database().reference().child("friendships").child(self.currnetUserUid!).child("comments").childByAutoId().setValue(requestInfo) {
+//                        (err, ref) in
+//                        if(err == nil) {
+//                            
+//                        }
+//                    }
+                    
+                }
+            }
+
+            
         }
     }
     
@@ -118,7 +130,7 @@ class AddFriendViewController: UIViewController {
                         break
                     }
                 }
-                
+
             }
         }
         
