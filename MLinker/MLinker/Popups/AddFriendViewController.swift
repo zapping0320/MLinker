@@ -107,7 +107,7 @@ class AddFriendViewController: UIViewController {
         
         var friendshipModel:FriendshipModel?
         
-        Database.database().reference().child("friendInformations").queryOrdered(byChild: "users/" + self.currnetUserUid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value) {
+        Database.database().reference().child("friendInformations").child(self.currnetUserUid!).observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let friendshipDic = item.value as? [String:AnyObject] {
