@@ -61,7 +61,7 @@ class AddFriendViewController: UIViewController {
     }
     
     @IBAction func applyFriendShip(_ sender: Any) {
-     
+        
         let friendshipModel = self.getFriendshipModel()
         if(friendshipModel != nil)
         {
@@ -86,32 +86,19 @@ class AddFriendViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
         else {
-            let requestInfo : Dictionary<String, Any> = [
-                "ownerUserId" : self.currnetUserUid!
+            
+            let reqeustValue : Dictionary<String, Any> = [
+                "status" : 1,
+                "friendId" : "",
+                "friendEmail" : self.friendEmailTextField.text!,
+                "timestamp" : ServerValue.timestamp()
+                
             ]
-
-            Database.database().reference().child("friendships").childByAutoId().setValue(requestInfo) {
+        Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").childByAutoId().setValue(reqeustValue) {
                 (err, ref) in
                 if(err == nil) {
-                    //request friendship
-//                    let reqeustValue : Dictionary<String, Any> = [
-//                        "status" : 1,
-//                        "friendId" : "",
-//                        "friendEmail" : self.friendEmailTextField.text!,
-//                        "timestamp" : ServerValue.timestamp()
-//                        
-//                    ]
-//
-//                    Database.database().reference().child("friendships").child(self.currnetUserUid!).child("comments").childByAutoId().setValue(requestInfo) {
-//                        (err, ref) in
-//                        if(err == nil) {
-//                            
-//                        }
-//                    }
-                    
                 }
             }
-
             
         }
     }
@@ -120,7 +107,7 @@ class AddFriendViewController: UIViewController {
         
         var friendshipModel:FriendshipModel?
         
-        Database.database().reference().child("friendships").queryOrdered(byChild: "users/" + self.currnetUserUid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value) {
+        Database.database().reference().child("friendInformations").queryOrdered(byChild: "users/" + self.currnetUserUid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let friendshipDic = item.value as? [String:AnyObject] {

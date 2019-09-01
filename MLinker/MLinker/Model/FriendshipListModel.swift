@@ -41,7 +41,7 @@ class FriendshipModel : Mappable {
 class FriendshipListModel: Mappable {
     
     
-    public var ownerUserId: String?
+    //public var ownerUserId: String?
     public var friendshipList : [FriendshipModel] = []
     
     required init?(map: Map) {
@@ -49,7 +49,7 @@ class FriendshipListModel: Mappable {
     }
     
     func mapping(map: Map) {
-        ownerUserId <- map["ownerUserId"]
+        //ownerUserId <- map["ownerUserId"]
         friendshipList <- map["friendshipList"]
         
     }
