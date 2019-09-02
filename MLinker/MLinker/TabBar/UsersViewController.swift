@@ -13,7 +13,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var usersTableView: UITableView!
     
-    var userArray: [UserModel] = []
+    fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +22,23 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let userModel = UserModel()
-        userModel.uid = "123"
-        userModel.name = "kkk"
-        userModel.comment = "comment"
-        self.userArray.append(userModel)
+        self.loadUsesInfo()
         
-        let userModel2 = UserModel()
-        userModel2.uid = "123"
-        userModel2.name = "gggg"
-        userModel2.comment = "commentary"
-        self.userArray.append(userModel2)
-        
-        DispatchQueue.main.async {
-            self.usersTableView.reloadData()
-        }
+//        let userModel = UserModel()
+//        userModel.uid = "123"
+//        userModel.name = "kkk"
+//        userModel.comment = "comment"
+//        self.userArray.append(userModel)
+//
+//        let userModel2 = UserModel()
+//        userModel2.uid = "123"
+//        userModel2.name = "gggg"
+//        userModel2.comment = "commentary"
+//        self.userArray.append(userModel2)
+//
+//        DispatchQueue.main.async {
+//            self.usersTableView.reloadData()
+//        }
         
     }
     
@@ -44,17 +46,31 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let addFriendVC = UIStoryboard(name: "AddFriend", bundle: nil).instantiateViewController(withIdentifier: "addFriend")
         self.present(addFriendVC, animated: true, completion: nil)
     }
+    
+    func loadUsesInfo() {
+        
+        
+        
+        
+    }
 }
 
 
 extension UsersViewController {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3 // 0 - self 1 - requesting 2 - friends
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.userArray.count
+        guard let dataList = usersArray[section] else {
+            return 0
+        }
+        return dataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
-        let currentUser = self.userArray[indexPath.row]
+        let currentUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
         
         cell.nameLabel?.text = currentUser.name
         cell.commentLabel?.text = currentUser.comment
