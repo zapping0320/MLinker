@@ -16,7 +16,7 @@ enum FriendStatus : Int {
 }
 
 class FriendshipModel : Mappable {
-    public var uid: String?
+    //public var uid: String?
     public var status: FriendStatus
     public var friendId: String?
     public var friendEmail: String?
@@ -30,7 +30,7 @@ class FriendshipModel : Mappable {
     }
     
     public func mapping(map: Map) {
-        uid         <- map["uid"]
+      //  uid         <- map["uid"]
         status      <- map["status"]
         friendId    <- map["friendId"]
         friendEmail <- map["friendEmail"]
