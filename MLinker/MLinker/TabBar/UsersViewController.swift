@@ -14,11 +14,15 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var usersTableView: UITableView!
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
+    var currnetUserUid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
          self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        
+         self.currnetUserUid = Auth.auth().currentUser?.uid
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,9 +52,34 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func loadUsesInfo() {
+        self.usersArray = [Int:[UserModel]]()
         
+        var processingFriendList = [UserModel]()
+    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let friendshipDic = item.value as? [String:AnyObject] {
+                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                    if(friendshipModel?.status == FriendStatus.Connected)
+                    {
+                        //select friend info
+                    }
+                    else {
+                        let userModel = UserModel()
+                        userModel.uid = item.key
+                        userModel.name = friendshipModel?.friendEmail
+                        userModel.comment = "processing"
+                        processingFriendList.append(userModel)
+                    }
+                }
+            }
         
+            self.usersArray[1] = processingFriendList
         
+            DispatchQueue.main.async {
+                self.usersTableView.reloadData()
+            }
+        }
         
     }
 }
@@ -59,6 +88,19 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
 extension UsersViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3 // 0 - self 1 - requesting 2 - friends
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return ""
+        }
+        
+        if section == 1 {
+            return "Current processing"
+        }
+        else {
+            return "Friends"
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

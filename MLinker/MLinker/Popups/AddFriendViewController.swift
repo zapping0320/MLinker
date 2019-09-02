@@ -14,7 +14,7 @@ class AddFriendViewController: UIViewController {
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var friendEmailTextField: UITextField!
     
-     var currnetUserUid: String!
+    var currnetUserUid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
