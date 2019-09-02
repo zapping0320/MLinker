@@ -108,6 +108,12 @@ class AddFriendViewController: UIViewController {
                 Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").childByAutoId().setValue(reqeustValue) {
                     (err, ref) in
                     if(err == nil) {
+                        let alert = UIAlertController(title: "FriendShip", message: "You have applied for a friend.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                            
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        self.friendEmailTextField.text = ""
                     }
                 }
             }
