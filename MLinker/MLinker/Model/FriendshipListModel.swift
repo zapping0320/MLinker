@@ -20,6 +20,7 @@ class FriendshipModel : Mappable {
     public var status: FriendStatus
     public var friendId: String?
     public var friendEmail: String?
+    public var friendUserModel: UserModel?
     public var timestamp: Int?
     public required init?(map: Map) {
         self.status = FriendStatus.None

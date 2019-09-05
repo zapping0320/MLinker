@@ -15,6 +15,7 @@ class AddFriendViewController: UIViewController {
     @IBOutlet weak var friendEmailTextField: UITextField!
     
     var currnetUserUid: String!
+    var friendUserModel: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,65 @@ class AddFriendViewController: UIViewController {
         self.getFriendshipModel()
     }
     
+    func findUserEmail() {
+        Database.database().reference().child("users").observeSingleEvent(of: DataEventType.value) {
+            (snapshot) in
+            var isSelf = false
+            var found = false
+            for child in snapshot.children {
+                let fchild = child as! DataSnapshot
+                let dataDic = fchild.value as? NSDictionary
+                let key =   fchild.key
+                let value = fchild.value
+                print("key = \(key)  value = \(value!)")
+                let uid = dataDic?["uid"] as? String ?? ""
+                
+                if(uid != ""){
+                    continue
+                }
+                
+                let email = dataDic?["email"] as? String ?? ""
+                if(email.isEmpty || email != self.friendEmailTextField.text!){
+                    continue
+                }
+                
+                if(uid == self.currnetUserUid)
+                {
+                    isSelf = true
+                    break
+                }
+                
+                found = true
+                
+                let userName = dataDic?["name"] as? String ?? ""
+                let profileURL = dataDic?["profileURL"] as? String ?? ""
+                //userModel.setValuesForKeys(fchild.value as! [String: Any])
+                self.friendUserModel = UserModel()
+                self.friendUserModel?.uid = uid
+                self.friendUserModel?.name = userName
+                self.friendUserModel?.profileURL = profileURL
+                self.friendUserModel?.comment = dataDic?["comment"] as? String ?? ""
+                break
+            }
+            if(found)
+            {
+                self.getFriendshipModel()
+            }
+            else {
+                var popupMessage:String = "This email is yours. Please check email"
+                if(isSelf == false) {
+                    popupMessage = "This email isn't registered.Please check email"
+                }
+                
+                let alert = UIAlertController(title: "FriendShip", message: popupMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
     func getFriendshipModel(){ Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             var foundInfo = false
@@ -98,10 +158,22 @@ class AddFriendViewController: UIViewController {
                 }
             }
             if(foundInfo == false){
+                
+                let userValue : Dictionary<String, Any> = [
+                    "uid": self.friendUserModel!.uid!,
+                    "name": self.friendUserModel!.name!,
+                    "profileURL": self.friendUserModel!.profileURL,
+                    "email": self.friendUserModel!.email!,
+                    "comment": self.friendUserModel!.comment!,
+                    "isAdminAccount": self.friendUserModel!.isAdminAccount,
+                ]
+                
+                
                 let reqeustValue : Dictionary<String, Any> = [
                     "status" : 1,
                     "friendId" : "",
                     "friendEmail" : trimmedEmail!,
+                    "friendUserModel" : userValue,
                     "timestamp" : ServerValue.timestamp()
                     
                 ]

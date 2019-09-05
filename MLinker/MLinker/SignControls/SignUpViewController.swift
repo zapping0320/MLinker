@@ -101,7 +101,13 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             }
             let uid = user.uid
             
-            Database.database().reference().child("users").child(uid).setValue(["name": self.userNameTextField.text!, "uid": uid] ) {
+            let signupValue : Dictionary<String, Any> = [
+                "uid": uid,
+                "name": self.userNameTextField.text!,
+                "email": self.emailTextField.text!
+            ]
+            
+            Database.database().reference().child("users").child(uid).setValue(signupValue) {
                 (error:Error?, ref:DatabaseReference) in
                 if let error = error {
                     print("Data could not be saved: \(error).")
