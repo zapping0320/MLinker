@@ -10,6 +10,8 @@
 		0B16821D23133B97004F8089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16821C23133B97004F8089 /* ViewController.swift */; };
 		0B16822023148AD3004F8089 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16821E23148AD3004F8089 /* UserTableViewCell.swift */; };
 		0B16822123148AD3004F8089 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B16821F23148AD3004F8089 /* UserTableViewCell.xib */; };
+		0B173F5D231DCE2E00A36DAB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173F5B231DCE2E00A36DAB /* ProfileViewController.swift */; };
+		0B173F602321B67200A36DAB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B173F5F2321B67200A36DAB /* Profile.storyboard */; };
 		0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4B022FA2E1800B55D21 /* AppDelegate.swift */; };
 		0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B422FA2E1800B55D21 /* Main.storyboard */; };
 		0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 		0B16821C23133B97004F8089 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0B16821E23148AD3004F8089 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0B16821F23148AD3004F8089 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		0B173F5B231DCE2E00A36DAB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0B173F5F2321B67200A36DAB /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0B44C4AD22FA2E1700B55D21 /* MLinker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLinker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B44C4B022FA2E1800B55D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B44C4B522FA2E1800B55D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 			children = (
 				0BFF1759231727D400CD6561 /* AddFriendViewController.swift */,
 				0BFF175D2317287000CD6561 /* AddFriend.storyboard */,
+				0B173F5B231DCE2E00A36DAB /* ProfileViewController.swift */,
+				0B173F5F2321B67200A36DAB /* Profile.storyboard */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				0B16822123148AD3004F8089 /* UserTableViewCell.xib in Resources */,
 				0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */,
 				0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */,
+				0B173F602321B67200A36DAB /* Profile.storyboard in Resources */,
 				0B44C4E42302165400B55D21 /* SigninStoryboard.storyboard in Resources */,
 				0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */,
 			);
@@ -326,6 +333,7 @@
 				0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */,
 				0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */,
 				0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */,
+				0B173F5D231DCE2E00A36DAB /* ProfileViewController.swift in Sources */,
 				0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */,
 				0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */,
 			);

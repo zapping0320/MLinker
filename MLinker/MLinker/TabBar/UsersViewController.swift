@@ -119,4 +119,11 @@ extension UsersViewController {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("did select \(indexPath)")
+        let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi")
+        self.present(profileVC, animated: true, completion: nil)
+    }
+
 }
