@@ -32,10 +32,11 @@ class FriendshipModel : Mappable {
     
     public func mapping(map: Map) {
       //  uid         <- map["uid"]
-        status      <- map["status"]
-        friendId    <- map["friendId"]
-        friendEmail <- map["friendEmail"]
-        timestamp   <- map["timestamp"]
+        status          <- map["status"]
+        friendId        <- map["friendId"]
+        friendEmail     <- map["friendEmail"]
+        friendUserModel <- map["friendUserModel"]
+        timestamp       <- map["timestamp"]
     }
 }
 

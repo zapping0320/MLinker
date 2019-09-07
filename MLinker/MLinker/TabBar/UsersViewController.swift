@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -68,6 +69,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         let userModel = UserModel()
                         userModel.uid = item.key
                         userModel.name = friendshipModel?.friendEmail
+                        userModel.profileURL = friendshipModel?.friendUserModel?.profileURL
                         userModel.comment = "processing"
                         processingFriendList.append(userModel)
                     }
@@ -116,6 +118,12 @@ extension UsersViewController {
         
         cell.nameLabel?.text = currentUser.name
         cell.commentLabel?.text = currentUser.comment
+        
+        if let profileImageString = currentUser.profileURL {
+            let profileImageURL = URL(string: profileImageString)
+            cell.imageView?.kf.setImage(with: profileImageURL)
+            //imageView.kf.setImage(with: profileImageURL)
+        }
         
         return cell
     }
