@@ -62,7 +62,7 @@ class AddFriendViewController: UIViewController {
     }
     
     @IBAction func applyFriendShip(_ sender: Any) {
-        self.getFriendshipModel()
+        self.findUserEmail()
     }
     
     func findUserEmail() {
@@ -78,7 +78,7 @@ class AddFriendViewController: UIViewController {
                 print("key = \(key)  value = \(value!)")
                 let uid = dataDic?["uid"] as? String ?? ""
                 
-                if(uid != ""){
+                if(uid == ""){
                     continue
                 }
                 
@@ -100,6 +100,7 @@ class AddFriendViewController: UIViewController {
                 //userModel.setValuesForKeys(fchild.value as! [String: Any])
                 self.friendUserModel = UserModel()
                 self.friendUserModel?.uid = uid
+                self.friendUserModel?.email = email
                 self.friendUserModel?.name = userName
                 self.friendUserModel?.profileURL = profileURL
                 self.friendUserModel?.comment = dataDic?["comment"] as? String ?? ""
@@ -162,7 +163,7 @@ class AddFriendViewController: UIViewController {
                 let userValue : Dictionary<String, Any> = [
                     "uid": self.friendUserModel!.uid!,
                     "name": self.friendUserModel!.name!,
-                    "profileURL": self.friendUserModel!.profileURL,
+                    "profileURL": self.friendUserModel!.profileURL!,
                     "email": self.friendUserModel!.email!,
                     "comment": self.friendUserModel!.comment!,
                     "isAdminAccount": self.friendUserModel!.isAdminAccount,
@@ -171,7 +172,7 @@ class AddFriendViewController: UIViewController {
                 
                 let reqeustValue : Dictionary<String, Any> = [
                     "status" : 1,
-                    "friendId" : "",
+                    "friendId" : self.friendUserModel!.uid!,
                     "friendEmail" : trimmedEmail!,
                     "friendUserModel" : userValue,
                     "timestamp" : ServerValue.timestamp()
