@@ -15,6 +15,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var usersTableView: UITableView!
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
+    var processingFriendshipList : [FriendshipModel] = [FriendshipModel]()
     var currnetUserUid: String!
     
     override func viewDidLoad() {
@@ -56,16 +57,22 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.usersArray = [Int:[UserModel]]()
         
         var processingFriendList = [UserModel]()
+        self.processingFriendshipList = [FriendshipModel]()
     Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let friendshipDic = item.value as? [String:AnyObject] {
                     let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                    if(friendshipModel == nil){
+                        continue
+                    }
+                    
                     if(friendshipModel?.status == FriendStatus.Connected)
                     {
                         //select friend info
                     }
                     else {
+                        self.processingFriendshipList.append(friendshipModel!)
                         let userModel = UserModel()
                         userModel.uid = item.key
                         userModel.name = friendshipModel?.friendEmail
@@ -122,7 +129,6 @@ extension UsersViewController {
         if let profileImageString = currentUser.profileURL {
             let profileImageURL = URL(string: profileImageString)
             cell.imageView?.kf.setImage(with: profileImageURL)
-            //imageView.kf.setImage(with: profileImageURL)
         }
         
         return cell
@@ -130,8 +136,17 @@ extension UsersViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("did select \(indexPath)")
-        let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi")
+        let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
+        
+        profileVC.selectedUserModel = self.usersArray[indexPath.section]![indexPath.row] as UserModel
+        if(indexPath.section == 1) {
+            profileVC.selectedFriendshipModel = self.processingFriendshipList[indexPath.row]
+        }
+        
         self.present(profileVC, animated: true, completion: nil)
+        
+        //need cell update or table update?
+        
     }
 
 }
