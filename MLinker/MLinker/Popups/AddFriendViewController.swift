@@ -15,6 +15,7 @@ class AddFriendViewController: UIViewController {
     @IBOutlet weak var friendEmailTextField: UITextField!
     
     var currnetUserUid: String!
+    var currentUserModel : UserModel?
     var friendUserModel: UserModel?
     
     override func viewDidLoad() {
@@ -68,8 +69,9 @@ class AddFriendViewController: UIViewController {
     func findUserEmail() {
         Database.database().reference().child("users").observeSingleEvent(of: DataEventType.value) {
             (snapshot) in
-            var isSelf = false
-            var found = false
+            var isSelfEmail = false
+            var foundFriend = false
+            var foundSelf = false
             for child in snapshot.children {
                 let fchild = child as! DataSnapshot
                 let dataDic = fchild.value as? NSDictionary
@@ -83,36 +85,49 @@ class AddFriendViewController: UIViewController {
                 }
                 
                 let email = dataDic?["email"] as? String ?? ""
-                if(email.isEmpty || email != self.friendEmailTextField.text!){
+                if(email.isEmpty){
                     continue
                 }
                 
-                if(uid == self.currnetUserUid)
-                {
-                    isSelf = true
-                    break
+                if(uid != self.currnetUserUid && email != self.friendEmailTextField.text!){
+                    continue
                 }
-                
-                found = true
                 
                 let userName = dataDic?["name"] as? String ?? ""
                 let profileURL = dataDic?["profileURL"] as? String ?? ""
                 //userModel.setValuesForKeys(fchild.value as! [String: Any])
-                self.friendUserModel = UserModel()
-                self.friendUserModel?.uid = uid
-                self.friendUserModel?.email = email
-                self.friendUserModel?.name = userName
-                self.friendUserModel?.profileURL = profileURL
-                self.friendUserModel?.comment = dataDic?["comment"] as? String ?? ""
-                break
+                let userModel = UserModel()
+                userModel.uid = uid
+                userModel.email = email
+                userModel.name = userName
+                userModel.profileURL = profileURL
+                userModel.comment = dataDic?["comment"] as? String ?? ""
+                
+                if(uid == self.currnetUserUid)
+                {
+                    foundSelf = true
+                    self.currentUserModel = userModel
+                    if(email == self.friendEmailTextField.text!){
+                        isSelfEmail = true
+                        break
+                    }
+                    continue
+                }
+                
+                foundFriend = true
+                self.friendUserModel = userModel
+                
+                if(foundSelf == true && foundFriend == true){
+                    break
+                }
             }
-            if(found)
+            if(isSelfEmail == false && foundFriend == true)
             {
                 self.getFriendshipModel()
             }
             else {
                 var popupMessage:String = "This email is yours. Please check email"
-                if(isSelf == false) {
+                if(isSelfEmail == false) {
                     popupMessage = "This email isn't registered.Please check email"
                 }
                 
@@ -160,7 +175,7 @@ class AddFriendViewController: UIViewController {
             }
             if(foundInfo == false){
                 
-                let userValue : Dictionary<String, Any> = [
+                let friendUserValue : Dictionary<String, Any> = [
                     "uid": self.friendUserModel!.uid!,
                     "name": self.friendUserModel!.name!,
                     "profileURL": self.friendUserModel!.profileURL!,
@@ -174,19 +189,42 @@ class AddFriendViewController: UIViewController {
                     "status" : 1,
                     "friendId" : self.friendUserModel!.uid!,
                     "friendEmail" : trimmedEmail!,
-                    "friendUserModel" : userValue,
+                    "friendUserModel" : friendUserValue,
                     "timestamp" : ServerValue.timestamp()
                     
                 ]
                 Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").childByAutoId().setValue(reqeustValue) {
                     (err, ref) in
                     if(err == nil) {
+                        
+                        let userValue : Dictionary<String, Any> = [
+                            "uid": self.currentUserModel!.uid!,
+                            "name": self.currentUserModel!.name!,
+                            "profileURL": self.currentUserModel!.profileURL!,
+                            "email": self.currentUserModel!.email!,
+                            "comment": self.currentUserModel!.comment!,
+                            "isAdminAccount": self.currentUserModel!.isAdminAccount,
+                        ]
+                        
+                        
+                        let receiveValue : Dictionary<String, Any> = [
+                            "status" : 2,
+                            "friendId" : self.currentUserModel!.uid!,
+                            "friendEmail" : self.currentUserModel!.email!,
+                            "friendUserModel" : userValue,
+                            "timestamp" : ServerValue.timestamp()
+                        ]
+                    Database.database().reference().child("friendInformations").child(self.friendUserModel!.uid!).child("friendshipList").childByAutoId().setValue(receiveValue) {
+                            (err, ref) in
+                            if(err == nil) {
                         let alert = UIAlertController(title: "FriendShip", message: "You have applied for a friend.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                             
                         }))
                         self.present(alert, animated: true, completion: nil)
                         self.friendEmailTextField.text = ""
+                        }
+                        }
                     }
                 }
             }
