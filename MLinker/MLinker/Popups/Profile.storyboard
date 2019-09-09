@@ -31,19 +31,84 @@
                                     <action selector="closeVC:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="Zi3-Pl-C9e"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Prt-mP-alW">
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="UDy-S3-vUu"/>
+                                    <constraint firstAttribute="height" constant="150" id="yLg-j0-UDX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXS-2o-g38">
+                                <rect key="frame" x="10" y="553" width="394" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="dFK-em-Lov"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6W-RO-2Ic">
+                                <rect key="frame" x="50" y="608" width="314" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0ML-Nx-1Bp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="mainButtonAction:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="fAS-Kw-NvV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8M-Mg-4rd">
+                                <rect key="frame" x="50" y="678" width="314" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ndu-Bq-jBB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="subButtonAction:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="jj5-vg-FSt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.42268639460000001" green="0.74532666260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="TxQ-d3-1V0" firstAttribute="top" secondItem="LLa-tR-DIZ" secondAttribute="top" constant="30" id="2Mv-ux-ln0"/>
+                            <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="I6W-RO-2Ic" secondAttribute="trailing" constant="50" id="2UP-Hc-dUS"/>
+                            <constraint firstItem="P8M-Mg-4rd" firstAttribute="top" secondItem="I6W-RO-2Ic" secondAttribute="bottom" constant="20" id="BZj-Wj-A5I"/>
+                            <constraint firstItem="Prt-mP-alW" firstAttribute="centerX" secondItem="bEI-WR-ICe" secondAttribute="centerX" id="FfU-RE-1we"/>
+                            <constraint firstItem="RXS-2o-g38" firstAttribute="centerX" secondItem="bEI-WR-ICe" secondAttribute="centerX" id="K8C-fO-aOK"/>
+                            <constraint firstItem="Prt-mP-alW" firstAttribute="centerY" secondItem="bEI-WR-ICe" secondAttribute="centerY" id="MCF-Hj-vvz"/>
+                            <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="RXS-2o-g38" secondAttribute="trailing" constant="10" id="Olp-eG-bJL"/>
+                            <constraint firstItem="RXS-2o-g38" firstAttribute="top" secondItem="Prt-mP-alW" secondAttribute="bottom" constant="30" id="PTp-A0-cQY"/>
+                            <constraint firstItem="I6W-RO-2Ic" firstAttribute="top" secondItem="RXS-2o-g38" secondAttribute="bottom" constant="20" id="Sev-Za-a4k"/>
+                            <constraint firstItem="I6W-RO-2Ic" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="50" id="htu-sw-RcT"/>
+                            <constraint firstItem="P8M-Mg-4rd" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="50" id="lqc-Dj-Jsa"/>
                             <constraint firstItem="TxQ-d3-1V0" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="30" id="maI-cJ-syl"/>
+                            <constraint firstItem="RXS-2o-g38" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="10" id="oX6-na-5pr"/>
+                            <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="P8M-Mg-4rd" secondAttribute="trailing" constant="50" id="usY-s9-Wgs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LLa-tR-DIZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="9p4-p0-noK"/>
+                    <connections>
+                        <outlet property="commentLabel" destination="RXS-2o-g38" id="W9d-t8-YFG"/>
+                        <outlet property="mainButton" destination="I6W-RO-2Ic" id="A3L-v3-I2O"/>
+                        <outlet property="profileImageView" destination="Prt-mP-alW" id="0rH-dk-zTR"/>
+                        <outlet property="subButton" destination="P8M-Mg-4rd" id="R38-Fu-c5j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Dg-KT-WTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="979.71014492753636" y="134.59821428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="18" height="18"/>
+    </resources>
 </document>
