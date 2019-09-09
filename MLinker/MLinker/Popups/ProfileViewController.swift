@@ -74,8 +74,34 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func mainButtonAction(_ sender: Any) {
+        if(selectedFriendshipModel != nil)
+        {
+            if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+               //cancel
+                self.cancelFriendshipRequest()
+            }else if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+                //accept
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+        else
+        {
+            if(self.currnetUserUid == self.selectedUserModel.uid)
+            {
+                //edit profile
+            }else {
+                //start chat
+            }
+        }
     }
     
     @IBAction func subButtonAction(_ sender: Any) {
+        
+    }
+    
+    func cancelFriendshipRequest() {
+        //update self
+        
+        //remove friend
     }
 }

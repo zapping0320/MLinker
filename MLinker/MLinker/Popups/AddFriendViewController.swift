@@ -150,7 +150,10 @@ class AddFriendViewController: UIViewController {
                     if(friendshipModel?.friendEmail == trimmedEmail)
                     {
                         var popupMessage:String = ""
-                        if(friendshipModel?.status == FriendStatus.Requesting)
+                        if(friendshipModel?.status == FriendStatus.cancelled){
+                            //consider if cancelled friendship can be tried or not
+                        }
+                        else if(friendshipModel?.status == FriendStatus.Requesting)
                         {
                             popupMessage = "You'd already requested friendship."
                         }
@@ -161,6 +164,10 @@ class AddFriendViewController: UIViewController {
                         else if(friendshipModel?.status == FriendStatus.Connected)
                         {
                             popupMessage = "You'd already made friendship."
+                        }
+                        else if(friendshipModel?.status == FriendStatus.rejected)
+                        {
+                            popupMessage = "You'd been rejected friendship."
                         }
                         
                         let alert = UIAlertController(title: "FriendShip", message: popupMessage, preferredStyle: .alert)

@@ -13,6 +13,8 @@ enum FriendStatus : Int {
     case Requesting = 1
     case ReceivingRequest = 2
     case Connected = 3
+    case cancelled = 4
+    case rejected = 5
 }
 
 class FriendshipModel : Mappable {
