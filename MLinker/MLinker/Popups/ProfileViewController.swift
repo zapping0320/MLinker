@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class ProfileViewController: UIViewController {
 
@@ -15,12 +17,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var subButton: UIButton!
     
-    
+    var currnetUserUid: String!
     public var selectedUserModel: UserModel = UserModel()
     public var selectedFriendshipModel : FriendshipModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.currnetUserUid = Auth.auth().currentUser?.uid
         
         mainButton.layer.cornerRadius = mainButton.bounds.size.height / 2
         mainButton.layer.borderWidth = 1
@@ -42,9 +46,27 @@ class ProfileViewController: UIViewController {
         }
         else
         {
-            
+            if(self.currnetUserUid == self.selectedUserModel.uid)
+            {
+                //self
+                self.mainButton.setTitle("edit Profile", for: .normal)
+                self.subButton.isHidden = true
+            }
+            else
+            {
+                self.mainButton.setTitle("start Chat", for: .normal)
+                self.subButton.isHidden = true
+            }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.commentLabel.text = self.selectedUserModel.comment
         
+        if let profileImageString = self.selectedUserModel.profileURL {
+            let profileImageURL = URL(string: profileImageString)
+            profileImageView.kf.setImage(with: profileImageURL)
+        }
     }
     
     @IBAction func closeVC(_ sender: Any) {
