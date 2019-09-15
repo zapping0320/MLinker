@@ -147,27 +147,17 @@ class AddFriendViewController: UIViewController {
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let friendshipDic = item.value as? [String:AnyObject] {
                     let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                    friendshipModel?.uid = item.key
                     if(friendshipModel?.friendEmail == trimmedEmail)
                     {
                         var popupMessage:String = ""
                         if(friendshipModel?.status == FriendStatus.cancelled){
                             //consider if cancelled friendship can be tried or not
+                            self.updateCancelledRequest(friendshipModel: friendshipModel!)
+                            return
                         }
-                        else if(friendshipModel?.status == FriendStatus.Requesting)
-                        {
-                            popupMessage = "You'd already requested friendship."
-                        }
-                        else if(friendshipModel?.status == FriendStatus.ReceivingRequest)
-                        {
-                            popupMessage = "You'd already received friendship."
-                        }
-                        else if(friendshipModel?.status == FriendStatus.Connected)
-                        {
-                            popupMessage = "You'd already made friendship."
-                        }
-                        else if(friendshipModel?.status == FriendStatus.rejected)
-                        {
-                            popupMessage = "You'd been rejected friendship."
+                        else {
+                            popupMessage = self.makePopupMessage(model: friendshipModel!)
                         }
                         
                         let alert = UIAlertController(title: "FriendShip", message: popupMessage, preferredStyle: .alert)
@@ -203,37 +193,81 @@ class AddFriendViewController: UIViewController {
                 Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").childByAutoId().setValue(reqeustValue) {
                     (err, ref) in
                     if(err == nil) {
-                        
-                        let userValue : Dictionary<String, Any> = [
-                            "uid": self.currentUserModel!.uid!,
-                            "name": self.currentUserModel!.name!,
-                            "profileURL": self.currentUserModel!.profileURL!,
-                            "email": self.currentUserModel!.email!,
-                            "comment": self.currentUserModel!.comment!,
-                            "isAdminAccount": self.currentUserModel!.isAdminAccount,
-                        ]
-                        
-                        
-                        let receiveValue : Dictionary<String, Any> = [
-                            "status" : 2,
-                            "friendId" : self.currentUserModel!.uid!,
-                            "friendEmail" : self.currentUserModel!.email!,
-                            "friendUserModel" : userValue,
-                            "timestamp" : ServerValue.timestamp()
-                        ]
-                    Database.database().reference().child("friendInformations").child(self.friendUserModel!.uid!).child("friendshipList").childByAutoId().setValue(receiveValue) {
-                            (err, ref) in
-                            if(err == nil) {
-                        let alert = UIAlertController(title: "FriendShip", message: "You have applied for a friend.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                            
-                        }))
-                        self.present(alert, animated: true, completion: nil)
-                        self.friendEmailTextField.text = ""
-                        }
-                        }
+                        self.addFriendshipInfoAtFriend()
                     }
                 }
+            }
+        }
+    }
+    
+    func makePopupMessage(model : FriendshipModel) -> String {
+        var popupMessage = ""
+        if(model.status == FriendStatus.Requesting)
+        {
+            popupMessage = "You'd already requested friendship."
+        }
+        else if(model.status == FriendStatus.ReceivingRequest)
+        {
+            popupMessage = "You'd already received friendship."
+        }
+        else if(model.status == FriendStatus.Connected)
+        {
+            popupMessage = "You'd already made friendship."
+        }
+        else if(model.status == FriendStatus.rejected)
+        {
+            popupMessage = "You'd been rejected friendship."
+        }
+        
+        
+        return popupMessage
+    }
+    
+    func addFriendshipInfoAtFriend() {
+        let userValue : Dictionary<String, Any> = [
+            "uid": self.currentUserModel!.uid!,
+            "name": self.currentUserModel!.name!,
+            "profileURL": self.currentUserModel!.profileURL!,
+            "email": self.currentUserModel!.email!,
+            "comment": self.currentUserModel!.comment!,
+            "isAdminAccount": self.currentUserModel!.isAdminAccount,
+        ]
+        
+        
+        let receiveValue : Dictionary<String, Any> = [
+            "status" : 2,
+            "friendId" : self.currentUserModel!.uid!,
+            "friendEmail" : self.currentUserModel!.email!,
+            "friendUserModel" : userValue,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        Database.database().reference().child("friendInformations").child(self.friendUserModel!.uid!).child("friendshipList").childByAutoId().setValue(receiveValue) {
+            (err, ref) in
+            if(err == nil) {
+                let alert = UIAlertController(title: "FriendShip", message: "You have applied for a friend.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+                self.friendEmailTextField.text = ""
+            }
+        }
+    }
+    
+    func updateCancelledRequest(friendshipModel : FriendshipModel) {
+        let updateSelfValue : Dictionary<String, Any> = [
+            "status" : 1,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+        Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").child(friendshipModel.uid!).updateChildValues(updateSelfValue) {
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                 self.addFriendshipInfoAtFriend()
+                
+            }else {
+                print("update friendship error")
             }
         }
     }
