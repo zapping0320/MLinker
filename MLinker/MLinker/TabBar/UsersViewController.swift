@@ -62,8 +62,16 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let friendshipDic = item.value as? [String:AnyObject] {
+                    
                     let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                    friendshipModel?.uid = item.key
                     if(friendshipModel == nil){
+                        continue
+                    }
+                    
+                    if(friendshipModel?.status == FriendStatus.cancelled ||
+                        friendshipModel?.status == FriendStatus.rejected)
+                    {
                         continue
                     }
                     
@@ -74,7 +82,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     else {
                         self.processingFriendshipList.append(friendshipModel!)
                         let userModel = UserModel()
-                        userModel.uid = item.key
+                        //userModel.uid = item.key
                         userModel.name = friendshipModel?.friendEmail
                         userModel.profileURL = friendshipModel?.friendUserModel?.profileURL
                         userModel.comment = "processing"

@@ -76,10 +76,12 @@ class ProfileViewController: UIViewController {
     @IBAction func mainButtonAction(_ sender: Any) {
         if(selectedFriendshipModel != nil)
         {
-            if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+            if(selectedFriendshipModel?.status == FriendStatus.Requesting)
+            {
                //cancel
                 self.cancelFriendshipRequest()
-            }else if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+            }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest)
+            {
                 //accept
             }
             self.dismiss(animated: true, completion: nil)
@@ -96,11 +98,33 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func subButtonAction(_ sender: Any) {
-        
+        if(selectedFriendshipModel != nil)
+        {
+             if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+                    //reject
+            }
+        }
+        else
+        {
+            //disconnect friendship
+            
+        }
     }
     
     func cancelFriendshipRequest() {
         //update self
+        let updateSelfValue : Dictionary<String, Any> = [
+            "status" : 4,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
+            (err, ref) in
+            if(err == nil) {
+                
+            }else {
+                print("error update self freindshipmodel")
+            }
+        }
         
         //remove friend
     }
