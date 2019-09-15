@@ -118,14 +118,36 @@ class ProfileViewController: UIViewController {
             "timestamp" : ServerValue.timestamp()
         ]
         Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
-            (err, ref) in
-            if(err == nil) {
-                
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                let friendUid = self.selectedFriendshipModel!.friendId!
+                Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+                    (datasnapShot) in
+                    for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                        if let friendshipDic = item.value as? [String:AnyObject] {
+                            
+                            let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                            friendshipModel?.uid = item.key
+                            
+                            if(friendshipModel?.friendId != self.currnetUserUid!)
+                            {
+                                continue
+                            }
+                            Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).removeValue() {
+                                (deleteErr, ref) in
+                                if(deleteErr == nil) {
+                                    
+                                }
+                            }
+                        }
+                        
+                    }
+                }
             }else {
                 print("error update self freindshipmodel")
             }
         }
         
-        //remove friend
     }
 }
