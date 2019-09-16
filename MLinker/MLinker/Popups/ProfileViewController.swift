@@ -24,6 +24,9 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.profileImageView.layer.cornerRadius = 75
+        //self.profileImageView.clipsToBounds = true
+        
         self.currnetUserUid = Auth.auth().currentUser?.uid
         
         mainButton.layer.cornerRadius = mainButton.bounds.size.height / 2
@@ -55,7 +58,7 @@ class ProfileViewController: UIViewController {
             else
             {
                 self.mainButton.setTitle("start Chat", for: .normal)
-                self.subButton.isHidden = true
+                self.subButton.setTitle("disconnect Friendship", for: .normal)
             }
         }
     }

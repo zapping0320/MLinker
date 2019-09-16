@@ -104,7 +104,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             let signupValue : Dictionary<String, Any> = [
                 "uid": uid,
                 "name": self.userNameTextField.text!,
-                "email": self.emailTextField.text!
+                "email": self.emailTextField.text!,
+                "timestamp" : ServerValue.timestamp()
             ]
             
             Database.database().reference().child("users").child(uid).setValue(signupValue) {

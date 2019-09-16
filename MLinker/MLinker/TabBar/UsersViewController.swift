@@ -149,10 +149,43 @@ extension UsersViewController {
         
         if let profileImageString = currentUser.profileURL {
             let profileImageURL = URL(string: profileImageString)
-            cell.imageView?.kf.setImage(with: profileImageURL)
+            let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
+                >> RoundCornerImageProcessor(cornerRadius: 40)
+            cell.profileImageView?.kf.indicatorType = .activity
+            cell.profileImageView?.kf.setImage(
+                with: profileImageURL,
+                placeholder: UIImage(named: "defaultPhoto"),
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
+            
         }
         
         return cell
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
