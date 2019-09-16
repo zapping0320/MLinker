@@ -21,31 +21,15 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
-         self.currnetUserUid = Auth.auth().currentUser?.uid
+        self.currnetUserUid = Auth.auth().currentUser?.uid
+        self.loadSelfInfo()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.loadUsesInfo()
-        
-//        let userModel = UserModel()
-//        userModel.uid = "123"
-//        userModel.name = "kkk"
-//        userModel.comment = "comment"
-//        self.userArray.append(userModel)
-//
-//        let userModel2 = UserModel()
-//        userModel2.uid = "123"
-//        userModel2.name = "gggg"
-//        userModel2.comment = "commentary"
-//        self.userArray.append(userModel2)
-//
-//        DispatchQueue.main.async {
-//            self.usersTableView.reloadData()
-//        }
-        
+        self.loadUsersInfo()
     }
     
     @IBAction func popupAddFriend(_ sender: Any) {
@@ -53,12 +37,25 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(addFriendVC, animated: true, completion: nil)
     }
     
-    func loadUsesInfo() {
-        self.usersArray = [Int:[UserModel]]()
-        
+    func loadSelfInfo() {
+        self.usersArray[0] = [UserModel]()
+        Database.database().reference().child("users").child(self.currnetUserUid).observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            if let userDic = datasnapShot.value as? [String:AnyObject] {
+                let userModel = UserModel(JSON: userDic)
+                self.usersArray[0]!.append(userModel!)
+                DispatchQueue.main.async {
+                    self.usersTableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func loadUsersInfo() {
         //var selfUserList = [UserModel]()
         var processingFriendList = [UserModel]()
         self.processingFriendshipList = [FriendshipModel]()
+        self.usersArray[1] = [UserModel]()
         self.usersArray[2] = [UserModel]()
     Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
@@ -176,18 +173,6 @@ extension UsersViewController {
         return cell
     }
     
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("did select \(indexPath)")
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
@@ -199,7 +184,9 @@ extension UsersViewController {
         
         self.present(profileVC, animated: true, completion: nil)
         
-        //need cell update or table update?
+        if(indexPath.section == 0){
+            self.loadSelfInfo()
+        }
         
     }
 
