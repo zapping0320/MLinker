@@ -56,8 +56,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func loadUsesInfo() {
         self.usersArray = [Int:[UserModel]]()
         
+        //var selfUserList = [UserModel]()
         var processingFriendList = [UserModel]()
         self.processingFriendshipList = [FriendshipModel]()
+        self.usersArray[2] = [UserModel]()
     Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
@@ -78,6 +80,17 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     if(friendshipModel?.status == FriendStatus.Connected)
                     {
                         //select friend info
+                    Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
+                            (datasnapShot) in
+                            if let userDic = datasnapShot.value as? [String:AnyObject] {
+                                let userModel = UserModel(JSON: userDic)
+                                self.usersArray[2]!.append(userModel!)
+                                DispatchQueue.main.async {
+                                    self.usersTableView.reloadData()
+                                }
+                            }
+                        }
+                        
                     }
                     else {
                         self.processingFriendshipList.append(friendshipModel!)

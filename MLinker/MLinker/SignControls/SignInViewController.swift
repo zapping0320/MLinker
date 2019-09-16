@@ -28,7 +28,7 @@ class SignInViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        signeOut()
+        //signeOut()
         
         firebaseAuth.addStateDidChangeListener {
             (auth, user)

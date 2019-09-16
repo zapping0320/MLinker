@@ -30,8 +30,8 @@ class UserModel: Mappable {
         uid      <- map["uid"]
         email    <- map["email"]
         name <- map["name"]
-         profileURL <- map["profileURL"]
-         comment <- map["comment"]
+        profileURL <- map["profileURL"]
+        comment <- map["comment"]
         isAdminAccount <- map["isAdminAccount"]
         timestamp   <- map["timestamp"]
     }
