@@ -37,7 +37,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let chatRoomdic = item.value as? [String:AnyObject] {
                     let chatModel = ChatModel(JSON: chatRoomdic)
-                    //self.keys.append(item.key)
+                    chatModel?.uid = item.key
                     self.chatRooms.append(chatModel!)
                 }
             }
@@ -54,12 +54,18 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
 
 extension ChatRoomsViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatRooms.count
+        return 2//chatRooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomCell", for: indexPath) as! ChatRoomTableViewCell
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
+        chatVC.selectedChatRoomUid = String(indexPath.row)
+        self.navigationController?.pushViewController(chatVC, animated: true)
     }
 }
