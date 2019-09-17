@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var chatRoomTableView: UITableView!
+    var currnetUserUid: String!
     var chatRooms: [ChatModel]! = []
     
     override func viewDidLoad() {
@@ -18,8 +21,35 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
        self.chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatRoomCell")
         self.chatRoomTableView.delegate = self
         self.chatRoomTableView.dataSource = self
+        
+        self.currnetUserUid = Auth.auth().currentUser?.uid
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.getChatRoomsList()
+    }
+    
+    func getChatRoomsList() {
+        Database.database().reference().child("chatRooms").queryOrdered(byChild: "users/" + self.currnetUserUid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            self.chatRooms.removeAll()
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let chatRoomdic = item.value as? [String:AnyObject] {
+                    let chatModel = ChatModel(JSON: chatRoomdic)
+                    //self.keys.append(item.key)
+                    self.chatRooms.append(chatModel!)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.chatRoomTableView.reloadData()
+            }
+        }
     }
 
+    @IBAction func addChatRoom(_ sender: Any) {
+    }
 }
 
 extension ChatRoomsViewController {
