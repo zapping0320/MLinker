@@ -67,21 +67,36 @@
             </objects>
             <point key="canvasLocation" x="158" y="848"/>
         </scene>
-        <!--Chats-->
+        <!--Chat Rooms View Controller-->
         <scene sceneID="dfb-VQ-epU">
             <objects>
                 <viewController id="0nr-6v-8m5" customClass="ChatRoomsViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="myn-K8-BdT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tme-jo-Ou1">
+                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42268639460000001" green="0.74532666260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uxn-1s-wmB" firstAttribute="trailing" secondItem="tme-jo-Ou1" secondAttribute="trailing" constant="10" id="gtd-tb-YTC"/>
+                            <constraint firstItem="tme-jo-Ou1" firstAttribute="top" secondItem="uxn-1s-wmB" secondAttribute="top" constant="10" id="hgA-Cf-UW0"/>
+                            <constraint firstItem="tme-jo-Ou1" firstAttribute="leading" secondItem="uxn-1s-wmB" secondAttribute="leading" constant="10" id="rey-jo-rFQ"/>
+                            <constraint firstItem="uxn-1s-wmB" firstAttribute="bottom" secondItem="tme-jo-Ou1" secondAttribute="bottom" constant="10" id="zCn-n5-zve"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uxn-1s-wmB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chats" id="EaL-98-XAm"/>
+                    <navigationItem key="navigationItem" id="gos-pj-h5z"/>
+                    <connections>
+                        <outlet property="chatRoomTableView" destination="tme-jo-Ou1" id="fjA-m2-sRr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSB-SW-BU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="455"/>
+            <point key="canvasLocation" x="1995.6521739130437" y="454.6875"/>
         </scene>
         <!--Counseling-->
         <scene sceneID="gMO-r4-2ye">
@@ -139,7 +154,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="mOa-el-pSR" kind="relationship" relationship="viewControllers" id="oi7-sn-EyB"/>
-                        <segue destination="0nr-6v-8m5" kind="relationship" relationship="viewControllers" id="dTb-pB-CVn"/>
+                        <segue destination="mR0-Eo-e9d" kind="relationship" relationship="viewControllers" id="dTb-pB-CVn"/>
                         <segue destination="cGY-BZ-gTf" kind="relationship" relationship="viewControllers" id="w2x-iP-sV2"/>
                         <segue destination="yWR-DC-Q81" kind="relationship" relationship="viewControllers" id="Wqn-gA-2Vz"/>
                     </connections>
@@ -166,6 +181,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yek-oq-iCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1066.6666666666667" y="-248.4375"/>
+        </scene>
+        <!--Chats-->
+        <scene sceneID="ltR-bt-FFh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mR0-Eo-e9d" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chats" id="EaL-98-XAm"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Flj-C2-B2R">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0nr-6v-8m5" kind="relationship" relationship="rootViewController" id="Z15-eP-XF6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qqc-7b-jy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085.5072463768117" y="454.6875"/>
         </scene>
     </scenes>
     <resources>
