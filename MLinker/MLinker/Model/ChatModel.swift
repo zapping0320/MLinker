@@ -28,7 +28,8 @@ class ChatModel: Mappable {
     
     var uid : String
     public var isIncludeAdminAccount: Bool = false
-    public var users: Dictionary<String,Bool> = [:]
+    public var chatUserIdDic: Dictionary<String,Bool> = [:]
+    public var chatUserProfiles : [String] = []
     public var comments : Dictionary<String, Comment> = [:]
     
     required init?(map: Map) {
@@ -37,7 +38,7 @@ class ChatModel: Mappable {
     
     func mapping(map: Map) {
         uid      <- map["uid"]
-        users <- map["users"]
+        chatUserIdDic <- map["chatUserIdDic"]
         comments <- map["comments"]
         
     }
