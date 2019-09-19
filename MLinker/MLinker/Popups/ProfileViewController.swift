@@ -97,6 +97,7 @@ class ProfileViewController: UIViewController {
                 //edit profile
             }else {
                 //start chat
+                self.findChatRoom()
             }
         }
     }
@@ -195,5 +196,51 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func findChatRoom()
+    {
+        //find same users' chat room
+        Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            var foundRoom = false
+            var foundRoomInfo = ChatModel()
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let chatRoomdic = item.value as? [String:AnyObject] {
+                    let chatModel = ChatModel(JSON: chatRoomdic)
+                    chatModel?.uid = item.key
+                    if(chatModel?.chatUserIdDic.count == 2 &&
+                      (chatModel?.chatUserIdDic[self.currnetUserUid] != nil) &&
+                      (self.selectedFriendshipModel != nil && chatModel?.chatUserIdDic[self.selectedFriendshipModel!.friendId!] != nil))
+                    {
+                        foundRoom = true
+                        foundRoomInfo = chatModel!
+                        break
+                    }
+                    
+                }
+            }
+            
+            if(foundRoom == true)
+            {
+                //if true > move chatview
+                self.moveChatView(chatModel: foundRoomInfo)
+            }
+            else
+            {
+                //else make chatroom and move chat view
+                self.createChatRoom()
+            }
+            
+        }
+        
+    }
     
+     func createChatRoom()
+     {
+        
+    }
+    
+    func moveChatView(chatModel : ChatModel)
+    {
+        
+    }
 }
