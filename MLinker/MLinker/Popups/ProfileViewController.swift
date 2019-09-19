@@ -209,7 +209,7 @@ class ProfileViewController: UIViewController {
                     chatModel?.uid = item.key
                     if(chatModel?.chatUserIdDic.count == 2 &&
                       (chatModel?.chatUserIdDic[self.currnetUserUid] != nil) &&
-                      (self.selectedFriendshipModel != nil && chatModel?.chatUserIdDic[self.selectedFriendshipModel!.friendId!] != nil))
+                      chatModel?.chatUserIdDic[self.selectedUserModel.uid!] != nil)
                     {
                         foundRoom = true
                         foundRoomInfo = chatModel!
@@ -234,9 +234,29 @@ class ProfileViewController: UIViewController {
         
     }
     
-     func createChatRoom()
-     {
+    func createChatRoom()
+    {
+        let userIdDic : Dictionary<String, Bool> = [
+            self.currnetUserUid : false,
+            self.selectedUserModel.uid! : false
+        ]
         
+        
+        let chatRoomValue : Dictionary<String, Any> = [
+            "isIncludeAdminAccount" : self.selectedUserModel.isAdminAccount ? true : false,
+            "chatUserIdDic" : userIdDic,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+        Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
+            (err, ref) in
+            if(err == nil) {
+                
+            }
+            else {
+                
+            }
+        }
     }
     
     func moveChatView(chatModel : ChatModel)
