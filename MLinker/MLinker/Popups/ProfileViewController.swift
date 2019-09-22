@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
     var currnetUserUid: String!
     public var selectedUserModel: UserModel = UserModel()
     public var selectedFriendshipModel : FriendshipModel?
+    public var selectedChatModel: ChatModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,7 +200,7 @@ class ProfileViewController: UIViewController {
     func findChatRoom()
     {
         //find same users' chat room
-        Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value) {
+        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             var foundRoom = false
             var foundRoomInfo = ChatModel()
@@ -251,7 +252,8 @@ class ProfileViewController: UIViewController {
         Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
             (err, ref) in
             if(err == nil) {
-                
+                //self.moveChatView(chatModel: <#T##ChatModel#>)
+                self.findChatRoom()
             }
             else {
                 
@@ -261,6 +263,7 @@ class ProfileViewController: UIViewController {
     
     func moveChatView(chatModel : ChatModel)
     {
-        
+        self.selectedChatModel = chatModel
+        self.dismiss(animated: true, completion: nil)
     }
 }

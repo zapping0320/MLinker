@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class ChatViewController: UIViewController {
 
-    
+    public var selectedChatModel:ChatModel = ChatModel()
     public var selectedChatRoomUid:String!
     
     override func viewDidLoad() {
