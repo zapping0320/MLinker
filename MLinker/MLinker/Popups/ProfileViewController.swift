@@ -20,7 +20,6 @@ class ProfileViewController: UIViewController {
     var currnetUserUid: String!
     public var selectedUserModel: UserModel = UserModel()
     public var selectedFriendshipModel : FriendshipModel?
-    public var selectedChatModel: ChatModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -263,8 +262,9 @@ class ProfileViewController: UIViewController {
     
     func moveChatView(chatModel : ChatModel)
     {
-        self.selectedChatModel = chatModel
-        NotificationCenter.default.post(name: .nsStartChat, object: chatModel)
+        let chatModelDic = ["chatmodel" : chatModel]
+        
+        NotificationCenter.default.post(name: .nsStartChat, object: nil, userInfo: chatModelDic)
         self.dismiss(animated: true, completion: nil)
     }
 }

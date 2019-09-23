@@ -111,8 +111,16 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    @objc func moveChatView(_ notifcation : Notification) {
+    @objc func moveChatView(_ notification : Notification) {
         print("moveChatView")
+        if let dict = notification.userInfo as NSDictionary? {
+            if let chatModel = dict["chatmodel"] as? ChatModel{
+                let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
+                //chatVC.selectedChatRoomUid = String(indexPath.row)
+                chatVC.selectedChatModel = chatModel
+                self.navigationController?.pushViewController(chatVC, animated: true)
+            }
+        }
     }
 }
 
