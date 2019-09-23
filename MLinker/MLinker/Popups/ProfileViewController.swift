@@ -264,6 +264,7 @@ class ProfileViewController: UIViewController {
     func moveChatView(chatModel : ChatModel)
     {
         self.selectedChatModel = chatModel
+        NotificationCenter.default.post(name: .nsStartChat, object: chatModel)
         self.dismiss(animated: true, completion: nil)
     }
 }

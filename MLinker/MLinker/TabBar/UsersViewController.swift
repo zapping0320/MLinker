@@ -23,6 +23,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
+        
         self.currnetUserUid = Auth.auth().currentUser?.uid
         self.loadSelfInfo()
         
@@ -107,7 +109,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.usersTableView.reloadData()
             }
         }
-        
+    }
+    
+    @objc func moveChatView(_ notifcation : Notification) {
+        print("moveChatView")
     }
 }
 
@@ -184,18 +189,22 @@ extension UsersViewController {
         
         self.present(profileVC, animated: true, completion: nil)
         
-        if let chatModel = profileVC.selectedChatModel {
-            let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
-            chatVC.selectedChatRoomUid = String(indexPath.row)
-            chatVC.selectedChatModel = chatModel
-            self.navigationController?.pushViewController(chatVC, animated: true)
-        }
-        else {
-            if(indexPath.section == 0){
-                self.loadSelfInfo()
-            }
-        }
+//        if let chatModel = profileVC.selectedChatModel {
+//            let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
+//            chatVC.selectedChatRoomUid = String(indexPath.row)
+//            chatVC.selectedChatModel = chatModel
+//            self.navigationController?.pushViewController(chatVC, animated: true)
+//        }
+//        else {
+//            if(indexPath.section == 0){
+//                self.loadSelfInfo()
+//            }
+//        }
         
     }
 
+}
+
+extension Notification.Name {
+    static let nsStartChat = Notification.Name("startChat")
 }
