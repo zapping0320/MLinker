@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B076A5623397B7100B5AF43 /* ChatYourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B076A5423397B7100B5AF43 /* ChatYourCell.swift */; };
+		0B076A5723397B7100B5AF43 /* ChatYourCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B076A5523397B7100B5AF43 /* ChatYourCell.xib */; };
+		0B076A5A23397B8500B5AF43 /* ChatMyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B076A5823397B8500B5AF43 /* ChatMyCell.swift */; };
+		0B076A5B23397B8500B5AF43 /* ChatMyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B076A5923397B8500B5AF43 /* ChatMyCell.xib */; };
 		0B16821D23133B97004F8089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16821C23133B97004F8089 /* ViewController.swift */; };
 		0B16822023148AD3004F8089 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16821E23148AD3004F8089 /* UserTableViewCell.swift */; };
 		0B16822123148AD3004F8089 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B16821F23148AD3004F8089 /* UserTableViewCell.xib */; };
@@ -39,6 +43,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B076A5423397B7100B5AF43 /* ChatYourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatYourCell.swift; sourceTree = "<group>"; };
+		0B076A5523397B7100B5AF43 /* ChatYourCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatYourCell.xib; sourceTree = "<group>"; };
+		0B076A5823397B8500B5AF43 /* ChatMyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMyCell.swift; sourceTree = "<group>"; };
+		0B076A5923397B8500B5AF43 /* ChatMyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatMyCell.xib; sourceTree = "<group>"; };
 		0B16821C23133B97004F8089 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0B16821E23148AD3004F8089 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0B16821F23148AD3004F8089 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
@@ -152,6 +160,10 @@
 				0B16821F23148AD3004F8089 /* UserTableViewCell.xib */,
 				0B191FD823318CDC0016EA85 /* ChatRoomTableViewCell.swift */,
 				0B191FD923318CDC0016EA85 /* ChatRoomTableViewCell.xib */,
+				0B076A5423397B7100B5AF43 /* ChatYourCell.swift */,
+				0B076A5523397B7100B5AF43 /* ChatYourCell.xib */,
+				0B076A5823397B8500B5AF43 /* ChatMyCell.swift */,
+				0B076A5923397B8500B5AF43 /* ChatMyCell.xib */,
 			);
 			path = CommonControls;
 			sourceTree = "<group>";
@@ -257,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B076A5723397B7100B5AF43 /* ChatYourCell.xib in Resources */,
 				0B191FDB23318CDC0016EA85 /* ChatRoomTableViewCell.xib in Resources */,
 				0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */,
 				0B44C4C622FB80E900B55D21 /* GoogleService-Info.plist in Resources */,
@@ -265,6 +278,7 @@
 				0B16822123148AD3004F8089 /* UserTableViewCell.xib in Resources */,
 				0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */,
 				0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */,
+				0B076A5B23397B8500B5AF43 /* ChatMyCell.xib in Resources */,
 				0B173F602321B67200A36DAB /* Profile.storyboard in Resources */,
 				0B44C4E42302165400B55D21 /* SigninStoryboard.storyboard in Resources */,
 				0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */,
@@ -345,12 +359,14 @@
 				0B16821D23133B97004F8089 /* ViewController.swift in Sources */,
 				0B191FDA23318CDC0016EA85 /* ChatRoomTableViewCell.swift in Sources */,
 				0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */,
+				0B076A5A23397B8500B5AF43 /* ChatMyCell.swift in Sources */,
 				0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */,
 				0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */,
 				0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */,
 				0B191FDD233192190016EA85 /* ChatViewController.swift in Sources */,
 				0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */,
 				0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */,
+				0B076A5623397B7100B5AF43 /* ChatYourCell.swift in Sources */,
 				0B173F5D231DCE2E00A36DAB /* ProfileViewController.swift in Sources */,
 				0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */,
 				0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */,

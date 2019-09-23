@@ -17,9 +17,24 @@
                     <view key="view" contentMode="scaleToFill" id="nBx-8q-AUJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aN2-Kn-Rb5">
+                                <rect key="frame" x="10" y="54" width="394" height="798"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.6845327819" blue="0.19650800609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aN2-Kn-Rb5" firstAttribute="leading" secondItem="3Ut-pi-4dJ" secondAttribute="leading" constant="10" id="4xW-Th-RaV"/>
+                            <constraint firstItem="3Ut-pi-4dJ" firstAttribute="bottom" secondItem="aN2-Kn-Rb5" secondAttribute="bottom" constant="10" id="A0N-BG-2vs"/>
+                            <constraint firstItem="aN2-Kn-Rb5" firstAttribute="top" secondItem="3Ut-pi-4dJ" secondAttribute="top" constant="10" id="TpD-eq-gsa"/>
+                            <constraint firstItem="3Ut-pi-4dJ" firstAttribute="trailing" secondItem="aN2-Kn-Rb5" secondAttribute="trailing" constant="10" id="kiH-G8-DJo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3Ut-pi-4dJ"/>
                     </view>
+                    <connections>
+                        <outlet property="commentTableView" destination="aN2-Kn-Rb5" id="sQc-nV-KxK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEs-Ov-L6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
