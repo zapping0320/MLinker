@@ -13,6 +13,9 @@ import Kingfisher
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var commentTableView: UITableView!
+    @IBOutlet weak var chatInputView: UITextView!
+    @IBOutlet weak var inputViewBottomMargin: NSLayoutConstraint!
+    
     public var selectedChatModel:ChatModel = ChatModel()
     public var selectedChatRoomUid:String!
     
@@ -25,6 +28,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.commentTableView.register(UINib(nibName: "ChatYourCell", bundle: nil), forCellReuseIdentifier: "ChatYourCell")
         self.commentTableView.register(UINib(nibName: "ChatMyCell", bundle: nil), forCellReuseIdentifier: "ChatMyCell")
         
+    }
+    @IBAction func sendMessage(_ sender: Any) {
     }
 }
 
