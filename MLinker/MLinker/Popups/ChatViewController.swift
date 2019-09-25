@@ -28,7 +28,39 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.commentTableView.register(UINib(nibName: "ChatYourCell", bundle: nil), forCellReuseIdentifier: "ChatYourCell")
         self.commentTableView.register(UINib(nibName: "ChatMyCell", bundle: nil), forCellReuseIdentifier: "ChatMyCell")
         
+        //keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
+    
+    @objc func keyboardWillShow(noti : Notification){
+        if let notiInfo = noti.userInfo {
+            let keyboardFrame = notiInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+            let height = keyboardFrame.size.height - self.view.safeAreaInsets.bottom
+            
+            let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+            
+            UIView.animate(withDuration: animationDuration) {
+                self.inputViewBottomMargin.constant = height
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(noti : Notification){
+        if let notiInfo = noti.userInfo {
+            let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+            
+            UIView.animate(withDuration: animationDuration) {
+                self.inputViewBottomMargin.constant = 0
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    
     @IBAction func sendMessage(_ sender: Any) {
     }
 }
