@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Kingfisher
 
-class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     @IBOutlet weak var commentTableView: UITableView! {
         didSet {
@@ -20,7 +20,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    @IBOutlet weak var chatInputView: UITextView!
+    @IBOutlet weak var chatInputView: UITextView! {
+        didSet {
+            self.chatInputView.delegate = self
+        }
+    }
+    @IBOutlet weak var chatInputViewHeight: NSLayoutConstraint!
     @IBOutlet weak var inputViewBottomMargin: NSLayoutConstraint!
     
     public var selectedChatModel:ChatModel = ChatModel()
@@ -74,6 +79,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         chatDatas.append(self.chatInputView.text)
         self.chatInputView.text = ""
+        self.chatInputViewHeight.constant = 40
         
         let lastIndexPath = IndexPath(row: chatDatas.count - 1, section: 0)
         
@@ -81,6 +87,19 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         commentTableView.scrollToRow(at: lastIndexPath, at: UITableView.ScrollPosition.bottom, animated: true)
         
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if(textView.contentSize.height <= 40) {
+            self.chatInputViewHeight.constant = 40
+        }
+        else if(self.chatInputViewHeight.constant >= 100)
+        {
+            self.chatInputViewHeight.constant = 100
+        }
+        else {
+            self.chatInputViewHeight.constant = textView.contentSize.height
+        }
     }
 }
 
@@ -92,12 +111,14 @@ extension ChatViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row % 2 == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
+            cell.selectionStyle = .none
             cell.commentTextView.text = chatDatas[indexPath.row]
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatYourCell", for: indexPath) as! ChatYourCell
             cell.commentTextView.text = chatDatas[indexPath.row]
+            cell.selectionStyle = .none
             return cell
         }
     }

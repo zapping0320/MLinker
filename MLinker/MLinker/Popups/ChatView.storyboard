@@ -67,6 +67,7 @@
                     </view>
                     <connections>
                         <outlet property="chatInputView" destination="cfl-iv-eyb" id="rx9-qy-04t"/>
+                        <outlet property="chatInputViewHeight" destination="BFh-kl-zAn" id="kjO-KR-AoM"/>
                         <outlet property="commentTableView" destination="aN2-Kn-Rb5" id="sQc-nV-KxK"/>
                         <outlet property="inputViewBottomMargin" destination="lmN-z6-BEz" id="L1l-Ww-wQx"/>
                     </connections>
