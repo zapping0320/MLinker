@@ -16,6 +16,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         didSet {
             self.commentTableView.delegate = self
             self.commentTableView.dataSource = self
+            self.commentTableView.separatorStyle = .none
         }
     }
     
@@ -72,8 +73,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return
         }
         chatDatas.append(self.chatInputView.text)
+        self.chatInputView.text = ""
         
-        commentTableView.reloadData()
+        let lastIndexPath = IndexPath(row: chatDatas.count - 1, section: 0)
+        
+        commentTableView.insertRows(at: [lastIndexPath], with: UITableView.RowAnimation.automatic)
+        
+        commentTableView.scrollToRow(at: lastIndexPath, at: UITableView.ScrollPosition.bottom, animated: true)
         
     }
 }

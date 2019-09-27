@@ -18,11 +18,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yourBubble" translatesAutoresizingMaskIntoConstraints="NO" id="xUc-K3-su5">
-                        <rect key="frame" x="10" y="10" width="221.5" height="74"/>
+                        <rect key="frame" x="10" y="10" width="217.5" height="74"/>
                         <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="asd dasdasd] sdfkjsdfldsfjl asldkjasdlkjas asldkjasdlkajsddslkfjsdlfkjdsf sdlkfjsdlfkj" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UmV-6L-nHL">
-                        <rect key="frame" x="20" y="10" width="201.5" height="74"/>
+                        <rect key="frame" x="30" y="10" width="187.5" height="74"/>
                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -44,7 +44,7 @@
                     <constraint firstItem="UmV-6L-nHL" firstAttribute="top" secondItem="xUc-K3-su5" secondAttribute="top" id="gzq-Na-q5g"/>
                     <constraint firstItem="UmV-6L-nHL" firstAttribute="trailing" secondItem="xUc-K3-su5" secondAttribute="trailing" constant="-10" id="lPM-wo-THm"/>
                     <constraint firstItem="xUc-K3-su5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ogi-M6-KVu"/>
-                    <constraint firstItem="UmV-6L-nHL" firstAttribute="leading" secondItem="xUc-K3-su5" secondAttribute="leading" constant="10" id="tXp-lT-PHj"/>
+                    <constraint firstItem="UmV-6L-nHL" firstAttribute="leading" secondItem="xUc-K3-su5" secondAttribute="leading" constant="20" id="tXp-lT-PHj"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
