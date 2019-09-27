@@ -48,6 +48,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="commentDateLabel" destination="9nH-gi-Du2" id="ulD-Vx-zKu"/>
+                <outlet property="commentTextView" destination="I9z-PB-6Q6" id="TIS-Sj-hMb"/>
+            </connections>
             <point key="canvasLocation" x="60.869565217391312" y="136.27232142857142"/>
         </tableViewCell>
     </objects>

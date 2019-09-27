@@ -10,6 +10,8 @@ import UIKit
 
 class ChatMyCell: UITableViewCell {
 
+    @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var commentDateLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
