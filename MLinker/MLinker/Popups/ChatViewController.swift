@@ -31,8 +31,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     public var selectedChatModel:ChatModel = ChatModel()
     public var selectedChatRoomUid:String!
     
+    var comments: [ChatModel.Comment] = []
+    var databaseRef: DatabaseReference?
+    var observe : UInt?
+    
     //temp for UI
-    var chatDatas : [String] = []
+    //var chatDatas : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +49,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        
+        self.getMessageList()
     }
     
     @objc func keyboardWillShow(noti : Notification){
@@ -77,16 +83,33 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if(self.chatInputView.text.isEmpty){
             return
         }
-        chatDatas.append(self.chatInputView.text)
-        self.chatInputView.text = ""
-        self.chatInputViewHeight.constant = 40
+        //chatDatas.append(self.chatInputView.text)
         
-        let lastIndexPath = IndexPath(row: chatDatas.count - 1, section: 0)
+        let value : Dictionary<String, Any> = [
+            "uid": self.selectedChatModel.uid,
+            "message" : self.chatInputView.text!,
+            "timestamp" : ServerValue.timestamp()
+        ]
+    Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments").childByAutoId().setValue(value, withCompletionBlock: {
+            (err, ref) in
+            self.chatInputView.text = ""
+            self.chatInputViewHeight.constant = 40
+        })
+       
         
-        commentTableView.insertRows(at: [lastIndexPath], with: UITableView.RowAnimation.automatic)
+        //let lastIndexPath = IndexPath(row: chatDatas.count - 1, section: 0)
         
-        commentTableView.scrollToRow(at: lastIndexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+        //commentTableView.insertRows(at: [lastIndexPath], with: UITableView.RowAnimation.automatic)
         
+//        commentTableView.scrollToRow(at: lastIndexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+        
+    }
+    
+    func scrollTableView()
+    {
+        if self.comments.count > 0 {
+            self.commentTableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: .bottom, animated: false)
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -101,23 +124,66 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.chatInputViewHeight.constant = textView.contentSize.height
         }
     }
+    
+    func getMessageList() {
+        self.databaseRef = Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments")
+        
+        self.observe = self.databaseRef!.observe(DataEventType.value, with: {
+            (snapshot) in
+            self.comments.removeAll()
+            var readUsersDic : Dictionary<String,AnyObject> = [:]
+            
+            for item in snapshot.children.allObjects as! [DataSnapshot] {
+                let key = item.key as String
+                let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                //comment_modify?.readUsers[self.uid!] = true
+                //readUsersDic[key] = comment_modify?.toJSON() as! NSDictionary
+                self.comments.append(comment!)
+            }
+            
+            let nsDic = readUsersDic as NSDictionary
+            
+            if(self.comments.last?.readUsers.keys == nil){
+                return
+            }
+            
+//            if(!(self.comments.last?.readUsers.keys.contains(self.uid!))!){
+//                snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                        self.scrollTableView()
+//
+//                    }
+//                })
+//
+//
+//            }else {
+                DispatchQueue.main.async {
+                    self.commentTableView.reloadData()
+                    self.scrollTableView()
+                    
+              //  }
+            }
+        })
+    }
 }
 
 extension ChatViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.chatDatas.count
+        return self.comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row % 2 == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
             cell.selectionStyle = .none
-            cell.commentTextView.text = chatDatas[indexPath.row]
+            cell.commentTextView.text = self.comments[indexPath.row].message//chatDatas[indexPath.row]
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatYourCell", for: indexPath) as! ChatYourCell
-            cell.commentTextView.text = chatDatas[indexPath.row]
+            cell.commentTextView.text = self.comments[indexPath.row].message//chatDatas[indexPath.row]
             cell.selectionStyle = .none
             return cell
         }
