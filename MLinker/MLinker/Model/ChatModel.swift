@@ -26,25 +26,25 @@ class ChatModel: Mappable {
         }
     }
     
-    var uid : String
+    var uid : String = ""
     public var isIncludeAdminAccount: Bool = false
     public var chatUserIdDic: Dictionary<String,Bool> = [:]
     public var chatUserProfiles : [String] = []
+    public var name: String = ""
     public var comments : Dictionary<String, Comment> = [:]
     public var timestamp: Int?
     
     init() {
-        uid = ""
     }
     
     required init?(map: Map) {
-        uid = ""
     }
     
     func mapping(map: Map) {
         uid                     <- map["uid"]
         isIncludeAdminAccount   <- map["isIncludeAdminAccount"]
         chatUserIdDic           <- map["chatUserIdDic"]
+        name                     <- map["name"]
         comments                <- map["comments"]
         timestamp               <- map["timestamp"]
         

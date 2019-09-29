@@ -11,7 +11,12 @@ import Firebase
 import Kingfisher
 
 class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var chatRoomTableView: UITableView!
+    @IBOutlet weak var chatRoomTableView: UITableView! {
+        didSet {
+            self.chatRoomTableView.delegate = self
+            self.chatRoomTableView.dataSource = self
+        }
+    }
     var currnetUserUid: String!
     var chatRooms: [ChatModel]! = []
     
@@ -19,8 +24,6 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
         super.viewDidLoad()
 
        self.chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatRoomCell")
-        self.chatRoomTableView.delegate = self
-        self.chatRoomTableView.dataSource = self
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
         
@@ -31,7 +34,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     func getChatRoomsList() {
-        Database.database().reference().child("chatRooms").queryOrdered(byChild: "users/" + self.currnetUserUid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value) {
+        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             self.chatRooms.removeAll()
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
@@ -41,7 +44,6 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
                     self.chatRooms.append(chatModel!)
                 }
             }
-            
             DispatchQueue.main.async {
                 self.chatRoomTableView.reloadData()
             }
@@ -54,11 +56,16 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
 
 extension ChatRoomsViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2//chatRooms.count
+        return chatRooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomCell", for: indexPath) as! ChatRoomTableViewCell
+        
+        let chatRoom = self.chatRooms[indexPath.row]
+        
+        cell.nameLabel.text = chatRoom.name
+        
         
         return cell
     }

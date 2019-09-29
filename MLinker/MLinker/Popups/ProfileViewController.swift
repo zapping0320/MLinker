@@ -241,10 +241,11 @@ class ProfileViewController: UIViewController {
             self.selectedUserModel.uid! : false
         ]
         
-        
+        let chatRoomName = self.selectedUserModel.name!
         let chatRoomValue : Dictionary<String, Any> = [
             "isIncludeAdminAccount" : self.selectedUserModel.isAdminAccount ? true : false,
             "chatUserIdDic" : userIdDic,
+            "name" : chatRoomName,
             "timestamp" : ServerValue.timestamp()
         ]
         
