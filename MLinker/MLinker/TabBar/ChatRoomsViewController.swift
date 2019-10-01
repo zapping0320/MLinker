@@ -72,7 +72,7 @@ extension ChatRoomsViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
-        chatVC.selectedChatRoomUid = String(indexPath.row)
+        chatVC.selectedChatModel = self.chatRooms[indexPath.row]
         self.navigationController?.pushViewController(chatVC, animated: true)
     }
 }
