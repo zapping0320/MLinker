@@ -11,6 +11,7 @@ import ObjectMapper
 class ChatModel: Mappable {
     public class Comment : Mappable {
         public var uid: String?
+        public var sender: String?
         public var message: String?
         public var timestamp: Int?
         public var readUsers : Dictionary<String, Bool> = [:]
@@ -20,6 +21,7 @@ class ChatModel: Mappable {
         
         public func mapping(map: Map) {
             uid         <- map["uid"]
+            sender      <- map["sender"]
             message     <- map["message"]
             timestamp   <- map["timestamp"]
             readUsers   <- map["readUsers"]

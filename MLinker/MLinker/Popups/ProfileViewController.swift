@@ -16,10 +16,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var subButton: UIButton!
-    
-    var currnetUserUid: String!
+   
     public var selectedUserModel: UserModel = UserModel()
     public var selectedFriendshipModel : FriendshipModel?
+    
+    private var currnetUserUid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -31,6 +31,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     public var selectedChatModel:ChatModel = ChatModel()
     public var selectedChatRoomUid:String!
     
+    private var currnetUserUid: String!
     var comments: [ChatModel.Comment] = []
     var databaseRef: DatabaseReference?
     var observe : UInt?
@@ -49,6 +50,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        self.currnetUserUid = Auth.auth().currentUser?.uid
         
         self.getMessageList()
     }
@@ -86,7 +88,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //chatDatas.append(self.chatInputView.text)
         
         let value : Dictionary<String, Any> = [
-            "uid": self.selectedChatModel.uid,
+            "sender": self.currnetUserUid!,
             "message" : self.chatInputView.text!,
             "timestamp" : ServerValue.timestamp()
         ]
@@ -175,16 +177,25 @@ extension ChatViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(indexPath.row % 2 == 0){
+        
+        let selectedComment = self.comments[indexPath.row]
+        
+        if(selectedComment.sender == self.currnetUserUid){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
             cell.selectionStyle = .none
             cell.commentTextView.text = self.comments[indexPath.row].message//chatDatas[indexPath.row]
+            if let timeStamp = self.comments[indexPath.row].timestamp {
+                cell.commentDateLabel.text = timeStamp.toChatCellDayTime
+            }
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatYourCell", for: indexPath) as! ChatYourCell
             cell.commentTextView.text = self.comments[indexPath.row].message//chatDatas[indexPath.row]
             cell.selectionStyle = .none
+            if let timeStamp = self.comments[indexPath.row].timestamp {
+                cell.commentDateLabel.text = timeStamp.toChatCellDayTime
+            }
             return cell
         }
     }
