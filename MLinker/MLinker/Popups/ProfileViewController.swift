@@ -242,10 +242,20 @@ class ProfileViewController: UIViewController {
             self.selectedUserModel.uid! : false
         ]
         
+        var profileDic : Dictionary<String, String> = [
+            self.currnetUserUid : "",
+        ]
+        
+        if let selectedUserProfile = self.selectedUserModel.profileURL {
+            profileDic.updateValue(selectedUserProfile, forKey: self.selectedUserModel.uid!)
+        }
+        
+        
         let chatRoomName = self.selectedUserModel.name!
         let chatRoomValue : Dictionary<String, Any> = [
             "isIncludeAdminAccount" : self.selectedUserModel.isAdminAccount ? true : false,
             "chatUserIdDic" : userIdDic,
+            "chatUserProfiles" : profileDic,
             "name" : chatRoomName,
             "timestamp" : ServerValue.timestamp()
         ]

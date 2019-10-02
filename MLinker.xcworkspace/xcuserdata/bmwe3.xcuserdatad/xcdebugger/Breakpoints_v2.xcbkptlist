@@ -1307,7 +1307,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "266"
             endingLineNumber = "266"
-            landmarkName = "moveChatView(chatModel:)"
+            landmarkName = "createChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1526,7 +1526,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "moveChatView(chatModel:)"
+            landmarkName = "createChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
