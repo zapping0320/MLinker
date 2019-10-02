@@ -32,6 +32,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     public var selectedChatRoomUid:String!
     
     private var currnetUserUid: String!
+    var peopleCount : Int?
     var comments: [ChatModel.Comment] = []
     var databaseRef: DatabaseReference?
     var observe : UInt?
@@ -139,8 +140,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let key = item.key as String
                 let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
                 let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                //comment_modify?.readUsers[self.uid!] = true
-                //readUsersDic[key] = comment_modify?.toJSON() as! NSDictionary
+                comment_modify?.readUsers[self.currnetUserUid!] = true
+                readUsersDic[key] = comment_modify?.toJSON() as! NSDictionary
                 self.comments.append(comment!)
             }
             
@@ -150,24 +151,54 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 return
             }
             
-//            if(!(self.comments.last?.readUsers.keys.contains(self.uid!))!){
-//                snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
-//                    DispatchQueue.main.async {
-//                        self.tableView.reloadData()
-//                        self.scrollTableView()
-//
-//                    }
-//                })
-//
-//
-//            }else {
+            if(!(self.comments.last?.readUsers.keys.contains(self.currnetUserUid!))!){
+                snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
+                    DispatchQueue.main.async {
+                        self.commentTableView.reloadData()
+                        self.scrollTableView()
+                    }
+                })
+
+            }else {
                 DispatchQueue.main.async {
                     self.commentTableView.reloadData()
                     self.scrollTableView()
                     
-              //  }
+              }
             }
         })
+    }
+    
+    func setReadCount(label:UILabel?, position: Int?){
+        let readCount = self.comments[position!].readUsers.count
+        
+        if(self.peopleCount == nil){
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("users").observeSingleEvent(of: DataEventType.value) {
+                (datasnapShot) in
+                
+                let dic = datasnapShot.value as! [String:Any]
+                self.peopleCount = dic.count
+                let noReadCount = self.peopleCount! - readCount
+                
+                if(noReadCount > 0) {
+                    label?.isHidden = false
+                    label?.text = String(noReadCount)
+                }else {
+                    label?.isHidden = true
+                }
+                
+            }
+        }else {
+            let noReadCount = self.peopleCount! - readCount
+            
+            if(noReadCount > 0) {
+                label?.isHidden = false
+                label?.text = String(noReadCount)
+            }else {
+                label?.isHidden = true
+            }
+        }
+        
     }
 }
 
@@ -179,6 +210,14 @@ extension ChatViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let selectedComment = self.comments[indexPath.row]
+        let remainUserCount = self.selectedChatModel.chatUserIdDic.count - selectedComment.readUsers.count
+        
+        var showReadUserCountLabel = false
+        if(remainUserCount > 0)
+        {
+            showReadUserCountLabel = true
+        }
+        
         
         if(selectedComment.sender == self.currnetUserUid){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
@@ -186,6 +225,11 @@ extension ChatViewController {
             cell.commentTextView.text = self.comments[indexPath.row].message//chatDatas[indexPath.row]
             if let timeStamp = self.comments[indexPath.row].timestamp {
                 cell.commentDateLabel.text = timeStamp.toChatCellDayTime
+            }
+            
+            if(showReadUserCountLabel){
+                cell.readUserLabel.isHidden = false
+                cell.readUserLabel.text = String(remainUserCount)
             }
             return cell
         }
@@ -196,6 +240,12 @@ extension ChatViewController {
             if let timeStamp = self.comments[indexPath.row].timestamp {
                 cell.commentDateLabel.text = timeStamp.toChatCellDayTime
             }
+            
+            if(showReadUserCountLabel){
+                cell.readUserLabel.isHidden = false
+                cell.readUserLabel.text = String(remainUserCount)
+            }
+            
             return cell
         }
     }

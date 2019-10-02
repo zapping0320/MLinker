@@ -33,13 +33,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Dh-8b-IWM">
+                        <rect key="frame" x="264.5" y="146" width="11" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9nH-gi-Du2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="9ir-WI-D9V"/>
+                    <constraint firstItem="9nH-gi-Du2" firstAttribute="top" secondItem="1Dh-8b-IWM" secondAttribute="bottom" constant="5" id="FTG-DQ-gt0"/>
                     <constraint firstAttribute="trailing" secondItem="VRh-iC-rW1" secondAttribute="trailing" constant="10" id="J5X-Hy-CEu"/>
                     <constraint firstItem="VRh-iC-rW1" firstAttribute="leading" secondItem="9nH-gi-Du2" secondAttribute="trailing" constant="5" id="LH0-qL-raa"/>
                     <constraint firstItem="VRh-iC-rW1" firstAttribute="leading" secondItem="I9z-PB-6Q6" secondAttribute="leading" constant="-5" id="MDg-V5-t0N"/>
                     <constraint firstItem="VRh-iC-rW1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="VUX-pU-0qg"/>
+                    <constraint firstItem="9nH-gi-Du2" firstAttribute="trailing" secondItem="1Dh-8b-IWM" secondAttribute="trailing" id="WnR-57-hiW"/>
                     <constraint firstItem="VRh-iC-rW1" firstAttribute="bottom" secondItem="I9z-PB-6Q6" secondAttribute="bottom" id="Wx7-3p-PDr"/>
                     <constraint firstItem="VRh-iC-rW1" firstAttribute="trailing" secondItem="I9z-PB-6Q6" secondAttribute="trailing" constant="30" id="gtT-Ha-BeS"/>
                     <constraint firstItem="VRh-iC-rW1" firstAttribute="top" secondItem="I9z-PB-6Q6" secondAttribute="top" id="jwl-fX-wt8"/>
@@ -51,6 +59,7 @@
             <connections>
                 <outlet property="commentDateLabel" destination="9nH-gi-Du2" id="ulD-Vx-zKu"/>
                 <outlet property="commentTextView" destination="I9z-PB-6Q6" id="TIS-Sj-hMb"/>
+                <outlet property="readUserLabel" destination="1Dh-8b-IWM" id="SUL-DM-b4u"/>
             </connections>
             <point key="canvasLocation" x="60.869565217391312" y="136.27232142857142"/>
         </tableViewCell>

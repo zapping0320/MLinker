@@ -27,18 +27,26 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2020.09.26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrk-WY-Svz">
-                        <rect key="frame" x="237" y="72" width="56" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.09.26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrk-WY-Svz">
+                        <rect key="frame" x="232.5" y="72" width="56" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAC-B4-BW0">
+                        <rect key="frame" x="232.5" y="53" width="11" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="rrk-WY-Svz" firstAttribute="leading" secondItem="TAC-B4-BW0" secondAttribute="leading" id="0ai-dw-o6N"/>
                     <constraint firstItem="UmV-6L-nHL" firstAttribute="bottom" secondItem="xUc-K3-su5" secondAttribute="bottom" id="7kr-YN-X5u"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rrk-WY-Svz" secondAttribute="trailing" constant="40" id="9dP-Q9-gss"/>
                     <constraint firstItem="rrk-WY-Svz" firstAttribute="bottom" secondItem="xUc-K3-su5" secondAttribute="bottom" id="JbV-Oa-DOt"/>
                     <constraint firstItem="rrk-WY-Svz" firstAttribute="leading" secondItem="xUc-K3-su5" secondAttribute="trailing" constant="5" id="K8d-uU-Aqo"/>
+                    <constraint firstItem="rrk-WY-Svz" firstAttribute="top" secondItem="TAC-B4-BW0" secondAttribute="bottom" constant="5" id="KSv-0D-QMz"/>
                     <constraint firstAttribute="bottom" secondItem="xUc-K3-su5" secondAttribute="bottom" constant="10" id="WxE-IX-eNk"/>
                     <constraint firstItem="xUc-K3-su5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="f7y-ys-zr2"/>
                     <constraint firstItem="UmV-6L-nHL" firstAttribute="top" secondItem="xUc-K3-su5" secondAttribute="top" id="gzq-Na-q5g"/>
@@ -51,6 +59,7 @@
             <connections>
                 <outlet property="commentDateLabel" destination="rrk-WY-Svz" id="3FP-y7-i9G"/>
                 <outlet property="commentTextView" destination="UmV-6L-nHL" id="CEh-YX-fRi"/>
+                <outlet property="readUserLabel" destination="TAC-B4-BW0" id="oGe-hY-1Pw"/>
             </connections>
             <point key="canvasLocation" x="147.10144927536234" y="106.47321428571428"/>
         </tableViewCell>
