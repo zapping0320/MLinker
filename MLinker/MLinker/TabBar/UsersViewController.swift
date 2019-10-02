@@ -26,6 +26,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
+        UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
         self.loadSelfInfo()
         
     }
@@ -45,6 +46,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
             (datasnapShot) in
             if let userDic = datasnapShot.value as? [String:AnyObject] {
                 let userModel = UserModel(JSON: userDic)
+                UserContexManager.shared.setCurrentUserModel(model: userModel!)
                 self.usersArray[0]!.append(userModel!)
                 DispatchQueue.main.async {
                     self.usersTableView.reloadData()
