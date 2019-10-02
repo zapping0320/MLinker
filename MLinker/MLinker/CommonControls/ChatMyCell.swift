@@ -29,11 +29,19 @@ class ChatMyCell: UITableViewCell {
 
 extension Int {
     var toChatCellDayTime : String {
-       //todo display different today and other date
+        let date = Date(timeIntervalSince1970: Double(self) / 1000)
+        
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy.MM.dd hh:mm"
-        let date = Date(timeIntervalSince1970: Double(self) / 1000)
+        
+        if(Calendar.current.isDateInToday(date))
+        {
+            dateFormatter.dateFormat = "hh:mm"
+        }
+        else
+        {
+            dateFormatter.dateFormat = "yyyy.MM.dd hh:mm"
+        }
         return dateFormatter.string(from: date)
     }
 }
