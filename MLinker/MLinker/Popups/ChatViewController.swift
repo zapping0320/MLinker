@@ -201,6 +201,34 @@ extension ChatViewController {
                 cell.readUserLabel.text = String(remainUserCount)
             }
             
+            if(self.selectedChatModel.chatUserProfiles.keys.contains(selectedComment.sender!) == true)
+            {
+                if let profileImageString = self.selectedChatModel.chatUserProfiles[selectedComment.sender!] {
+                    let profileImageURL = URL(string: profileImageString)
+                    let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
+                        >> RoundCornerImageProcessor(cornerRadius: 25)
+                    cell.profileImageView?.kf.indicatorType = .activity
+                    cell.profileImageView?.kf.setImage(
+                        with: profileImageURL,
+                        placeholder: UIImage(named: "defaultPhoto"),
+                        options: [
+                            .processor(processor),
+                            .scaleFactor(UIScreen.main.scale),
+                            .transition(.fade(1)),
+                            .cacheOriginalImage
+                        ])
+                    {
+                        result in
+                        switch result {
+                        case .success(let value):
+                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                        case .failure(let error):
+                            print("Job failed: \(error.localizedDescription)")
+                        }
+                    }
+                }
+            }
+            
             return cell
         }
     }

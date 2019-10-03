@@ -245,6 +245,9 @@ class ProfileViewController: UIViewController {
         var profileDic : Dictionary<String, String> = [
             self.currnetUserUid : "",
         ]
+        if let currentUserProfile = UserContexManager.shared.getCurrentUserModel().profileURL {
+            profileDic[self.currnetUserUid] = currentUserProfile
+        }
         
         if let selectedUserProfile = self.selectedUserModel.profileURL {
             profileDic.updateValue(selectedUserProfile, forKey: self.selectedUserModel.uid!)

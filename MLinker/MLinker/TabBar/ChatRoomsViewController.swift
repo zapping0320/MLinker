@@ -41,7 +41,10 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
                 if let chatRoomdic = item.value as? [String:AnyObject] {
                     let chatModel = ChatModel(JSON: chatRoomdic)
                     chatModel?.uid = item.key
-                    self.chatRooms.append(chatModel!)
+                    if((chatModel?.chatUserIdDic.keys.contains(self.currnetUserUid!)) == true)
+                    {
+                        self.chatRooms.append(chatModel!)
+                    }
                 }
             }
             DispatchQueue.main.async {
