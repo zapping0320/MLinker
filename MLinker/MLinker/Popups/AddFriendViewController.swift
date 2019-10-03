@@ -75,9 +75,7 @@ class AddFriendViewController: UIViewController {
             for child in snapshot.children {
                 let fchild = child as! DataSnapshot
                 let dataDic = fchild.value as? NSDictionary
-                let key =   fchild.key
-                let value = fchild.value
-                print("key = \(key)  value = \(value!)")
+             
                 let uid = dataDic?["uid"] as? String ?? ""
                 
                 if(uid == ""){

@@ -21,7 +21,7 @@
                         <rect key="frame" x="60" y="10" width="172" height="74"/>
                         <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="asd dasdasd] sdfkjsdfldsfjl asldkjasdlkjas asldkjasdlkajsddslkfjsdlfkjdsf sdlkfjsdlfkj" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UmV-6L-nHL">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="asd dasdasd] sdfkjsdfldsfjl asldkjasdlkjas asldkjasdlkajsddslkfjsdlfkjdsf sdlkfjsdlfkj" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UmV-6L-nHL">
                         <rect key="frame" x="80" y="10" width="142" height="74"/>
                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

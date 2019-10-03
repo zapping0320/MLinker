@@ -232,4 +232,29 @@ extension ChatViewController {
             return cell
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedComment = self.comments[indexPath.row]
+        guard let selectedUserId = selectedComment.sender else {
+            return
+        }
+        
+        if (selectedUserId == self.currnetUserUid)
+        {
+            return
+        }
+        Database.database().reference().child("users").child(selectedUserId).observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            if let userDic = datasnapShot.value as? [String:AnyObject] {
+                let userModel = UserModel(JSON: userDic)
+                DispatchQueue.main.async {
+                    let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
+                    profileVC.selectedUserModel = userModel!
+                    self.present(profileVC, animated: true, completion: nil)
+                    
+                }
+            }
+        }
+    }
 }
