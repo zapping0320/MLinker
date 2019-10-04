@@ -38,6 +38,11 @@ class ViewController: UIViewController {
         let caps = remoteConfig["splash_message_caps"].boolValue
         let message = remoteConfig["splash_message"].stringValue
         
+        if let permissionCode = remoteConfig["permissionCode"].stringValue {
+            UserContexManager.shared.setPersmissionCode(code: permissionCode)
+        }
+        
+        
         if(caps){
             let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title:"OK", style: .default, handler: { (action) in
