@@ -10,12 +10,13 @@ import Foundation
 
 class UserContexManager{
     
+    private var permissionCode : String
     private var currentUserModel = UserModel()
     private var currentUid : String?
     
     static let shared = UserContexManager()
     private init(){
-        
+        permissionCode = "!@#$ASDF"
     }
     
     func setCurrentUserModel(model : UserModel)
@@ -36,5 +37,15 @@ class UserContexManager{
     func getCurrentUid() -> String
     {
         return currentUid == nil ? "" : currentUid!
+    }
+    
+    func getPermissionCode() -> String
+    {
+        return permissionCode
+    }
+    
+    func setPersmissionCode(code : String)
+    {
+        permissionCode = code
     }
 }

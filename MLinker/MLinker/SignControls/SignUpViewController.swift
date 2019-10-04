@@ -14,8 +14,10 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     
+    @IBOutlet weak var permissionCodeTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -70,6 +72,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBAction func signUpInfoChanged(_ sender: Any) {
         if(emailTextField.text?.isEmpty == true ||
             passwordTextField.text?.isEmpty == true ||
+            confirmPasswordTextField.text?.isEmpty == true ||
             userNameTextField.text?.isEmpty == true)
         {
             setSignUpButtonEnabled(value: false)
@@ -95,6 +98,33 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     @IBAction func signUp(_ sender: Any) {
+        
+        var isPermitted = false
+        if(passwordTextField.text != confirmPasswordTextField.text)
+        {
+            let alert = UIAlertController(title: "Sign Up", message: "Please check password are they are not the same", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if(permissionCodeTextField.text?.isEmpty == false)
+        {
+            if(permissionCodeTextField.text! != UserContexManager.shared.getPermissionCode())
+            {
+                let alert = UIAlertController(title: "Sign Up", message: "Please check permission code. If you don't know it, remove and re-try to sign up", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            isPermitted = true
+        }
+        
+        
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, error) in
             guard let user = authResult?.user, error == nil else {
                 return
@@ -105,6 +135,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 "uid": uid,
                 "name": self.userNameTextField.text!,
                 "email": self.emailTextField.text!,
+                "isAdminAccount" : isPermitted,
                 "timestamp" : ServerValue.timestamp()
             ]
             
