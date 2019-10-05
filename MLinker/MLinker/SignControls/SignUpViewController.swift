@@ -135,6 +135,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 "uid": uid,
                 "name": self.userNameTextField.text!,
                 "email": self.emailTextField.text!,
+                "comment" : "",
                 "isAdminAccount" : isPermitted,
                 "timestamp" : ServerValue.timestamp()
             ]
@@ -208,7 +209,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                     else
                     {
                         //add admin friends at newbie
-                        //makeAdminFriendsAtNewbie(newUserModel : UserModel)
+                        self.makeAdminFriendsAtNewbie(newUserModel : userModel!)
                     }
                     
                 }
@@ -221,7 +222,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     {
         Database.database().reference().child("users").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
-             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let userDic = item.value as? [String:AnyObject] {
                     let userModel = UserModel(JSON: userDic)
                     userModel?.uid = item.key
@@ -229,19 +230,57 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                         continue
                     }
                     
-                    self.makeRelationConnected(targetUserModel: newUserModel, sourceUserModel: userModel!)
+                    self.makeRelationConnected(newUserModel: newUserModel, existedUserModel: userModel!)
                 }
             }
+            self.popVC()
         }
     }
         
-    func makeRelationConnected(targetUserModel : UserModel, sourceUserModel : UserModel)
+    func makeRelationConnected(newUserModel : UserModel, existedUserModel : UserModel)
     {
+        addFriendshipInfoAtFriend(targetUserModel: existedUserModel, sourceUserModel: newUserModel)
         
+        addFriendshipInfoAtFriend(targetUserModel: newUserModel, sourceUserModel: existedUserModel)
+        
+    }
+        
+    func addFriendshipInfoAtFriend(targetUserModel : UserModel, sourceUserModel : UserModel) {
+        var sourceUserValue : Dictionary<String, Any> = [
+            "uid": sourceUserModel.uid!,
+            "name": sourceUserModel.name!,
+            "email": sourceUserModel.email!,
+            "isAdminAccount": sourceUserModel.isAdminAccount,
+        ]
+        
+        if let profileURL = sourceUserModel.profileURL {
+            sourceUserValue.updateValue(profileURL, forKey: "profileURL")
+        }
+        
+        if let comment = sourceUserModel.comment {
+            sourceUserValue.updateValue(comment, forKey: "comment")
+        }
+        
+        
+        let receiveValue : Dictionary<String, Any> = [
+            "status" : 3,
+            "friendId" : sourceUserModel.uid!,
+            "friendEmail" : sourceUserModel.email!,
+            "friendUserModel" : sourceUserValue,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        Database.database().reference().child("friendInformations").child(targetUserModel.uid!).child("friendshipList").childByAutoId().setValue(receiveValue) {
+            (err, ref) in
+            if(err == nil) {
+              
+            }
+        }
     }
     
     func makeAdminFriendsAtNewbie(newUserModel : UserModel)
     {
+        self.popVC()
+        
         /*
         Database.database().reference().child("users").observeSingleEvent(of: DataEventType.value) {
             (snapshot) in

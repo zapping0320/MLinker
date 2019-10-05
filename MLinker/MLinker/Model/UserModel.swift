@@ -19,11 +19,11 @@ class UserModel: Mappable {
     public var timestamp: Int?
     
     init() {
-        
+        comment = ""
     }
     
     required init?(map: Map) {
-        
+        comment = ""
     }
     
     func mapping(map: Map) {
