@@ -279,79 +279,21 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     func makeAdminFriendsAtNewbie(newUserModel : UserModel)
     {
-        self.popVC()
-        
-        /*
         Database.database().reference().child("users").observeSingleEvent(of: DataEventType.value) {
-            (snapshot) in
-            var isSelfEmail = false
-            var foundFriend = false
-            var foundSelf = false
-            for child in snapshot.children {
-                let fchild = child as! DataSnapshot
-                let dataDic = fchild.value as? NSDictionary
-             
-                let uid = dataDic?["uid"] as? String ?? ""
-                
-                if(uid == ""){
-                    continue
-                }
-                
-                let email = dataDic?["email"] as? String ?? ""
-                if(email.isEmpty){
-                    continue
-                }
-                
-                if(uid != self.currnetUserUid && email != self.friendEmailTextField.text!){
-                    continue
-                }
-                
-                let userName = dataDic?["name"] as? String ?? ""
-                let profileURL = dataDic?["profileURL"] as? String ?? ""
-                //userModel.setValuesForKeys(fchild.value as! [String: Any])
-                let userModel = UserModel()
-                userModel.uid = uid
-                userModel.email = email
-                userModel.name = userName
-                userModel.profileURL = profileURL
-                userModel.comment = dataDic?["comment"] as? String ?? ""
-                
-                if(uid == self.currnetUserUid)
-                {
-                    foundSelf = true
-                    self.currentUserModel = userModel
-                    if(email == self.friendEmailTextField.text!){
-                        isSelfEmail = true
-                        break
+            (datasnapShot) in
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let userDic = item.value as? [String:AnyObject] {
+                    let userModel = UserModel(JSON: userDic)
+                    userModel?.uid = item.key
+                    if(userModel?.uid == newUserModel.uid || userModel?.isAdminAccount == false){
+                        continue
                     }
-                    continue
-                }
-                
-                foundFriend = true
-                self.friendUserModel = userModel
-                
-                if(foundSelf == true && foundFriend == true){
-                    break
-                }
-            }
-            if(isSelfEmail == false && foundFriend == true)
-            {
-                self.getFriendshipModel()
-            }
-            else {
-                var popupMessage:String = "This email is yours. Please check email"
-                if(isSelfEmail == false) {
-                    popupMessage = "This email isn't registered.Please check email"
-                }
-                
-                let alert = UIAlertController(title: "FriendShip", message: popupMessage, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                     
-                }))
-                self.present(alert, animated: true, completion: nil)
+                    self.makeRelationConnected(newUserModel: newUserModel, existedUserModel: userModel!)
+                }
             }
+            self.popVC()
         }
- */
     }
     
     

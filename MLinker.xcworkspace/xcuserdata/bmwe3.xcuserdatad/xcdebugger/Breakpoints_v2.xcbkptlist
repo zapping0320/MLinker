@@ -1792,7 +1792,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6FF30AC4-38AB-4271-9AAE-19FC11F1BC0A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MLinker/MLinker/SignControls/SignUpViewController.swift"
@@ -1805,7 +1805,7 @@
             <Locations>
                <Location
                   uuid = "6FF30AC4-38AB-4271-9AAE-19FC11F1BC0A - 19f078801454d2f9"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MLinker.SignUpViewController.addFriendshipInfoAtFriend(targetUserModel: MLinker.UserModel, sourceUserModel: MLinker.UserModel) -&gt; ()"
@@ -1820,7 +1820,7 @@
                </Location>
                <Location
                   uuid = "6FF30AC4-38AB-4271-9AAE-19FC11F1BC0A - 560f08653d819089"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDatabaseReference) -&gt; () in MLinker.SignUpViewController.addFriendshipInfoAtFriend(targetUserModel: MLinker.UserModel, sourceUserModel: MLinker.UserModel) -&gt; ()"
