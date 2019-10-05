@@ -59,7 +59,14 @@ class ProfileViewController: UIViewController {
             else
             {
                 self.mainButton.setTitle("start Chat", for: .normal)
-                self.subButton.setTitle("disconnect Friendship", for: .normal)
+                if(self.selectedUserModel.isAdminAccount == false)
+                {
+                    self.subButton.setTitle("disconnect Friendship", for: .normal)
+                }
+                else
+                {
+                    self.subButton.isHidden = true
+                }
             }
         }
     }
