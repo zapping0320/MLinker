@@ -135,6 +135,9 @@
                         <viewLayoutGuide key="safeArea" id="gla-2M-8oK"/>
                     </view>
                     <navigationItem key="navigationItem" id="y0D-eP-PBc"/>
+                    <connections>
+                        <outlet property="chatRoomTableView" destination="hGB-g2-czQ" id="u8h-X2-cCg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaZ-DK-TeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
