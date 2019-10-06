@@ -155,7 +155,8 @@ extension UsersViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         let currentUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
-        
+       
+        cell.setAdminAccount(value: currentUser.isAdminAccount)
         cell.nameLabel?.text = currentUser.name
         cell.commentLabel?.text = currentUser.comment
         

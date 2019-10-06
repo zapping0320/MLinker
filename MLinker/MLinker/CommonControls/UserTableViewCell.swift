@@ -11,6 +11,7 @@ import UIKit
 class UserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var adminAccountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     
@@ -25,6 +26,14 @@ class UserTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setAdminAccount(value : Bool) {
+         self.adminAccountLabel.isHidden = !value
+        if(value == false)
+        {
+            self.adminAccountLabel.text = ""
+        }
     }
     
 }
