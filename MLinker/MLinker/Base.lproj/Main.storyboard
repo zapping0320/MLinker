@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g8T-Ew-iLW">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g8T-Ew-iLW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -104,21 +102,43 @@
             </objects>
             <point key="canvasLocation" x="1995.6521739130437" y="454.6875"/>
         </scene>
-        <!--Counseling-->
+        <!--Conseling Chat Rooms View Controller-->
         <scene sceneID="gMO-r4-2ye">
             <objects>
                 <viewController id="cGY-BZ-gTf" customClass="ConselingChatRoomsViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N1r-q2-vPY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.54021114029999995" green="1" blue="0.64958068410000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offical Counselling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGW-kj-dpa">
+                                <rect key="frame" x="10" y="88" width="394" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGB-g2-czQ">
+                                <rect key="frame" x="10" y="131.5" width="394" height="671.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gla-2M-8oK" firstAttribute="trailing" secondItem="dGW-kj-dpa" secondAttribute="trailing" constant="10" id="2oZ-0Z-Zj3"/>
+                            <constraint firstItem="dGW-kj-dpa" firstAttribute="leading" secondItem="gla-2M-8oK" secondAttribute="leading" constant="10" id="43X-ga-FmA"/>
+                            <constraint firstItem="hGB-g2-czQ" firstAttribute="leading" secondItem="gla-2M-8oK" secondAttribute="leading" constant="10" id="CoE-RN-Rav"/>
+                            <constraint firstItem="gla-2M-8oK" firstAttribute="bottom" secondItem="hGB-g2-czQ" secondAttribute="bottom" constant="10" id="MDt-RI-SQL"/>
+                            <constraint firstItem="gla-2M-8oK" firstAttribute="trailing" secondItem="hGB-g2-czQ" secondAttribute="trailing" constant="10" id="Nqc-TK-M0n"/>
+                            <constraint firstItem="hGB-g2-czQ" firstAttribute="top" secondItem="dGW-kj-dpa" secondAttribute="bottom" constant="10" id="PnW-WQ-lsT"/>
+                            <constraint firstItem="dGW-kj-dpa" firstAttribute="top" secondItem="gla-2M-8oK" secondAttribute="top" id="fmP-nx-cfs"/>
+                            <constraint firstItem="dGW-kj-dpa" firstAttribute="centerX" secondItem="N1r-q2-vPY" secondAttribute="centerX" id="jKU-Wi-4ti"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gla-2M-8oK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Counseling" id="to8-mb-9bo"/>
+                    <navigationItem key="navigationItem" id="y0D-eP-PBc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaZ-DK-TeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="1196"/>
+            <point key="canvasLocation" x="1995.6521739130437" y="1195.9821428571429"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="jfq-Te-WkK">
@@ -161,7 +181,7 @@
                     <connections>
                         <segue destination="mOa-el-pSR" kind="relationship" relationship="viewControllers" id="oi7-sn-EyB"/>
                         <segue destination="mR0-Eo-e9d" kind="relationship" relationship="viewControllers" id="dTb-pB-CVn"/>
-                        <segue destination="cGY-BZ-gTf" kind="relationship" relationship="viewControllers" id="w2x-iP-sV2"/>
+                        <segue destination="v2L-Wd-t9I" kind="relationship" relationship="viewControllers" id="w2x-iP-sV2"/>
                         <segue destination="yWR-DC-Q81" kind="relationship" relationship="viewControllers" id="Wqn-gA-2Vz"/>
                     </connections>
                 </tabBarController>
@@ -206,6 +226,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqc-7b-jy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1085.5072463768117" y="454.6875"/>
+        </scene>
+        <!--Counseling-->
+        <scene sceneID="PXT-Ub-6vx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v2L-Wd-t9I" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Counseling" id="to8-mb-9bo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TpB-vN-8AR">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cGY-BZ-gTf" kind="relationship" relationship="rootViewController" id="XND-8r-rS3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FV2-Ch-Cbs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085.5072463768117" y="1195.9821428571429"/>
         </scene>
     </scenes>
     <resources>
