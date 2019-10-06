@@ -12,6 +12,7 @@ import Kingfisher
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var adminAccountLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var mainButton: UIButton!
@@ -38,6 +39,9 @@ class ProfileViewController: UIViewController {
         subButton.layer.borderWidth = 1
         subButton.layer.borderColor = UIColor.blue.cgColor
         
+        
+        adminAccountLabel.isHidden = true
+        
         if(selectedFriendshipModel != nil)
         {
             if(selectedFriendshipModel?.status == FriendStatus.Requesting){
@@ -55,6 +59,7 @@ class ProfileViewController: UIViewController {
                 //self
                 self.mainButton.setTitle("edit Profile", for: .normal)
                 self.subButton.isHidden = true
+                self.adminAccountLabel.isHidden = !self.selectedUserModel.isAdminAccount
             }
             else
             {
