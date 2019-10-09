@@ -30,7 +30,7 @@
 		0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4C922FB86DA00B55D21 /* ChatModel.swift */; };
 		0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CB230210C700B55D21 /* UsersViewController.swift */; };
 		0B44C4CE230210D600B55D21 /* ChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CD230210D600B55D21 /* ChatRoomsViewController.swift */; };
-		0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CF2302115100B55D21 /* ConselingChatRoomsViewController.swift */; };
+		0B44C4D02302115100B55D21 /* CounselingChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CF2302115100B55D21 /* CounselingChatRoomsViewController.swift */; };
 		0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4D12302115D00B55D21 /* SettingViewController.swift */; };
 		0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4DA230212E700B55D21 /* SignInViewController.swift */; };
 		0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4DB230212E700B55D21 /* SignUpViewController.swift */; };
@@ -69,7 +69,7 @@
 		0B44C4C922FB86DA00B55D21 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		0B44C4CB230210C700B55D21 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		0B44C4CD230210D600B55D21 /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
-		0B44C4CF2302115100B55D21 /* ConselingChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConselingChatRoomsViewController.swift; sourceTree = "<group>"; };
+		0B44C4CF2302115100B55D21 /* CounselingChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselingChatRoomsViewController.swift; sourceTree = "<group>"; };
 		0B44C4D12302115D00B55D21 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0B44C4DA230212E700B55D21 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0B44C4DB230212E700B55D21 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 			children = (
 				0B44C4CB230210C700B55D21 /* UsersViewController.swift */,
 				0B44C4CD230210D600B55D21 /* ChatRoomsViewController.swift */,
-				0B44C4CF2302115100B55D21 /* ConselingChatRoomsViewController.swift */,
+				0B44C4CF2302115100B55D21 /* CounselingChatRoomsViewController.swift */,
 				0B44C4D12302115D00B55D21 /* SettingViewController.swift */,
 			);
 			path = TabBar;
@@ -369,7 +369,7 @@
 				0B16822023148AD3004F8089 /* UserTableViewCell.swift in Sources */,
 				0B16821D23133B97004F8089 /* ViewController.swift in Sources */,
 				0B191FDA23318CDC0016EA85 /* ChatRoomTableViewCell.swift in Sources */,
-				0B44C4D02302115100B55D21 /* ConselingChatRoomsViewController.swift in Sources */,
+				0B44C4D02302115100B55D21 /* CounselingChatRoomsViewController.swift in Sources */,
 				0B076A5A23397B8500B5AF43 /* ChatMyCell.swift in Sources */,
 				0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */,
 				0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */,

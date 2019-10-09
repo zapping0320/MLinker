@@ -1,5 +1,5 @@
 //
-//  ConselingChatRoomsViewController.swift
+//  CounselingChatRoomsViewController.swift
 //  MLinker
 //
 //  Created by 김동현 on 13/08/2019.
@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Kingfisher
 
-class ConselingChatRoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CounselingChatRoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var chatRoomTableView: UITableView!{
         didSet {
             self.chatRoomTableView.delegate = self
@@ -57,7 +57,7 @@ class ConselingChatRoomsViewController: UIViewController, UITableViewDelegate, U
 
 }
 
-extension ConselingChatRoomsViewController {
+extension CounselingChatRoomsViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatRooms.count
     }
