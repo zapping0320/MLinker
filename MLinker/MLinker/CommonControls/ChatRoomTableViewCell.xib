@@ -62,7 +62,7 @@
                     <constraint firstItem="T9m-Cp-Rw9" firstAttribute="leading" secondItem="qm0-YS-xFX" secondAttribute="trailing" constant="5" id="x1l-mo-IPH"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.54021114029999995" green="1" blue="0.64958068410000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lastCommentDateLabel" destination="VXe-D5-HJw" id="GKg-4X-Ehc"/>
