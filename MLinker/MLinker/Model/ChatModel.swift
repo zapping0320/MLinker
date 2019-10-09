@@ -46,11 +46,10 @@ class ChatModel: Mappable {
         uid                     <- map["uid"]
         isIncludeAdminAccount   <- map["isIncludeAdminAccount"]
         chatUserIdDic           <- map["chatUserIdDic"]
-        chatUserProfiles          <- map["chatUserProfiles"]
-        name                     <- map["name"]
+        chatUserProfiles        <- map["chatUserProfiles"]
+        name                    <- map["name"]
         comments                <- map["comments"]
         timestamp               <- map["timestamp"]
-        
     }
     
 }

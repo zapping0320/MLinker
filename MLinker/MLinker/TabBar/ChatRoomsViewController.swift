@@ -69,6 +69,24 @@ extension ChatRoomsViewController {
         
         cell.nameLabel.text = chatRoom.name
         
+        if(chatRoom.comments.isEmpty == false)
+        {
+            let lastk1 = chatRoom.comments.keys.first
+            let comment = chatRoom.comments[lastk1!]
+            cell.lastCommentLabel.text = comment!.message
+            if let timeStamp = comment!.timestamp {
+                cell.lastCommentDateLabel.text = timeStamp.toChatCellDayTime
+            }
+        }
+        else
+        {
+            cell.lastCommentLabel.text = ""
+            cell.lastCommentDateLabel.text = ""
+        }
+        
+        
+        
+        
         
         return cell
     }
