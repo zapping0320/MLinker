@@ -15,6 +15,10 @@ class ChatModel: Mappable {
         public var message: String?
         public var timestamp: Int?
         public var readUsers : Dictionary<String, Bool> = [:]
+        
+        init() {
+        }
+        
         public required init?(map: Map) {
             
         }
