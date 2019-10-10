@@ -39,6 +39,7 @@ class ChatModel: Mappable {
     public var name: String = ""
     public var comments : Dictionary<String, Comment> = [:]
     public var timestamp: Int?
+    public var chatRoomImageURL : String?
     
     init() {
     }
@@ -54,6 +55,7 @@ class ChatModel: Mappable {
         name                    <- map["name"]
         comments                <- map["comments"]
         timestamp               <- map["timestamp"]
+        chatRoomImageURL        <- map["chatRoomImageURL"]
     }
     
 }

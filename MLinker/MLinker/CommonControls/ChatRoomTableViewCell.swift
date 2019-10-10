@@ -10,6 +10,7 @@ import UIKit
 
 class ChatRoomTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var roomImageView: UIImageView!
     @IBOutlet weak var lastCommentDateLabel: UILabel!
     @IBOutlet weak var lastCommentLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
