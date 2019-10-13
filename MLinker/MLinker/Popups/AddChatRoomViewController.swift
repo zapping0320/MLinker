@@ -16,6 +16,8 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         didSet {
             self.usersTableView.delegate = self
             self.usersTableView.dataSource = self
+            self.usersTableView.allowsMultipleSelectionDuringEditing = true
+            self.usersTableView.setEditing(true, animated: false)
         }
     }
     
