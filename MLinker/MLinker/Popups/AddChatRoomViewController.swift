@@ -21,13 +21,53 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
+    var currnetUserUid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
 
-       
+        currnetUserUid = UserContexManager.shared.getCurrentUid()
+        
+        self.loadUsersInfo()
+    }
+    
+    func loadUsersInfo() {
+        self.usersArray[0] = [UserModel]()
+        Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let friendshipDic = item.value as? [String:AnyObject] {
+                    
+                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                    friendshipModel?.uid = item.key
+                    if(friendshipModel == nil){
+                        continue
+                    }
+                    
+                    if(friendshipModel?.status != FriendStatus.Connected)
+                    {
+                        continue
+                    }
+                Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
+                        (datasnapShot) in
+                        if let userDic = datasnapShot.value as? [String:AnyObject] {
+                            let userModel = UserModel(JSON: userDic)
+                            self.usersArray[0]!.append(userModel!)
+                            DispatchQueue.main.async {
+                                self.usersTableView.reloadData()
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.usersTableView.reloadData()
+            }
+        }
     }
     
     @IBAction func cancelAddChatRoom(_ sender: Any) {
