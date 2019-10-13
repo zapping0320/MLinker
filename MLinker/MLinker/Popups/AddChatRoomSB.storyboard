@@ -18,7 +18,18 @@
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="1sg-Vz-xBe"/>
                     </view>
-                    <navigationItem key="navigationItem" id="v6L-EM-clF"/>
+                    <navigationItem key="navigationItem" id="v6L-EM-clF">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hT5-70-HZp">
+                            <connections>
+                                <action selector="cancelAddChatRoom:" destination="JcL-TL-chX" id="KlY-dV-KR3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VbF-7Q-6gg">
+                            <connections>
+                                <action selector="doneAddChatRoom:" destination="JcL-TL-chX" id="Fub-eT-Bhn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PT-1I-bNy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
