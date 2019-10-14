@@ -21,6 +21,7 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
     var currnetUserUid: String!
@@ -31,6 +32,8 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
 
         currnetUserUid = UserContexManager.shared.getCurrentUid()
+        
+        self.doneButton.isEnabled = false
         
         self.loadUsersInfo()
     }
@@ -132,15 +135,16 @@ extension AddChatRoomViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("did select \(indexPath)")
-//        let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
-//
-//        profileVC.selectedUserModel = self.usersArray[indexPath.section]![indexPath.row] as UserModel
-//        if(indexPath.section == 1) {
-//            profileVC.selectedFriendshipModel = self.processingFriendshipList[indexPath.row]
-//        }
-//
-//        self.present(profileVC, animated: true, completion: nil)
+        self.doneButton.isEnabled = true
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard self.usersTableView.indexPathsForSelectedRows != nil else {
+            self.doneButton.isEnabled = false
+            return
+        }
+        
+        self.doneButton.isEnabled = true
     }
 
 }

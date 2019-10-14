@@ -43,6 +43,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="VbF-7Q-6gg" id="fV0-JK-rOf"/>
                         <outlet property="usersTableView" destination="4dd-BD-i9H" id="VjA-JQ-Owu"/>
                     </connections>
                 </viewController>
