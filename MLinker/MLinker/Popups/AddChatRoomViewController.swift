@@ -80,51 +80,115 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func doneAddChatRoom(_ sender: Any) {
+        self.findChatRoom()
+    }
+    
+    func findChatRoom()
+    {
+        guard let indexes = self.usersTableView.indexPathsForSelectedRows else{
+             return
+         }
         
+         var selectedUsersDic : Dictionary<String, Bool> = [
+             self.currnetUserUid : false,
+         ]
+         
+         for indexPath in indexes {
+             let selectedUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
+             selectedUsersDic.updateValue(false, forKey: selectedUser.uid!)
+         }
+         
+         Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
+             (datasnapShot) in
+             var foundRoom = false
+             var foundRoomInfo = ChatModel()
+             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                 if let chatRoomdic = item.value as? [String:AnyObject] {
+                     let chatModel = ChatModel(JSON: chatRoomdic)
+                     chatModel?.uid = item.key
+                     if(chatModel?.chatUserIdDic == selectedUsersDic)
+                     {
+                         foundRoom = true
+                         foundRoomInfo = chatModel!
+                         break
+                     }
+                     
+                 }
+             }
+             
+             if(foundRoom == true)
+             {
+                 //if true > move chatview
+                 self.moveChatView(chatModel: foundRoomInfo)
+             }
+             else
+             {
+                 //else make chatroom and move chat view
+                 self.createChatRoom()
+             }
+             
+         }
+    }
+    
+    func createChatRoom()
+    {
         guard let indexes = self.usersTableView.indexPathsForSelectedRows else{
             return
         }
-       
+        
         var selectedUsersDic : Dictionary<String, Bool> = [
             self.currnetUserUid : false,
         ]
         
+        var profileDic : Dictionary<String, String> = [
+            self.currnetUserUid : "",
+        ]
+        
+        if let currentUserProfile = UserContexManager.shared.getCurrentUserModel().profileURL {
+                   profileDic[self.currnetUserUid] = currentUserProfile
+               }
+        
+        var isIncludeAdmin = UserContexManager.shared.getCurrentUserModel().isAdminAccount
+        var chatRoomName = UserContexManager.shared.getCurrentUserModel().name!
+        
         for indexPath in indexes {
             let selectedUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
             selectedUsersDic.updateValue(false, forKey: selectedUser.uid!)
+            isIncludeAdmin = isIncludeAdmin && selectedUser.isAdminAccount
+            chatRoomName += ","
+            chatRoomName += selectedUser.name!
+            if let selectedUserProfile = selectedUser.profileURL {
+                profileDic.updateValue(selectedUserProfile, forKey: selectedUser.uid!)
+            }
         }
         
-        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            var foundRoom = false
-            var foundRoomInfo = ChatModel()
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let chatRoomdic = item.value as? [String:AnyObject] {
-                    let chatModel = ChatModel(JSON: chatRoomdic)
-                    chatModel?.uid = item.key
-                    if(chatModel?.chatUserIdDic == selectedUsersDic)
-                    {
-                        foundRoom = true
-                        foundRoomInfo = chatModel!
-                        break
-                    }
-                    
-                }
-            }
-            
-            if(foundRoom == true)
-            {
-                //if true > move chatview
-                //self.moveChatView(chatModel: foundRoomInfo)
-            }
-            else
-            {
-                //else make chatroom and move chat view
-                //self.createChatRoom()
-            }
-            
-        }
         
+        
+        let chatRoomValue : Dictionary<String, Any> = [
+            "isIncludeAdminAccount" :  isIncludeAdmin ? true : false,
+            "chatUserIdDic" : selectedUsersDic,
+            "chatUserProfiles" : profileDic,
+            "name" : chatRoomName,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+    Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
+            (err, ref) in
+            if(err == nil) {
+                self.findChatRoom()
+            }
+            else {
+                
+            }
+        }
+    }
+    
+    func moveChatView(chatModel : ChatModel)
+    {
+        let chatModelDic = ["chatmodel" : chatModel]
+        
+        NotificationCenter.default.post(name: .nsStartChat, object: nil, userInfo: chatModelDic)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

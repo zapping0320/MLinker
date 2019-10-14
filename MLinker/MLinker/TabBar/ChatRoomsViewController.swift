@@ -30,7 +30,13 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
+        
         self.getChatRoomsList()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func getChatRoomsList() {
@@ -56,6 +62,18 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     @IBAction func addChatRoom(_ sender: Any) {
         let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom")
         self.present(addChatRoomVC, animated: true, completion: nil)
+    }
+    
+    @objc func moveChatView(_ notification : Notification) {
+        print("chatRoomsVC - moveChatView")
+        if let dict = notification.userInfo as NSDictionary? {
+            if let chatModel = dict["chatmodel"] as? ChatModel{
+                let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
+                //chatVC.selectedChatRoomUid = String(indexPath.row)
+                chatVC.selectedChatModel = chatModel
+                self.navigationController?.pushViewController(chatVC, animated: true)
+            }
+        }
     }
 }
 

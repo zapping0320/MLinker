@@ -23,8 +23,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
-        
         self.currnetUserUid = Auth.auth().currentUser?.uid
         UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
         self.loadSelfInfo()
@@ -32,7 +30,13 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
+         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
+        
         self.loadUsersInfo()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func popupAddFriend(_ sender: Any) {
@@ -114,7 +118,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func moveChatView(_ notification : Notification) {
-        print("moveChatView")
+        print("UsersVC - moveChatView")
         if let dict = notification.userInfo as NSDictionary? {
             if let chatModel = dict["chatmodel"] as? ChatModel{
                 let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController

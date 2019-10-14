@@ -278,7 +278,6 @@ class ProfileViewController: UIViewController {
         Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
             (err, ref) in
             if(err == nil) {
-                //self.moveChatView(chatModel: <#T##ChatModel#>)
                 self.findChatRoom()
             }
             else {
