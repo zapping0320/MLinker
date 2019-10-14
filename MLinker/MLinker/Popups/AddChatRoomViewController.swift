@@ -81,6 +81,49 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func doneAddChatRoom(_ sender: Any) {
         
+        guard let indexes = self.usersTableView.indexPathsForSelectedRows else{
+            return
+        }
+       
+        var selectedUsersDic : Dictionary<String, Bool> = [
+            self.currnetUserUid : false,
+        ]
+        
+        for indexPath in indexes {
+            let selectedUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
+            selectedUsersDic.updateValue(false, forKey: selectedUser.uid!)
+        }
+        
+        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            var foundRoom = false
+            var foundRoomInfo = ChatModel()
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let chatRoomdic = item.value as? [String:AnyObject] {
+                    let chatModel = ChatModel(JSON: chatRoomdic)
+                    chatModel?.uid = item.key
+                    if(chatModel?.chatUserIdDic == selectedUsersDic)
+                    {
+                        foundRoom = true
+                        foundRoomInfo = chatModel!
+                        break
+                    }
+                    
+                }
+            }
+            
+            if(foundRoom == true)
+            {
+                //if true > move chatview
+                //self.moveChatView(chatModel: foundRoomInfo)
+            }
+            else
+            {
+                //else make chatroom and move chat view
+                //self.createChatRoom()
+            }
+            
+        }
         
     }
 }
