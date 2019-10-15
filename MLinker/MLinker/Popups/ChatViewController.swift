@@ -42,6 +42,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.commentTableView.register(UINib(nibName: "ChatYourCell", bundle: nil), forCellReuseIdentifier: "ChatYourCell")
         self.commentTableView.register(UINib(nibName: "ChatMyCell", bundle: nil), forCellReuseIdentifier: "ChatMyCell")
         
+        let moreBtn = UIBarButtonItem(title: NSLocalizedString("More", comment: ""), style: .plain , target: self, action: #selector(barBtn_more_Action))
+        self.navigationItem.rightBarButtonItem = moreBtn
+        
         //keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -154,6 +157,35 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
               }
             }
         })
+    }
+    
+    @objc func barBtn_more_Action(){
+        let alert = UIAlertController(title: title,
+                                      message: NSLocalizedString("More", comment: ""),
+                                      preferredStyle: UIAlertController.Style.actionSheet)
+        let actionChangeTitle = UIAlertAction(title: NSLocalizedString("Change Title", comment: ""),
+                                             style: .default, handler: {result in
+//                                                self.sortType_ = self.sortTypeByName
+//                                                self.loadContents()
+        })
+        actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
+        alert.addAction(actionChangeTitle)
+        
+        let actionExitChat = UIAlertAction(title: NSLocalizedString("Exit Chat", comment: ""),
+                                               style: .default, handler: {result in
+//                                                self.sortType_ = self.sortTypeByRecent
+//                                                self.loadContents()
+        })
+        actionExitChat.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
+        alert.addAction(actionExitChat)
+        
+        let actionCancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
+                                         style: .cancel, handler: nil)
+       
+        actionCancel.setValue(ColorHelper.getCancelTextColor(), forKey: "titleTextColor")
+        alert.addAction(actionCancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

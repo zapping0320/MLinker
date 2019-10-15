@@ -39,6 +39,7 @@
 		0B44C4E42302165400B55D21 /* SigninStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */; };
 		0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4E32302165400B55D21 /* SignUp.storyboard */; };
 		0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4E8230AFE5500B55D21 /* UIColor.swift */; };
+		0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB409E2356725D0085933A /* ColorHelper.swift */; };
 		0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF1759231727D400CD6561 /* AddFriendViewController.swift */; };
 		0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF175D2317287000CD6561 /* AddFriend.storyboard */; };
 		0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */; };
@@ -80,6 +81,7 @@
 		0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SigninStoryboard.storyboard; sourceTree = "<group>"; };
 		0B44C4E32302165400B55D21 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		0B44C4E8230AFE5500B55D21 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		0BCB409E2356725D0085933A /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		0BFF1759231727D400CD6561 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		0BFF175D2317287000CD6561 /* AddFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriend.storyboard; sourceTree = "<group>"; };
 		0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipListModel.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		0B44C4AF22FA2E1800B55D21 /* MLinker */ = {
 			isa = PBXGroup;
 			children = (
+				0BCB409D235672040085933A /* Helper */,
 				0B1792B923455EA10098D7AC /* Manager */,
 				0BFF17582317271800CD6561 /* Popups */,
 				0B44C4D9230212E700B55D21 /* SignControls */,
@@ -192,6 +195,14 @@
 				0B44C4DB230212E700B55D21 /* SignUpViewController.swift */,
 			);
 			path = SignControls;
+			sourceTree = "<group>";
+		};
+		0BCB409D235672040085933A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0BCB409E2356725D0085933A /* ColorHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		0BFF17582317271800CD6561 /* Popups */ = {
@@ -376,6 +387,7 @@
 				0B16822023148AD3004F8089 /* UserTableViewCell.swift in Sources */,
 				0B16821D23133B97004F8089 /* ViewController.swift in Sources */,
 				0B191FDA23318CDC0016EA85 /* ChatRoomTableViewCell.swift in Sources */,
+				0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */,
 				0B44C4D02302115100B55D21 /* CounselingChatRoomsViewController.swift in Sources */,
 				0B076A5A23397B8500B5AF43 /* ChatMyCell.swift in Sources */,
 				0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */,
