@@ -165,16 +165,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                       preferredStyle: UIAlertController.Style.actionSheet)
         let actionChangeTitle = UIAlertAction(title: NSLocalizedString("Change Title", comment: ""),
                                              style: .default, handler: {result in
-//                                                self.sortType_ = self.sortTypeByName
-//                                                self.loadContents()
+                                                self.changeChatRoomTitle()
         })
         actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
         alert.addAction(actionChangeTitle)
         
         let actionExitChat = UIAlertAction(title: NSLocalizedString("Exit Chat", comment: ""),
                                                style: .default, handler: {result in
-//                                                self.sortType_ = self.sortTypeByRecent
-//                                                self.loadContents()
+                                                self.exitChatRoom()
         })
         actionExitChat.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
         alert.addAction(actionExitChat)
@@ -186,6 +184,39 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         alert.addAction(actionCancel)
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func changeChatRoomTitle() {
+        let alert = UIAlertController(title: "", message: NSLocalizedString("Change Title", comment: ""), preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.text = self.selectedChatModel.name
+        })
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Update", comment: ""), style: .default, handler: { (updateAction) in
+            
+            let updateChatRoomValue : Dictionary<String, Any> = [
+                "name" : alert.textFields!.first!.text!,
+                "timestamp" : ServerValue.timestamp()
+            ]
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updateChatRoomValue) {
+                (updateErr, ref) in
+                if(updateErr == nil)
+                {
+                    self.selectedChatModel.name = alert.textFields!.first!.text!
+                }
+                else
+                {
+                    print("update chatRoom name error")
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        self.present(alert, animated: false)
+    }
+    
+    func exitChatRoom() {
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        }
     }
 }
 
