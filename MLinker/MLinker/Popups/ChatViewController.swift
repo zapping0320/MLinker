@@ -214,8 +214,26 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func exitChatRoom() {
-        if let navController = self.navigationController {
-            navController.popViewController(animated: true)
+        self.selectedChatModel.chatUserIdDic.removeValue(forKey: self.currnetUserUid)
+        self.selectedChatModel.chatUserProfiles.removeValue(forKey: self.currnetUserUid)
+        
+        let updatedChatRoomValue : Dictionary<String, Any> = [
+            "chatUserIdDic" : self.selectedChatModel.chatUserIdDic,
+            "chatUserProfiles" : self.selectedChatModel.chatUserProfiles,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updatedChatRoomValue) {
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                if let navController = self.navigationController {
+                    navController.popViewController(animated: true)
+                }
+            }
+            else
+            {
+                
+            }
         }
     }
 }
