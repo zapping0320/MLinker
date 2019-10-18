@@ -23,6 +23,8 @@
 		0B191FDB23318CDC0016EA85 /* ChatRoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B191FD923318CDC0016EA85 /* ChatRoomTableViewCell.xib */; };
 		0B191FDD233192190016EA85 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B191FDC233192190016EA85 /* ChatViewController.swift */; };
 		0B191FDF233192290016EA85 /* ChatView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B191FDE233192290016EA85 /* ChatView.storyboard */; };
+		0B3F421B235A734700CAE1B1 /* ChatNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F4219235A734700CAE1B1 /* ChatNoticeCell.swift */; };
+		0B3F421C235A734700CAE1B1 /* ChatNoticeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B3F421A235A734700CAE1B1 /* ChatNoticeCell.xib */; };
 		0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4B022FA2E1800B55D21 /* AppDelegate.swift */; };
 		0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B422FA2E1800B55D21 /* Main.storyboard */; };
 		0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 		0B191FD923318CDC0016EA85 /* ChatRoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomTableViewCell.xib; sourceTree = "<group>"; };
 		0B191FDC233192190016EA85 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		0B191FDE233192290016EA85 /* ChatView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatView.storyboard; sourceTree = "<group>"; };
+		0B3F4219235A734700CAE1B1 /* ChatNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNoticeCell.swift; sourceTree = "<group>"; };
+		0B3F421A235A734700CAE1B1 /* ChatNoticeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatNoticeCell.xib; sourceTree = "<group>"; };
 		0B44C4AD22FA2E1700B55D21 /* MLinker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLinker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B44C4B022FA2E1800B55D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B44C4B522FA2E1800B55D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				0B076A5523397B7100B5AF43 /* ChatYourCell.xib */,
 				0B076A5823397B8500B5AF43 /* ChatMyCell.swift */,
 				0B076A5923397B8500B5AF43 /* ChatMyCell.xib */,
+				0B3F4219235A734700CAE1B1 /* ChatNoticeCell.swift */,
+				0B3F421A235A734700CAE1B1 /* ChatNoticeCell.xib */,
 			);
 			path = CommonControls;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 				0B44C4C622FB80E900B55D21 /* GoogleService-Info.plist in Resources */,
 				0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */,
 				0B191FDF233192290016EA85 /* ChatView.storyboard in Resources */,
+				0B3F421C235A734700CAE1B1 /* ChatNoticeCell.xib in Resources */,
 				0B16822123148AD3004F8089 /* UserTableViewCell.xib in Resources */,
 				0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */,
 				0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */,
@@ -386,6 +393,7 @@
 				0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */,
 				0B16822023148AD3004F8089 /* UserTableViewCell.swift in Sources */,
 				0B16821D23133B97004F8089 /* ViewController.swift in Sources */,
+				0B3F421B235A734700CAE1B1 /* ChatNoticeCell.swift in Sources */,
 				0B191FDA23318CDC0016EA85 /* ChatRoomTableViewCell.swift in Sources */,
 				0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */,
 				0B44C4D02302115100B55D21 /* CounselingChatRoomsViewController.swift in Sources */,
