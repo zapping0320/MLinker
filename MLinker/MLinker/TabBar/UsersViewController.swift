@@ -10,16 +10,24 @@ import UIKit
 import Firebase
 import Kingfisher
 
-class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating{
     
     @IBOutlet weak var usersTableView: UITableView!
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
     var processingFriendshipList : [FriendshipModel] = [FriendshipModel]()
     var currnetUserUid: String!
+    var isFiltered : Bool = false
     
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let searchVC = UISearchController(searchResultsController: nil)
+        searchVC.searchResultsUpdater = self
+        self.navigationItem.searchController = searchVC
+        self.navigationItem.hidesSearchBarWhenScrolling = true
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
@@ -128,6 +136,28 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
+   
+}
+
+extension UsersViewController {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let hasText = searchController.searchBar.text {
+            if hasText.isEmpty {
+                isFiltered = false
+                var wordList : [String] = []
+                let temp = wordList.filter({(element) -> Bool in
+                    return element.contains(hasText)
+                })
+                
+                let temp2 = wordList.filter({ $0.contains(hasText) })
+            }
+            else
+            {
+                isFiltered = true
+            }
+            self.usersTableView.reloadData()
+        }
+    }
 }
 
 
@@ -150,6 +180,7 @@ extension UsersViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //isFiltered
         guard let dataList = usersArray[section] else {
             return 0
         }
@@ -158,6 +189,8 @@ extension UsersViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
+        
+        //isFiltered list
         let currentUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
        
         cell.setAdminAccount(value: currentUser.isAdminAccount)

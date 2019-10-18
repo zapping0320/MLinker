@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g8T-Ew-iLW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Users View Controller-->
+        <!--Friends-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="UsersViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Ci-bW-VwH">
-                                <rect key="frame" x="10" y="54" width="580" height="487"/>
+                                <rect key="frame" x="10" y="98" width="394" height="705"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="38Q-37-9kf"/>
@@ -32,7 +34,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CxR-M9-j8W">
+                    <navigationItem key="navigationItem" title="Friends" id="CxR-M9-j8W">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="S8J-63-Zlj">
                             <connections>
                                 <action selector="popupAddFriend:" destination="BYZ-38-t0r" id="aiX-K2-fUI"/>
@@ -52,7 +54,7 @@
             <objects>
                 <viewController id="yWR-DC-Q81" customClass="SettingViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WyN-fV-zPh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.9021650819" blue="0.55611881340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="7EF-ra-Qhl"/>
@@ -63,16 +65,16 @@
             </objects>
             <point key="canvasLocation" x="158" y="848"/>
         </scene>
-        <!--Chat Rooms View Controller-->
+        <!--Chats-->
         <scene sceneID="dfb-VQ-epU">
             <objects>
                 <viewController id="0nr-6v-8m5" customClass="ChatRoomsViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="myn-K8-BdT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tme-jo-Ou1">
-                                <rect key="frame" x="10" y="54" width="580" height="487"/>
+                                <rect key="frame" x="10" y="98" width="394" height="705"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -85,7 +87,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uxn-1s-wmB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gos-pj-h5z">
+                    <navigationItem key="navigationItem" title="Chats" id="gos-pj-h5z">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0cx-tL-ew3">
                             <connections>
                                 <action selector="addChatRoom:" destination="0nr-6v-8m5" id="VqS-DQ-kqR"/>
@@ -100,26 +102,26 @@
             </objects>
             <point key="canvasLocation" x="1995.6521739130437" y="454.6875"/>
         </scene>
-        <!--Counseling Chat Rooms View Controller-->
+        <!--Counselling-->
         <scene sceneID="gMO-r4-2ye">
             <objects>
                 <viewController id="cGY-BZ-gTf" customClass="CounselingChatRoomsViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N1r-q2-vPY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offical Counselling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGW-kj-dpa">
-                                <rect key="frame" x="10" y="44" width="580" height="33.5"/>
+                                <rect key="frame" x="10" y="88" width="394" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGB-g2-czQ">
-                                <rect key="frame" x="10" y="87.5" width="580" height="453.5"/>
+                                <rect key="frame" x="10" y="131.5" width="394" height="671.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gla-2M-8oK" firstAttribute="trailing" secondItem="dGW-kj-dpa" secondAttribute="trailing" constant="10" id="2oZ-0Z-Zj3"/>
                             <constraint firstItem="dGW-kj-dpa" firstAttribute="leading" secondItem="gla-2M-8oK" secondAttribute="leading" constant="10" id="43X-ga-FmA"/>
@@ -132,7 +134,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gla-2M-8oK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="y0D-eP-PBc"/>
+                    <navigationItem key="navigationItem" title="Counselling" id="y0D-eP-PBc"/>
                     <connections>
                         <outlet property="chatRoomTableView" destination="hGB-g2-czQ" id="u8h-X2-cCg"/>
                     </connections>
@@ -146,11 +148,11 @@
             <objects>
                 <viewController id="g8T-Ew-iLW" customClass="ViewController" customModule="MLinker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yI5-J2-z9j">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="A24-Bz-nbv">
-                                <rect key="frame" x="225" y="225" width="150" height="150"/>
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="3L9-Xb-2Wd"/>
                                     <constraint firstAttribute="width" constant="150" id="ehc-Wp-grI"/>
