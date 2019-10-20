@@ -15,11 +15,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var usersTableView: UITableView!
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
+    fileprivate var filteredUsersArray = [UserModel]()
     var processingFriendshipList : [FriendshipModel] = [FriendshipModel]()
     var currnetUserUid: String!
     var isFiltered : Bool = false
-    
-    
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +27,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         searchVC.searchResultsUpdater = self
         self.navigationItem.searchController = searchVC
         self.navigationItem.hidesSearchBarWhenScrolling = true
+        definesPresentationContext = false
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
@@ -144,54 +144,110 @@ extension UsersViewController {
         if let hasText = searchController.searchBar.text {
             if hasText.isEmpty {
                 isFiltered = false
-                var wordList : [String] = []
-                let temp = wordList.filter({(element) -> Bool in
-                    return element.contains(hasText)
-                })
                 
-                let temp2 = wordList.filter({ $0.contains(hasText) })
             }
             else
             {
                 isFiltered = true
+                self.filteredUsersArray = self.usersArray[2]!.filter({(element) -> Bool in
+                    return element.containsText(text: hasText)
+                })
+//                DispatchQueue.main.async {
+//                    //self.usersTableView.reloadSections(IndexSet(integer: 0), with: .fade)
+//                    self.usersTableView.re
+//                }
             }
-            self.usersTableView.reloadData()
+            DispatchQueue.main.async {
+                self.usersTableView.reloadData()
+            }
+            
         }
     }
 }
 
 
 extension UsersViewController {
+    func getNumberOfSections() -> Int{
+        if (isFiltered == true) {
+            return 3
+        }
+        else
+        {
+            return 3 // 0 - self 1 - requesting 2 - friends
+        }
+    }
+    
+    func getTableHeaderString(section :Int) -> String {
+        if (isFiltered == true) {
+            if(section != 0){
+                return ""
+            }
+            return "Friends"
+        }
+        else {
+            if section == 0 {
+                return ""
+            }
+            
+            if section == 1 {
+                return "Current processing"
+            }
+            else {
+                return "Friends"
+            }
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3 // 0 - self 1 - requesting 2 - friends
+        return self.getNumberOfSections()
+    }
+    
+    func getNumberOfRowsInSection(section : Int) -> Int {
+        if(isFiltered == true){
+            if(section != 0){
+                return 0
+            }
+            return filteredUsersArray.count
+        }
+        else
+        {
+            guard let dataList = usersArray[section] else {
+                return 0
+            }
+            return dataList.count
+        }
+    }
+    
+    func getCurrentUserData(indexPath: IndexPath) -> UserModel
+    {
+        if(isFiltered == true)
+        {
+            if(indexPath.row >= self.filteredUsersArray.count)
+            {
+                return UserModel()
+            }
+            return self.filteredUsersArray[indexPath.row]
+        }
+        else
+        {
+            return self.usersArray[indexPath.section]![indexPath.row] as UserModel
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return ""
-        }
-        
-        if section == 1 {
-            return "Current processing"
-        }
-        else {
-            return "Friends"
-        }
+        return getTableHeaderString(section: section)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //isFiltered
-        guard let dataList = usersArray[section] else {
-            return 0
-        }
-        return dataList.count
+       return getNumberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
         //isFiltered list
-        let currentUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
+        let currentUser = getCurrentUserData(indexPath: indexPath)
        
         cell.setAdminAccount(value: currentUser.isAdminAccount)
         cell.nameLabel?.text = currentUser.name
@@ -230,7 +286,8 @@ extension UsersViewController {
         print("did select \(indexPath)")
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
         
-        profileVC.selectedUserModel = self.usersArray[indexPath.section]![indexPath.row] as UserModel
+        profileVC.selectedUserModel = getCurrentUserData(indexPath: indexPath)
+        
         if(indexPath.section == 1) {
             profileVC.selectedFriendshipModel = self.processingFriendshipList[indexPath.row]
         }

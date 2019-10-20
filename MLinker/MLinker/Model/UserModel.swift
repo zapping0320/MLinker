@@ -35,4 +35,14 @@ class UserModel: Mappable {
         isAdminAccount <- map["isAdminAccount"]
         timestamp   <- map["timestamp"]
     }
+    
+    public func containsText(text :String) -> Bool {
+        let lowercasedText = text.lowercased()
+        if name!.lowercased().contains(lowercasedText) ||
+            email!.contains(lowercasedText) {
+            return true
+        }
+        
+        return false
+    }
 }
