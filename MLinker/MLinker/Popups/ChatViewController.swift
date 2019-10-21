@@ -41,6 +41,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.commentTableView.register(UINib(nibName: "ChatYourCell", bundle: nil), forCellReuseIdentifier: "ChatYourCell")
         self.commentTableView.register(UINib(nibName: "ChatMyCell", bundle: nil), forCellReuseIdentifier: "ChatMyCell")
+        self.commentTableView.register(UINib(nibName: "ChatNoticeCell", bundle: nil), forCellReuseIdentifier: "ChatNoticeCell")
         
         let moreBtn = UIBarButtonItem(title: NSLocalizedString("More", comment: ""), style: .plain , target: self, action: #selector(barBtn_more_Action))
         self.navigationItem.rightBarButtonItem = moreBtn
@@ -270,6 +271,16 @@ extension ChatViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let selectedComment = self.comments[indexPath.row]
+        
+        if selectedComment.isNotice == true {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatNoticeCell", for: indexPath) as! ChatNoticeCell
+            cell.noticeTextView.text = NoticeStringHelper.makeNoticeString(notice: selectedComment.notice)
+            cell.selectionStyle = .none
+            
+            return cell
+        }
+        
+        
         let remainUserCount = self.selectedChatModel.chatUserIdDic.count - selectedComment.readUsers.count
         
         var showReadUserCountLabel = false
@@ -282,8 +293,8 @@ extension ChatViewController {
         if(selectedComment.sender == self.currnetUserUid){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
             cell.selectionStyle = .none
-            cell.commentTextView.text = self.comments[indexPath.row].message
-            if let timeStamp = self.comments[indexPath.row].timestamp {
+            cell.commentTextView.text = selectedComment.message
+            if let timeStamp = selectedComment.timestamp {
                 cell.commentDateLabel.text = timeStamp.toChatCellDayTime
             }
             
@@ -295,9 +306,9 @@ extension ChatViewController {
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatYourCell", for: indexPath) as! ChatYourCell
-            cell.commentTextView.text = self.comments[indexPath.row].message
+            cell.commentTextView.text = selectedComment.message
             cell.selectionStyle = .none
-            if let timeStamp = self.comments[indexPath.row].timestamp {
+            if let timeStamp = selectedComment.timestamp {
                 cell.commentDateLabel.text = timeStamp.toChatCellDayTime
             }
             

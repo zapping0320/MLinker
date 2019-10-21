@@ -9,7 +9,7 @@
 import Foundation
 
 class NoticeStringHelper {
-    func makeNoticeString(notice : Notice) -> String
+    static func makeNoticeString(notice : Notice) -> String
     {
         var resultString = ""
         switch notice.noticeType {
