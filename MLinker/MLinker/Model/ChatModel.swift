@@ -16,7 +16,7 @@ class ChatModel: Mappable {
         public var timestamp: Int?
         public var readUsers : Dictionary<String, Bool> = [:]
         public var isNotice: Bool = false
-        
+        public var notice:Notice = Notice()
         
         init() {
         }
@@ -31,6 +31,8 @@ class ChatModel: Mappable {
             message     <- map["message"]
             timestamp   <- map["timestamp"]
             readUsers   <- map["readUsers"]
+            isNotice    <- map["isNotice"]
+            notice      <- map["notice"]
         }
     }
     

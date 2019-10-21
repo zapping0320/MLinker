@@ -82,16 +82,38 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     @IBAction func sendMessage(_ sender: Any) {
-        if(self.chatInputView.text.isEmpty){
+        self.sendMessageServer(isNotice: false)
+    }
+    
+    func sendMessageServer(isNotice:Bool)
+    {
+        if(isNotice == false && self.chatInputView.text.isEmpty){
             return
         }
         
-        let value : Dictionary<String, Any> = [
+        var commentDic : Dictionary<String, Any> = [
             "sender": self.currnetUserUid!,
-            "message" : self.chatInputView.text!,
             "timestamp" : ServerValue.timestamp()
         ]
-    Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments").childByAutoId().setValue(value, withCompletionBlock: {
+        
+        
+        if(isNotice == false)
+        {
+            commentDic.updateValue(self.chatInputView.text!, forKey: "message")
+        }
+        else
+        {
+            let relatedUsers: [String] = [UserContexManager.shared.getCurrentUserModel().name!]
+            
+            let noticeDic : Dictionary<String, Any> = [
+                "noticeType" : 2,
+                "relatedUsers" : relatedUsers
+            ]
+            
+            commentDic.updateValue(true, forKey: "isNotice")
+            commentDic.updateValue(noticeDic, forKey: "notice")
+        }
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments").childByAutoId().setValue(commentDic, withCompletionBlock: {
             (err, ref) in
             self.chatInputView.text = ""
             self.chatInputViewHeight.constant = 40
@@ -214,6 +236,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func exitChatRoom() {
+        self.sendMessageServer(isNotice: true)
+        
         self.selectedChatModel.chatUserIdDic.removeValue(forKey: self.currnetUserUid)
         self.selectedChatModel.chatUserProfiles.removeValue(forKey: self.currnetUserUid)
         

@@ -1490,7 +1490,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
             endingLineNumber = "106"
-            landmarkName = "scrollTableView()"
+            landmarkName = "sendMessageServer(isNotice:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1922,7 +1922,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
             endingLineNumber = "217"
-            landmarkName = "exitChatRoom()"
+            landmarkName = "changeChatRoomTitle()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1938,7 +1938,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
             endingLineNumber = "229"
-            landmarkName = "exitChatRoom()"
+            landmarkName = "changeChatRoomTitle()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1954,7 +1954,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
             endingLineNumber = "228"
-            landmarkName = "exitChatRoom()"
+            landmarkName = "changeChatRoomTitle()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1970,7 +1970,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
             endingLineNumber = "218"
-            landmarkName = "exitChatRoom()"
+            landmarkName = "changeChatRoomTitle()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
