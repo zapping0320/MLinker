@@ -23,11 +23,14 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let searchVC = UISearchController(searchResultsController: nil)
-        searchVC.searchResultsUpdater = self
-        self.navigationItem.searchController = searchVC
-        self.navigationItem.hidesSearchBarWhenScrolling = true
-        definesPresentationContext = false
+        let searchControl = UISearchController(searchResultsController: nil)
+        searchControl.searchResultsUpdater = self
+        searchControl.obscuresBackgroundDuringPresentation = false
+        searchControl.searchBar.placeholder = "Search friends"
+        self.navigationItem.searchController = searchControl
+        
+        //self.navigationItem.hidesSearchBarWhenScrolling = true
+        definesPresentationContext = true
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
@@ -152,10 +155,6 @@ extension UsersViewController {
                 self.filteredUsersArray = self.usersArray[2]!.filter({(element) -> Bool in
                     return element.containsText(text: hasText)
                 })
-//                DispatchQueue.main.async {
-//                    //self.usersTableView.reloadSections(IndexSet(integer: 0), with: .fade)
-//                    self.usersTableView.re
-//                }
             }
             DispatchQueue.main.async {
                 self.usersTableView.reloadData()
