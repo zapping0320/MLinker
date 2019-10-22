@@ -476,7 +476,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "findUserEmail()"
+            landmarkName = "applyFriendShip(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -493,7 +493,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
-            landmarkName = "findUserEmail()"
+            landmarkName = "applyFriendShip(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

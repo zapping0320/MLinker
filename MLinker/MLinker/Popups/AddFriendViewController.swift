@@ -18,6 +18,8 @@ class AddFriendViewController: UIViewController {
     var currentUserModel : UserModel?
     var friendUserModel: UserModel?
     
+    var changedFriendInfo : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +61,10 @@ class AddFriendViewController: UIViewController {
     }
     
     @IBAction func dismissVC(_ sender: Any) {
+        if(self.changedFriendInfo == true)
+        {
+            NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -248,6 +254,7 @@ class AddFriendViewController: UIViewController {
                 }))
                 self.present(alert, animated: true, completion: nil)
                 self.friendEmailTextField.text = ""
+                self.changedFriendInfo = true
             }
         }
     }

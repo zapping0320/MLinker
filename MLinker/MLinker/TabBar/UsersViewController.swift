@@ -43,6 +43,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidAppear(_ animated: Bool) {
          NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
         
+         NotificationCenter.default.addObserver(self, selector: #selector(loadUsersInfo), name: .nsUpdateUsersTable, object: nil)
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(loadSelfInfo), name: .nsUpdateSelf, object: nil)
+        
         self.loadUsersInfo()
     }
     
@@ -55,7 +59,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(addFriendVC, animated: true, completion: nil)
     }
     
-    func loadSelfInfo() {
+    @objc func loadSelfInfo() {
         self.usersArray[0] = [UserModel]()
         Database.database().reference().child("users").child(self.currnetUserUid).observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
@@ -70,8 +74,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func loadUsersInfo() {
-        //var selfUserList = [UserModel]()
+    @objc func loadUsersInfo() {
+      
         var processingFriendList = [UserModel]()
         self.processingFriendshipList = [FriendshipModel]()
         self.usersArray[1] = [UserModel]()
@@ -298,4 +302,7 @@ extension UsersViewController {
 
 extension Notification.Name {
     static let nsStartChat = Notification.Name("startChat")
+    static let nsUpdateUsersTable = Notification.Name("updateUsersTable")
+    static let nsUpdateSelf = Notification.Name("updateSelf")
+    
 }
