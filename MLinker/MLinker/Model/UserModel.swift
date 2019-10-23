@@ -27,13 +27,13 @@ class UserModel: Mappable {
     }
     
     func mapping(map: Map) {
-        uid      <- map["uid"]
-        email    <- map["email"]
-        name <- map["name"]
-        profileURL <- map["profileURL"]
-        comment <- map["comment"]
-        isAdminAccount <- map["isAdminAccount"]
-        timestamp   <- map["timestamp"]
+        uid             <- map["uid"]
+        email           <- map["email"]
+        name            <- map["name"]
+        profileURL      <- map["profileURL"]
+        comment         <- map["comment"]
+        isAdminAccount  <- map["isAdminAccount"]
+        timestamp       <- map["timestamp"]
     }
     
     public func containsText(text :String) -> Bool {
