@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
     
     private var currnetUserUid: String!
     
+    var changedFriendInfo : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,12 +88,23 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func closeVC(_ sender: Any) {
+        closeProfileVC()
+    }
+    
+    func closeProfileVC()
+    {
+        if(self.changedFriendInfo == true)
+        {
+             NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func mainButtonAction(_ sender: Any) {
         if(selectedFriendshipModel != nil)
         {
+            self.changedFriendInfo = true
             if(selectedFriendshipModel?.status == FriendStatus.Requesting)
             {
                //cancel
@@ -101,7 +114,6 @@ class ProfileViewController: UIViewController {
                 //accept
                 self.acceptFriendshipRequest()
             }
-            self.dismiss(animated: true, completion: nil)
         }
         else
         {
@@ -158,7 +170,7 @@ class ProfileViewController: UIViewController {
                         Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).removeValue() {
                                 (deleteErr, ref) in
                                 if(deleteErr == nil) {
-                                    self.dismiss(animated: true, completion: nil)
+                                    
                                 }
                             }
                         }
@@ -168,6 +180,7 @@ class ProfileViewController: UIViewController {
             }else {
                 print("error update self freindshipmodel")
             }
+            self.closeProfileVC()
         }
     }
     
@@ -197,7 +210,7 @@ class ProfileViewController: UIViewController {
                         Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).updateChildValues(updateValue) {
                                 (friendUpdateErr, ref) in
                                 if(friendUpdateErr == nil) {
-                                    self.dismiss(animated: true, completion: nil)
+                                    self.closeProfileVC()
                                 }
                             }
                         }
@@ -292,7 +305,7 @@ class ProfileViewController: UIViewController {
         let chatModelDic = ["chatmodel" : chatModel]
         
         NotificationCenter.default.post(name: .nsStartChat, object: nil, userInfo: chatModelDic)
-        self.dismiss(animated: true, completion: nil)
+        self.closeProfileVC()
     }
     
     func rejectFriendshipRequest() {
@@ -321,7 +334,7 @@ class ProfileViewController: UIViewController {
                         Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).removeValue() {
                                 (deleteErr, ref) in
                                 if(deleteErr == nil) {
-                                    self.dismiss(animated: true, completion: nil)
+                                   
                                 }
                             }
                         }
@@ -331,7 +344,7 @@ class ProfileViewController: UIViewController {
             }else {
                 print("error update self freindshipmodel")
             }
-            self.dismiss(animated: true, completion: nil)
+           self.closeProfileVC()
         }
     }
 }
