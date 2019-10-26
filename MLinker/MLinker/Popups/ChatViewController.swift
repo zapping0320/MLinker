@@ -193,6 +193,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
         alert.addAction(actionChangeTitle)
         
+        let actionAddMember = UIAlertAction(title: NSLocalizedString("Add Member", comment: ""),
+                                             style: .default, handler: {result in
+                                                self.addMember()
+        })
+        actionAddMember.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
+        alert.addAction(actionAddMember)
+        
         let actionExitChat = UIAlertAction(title: NSLocalizedString("Exit Chat", comment: ""),
                                                style: .default, handler: {result in
                                                 self.exitChatRoom()
@@ -260,6 +267,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
             }
         }
+    }
+    
+    func addMember() {
+        let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom")
+        self.present(addChatRoomVC, animated: true, completion: nil)
     }
 }
 
