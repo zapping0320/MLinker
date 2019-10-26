@@ -21,6 +21,8 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    public var selectedChatModel:ChatModel = ChatModel()
+    
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
@@ -194,7 +196,13 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
 
 extension AddChatRoomViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if(self.selectedChatModel.isValid()){
+            return 2
+        }
+        else
+        {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -252,6 +260,16 @@ extension AddChatRoomViewController {
         }
         
         self.doneButton.isEnabled = true
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if(self.selectedChatModel.isValid() && indexPath.section == 0){
+            return false
+        }
+        else
+        {
+            return true
+        }
     }
 
 }

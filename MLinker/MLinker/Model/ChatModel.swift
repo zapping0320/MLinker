@@ -62,4 +62,8 @@ class ChatModel: Mappable {
         chatRoomImageURL        <- map["chatRoomImageURL"]
     }
     
+    public func isValid() -> Bool {
+        return uid.isEmpty == false
+    }
+    
 }

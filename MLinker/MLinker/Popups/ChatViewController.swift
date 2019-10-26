@@ -29,7 +29,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var inputViewBottomMargin: NSLayoutConstraint!
     
     public var selectedChatModel:ChatModel = ChatModel()
-    public var selectedChatRoomUid:String!
     
     private var currnetUserUid: String!
     var comments: [ChatModel.Comment] = []
@@ -270,7 +269,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func addMember() {
-        let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom")
+        let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom") as! AddChatRoomViewController
+        addChatRoomVC.selectedChatModel = self.selectedChatModel
         self.present(addChatRoomVC, animated: true, completion: nil)
     }
 }
