@@ -34,6 +34,7 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
 
         currnetUserUid = UserContexManager.shared.getCurrentUid()
+        selectedChatModel = UserContexManager.shared.getLastChatRoom()
         
         self.doneButton.isEnabled = false
         
@@ -42,7 +43,8 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
     
     func loadUsersInfo() {
         self.usersArray[0] = [UserModel]()
-        Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+        self.usersArray[1] = [UserModel]()
+    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let friendshipDic = item.value as? [String:AnyObject] {
@@ -59,13 +61,28 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
                         (datasnapShot) in
-                        if let userDic = datasnapShot.value as? [String:AnyObject] {
-                            let userModel = UserModel(JSON: userDic)
-                            self.usersArray[0]!.append(userModel!)
-                            DispatchQueue.main.async {
-                                self.usersTableView.reloadData()
+                    if let userDic = datasnapShot.value as? [String:AnyObject] {
+                        let userModel = UserModel(JSON: userDic)
+                        if(self.selectedChatModel.isValid())
+                        {
+                            let uid = userModel?.uid
+                            if(self.selectedChatModel.chatUserProfiles.keys.contains(uid!) == true)
+                            {
+                                self.usersArray[0]!.append(userModel!)
+                            }
+                            else
+                            {
+                                self.usersArray[1]!.append(userModel!)
                             }
                         }
+                        else
+                        {
+                            self.usersArray[0]!.append(userModel!)
+                        }
+                        DispatchQueue.main.async {
+                            self.usersTableView.reloadData()
+                        }
+                    }
                     }
                     
                 }
@@ -202,6 +219,24 @@ extension AddChatRoomViewController {
         else
         {
             return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(self.selectedChatModel.isValid())
+        {
+            if(section == 0)
+            {
+                return "Current Members"
+            }
+            else
+            {
+                return "Add Members"
+            }
+        }
+        else
+        {
+            return ""
         }
     }
     

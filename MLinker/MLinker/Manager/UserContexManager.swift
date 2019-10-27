@@ -14,6 +14,8 @@ class UserContexManager{
     private var currentUserModel = UserModel()
     private var currentUid : String?
     
+    private var lastChatRoom = ChatModel()
+    
     static let shared = UserContexManager()
     private init(){
         permissionCode = "!@#$ASDF"
@@ -47,5 +49,15 @@ class UserContexManager{
     func setPersmissionCode(code : String)
     {
         permissionCode = code
+    }
+    
+    func setLastChatRoom(model : ChatModel)
+    {
+        lastChatRoom = model
+    }
+    
+    func getLastChatRoom() -> ChatModel
+    {
+        return lastChatRoom
     }
 }

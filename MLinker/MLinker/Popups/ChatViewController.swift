@@ -269,8 +269,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func addMember() {
-        let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom") as! AddChatRoomViewController
-        addChatRoomVC.selectedChatModel = self.selectedChatModel
+        UserContexManager.shared.setLastChatRoom(model: self.selectedChatModel)
+        let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom")
         self.present(addChatRoomVC, animated: true, completion: nil)
     }
 }

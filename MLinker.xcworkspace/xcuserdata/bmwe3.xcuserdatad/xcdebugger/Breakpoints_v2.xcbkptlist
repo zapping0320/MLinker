@@ -1458,8 +1458,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
             endingLineNumber = "56"
-            landmarkName = "ChatViewController"
-            landmarkType = "3">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1474,8 +1474,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "ChatViewController"
-            landmarkType = "3">
+            landmarkName = "keyboardWillShow(noti:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1808,10 +1808,10 @@
             filePath = "MLinker/MLinker/Popups/AddChatRoomViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "AddChatRoomViewController"
-            landmarkType = "3">
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "createChatRoom()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1824,9 +1824,9 @@
             filePath = "MLinker/MLinker/Popups/AddChatRoomViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "numberOfSections(in:)"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "moveChatView(chatModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1840,9 +1840,9 @@
             filePath = "MLinker/MLinker/Popups/AddChatRoomViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "createChatRoom()"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1904,10 +1904,10 @@
             filePath = "MLinker/MLinker/Popups/AddChatRoomViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "AddChatRoomViewController"
-            landmarkType = "3">
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "findChatRoom()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1922,8 +1922,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
             endingLineNumber = "216"
-            landmarkName = "ChatViewController"
-            landmarkType = "3">
+            landmarkName = "barBtn_more_Action()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1970,8 +1970,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
             endingLineNumber = "217"
-            landmarkName = "changeChatRoomTitle()"
-            landmarkType = "7">
+            landmarkName = "ChatViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2194,8 +2194,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
             endingLineNumber = "281"
-            landmarkName = "ChatViewController"
-            landmarkType = "21">
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
