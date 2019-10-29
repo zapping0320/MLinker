@@ -14,7 +14,7 @@ class NoticeStringHelper {
         var resultString = ""
         switch notice.noticeType {
         case NoticeType.EnterMember:
-            resultString = "entered newly"
+            resultString = " entered newly"
             var members = ""
             if(notice.relatedUsers.count > 0)
             {

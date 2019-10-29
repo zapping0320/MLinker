@@ -99,7 +99,80 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func doneAddChatRoom(_ sender: Any) {
-        self.findChatRoom()
+        if(self.selectedChatModel.isValid())
+        {
+            self.addMemberstoChatRoom()
+        }
+        else
+        {
+            self.findChatRoom()
+        }
+    }
+    
+    func addMemberstoChatRoom()
+    {
+        guard let indexes = self.usersTableView.indexPathsForSelectedRows else{
+            return
+        }
+        
+        //add members
+        var membersAdded:[String] = []
+        var isIncludeAdmin = self.selectedChatModel.isIncludeAdminAccount
+        for indexPath in indexes {
+            let selectedUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
+            self.selectedChatModel.chatUserIdDic.updateValue(false, forKey: selectedUser.uid!)
+            
+            membersAdded.append(selectedUser.name!)
+            
+            if(selectedUser.isAdminAccount == true)
+            {
+                isIncludeAdmin = true
+            }
+            if let selectedUserProfile = selectedUser.profileURL {
+                self.selectedChatModel.chatUserProfiles.updateValue(selectedUserProfile, forKey: selectedUser.uid!)
+            }
+        }
+        
+        let chatRoomValue : Dictionary<String, Any> = [
+            "isIncludeAdminAccount" :  isIncludeAdmin,
+            "chatUserIdDic" : self.selectedChatModel.chatUserIdDic,
+            "chatUserProfiles" : self.selectedChatModel.chatUserProfiles,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+    Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(chatRoomValue) {
+            (err, ref) in
+            if(err == nil) {
+                 //add comment
+                self.addCommentAboutAddingMemebers(relatedUsers: membersAdded)
+            }
+            else {
+                
+            }
+        }
+        //move chatview
+        
+    }
+    
+    func addCommentAboutAddingMemebers(relatedUsers : [String])
+    {
+        var commentDic : Dictionary<String, Any> = [
+            "sender": self.currnetUserUid!,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+        let noticeDic : Dictionary<String, Any> = [
+            "noticeType" : 1,
+            "relatedUsers" : relatedUsers
+        ]
+        
+        commentDic.updateValue(true, forKey: "isNotice")
+        commentDic.updateValue(noticeDic, forKey: "notice")
+        
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments").childByAutoId().setValue(commentDic, withCompletionBlock: {
+            (err, ref) in
+            self.moveChatView(chatModel: self.selectedChatModel)
+        })
     }
     
     func findChatRoom()

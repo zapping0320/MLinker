@@ -192,7 +192,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
         alert.addAction(actionChangeTitle)
         
-        let actionAddMember = UIAlertAction(title: NSLocalizedString("Add Member", comment: ""),
+        let actionAddMember = UIAlertAction(title: NSLocalizedString("Add Members", comment: ""),
                                              style: .default, handler: {result in
                                                 self.addMember()
         })

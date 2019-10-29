@@ -1810,7 +1810,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
             endingLineNumber = "199"
-            landmarkName = "createChatRoom()"
+            landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1826,7 +1826,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
-            landmarkName = "moveChatView(chatModel:)"
+            landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1842,7 +1842,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
             endingLineNumber = "141"
-            landmarkName = "findChatRoom()"
+            landmarkName = "addMemberstoChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1906,7 +1906,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
             endingLineNumber = "138"
-            landmarkName = "findChatRoom()"
+            landmarkName = "addMemberstoChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2243,6 +2243,54 @@
             startingLineNumber = "131"
             endingLineNumber = "131"
             landmarkName = "subButtonAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "64D4463D-D07F-4030-8EC9-132ACCAC78B6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/AddChatRoomViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "addMemberstoChatRoom()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1D59C541-4A4C-49D6-BEE3-986FE613CCF8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/AddChatRoomViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "addCommentAboutAddingMemebers(relatedUsers:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A407C96-E5E1-448A-8DEE-2C18DB5A64AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/AddChatRoomViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "addCommentAboutAddingMemebers(relatedUsers:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
