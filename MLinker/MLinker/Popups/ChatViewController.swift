@@ -117,7 +117,21 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             (err, ref) in
             self.chatInputView.text = ""
             self.chatInputViewHeight.constant = 40
+            self.updateChatRoomTimeStamp()
         })
+    }
+    
+    func updateChatRoomTimeStamp() {
+        let updateChatRoomValue : Dictionary<String, Any> = [
+                "timestamp" : ServerValue.timestamp()
+            ]
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updateChatRoomValue) {
+                (updateErr, ref) in
+                if(updateErr != nil)
+                {
+                    print("update chatRoom name error")
+                }
+            }
     }
     
     func scrollTableView()

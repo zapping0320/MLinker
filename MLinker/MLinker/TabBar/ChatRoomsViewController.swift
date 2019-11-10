@@ -40,7 +40,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     func getChatRoomsList() {
-        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
+        Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             self.chatRooms.removeAll()
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
@@ -49,7 +49,8 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
                     chatModel?.uid = item.key
                     if((chatModel?.chatUserIdDic.keys.contains(self.currnetUserUid!)) == true)
                     {
-                        self.chatRooms.append(chatModel!)
+                        //self.chatRooms.append(chatModel!)
+                        self.chatRooms.insert(chatModel!, at: 0)
                     }
                 }
             }
