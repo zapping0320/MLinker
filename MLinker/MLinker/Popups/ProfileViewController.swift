@@ -14,10 +14,14 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var adminAccountLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var commetTextField: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var subButton: UIButton!
-   
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    
     public var selectedUserModel: UserModel = UserModel()
     public var selectedFriendshipModel : FriendshipModel?
     
@@ -79,7 +83,10 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.setUIEditMode(mode: false)
+        
         self.commentLabel.text = self.selectedUserModel.comment
+        self.commetTextField.text = self.selectedUserModel.comment
         
         if let profileImageString = self.selectedUserModel.profileURL {
             let profileImageURL = URL(string: profileImageString)
@@ -120,6 +127,7 @@ class ProfileViewController: UIViewController {
             if(self.currnetUserUid == self.selectedUserModel.uid)
             {
                 //edit profile
+                self.enterEditMode()
             }else {
                 //start chat
                 self.findChatRoom()
@@ -346,5 +354,23 @@ class ProfileViewController: UIViewController {
             }
            self.closeProfileVC()
         }
+    }
+    
+    func enterEditMode() {
+        self.setUIEditMode(mode: true)
+    }
+    
+    func setUIEditMode(mode : Bool) {
+        self.closeButton.isHidden = mode
+        self.commentLabel.isHidden = mode
+        self.commetTextField.isHidden = !mode
+        self.cancelButton.isHidden = !mode
+        self.saveButton.isHidden = !mode
+    }
+    @IBAction func cancelProfileEdit(_ sender: Any) {
+        self.setUIEditMode(mode: false)
+    }
+    @IBAction func saveProfileChangedInfo(_ sender: Any) {
+        self.setUIEditMode(mode: false)
     }
 }
