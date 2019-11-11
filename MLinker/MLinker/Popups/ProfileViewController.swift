@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Kingfisher
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
 
     @IBOutlet weak var adminAccountLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
@@ -29,11 +29,15 @@ class ProfileViewController: UIViewController {
     
     var changedFriendInfo : Bool = false
     
+    var isPickedProfileImage: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //self.profileImageView.layer.cornerRadius = 75
         //self.profileImageView.clipsToBounds = true
+        
+        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
         
@@ -364,12 +368,33 @@ class ProfileViewController: UIViewController {
         self.closeButton.isHidden = mode
         self.commentLabel.isHidden = mode
         self.commetTextField.isHidden = !mode
+        
+        self.profileImageView.isUserInteractionEnabled = mode
         self.cancelButton.isHidden = !mode
         self.saveButton.isHidden = !mode
     }
+    
+    @objc func pickProfileImage() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        
+        self.present(imagePicker, animated: true, completion:  nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.isPickedProfileImage = true
+        profileImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     @IBAction func cancelProfileEdit(_ sender: Any) {
         self.setUIEditMode(mode: false)
     }
+    
     @IBAction func saveProfileChangedInfo(_ sender: Any) {
         self.setUIEditMode(mode: false)
     }
