@@ -15,6 +15,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var adminAccountLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commetTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var subButton: UIButton!
@@ -89,8 +91,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     override func viewDidAppear(_ animated: Bool) {
         self.setUIEditMode(mode: false)
         
+        self.nameLabel.text = self.selectedUserModel.name
         self.commentLabel.text = self.selectedUserModel.comment
-        self.commetTextField.text = self.selectedUserModel.comment
         
         if let profileImageString = self.selectedUserModel.profileURL {
             let profileImageURL = URL(string: profileImageString)
@@ -362,14 +364,21 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     func enterEditMode() {
         self.setUIEditMode(mode: true)
+        self.nameTextField.text = self.selectedUserModel.name
+        self.commetTextField.text = self.selectedUserModel.comment
+        
     }
     
     func setUIEditMode(mode : Bool) {
         self.closeButton.isHidden = mode
         self.commentLabel.isHidden = mode
         self.commetTextField.isHidden = !mode
+        self.nameLabel.isHidden = mode
+        self.nameTextField.isHidden = !mode
         
         self.profileImageView.isUserInteractionEnabled = mode
+        
+        self.mainButton.isHidden = mode
         self.cancelButton.isHidden = !mode
         self.saveButton.isHidden = !mode
     }
@@ -397,5 +406,36 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     @IBAction func saveProfileChangedInfo(_ sender: Any) {
         self.setUIEditMode(mode: false)
+        
+        let updateInfoValue : Dictionary<String, Any> = [
+            "name": self.nameTextField.text!,
+            "comment" : self.commetTextField.text!,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+    Database.database().reference().child("users").child(self.selectedUserModel.uid!).updateChildValues(updateInfoValue) {
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                self.selectedUserModel.name = self.nameTextField.text!
+                self.nameLabel.text = self.nameTextField.text!
+                self.selectedUserModel.comment = self.commetTextField.text!
+                self.commentLabel.text = self.commetTextField.text!
+                self.updateProfileImage()
+                
+            }else {
+                print("update friendship error")
+            }
+            
+            
+        }
     }
+        
+    func updateProfileImage() {
+        if(self.isPickedProfileImage == false)
+        {
+            return
+        }
+    }
+    
 }
