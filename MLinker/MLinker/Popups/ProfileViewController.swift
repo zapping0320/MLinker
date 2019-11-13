@@ -434,6 +434,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     func updateProfileImage() {
         if(self.isPickedProfileImage == false)
         {
+             NotificationCenter.default.post(name: .nsUpdateSelf, object: nil, userInfo: nil)
             return
         }
         
@@ -462,6 +463,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                     } else {
                         print("profileURL saved successfully!")
                         self.selectedUserModel.profileURL = userDownloadURL
+                         NotificationCenter.default.post(name: .nsUpdateSelf, object: nil, userInfo: nil)
                     }
                 }
                 
