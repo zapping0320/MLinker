@@ -165,11 +165,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             for item in snapshot.children.allObjects as! [DataSnapshot] {
                 let key = item.key as String
                 let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                if(comment?.readUsers.keys.contains(self.currnetUserUid) == false &&
-                    comment?.sender != self.currnetUserUid)
-                {
-                    continue
-                }
                 let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
                 comment_modify?.readUsers[self.currnetUserUid!] = true
                 readUsersDic[key] = comment_modify?.toJSON() as! NSDictionary
