@@ -10,21 +10,25 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
+    @IBOutlet weak var adminAccountLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var appVersionLabel: UILabel!
+    @IBOutlet weak var updateAppButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func editProfile(_ sender: Any) {
+        
     }
-    */
-
+    @IBAction func updateApp(_ sender: Any) {
+        
+    }
+    
 }
