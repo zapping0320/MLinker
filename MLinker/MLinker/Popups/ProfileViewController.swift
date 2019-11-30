@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var saveButton: UIButton!
     
     public var selectedUserModel: UserModel = UserModel()
-    public var selectedFriendshipModel : FriendshipModel?
+    private var selectedFriendshipModel : FriendshipModel?
     
     private var currnetUserUid: String!
     
@@ -54,38 +54,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         
         adminAccountLabel.isHidden = true
         
-        if(selectedFriendshipModel != nil)
-        {
-            if(selectedFriendshipModel?.status == FriendStatus.Requesting){
-                self.mainButton.setTitle("cancel Request", for: .normal)
-                self.subButton.isHidden = true
-            }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
-                self.mainButton.setTitle("accept Request", for: .normal)
-                self.subButton.setTitle("reject Request", for: .normal)
-            }
-        }
-        else
-        {
-            if(self.currnetUserUid == self.selectedUserModel.uid)
-            {
-                //self
-                self.mainButton.setTitle("edit Profile", for: .normal)
-                self.subButton.isHidden = true
-                self.adminAccountLabel.isHidden = !self.selectedUserModel.isAdminAccount
-            }
-            else
-            {
-                self.mainButton.setTitle("start Chat", for: .normal)
-                if(self.selectedUserModel.isAdminAccount == false)
-                {
-                    self.subButton.setTitle("disconnect Friendship", for: .normal)
-                }
-                else
-                {
-                    self.subButton.isHidden = true
-                }
-            }
-        }
+        self.loadFriendShipInfo()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,10 +68,73 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             let profileImageURL = URL(string: profileImageString)
             profileImageView.kf.setImage(with: profileImageURL)
         }
+        
+        if(selectedFriendshipModel != nil)
+        {
+            if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+                self.mainButton.setTitle("cancel Request", for: .normal)
+                self.subButton.isHidden = true
+            }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
+                self.mainButton.setTitle("accept Request", for: .normal)
+                self.subButton.setTitle("reject Request", for: .normal)
+            }
+            else if(selectedFriendshipModel?.status == FriendStatus.Connected)
+            {
+                self.mainButton.setTitle("start Chat", for: .normal)
+                if(self.selectedUserModel.isAdminAccount == false)
+                {
+                    self.subButton.setTitle("disconnect Friendship", for: .normal)
+                }
+                else
+                {
+                    self.subButton.isHidden = true
+                }
+            }
+            else
+            {
+                self.mainButton.isHidden = true
+                self.subButton.isHidden = true
+            }
+        }
+        else
+        {
+            if(self.currnetUserUid == self.selectedUserModel.uid)
+            {
+                //self
+                self.mainButton.setTitle("edit Profile", for: .normal)
+                self.subButton.isHidden = true
+                self.adminAccountLabel.isHidden = !self.selectedUserModel.isAdminAccount
+            }
+            
+        }
     }
     
     @IBAction func closeVC(_ sender: Any) {
         closeProfileVC()
+    }
+    
+    func loadFriendShipInfo()
+    {
+        if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
+        {
+            return
+        }
+        
+    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let friendshipDic = item.value as? [String:AnyObject] {
+                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                    friendshipModel?.uid = item.key
+                    if(friendshipModel?.friendId == self.selectedUserModel.uid)
+                    {
+                        self.selectedFriendshipModel = friendshipModel
+                        break
+                    }
+                    
+                }
+            }
+        }
     }
     
     func closeProfileVC()
@@ -122,10 +155,16 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             {
                //cancel
                 self.cancelFriendshipRequest()
-            }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest)
+            }
+            else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest)
             {
                 //accept
                 self.acceptFriendshipRequest()
+            }
+            else if(selectedFriendshipModel?.status == FriendStatus.Connected)
+            {
+                //start chat
+                self.findChatRoom()
             }
         }
         else
@@ -134,26 +173,40 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             {
                 //edit profile
                 self.enterEditMode()
-            }else {
-                //start chat
-                self.findChatRoom()
             }
         }
     }
     
     @IBAction func subButtonAction(_ sender: Any) {
-        if(selectedFriendshipModel != nil)
+        if(selectedFriendshipModel == nil)
         {
-             if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
-                //reject
-                self.rejectFriendshipRequest()
-            }
+            return
         }
-        else
-        {
-            //disconnect friendship
+        
+        if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
+            //reject
+            self.rejectFriendshipRequest()
             
-            //remove friend uid from each chat
+        }
+        else if(selectedFriendshipModel?.status == FriendStatus.Connected)
+        {
+            
+            let alert = UIAlertController(title: title,
+                                          message: NSLocalizedString("Friendship", comment: ""),
+                                          preferredStyle: .alert)
+            let actionCheck = UIAlertAction(title: NSLocalizedString("Are you sure to disconnect friendship?", comment: ""),
+                                            style: .default, handler: {result in
+                                                //disconnect friendship
+                                                self.disconnectFriendship()
+            })
+            alert.addAction(actionCheck)
+            
+            let actionCancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
+                                             style: .cancel, handler: nil)
+            
+            alert.addAction(actionCancel)
+            
+            self.present(alert, animated: true, completion: nil)
             
         }
     }
@@ -322,44 +375,53 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.closeProfileVC()
     }
     
-    func rejectFriendshipRequest() {
+    func rejectFriendship(includeChat : Bool)
+    {
+        self.changedFriendInfo = true
         //update self
-        let updateSelfValue : Dictionary<String, Any> = [
-            "status" : 5,
-            "timestamp" : ServerValue.timestamp()
-        ]
-    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
-            (updateErr, ref) in
-            if(updateErr == nil)
-            {
-                let friendUid = self.selectedFriendshipModel!.friendId!
-            Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-                    (datasnapShot) in
-                    for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                        if let friendshipDic = item.value as? [String:AnyObject] {
-                            
-                            let friendshipModel = FriendshipModel(JSON: friendshipDic)
-                            friendshipModel?.uid = item.key
-                            
-                            if(friendshipModel?.friendId != self.currnetUserUid!)
-                            {
-                                continue
-                            }
-                        Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).removeValue() {
-                                (deleteErr, ref) in
-                                if(deleteErr == nil) {
-                                   
+            let updateSelfValue : Dictionary<String, Any> = [
+                "status" : 5,
+                "timestamp" : ServerValue.timestamp()
+            ]
+        Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
+                (updateErr, ref) in
+                if(updateErr == nil)
+                {
+                    let friendUid = self.selectedFriendshipModel!.friendId!
+                Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+                        (datasnapShot) in
+                        for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                            if let friendshipDic = item.value as? [String:AnyObject] {
+                                
+                                let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                                friendshipModel?.uid = item.key
+                                
+                                if(friendshipModel?.friendId != self.currnetUserUid!)
+                                {
+                                    continue
+                                }
+                            Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).removeValue() {
+                                    (deleteErr, ref) in
+                                    if(deleteErr == nil) {
+                                        if(includeChat == true)
+                                        {
+                                            self.removeFriendInfoFromChatRooms(selfUid: self.selectedFriendshipModel!.uid!, friendUid: friendUid)
+                                        }
+                                    }
                                 }
                             }
+                            
                         }
-                        
                     }
+                }else {
+                    print("error update self freindshipmodel")
                 }
-            }else {
-                print("error update self freindshipmodel")
+               self.closeProfileVC()
             }
-           self.closeProfileVC()
-        }
+    }
+    
+    func rejectFriendshipRequest() {
+        self.rejectFriendship(includeChat: false)
     }
     
     func enterEditMode() {
@@ -469,6 +531,50 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 
             }
         })
+    }
+    
+    func disconnectFriendship()
+    {
+        self.rejectFriendship(includeChat: true)
+    }
+    
+    func removeFriendInfoFromChatRooms(selfUid: String, friendUid : String)
+    {
+        Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let chatRoomdic = item.value as? [String:AnyObject] {
+                    let chatModel = ChatModel(JSON: chatRoomdic)
+                    chatModel?.uid = item.key
+                    if(((chatModel?.chatUserIdDic.keys.contains(selfUid)) == true) && (chatModel?.chatUserIdDic.keys.contains(friendUid) == true))
+                    {
+                        chatModel?.chatUserIdDic.removeValue(forKey: friendUid)
+                        if(chatModel?.chatUserProfiles.keys.contains(friendUid) == true)
+                        {
+                            chatModel?.chatUserProfiles.removeValue(forKey: friendUid)
+                        }
+                        
+                        let updateChatRoomValue : Dictionary<String, Any> = [
+                            "chatUserIdDic" : chatModel?.chatUserIdDic,
+                            "chatUserProfiles" :  chatModel?.chatUserProfiles,
+                            "timestamp" : ServerValue.timestamp()
+                        ]
+                        
+                        datasnapShot.ref.updateChildValues(updateChatRoomValue, withCompletionBlock: { (err, ref) in
+                                if(err == nil)
+                                {
+                                    print("chat room update success")
+                            }
+                            else
+                                {
+                                    print("error update self freindshipmodel")
+                            }
+                            
+                        })
+                    }
+                }
+            }
+        }
     }
     
 }
