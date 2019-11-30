@@ -16,7 +16,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
     fileprivate var filteredUsersArray = [UserModel]()
-    var processingFriendshipList : [FriendshipModel] = [FriendshipModel]()
     var currnetUserUid: String!
     var isFiltered : Bool = false
   
@@ -77,7 +76,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @objc func loadUsersInfo() {
       
         var processingFriendList = [UserModel]()
-        self.processingFriendshipList = [FriendshipModel]()
         self.usersArray[1] = [UserModel]()
         self.usersArray[2] = [UserModel]()
     Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
@@ -113,9 +111,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                     }
                     else {
-                        self.processingFriendshipList.append(friendshipModel!)
                         let userModel = UserModel()
-                        //userModel.uid = item.key
+                        userModel.uid = friendshipModel?.friendId
                         userModel.name = friendshipModel?.friendEmail
                         userModel.profileURL = friendshipModel?.friendUserModel?.profileURL
                         userModel.comment = "processing"
@@ -290,10 +287,6 @@ extension UsersViewController {
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
         
         profileVC.selectedUserModel = getCurrentUserData(indexPath: indexPath)
-        
-        if(indexPath.section == 1) {
-            profileVC.selectedFriendshipModel = self.processingFriendshipList[indexPath.row]
-        }
         
         self.present(profileVC, animated: true, completion: nil)
     }
