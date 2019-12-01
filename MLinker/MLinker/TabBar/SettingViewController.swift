@@ -21,12 +21,36 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updaeProfileInfo()
         
+        let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
+        self.appVersionLabel.text = appVersion
+        
+    }
+    
+    func updaeProfileInfo()
+    {
+        let currentUserModel = UserContexManager.shared.getCurrentUserModel()
+        if(currentUserModel.isAdminAccount != true)
+        {
+            self.adminAccountLabel.isHidden = true
+        }
+        
+        if let profileImageString = currentUserModel.profileURL {
+            let profileImageURL = URL(string: profileImageString)
+            profileImageView.kf.setImage(with: profileImageURL)
+        }
+        
+        self.emailLabel.text = currentUserModel.email
+        self.nameLabel.text = currentUserModel.name
+        self.commentLabel.text = currentUserModel.comment
     }
     
     @IBAction func editProfile(_ sender: Any) {
         
+        
     }
+    
     @IBAction func updateApp(_ sender: Any) {
         
     }
