@@ -52,6 +52,7 @@ class ViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }else {
             let signInVC = UIStoryboard(name: "SigninStoryboard", bundle: nil).instantiateViewController(withIdentifier: "naviSignin")
+            signInVC.modalPresentationStyle = .fullScreen
             self.present(signInVC, animated: true, completion: nil)
         }
         self.view.backgroundColor = UIColor(hex: color!)

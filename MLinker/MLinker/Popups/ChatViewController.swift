@@ -285,6 +285,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func addMember() {
         UserContexManager.shared.setLastChatRoom(model: self.selectedChatModel)
         let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom")
+        addChatRoomVC.modalPresentationStyle = .fullScreen
         self.present(addChatRoomVC, animated: true, completion: nil)
     }
 }
@@ -393,6 +394,7 @@ extension ChatViewController {
                 DispatchQueue.main.async {
                     let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
                     profileVC.selectedUserModel = userModel!
+                    profileVC.modalPresentationStyle = .fullScreen
                     self.present(profileVC, animated: true, completion: nil)
                     
                 }

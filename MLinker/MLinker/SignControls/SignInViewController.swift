@@ -35,6 +35,7 @@ class SignInViewController: UIViewController {
             in
             if(user != nil) {
                 let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewTabBarController") as! UITabBarController
+                mainVC.modalPresentationStyle = .fullScreen
                 self.present(mainVC, animated: false, completion: nil)
             }
         }

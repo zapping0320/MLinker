@@ -55,6 +55,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func popupAddFriend(_ sender: Any) {
         let addFriendVC = UIStoryboard(name: "AddFriend", bundle: nil).instantiateViewController(withIdentifier: "addFriend")
+        addFriendVC.modalPresentationStyle = .fullScreen
         self.present(addFriendVC, animated: true, completion: nil)
     }
     
@@ -287,7 +288,7 @@ extension UsersViewController {
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
         
         profileVC.selectedUserModel = getCurrentUserData(indexPath: indexPath)
-        
+        profileVC.modalPresentationStyle = .fullScreen
         self.present(profileVC, animated: true, completion: nil)
     }
 
