@@ -14,5 +14,6 @@ target 'MLinker' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
 	pod 'Firebase/Storage'
+	pod 'Firebase/Messaging'
 	pod 'Kingfisher', '~> 5.0'
 end
