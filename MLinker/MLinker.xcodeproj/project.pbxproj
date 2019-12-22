@@ -31,7 +31,6 @@
 		0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B422FA2E1800B55D21 /* Main.storyboard */; };
 		0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */; };
 		0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4B922FA2E1F00B55D21 /* LaunchScreen.storyboard */; };
-		0B44C4C622FB80E900B55D21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4C522FB80E800B55D21 /* GoogleService-Info.plist */; };
 		0B44C4C822FB868300B55D21 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4C722FB868300B55D21 /* UserModel.swift */; };
 		0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4C922FB86DA00B55D21 /* ChatModel.swift */; };
 		0B44C4CC230210C700B55D21 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4CB230210C700B55D21 /* UsersViewController.swift */; };
@@ -43,6 +42,7 @@
 		0B44C4E42302165400B55D21 /* SigninStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */; };
 		0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4E32302165400B55D21 /* SignUp.storyboard */; };
 		0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4E8230AFE5500B55D21 /* UIColor.swift */; };
+		0B59526A23AECB4800174564 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B59526923AECB4800174564 /* GoogleService-Info.plist */; };
 		0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB409E2356725D0085933A /* ColorHelper.swift */; };
 		0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF1759231727D400CD6561 /* AddFriendViewController.swift */; };
 		0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF175D2317287000CD6561 /* AddFriend.storyboard */; };
@@ -77,7 +77,6 @@
 		0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B44C4BA22FA2E1F00B55D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B44C4BC22FA2E1F00B55D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B44C4C522FB80E800B55D21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Users/bmwe3/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B44C4C722FB868300B55D21 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0B44C4C922FB86DA00B55D21 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		0B44C4CB230210C700B55D21 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SigninStoryboard.storyboard; sourceTree = "<group>"; };
 		0B44C4E32302165400B55D21 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		0B44C4E8230AFE5500B55D21 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		0B59526923AECB4800174564 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0BCB409E2356725D0085933A /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		0BFF1759231727D400CD6561 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		0BFF175D2317287000CD6561 /* AddFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriend.storyboard; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				0B44C4B722FA2E1F00B55D21 /* Assets.xcassets */,
 				0B44C4B922FA2E1F00B55D21 /* LaunchScreen.storyboard */,
 				0B44C4BC22FA2E1F00B55D21 /* Info.plist */,
-				0B44C4C522FB80E800B55D21 /* GoogleService-Info.plist */,
+				0B59526923AECB4800174564 /* GoogleService-Info.plist */,
 			);
 			path = MLinker;
 			sourceTree = "<group>";
@@ -311,8 +311,8 @@
 			files = (
 				0B076A5723397B7100B5AF43 /* ChatYourCell.xib in Resources */,
 				0B191FDB23318CDC0016EA85 /* ChatRoomTableViewCell.xib in Resources */,
+				0B59526A23AECB4800174564 /* GoogleService-Info.plist in Resources */,
 				0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */,
-				0B44C4C622FB80E900B55D21 /* GoogleService-Info.plist in Resources */,
 				0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */,
 				0B191FDF233192290016EA85 /* ChatView.storyboard in Resources */,
 				0B3F421C235A734700CAE1B1 /* ChatNoticeCell.xib in Resources */,
@@ -564,15 +564,18 @@
 			baseConfigurationReference = A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZSYAXC2PYL;
 				INFOPLIST_FILE = MLinker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zeno.MLinker;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeno.mlinker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = zeno_mlinker_appstore;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -583,15 +586,18 @@
 			baseConfigurationReference = 98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZSYAXC2PYL;
 				INFOPLIST_FILE = MLinker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zeno.MLinker;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeno.mlinker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = zeno_mlinker_appstore;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
