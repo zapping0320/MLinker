@@ -47,12 +47,20 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func editProfile(_ sender: Any) {
-        
+        let alert = UIAlertController(title: "Coming soon", message: "This function has not been supporting yet", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
         
     }
     
     @IBAction func updateApp(_ sender: Any) {
-        
+        let alert = UIAlertController(title: "Coming soon", message: "This function has not been supporting yet", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
