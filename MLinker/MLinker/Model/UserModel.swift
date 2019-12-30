@@ -17,6 +17,7 @@ class UserModel: Mappable {
     var comment:String?
     var isAdminAccount : Bool = false
     public var timestamp: Int?
+    var pushToken : String?
     
     init() {
         comment = ""

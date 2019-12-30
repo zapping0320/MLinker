@@ -37,6 +37,16 @@ class SignInViewController: UIViewController {
                 let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewTabBarController") as! UITabBarController
                 mainVC.modalPresentationStyle = .fullScreen
                 self.present(mainVC, animated: false, completion: nil)
+                InstanceID.instanceID().instanceID { (result, error) in
+                  if let error = error {
+                    print("Error fetching remote instance ID: \(error)")
+                  } else if let result = result {
+                    print("Remote instance ID token: \(result.token)")
+                    let uid = Auth.auth().currentUser?.uid
+                    let token  = result.token
+                    Database.database().reference().child("users").child(uid!).updateChildValues(["pushToken":token])
+                  }
+                }
             }
         }
         
