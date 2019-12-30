@@ -43,7 +43,14 @@ class SettingViewController: UIViewController {
         
         self.emailLabel.text = currentUserModel.email
         self.nameLabel.text = currentUserModel.name
-        self.commentLabel.text = currentUserModel.comment
+        
+        if currentUserModel.comment?.isEmpty == false {
+            self.commentLabel.text = currentUserModel.comment
+        }
+        else
+        {
+            self.commentLabel.text = "No comments"
+        }
     }
     
     @IBAction func editProfile(_ sender: Any) {

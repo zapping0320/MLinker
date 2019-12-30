@@ -62,7 +62,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.setUIEditMode(mode: false)
         
         self.nameLabel.text = self.selectedUserModel.name
-        self.commentLabel.text = self.selectedUserModel.comment
+        if self.selectedUserModel.comment?.isEmpty == false {
+            self.commentLabel.text = self.selectedUserModel.comment
+        }
+        else
+        {
+            self.commentLabel.text = "No comments"
+        }
         
         if let profileImageString = self.selectedUserModel.profileURL {
             let profileImageURL = URL(string: profileImageString)
