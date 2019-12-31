@@ -89,6 +89,7 @@
 		0B44C4E32302165400B55D21 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		0B44C4E8230AFE5500B55D21 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		0B59526923AECB4800174564 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0B59526C23BBFA3B00174564 /* MLinker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MLinker.entitlements; sourceTree = "<group>"; };
 		0BCB409E2356725D0085933A /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		0BFF1759231727D400CD6561 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		0BFF175D2317287000CD6561 /* AddFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriend.storyboard; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		0B44C4AF22FA2E1800B55D21 /* MLinker */ = {
 			isa = PBXGroup;
 			children = (
+				0B59526C23BBFA3B00174564 /* MLinker.entitlements */,
 				0BCB409D235672040085933A /* Helper */,
 				0B1792B923455EA10098D7AC /* Manager */,
 				0BFF17582317271800CD6561 /* Popups */,
@@ -564,6 +566,7 @@
 			baseConfigurationReference = A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MLinker/MLinker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZSYAXC2PYL;
@@ -572,7 +575,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeno.MLinker2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MLinker2_appstore;
@@ -586,6 +589,7 @@
 			baseConfigurationReference = 98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MLinker/MLinker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZSYAXC2PYL;
@@ -594,7 +598,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeno.MLinker2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MLinker2_appstore;
