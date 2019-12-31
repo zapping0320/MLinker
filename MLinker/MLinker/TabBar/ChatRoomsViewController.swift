@@ -135,7 +135,7 @@ extension ChatRoomsViewController {
             cell.roomImageView?.kf.indicatorType = .activity
             cell.roomImageView?.kf.setImage(
                 with: profileImageURL,
-                placeholder: UIImage(named: "defaultPhoto"),
+                placeholder: UIImage(named: "defaultChatRoomCell"),
                 options: [
                     .processor(processor),
                     .scaleFactor(UIScreen.main.scale),

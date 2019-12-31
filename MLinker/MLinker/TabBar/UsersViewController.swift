@@ -256,12 +256,16 @@ extension UsersViewController {
         
         if let profileImageString = currentUser.profileURL {
             let profileImageURL = URL(string: profileImageString)
+            if profileImageURL == nil {
+                return cell
+            }
+            
             let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
                 >> RoundCornerImageProcessor(cornerRadius: 40)
             cell.profileImageView?.kf.indicatorType = .activity
             cell.profileImageView?.kf.setImage(
                 with: profileImageURL,
-                placeholder: UIImage(named: "defaultPhoto"),
+                placeholder: UIImage(named: "defaulProfileCell"),
                 options: [
                     .processor(processor),
                     .scaleFactor(UIScreen.main.scale),
