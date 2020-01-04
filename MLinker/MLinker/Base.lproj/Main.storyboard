@@ -140,6 +140,17 @@
                                     <action selector="updateApp:" destination="yWR-DC-Q81" eventType="touchUpInside" id="iMP-76-x0a"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2y-hi-Ke8">
+                                <rect key="frame" x="332" y="693" width="62" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Mw5-8g-XN2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Log out"/>
+                                <connections>
+                                    <action selector="logout:" destination="yWR-DC-Q81" eventType="touchUpInside" id="D9C-PF-Xco"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -151,9 +162,11 @@
                             <constraint firstItem="59d-5a-Rhw" firstAttribute="top" secondItem="Kb8-Xw-kKi" secondAttribute="bottom" constant="30" id="KST-U8-nnc"/>
                             <constraint firstItem="7EF-ra-Qhl" firstAttribute="bottom" secondItem="678-RC-51M" secondAttribute="bottom" constant="20" id="MOR-TA-dGW"/>
                             <constraint firstItem="678-RC-51M" firstAttribute="leading" secondItem="7EF-ra-Qhl" secondAttribute="leading" constant="20" id="Onr-RM-xJn"/>
+                            <constraint firstItem="7EF-ra-Qhl" firstAttribute="trailing" secondItem="a2y-hi-Ke8" secondAttribute="trailing" constant="20" id="PUM-jn-009"/>
                             <constraint firstItem="eYX-q5-uIR" firstAttribute="centerX" secondItem="WyN-fV-zPh" secondAttribute="centerX" id="Ta5-Bo-O7M"/>
                             <constraint firstItem="4As-NY-rqa" firstAttribute="top" secondItem="59d-5a-Rhw" secondAttribute="bottom" constant="30" id="Th5-a3-acv"/>
                             <constraint firstItem="jIC-41-ku0" firstAttribute="centerX" secondItem="WyN-fV-zPh" secondAttribute="centerX" id="UpV-n8-Au6"/>
+                            <constraint firstItem="342-kK-Q7i" firstAttribute="top" secondItem="a2y-hi-Ke8" secondAttribute="bottom" constant="20" id="WEx-0S-P4F"/>
                             <constraint firstItem="yuN-Aw-57W" firstAttribute="bottom" secondItem="678-RC-51M" secondAttribute="bottom" id="bGF-1A-OaJ"/>
                             <constraint firstItem="7EF-ra-Qhl" firstAttribute="trailing" secondItem="RQ5-2B-P5a" secondAttribute="trailing" constant="30" id="dCE-fe-2u5"/>
                             <constraint firstItem="7EF-ra-Qhl" firstAttribute="trailing" secondItem="342-kK-Q7i" secondAttribute="trailing" constant="20" id="duf-ax-Teu"/>

@@ -28,7 +28,12 @@ class SignInViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        //signeOut()
+        let defaults = UserDefaults.standard
+        let loggedIn = defaults.bool(forKey: "loggedIn")
+        if(loggedIn == false)
+        {
+            signeOut()
+        }
         
         firebaseAuth.addStateDidChangeListener {
             (auth, user)
@@ -90,6 +95,9 @@ class SignInViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: "loggedIn")
         }
     }
     

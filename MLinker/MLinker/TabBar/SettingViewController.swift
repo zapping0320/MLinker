@@ -70,4 +70,25 @@ class SettingViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func logout(_ sender: Any) {
+        let alert = UIAlertController(title: title,
+                                      message: NSLocalizedString("Logout", comment: ""),
+                                      preferredStyle: .alert)
+        let actionCheck = UIAlertAction(title: NSLocalizedString("Are you sure to logout?", comment: ""),
+            style: .default, handler: {result in
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "loggedIn")
+            UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+        })
+        alert.addAction(actionCheck)
+        
+        let actionCancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
+                                         style: .cancel, handler: nil)
+        
+        alert.addAction(actionCancel)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+       
+    }
 }
