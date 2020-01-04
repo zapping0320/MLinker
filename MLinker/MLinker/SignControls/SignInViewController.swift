@@ -104,5 +104,9 @@ class SignInViewController: UIViewController {
         self.passwordTextField.text? = "@1234asdf"
         setSignInButtonEnabled(value: true)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
 }
 

@@ -42,6 +42,10 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
      
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
+
     
     @objc func pickProfileImage() {
         let imagePicker = UIImagePickerController()
