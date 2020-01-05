@@ -54,13 +54,47 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         
         adminAccountLabel.isHidden = true
         
+        self.setUIEditMode(mode: false)
         self.loadFriendShipInfo()
-        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.setUIEditMode(mode: false)
+    @IBAction func closeVC(_ sender: Any) {
+        closeProfileVC()
+    }
+    
+    func loadFriendShipInfo()
+    {
+        if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
+        {
+            return
+        }
         
+    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let friendshipDic = item.value as? [String:AnyObject] {
+                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                    friendshipModel?.uid = item.key
+                    if(friendshipModel?.friendId == self.selectedUserModel.uid)
+                    {
+                        self.selectedFriendshipModel = friendshipModel
+                        break
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.updateProfileInfo()
+                        if let profileImageString = self.selectedUserModel.profileURL {
+                            let profileImageURL = URL(string: profileImageString)
+                            self.profileImageView.kf.setImage(with: profileImageURL)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateProfileInfo()
+    {
         self.nameLabel.text = self.selectedUserModel.name
         if self.selectedUserModel.comment?.isEmpty == false {
             self.commentLabel.text = self.selectedUserModel.comment
@@ -68,11 +102,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         else
         {
             self.commentLabel.text = "No comments"
-        }
-        
-        if let profileImageString = self.selectedUserModel.profileURL {
-            let profileImageURL = URL(string: profileImageString)
-            profileImageView.kf.setImage(with: profileImageURL)
         }
         
         if(selectedFriendshipModel != nil)
@@ -112,34 +141,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 self.adminAccountLabel.isHidden = !self.selectedUserModel.isAdminAccount
             }
             
-        }
-    }
-    
-    @IBAction func closeVC(_ sender: Any) {
-        closeProfileVC()
-    }
-    
-    func loadFriendShipInfo()
-    {
-        if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
-        {
-            return
-        }
-        
-    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let friendshipDic = item.value as? [String:AnyObject] {
-                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
-                    friendshipModel?.uid = item.key
-                    if(friendshipModel?.friendId == self.selectedUserModel.uid)
-                    {
-                        self.selectedFriendshipModel = friendshipModel
-                        break
-                    }
-                    
-                }
-            }
         }
     }
     
