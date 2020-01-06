@@ -201,16 +201,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tme-jo-Ou1">
-                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.42268639460000001" green="0.74532666260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="uxn-1s-wmB" firstAttribute="trailing" secondItem="tme-jo-Ou1" secondAttribute="trailing" constant="10" id="gtd-tb-YTC"/>
-                            <constraint firstItem="tme-jo-Ou1" firstAttribute="top" secondItem="uxn-1s-wmB" secondAttribute="top" constant="10" id="hgA-Cf-UW0"/>
-                            <constraint firstItem="tme-jo-Ou1" firstAttribute="leading" secondItem="uxn-1s-wmB" secondAttribute="leading" constant="10" id="rey-jo-rFQ"/>
-                            <constraint firstItem="uxn-1s-wmB" firstAttribute="bottom" secondItem="tme-jo-Ou1" secondAttribute="bottom" constant="10" id="zCn-n5-zve"/>
+                            <constraint firstItem="uxn-1s-wmB" firstAttribute="trailing" secondItem="tme-jo-Ou1" secondAttribute="trailing" id="gtd-tb-YTC"/>
+                            <constraint firstItem="tme-jo-Ou1" firstAttribute="top" secondItem="uxn-1s-wmB" secondAttribute="top" id="hgA-Cf-UW0"/>
+                            <constraint firstItem="tme-jo-Ou1" firstAttribute="leading" secondItem="uxn-1s-wmB" secondAttribute="leading" id="rey-jo-rFQ"/>
+                            <constraint firstItem="uxn-1s-wmB" firstAttribute="bottom" secondItem="tme-jo-Ou1" secondAttribute="bottom" id="zCn-n5-zve"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uxn-1s-wmB"/>
                     </view>

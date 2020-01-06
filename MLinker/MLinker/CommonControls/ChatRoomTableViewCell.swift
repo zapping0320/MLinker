@@ -17,6 +17,8 @@ class ChatRoomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.roomImageView.layer.cornerRadius = 20
+        self.roomImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
