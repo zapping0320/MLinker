@@ -23,9 +23,7 @@ class AddFriendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        applyButton.layer.cornerRadius = applyButton.bounds.size.height / 2
-        applyButton.layer.borderWidth = 1
-        applyButton.layer.borderColor = UIColor.blue.cgColor
+        applyButton.layer.cornerRadius = 4
         
         setApplyButtonEnabled(value: false)
         
