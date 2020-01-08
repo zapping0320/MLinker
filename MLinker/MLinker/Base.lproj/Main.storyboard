@@ -34,13 +34,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Friends" id="CxR-M9-j8W">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="S8J-63-Zlj">
-                            <connections>
-                                <action selector="popupAddFriend:" destination="BYZ-38-t0r" id="aiX-K2-fUI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Friends" id="CxR-M9-j8W"/>
                     <connections>
                         <outlet property="usersTableView" destination="4Ci-bW-VwH" id="ue7-ga-mqP"/>
                     </connections>

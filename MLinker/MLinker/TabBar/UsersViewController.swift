@@ -33,6 +33,14 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage (named: "addFriend"), for: .normal)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
+        button.addTarget(self, action: "popupAddFriend",for: UIControl.Event.touchUpInside)
+        
+        let barButtonItem = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItems = [barButtonItem]
+        
         self.currnetUserUid = Auth.auth().currentUser?.uid
         UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
         self.loadSelfInfo()
@@ -53,7 +61,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func popupAddFriend(_ sender: Any) {
+    @objc func popupAddFriend() {
         let addFriendVC = UIStoryboard(name: "AddFriend", bundle: nil).instantiateViewController(withIdentifier: "addFriend")
         addFriendVC.modalPresentationStyle = .fullScreen
         self.present(addFriendVC, animated: true, completion: nil)
