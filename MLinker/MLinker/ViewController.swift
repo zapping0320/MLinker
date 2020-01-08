@@ -14,8 +14,12 @@ class ViewController: UIViewController {
 
     var remoteConfig : RemoteConfig!
     
+    @IBOutlet weak var appVersionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
+        self.appVersionLabel.text = appVersion
 
         remoteConfig = RemoteConfig.remoteConfig()
         remoteConfig.configSettings = RemoteConfigSettings()

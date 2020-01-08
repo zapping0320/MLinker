@@ -2,3 +2,4 @@
 MLinker/MLinker/Info.plist
 MLinker/MLinker/GoogleService-Info.plist
 MLinker/MLinker/Info.plist
+*.lock
