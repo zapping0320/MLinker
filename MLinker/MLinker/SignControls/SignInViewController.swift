@@ -20,9 +20,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signInButton.layer.cornerRadius = signInButton.bounds.size.height / 2
-        signInButton.layer.borderWidth = 1
-        signInButton.layer.borderColor = UIColor.blue.cgColor
+        signInButton.layer.cornerRadius = 4
         
         setSignInButtonEnabled(value: false)
         
