@@ -23,23 +23,24 @@
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="755" verticalHuggingPriority="755" scrollEnabled="NO" editable="NO" text="asdfg" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I9z-PB-6Q6">
                         <rect key="frame" x="285.5" y="10" width="46.5" height="165"/>
-                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019.09.24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nH-gi-Du2">
-                        <rect key="frame" x="221" y="163" width="54.5" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="216.5" y="161.5" width="59" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.34901960784313724" green="0.3529411764705882" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Dh-8b-IWM">
-                        <rect key="frame" x="264.5" y="146" width="11" height="12"/>
+                        <rect key="frame" x="264.5" y="144.5" width="11" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.8901960784313725" green="0.94901960784313721" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="9nH-gi-Du2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="9ir-WI-D9V"/>
                     <constraint firstItem="9nH-gi-Du2" firstAttribute="top" secondItem="1Dh-8b-IWM" secondAttribute="bottom" constant="5" id="FTG-DQ-gt0"/>

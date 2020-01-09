@@ -18,35 +18,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yourBubble" translatesAutoresizingMaskIntoConstraints="NO" id="xUc-K3-su5">
-                        <rect key="frame" x="60" y="10" width="172" height="74"/>
+                        <rect key="frame" x="60" y="10" width="164.5" height="74"/>
                         <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="asd dasdasd] sdfkjsdfldsfjl asldkjasdlkjas asldkjasdlkajsddslkfjsdlfkjdsf sdlkfjsdlfkj" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UmV-6L-nHL">
-                        <rect key="frame" x="80" y="10" width="142" height="74"/>
-                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <rect key="frame" x="80" y="10" width="134.5" height="74"/>
+                        <color key="textColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.09.26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrk-WY-Svz">
-                        <rect key="frame" x="237" y="72" width="56" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="229.5" y="70.5" width="60.5" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.34901960784313724" green="0.3529411764705882" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAC-B4-BW0">
-                        <rect key="frame" x="237" y="53" width="11" height="14"/>
+                        <rect key="frame" x="229.5" y="51.5" width="11" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-mj-pAy">
-                        <rect key="frame" x="0.0" y="10" width="50" height="50"/>
+                        <rect key="frame" x="18" y="10" width="36" height="36"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="3jK-rc-WyW"/>
-                            <constraint firstAttribute="height" constant="50" id="cr3-mS-qXm"/>
+                            <constraint firstAttribute="width" constant="36" id="3jK-rc-WyW"/>
+                            <constraint firstAttribute="height" constant="36" id="cr3-mS-qXm"/>
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" red="0.8901960784313725" green="0.94901960784313721" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="rrk-WY-Svz" firstAttribute="leading" secondItem="TAC-B4-BW0" secondAttribute="leading" id="0ai-dw-o6N"/>
                     <constraint firstItem="UmV-6L-nHL" firstAttribute="bottom" secondItem="xUc-K3-su5" secondAttribute="bottom" id="7kr-YN-X5u"/>
@@ -54,7 +55,7 @@
                     <constraint firstItem="rrk-WY-Svz" firstAttribute="bottom" secondItem="xUc-K3-su5" secondAttribute="bottom" id="JbV-Oa-DOt"/>
                     <constraint firstItem="rrk-WY-Svz" firstAttribute="leading" secondItem="xUc-K3-su5" secondAttribute="trailing" constant="5" id="K8d-uU-Aqo"/>
                     <constraint firstItem="rrk-WY-Svz" firstAttribute="top" secondItem="TAC-B4-BW0" secondAttribute="bottom" constant="5" id="KSv-0D-QMz"/>
-                    <constraint firstItem="Nt1-mj-pAy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TTO-HD-qk6"/>
+                    <constraint firstItem="Nt1-mj-pAy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="TTO-HD-qk6"/>
                     <constraint firstAttribute="bottom" secondItem="xUc-K3-su5" secondAttribute="bottom" constant="10" id="WxE-IX-eNk"/>
                     <constraint firstItem="Nt1-mj-pAy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="byk-dT-N6o"/>
                     <constraint firstItem="xUc-K3-su5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="f7y-ys-zr2"/>
