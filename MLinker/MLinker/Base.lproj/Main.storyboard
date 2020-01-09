@@ -330,7 +330,7 @@
         <scene sceneID="FHP-sI-yQo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mOa-el-pSR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Users" id="oSS-Oo-AdO"/>
+                    <tabBarItem key="tabBarItem" title="Users" image="userVC_normal" selectedImage="userVC_checked" id="oSS-Oo-AdO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tq6-ZE-pXy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -368,7 +368,7 @@
         <scene sceneID="PXT-Ub-6vx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v2L-Wd-t9I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Counseling" id="to8-mb-9bo"/>
+                    <tabBarItem key="tabBarItem" title="Counseling" image="counsellingVC_normal" selectedImage="counsellingVC_checked" id="to8-mb-9bo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TpB-vN-8AR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -384,4 +384,10 @@
             <point key="canvasLocation" x="1085.5072463768117" y="1195.9821428571429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="counsellingVC_checked" width="24" height="24"/>
+        <image name="counsellingVC_normal" width="24" height="24"/>
+        <image name="userVC_checked" width="24" height="24"/>
+        <image name="userVC_normal" width="24" height="24"/>
+    </resources>
 </document>
