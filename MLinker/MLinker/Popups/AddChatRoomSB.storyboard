@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4dd-BD-i9H">
-                                <rect key="frame" x="10" y="98" width="394" height="754"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="1sg-Vz-xBe" firstAttribute="trailing" secondItem="4dd-BD-i9H" secondAttribute="trailing" constant="10" id="1vy-2B-YSo"/>
-                            <constraint firstItem="4dd-BD-i9H" firstAttribute="top" secondItem="1sg-Vz-xBe" secondAttribute="top" constant="10" id="DW7-gr-BWI"/>
-                            <constraint firstItem="4dd-BD-i9H" firstAttribute="leading" secondItem="1sg-Vz-xBe" secondAttribute="leading" constant="10" id="KDI-Ko-Vst"/>
-                            <constraint firstItem="1sg-Vz-xBe" firstAttribute="bottom" secondItem="4dd-BD-i9H" secondAttribute="bottom" constant="10" id="lQm-GW-agq"/>
+                            <constraint firstItem="1sg-Vz-xBe" firstAttribute="trailing" secondItem="4dd-BD-i9H" secondAttribute="trailing" id="1vy-2B-YSo"/>
+                            <constraint firstItem="4dd-BD-i9H" firstAttribute="top" secondItem="1sg-Vz-xBe" secondAttribute="top" id="DW7-gr-BWI"/>
+                            <constraint firstItem="4dd-BD-i9H" firstAttribute="leading" secondItem="1sg-Vz-xBe" secondAttribute="leading" id="KDI-Ko-Vst"/>
+                            <constraint firstItem="1sg-Vz-xBe" firstAttribute="bottom" secondItem="4dd-BD-i9H" secondAttribute="bottom" id="lQm-GW-agq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1sg-Vz-xBe"/>
                     </view>
