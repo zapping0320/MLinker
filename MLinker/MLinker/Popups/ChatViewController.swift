@@ -202,7 +202,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func barBtn_more_Action(){
         let alert = UIAlertController(title: title,
-                                      message: NSLocalizedString("More", comment: ""),
+                                      message: NSLocalizedString("Setting", comment: ""),
                                       preferredStyle: UIAlertController.Style.actionSheet)
         let actionChangeTitle = UIAlertAction(title: NSLocalizedString("Change Title", comment: ""),
                                              style: .default, handler: {result in

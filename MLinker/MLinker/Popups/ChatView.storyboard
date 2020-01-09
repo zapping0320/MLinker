@@ -29,7 +29,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="BFh-kl-zAn"/>
                                         </constraints>
-                                        <color key="textColor" red="0.59181355890567544" green="0.85575053978384796" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
