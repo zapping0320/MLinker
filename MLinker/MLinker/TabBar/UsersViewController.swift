@@ -36,7 +36,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let button = UIButton(type: .custom)
         button.setImage(UIImage (named: "addFriend"), for: .normal)
         button.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
-        button.addTarget(self, action: "popupAddFriend",for: UIControl.Event.touchUpInside)
+        button.addTarget(self, action: #selector(popupAddFriend),for: UIControl.Event.touchUpInside)
         
         let barButtonItem = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItems = [barButtonItem]

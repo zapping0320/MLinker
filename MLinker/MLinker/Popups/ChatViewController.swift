@@ -42,8 +42,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.commentTableView.register(UINib(nibName: "ChatMyCell", bundle: nil), forCellReuseIdentifier: "ChatMyCell")
         self.commentTableView.register(UINib(nibName: "ChatNoticeCell", bundle: nil), forCellReuseIdentifier: "ChatNoticeCell")
         
-        let moreBtn = UIBarButtonItem(title: NSLocalizedString("More", comment: ""), style: .plain , target: self, action: #selector(barBtn_more_Action))
-        self.navigationItem.rightBarButtonItem = moreBtn
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage (named: "setting"), for: .normal)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
+        button.addTarget(self, action: #selector(barBtn_more_Action),for: UIControl.Event.touchUpInside)
+        
+        let barButtonItem = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItems = [barButtonItem]
         
         //keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

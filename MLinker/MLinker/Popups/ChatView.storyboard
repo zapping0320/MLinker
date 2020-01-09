@@ -18,7 +18,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aN2-Kn-Rb5">
                                 <rect key="frame" x="0.0" y="44" width="414" height="770"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.94901960784313721" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eC3-hz-UFg">
                                 <rect key="frame" x="0.0" y="814" width="414" height="48"/>
@@ -55,6 +55,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.8901960784313725" green="0.94901960784313721" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3Ut-pi-4dJ" firstAttribute="trailing" secondItem="eC3-hz-UFg" secondAttribute="trailing" id="7hD-vx-qeB"/>
                             <constraint firstItem="eC3-hz-UFg" firstAttribute="leading" secondItem="3Ut-pi-4dJ" secondAttribute="leading" id="AhS-zY-hdp"/>
