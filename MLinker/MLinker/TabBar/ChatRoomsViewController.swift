@@ -27,6 +27,14 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
         
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage (named: "addChatRoom"), for: .normal)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
+        button.addTarget(self, action: "addChatRoom",for: UIControl.Event.touchUpInside)
+        
+        let barButtonItem = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItems = [barButtonItem]
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +68,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
         }
     }
 
-    @IBAction func addChatRoom(_ sender: Any) {
+    @objc func addChatRoom() {
         let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom")
         addChatRoomVC.modalPresentationStyle = .fullScreen
         self.present(addChatRoomVC, animated: true, completion: nil)

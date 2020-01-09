@@ -208,13 +208,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uxn-1s-wmB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chats" id="gos-pj-h5z">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0cx-tL-ew3">
-                            <connections>
-                                <action selector="addChatRoom:" destination="0nr-6v-8m5" id="VqS-DQ-kqR"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Chats" id="gos-pj-h5z"/>
                     <connections>
                         <outlet property="chatRoomTableView" destination="tme-jo-Ou1" id="fjA-m2-sRr"/>
                     </connections>
