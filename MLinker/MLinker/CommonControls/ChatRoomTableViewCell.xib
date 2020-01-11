@@ -26,7 +26,7 @@
                         <color key="textColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXe-D5-HJw">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXe-D5-HJw">
                         <rect key="frame" x="273" y="30" width="31" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="gJ8-fk-thn"/>
@@ -42,8 +42,8 @@
                             <constraint firstAttribute="height" constant="40" id="xhc-j5-hZH"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHO-Vj-Rnv">
-                        <rect key="frame" x="72" y="30" width="31" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHO-Vj-Rnv">
+                        <rect key="frame" x="72" y="30" width="191" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="ZbZ-1E-EcS"/>
                         </constraints>
@@ -60,6 +60,7 @@
                     <constraint firstItem="sHO-Vj-Rnv" firstAttribute="leading" secondItem="jKN-ep-lr2" secondAttribute="trailing" constant="16" id="VcA-n7-Pgo"/>
                     <constraint firstItem="VXe-D5-HJw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="cI5-yS-VjA"/>
                     <constraint firstItem="jKN-ep-lr2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="msA-gH-afG"/>
+                    <constraint firstItem="VXe-D5-HJw" firstAttribute="leading" secondItem="sHO-Vj-Rnv" secondAttribute="trailing" constant="10" id="nLO-jB-eB6"/>
                     <constraint firstAttribute="bottom" secondItem="jKN-ep-lr2" secondAttribute="bottom" constant="8" id="unl-B5-AUD"/>
                     <constraint firstItem="T9m-Cp-Rw9" firstAttribute="leading" secondItem="jKN-ep-lr2" secondAttribute="trailing" constant="16" id="xZ0-FJ-NHu"/>
                     <constraint firstAttribute="bottom" secondItem="sHO-Vj-Rnv" secondAttribute="bottom" constant="8" id="y3F-Qb-aCz"/>
@@ -78,6 +79,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="defaultChatRoomCell" width="50" height="50"/>
+        <image name="defaultChatRoomCell" width="24" height="24"/>
     </resources>
 </document>
