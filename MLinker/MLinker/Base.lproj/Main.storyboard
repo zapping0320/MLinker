@@ -256,44 +256,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQf-fA-4IZ">
-                                <rect key="frame" x="120" y="244" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="27n-3r-On6"/>
-                                    <constraint firstAttribute="width" constant="48" id="XBj-WL-QhN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <color key="textColor" red="0.34509803921568627" green="0.47843137254901957" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-kc-uiE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxW-dL-62V">
                                 <rect key="frame" x="180" y="762" width="54" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="S7h-Q6-tBA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="0.34901960784313724" green="0.3529411764705882" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Linker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DR2-Xv-uO2">
-                                <rect key="frame" x="178" y="244" width="236" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="aOR-AQ-bNj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="a1e-kc-uiE" firstAttribute="top" secondItem="yI5-J2-z9j" secondAttribute="top" id="96L-RY-eY4"/>
                             <constraint firstItem="GxW-dL-62V" firstAttribute="centerX" secondItem="yI5-J2-z9j" secondAttribute="centerX" id="Min-Rq-xkr"/>
-                            <constraint firstItem="OsW-Py-zXh" firstAttribute="trailing" secondItem="DR2-Xv-uO2" secondAttribute="trailing" id="Pu2-Yt-OXg"/>
-                            <constraint firstItem="XQf-fA-4IZ" firstAttribute="leading" secondItem="OsW-Py-zXh" secondAttribute="leading" constant="120" id="YWt-YP-i94"/>
-                            <constraint firstItem="DR2-Xv-uO2" firstAttribute="top" secondItem="OsW-Py-zXh" secondAttribute="top" constant="200" id="aFq-hQ-dhK"/>
+                            <constraint firstItem="a1e-kc-uiE" firstAttribute="leading" secondItem="OsW-Py-zXh" secondAttribute="leading" id="TLq-VM-BNJ"/>
+                            <constraint firstAttribute="bottom" secondItem="a1e-kc-uiE" secondAttribute="bottom" id="WKq-HF-uou"/>
                             <constraint firstItem="OsW-Py-zXh" firstAttribute="bottom" secondItem="GxW-dL-62V" secondAttribute="bottom" constant="80" id="bx6-4C-8cs"/>
-                            <constraint firstItem="DR2-Xv-uO2" firstAttribute="leading" secondItem="XQf-fA-4IZ" secondAttribute="trailing" constant="10" id="f0E-w8-xfu"/>
-                            <constraint firstItem="XQf-fA-4IZ" firstAttribute="top" secondItem="OsW-Py-zXh" secondAttribute="top" constant="200" id="g0y-S6-dBA"/>
+                            <constraint firstItem="OsW-Py-zXh" firstAttribute="trailing" secondItem="a1e-kc-uiE" secondAttribute="trailing" id="q2W-WO-Q2j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OsW-Py-zXh"/>
                     </view>
@@ -387,6 +370,7 @@
     <resources>
         <image name="counsellingVC_checked" width="24" height="24"/>
         <image name="counsellingVC_normal" width="24" height="24"/>
+        <image name="loadingIcon" width="375" height="667"/>
         <image name="userVC_checked" width="24" height="24"/>
         <image name="userVC_normal" width="24" height="24"/>
     </resources>
