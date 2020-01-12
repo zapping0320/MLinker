@@ -23,7 +23,7 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
     
     public var selectedChatModel:ChatModel = ChatModel()
     
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    private var doneBarButton: UIBarButtonItem = UIBarButtonItem()
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
     var currnetUserUid: String!
@@ -36,7 +36,24 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         currnetUserUid = UserContexManager.shared.getCurrentUid()
         selectedChatModel = UserContexManager.shared.getLastChatRoom()
         
-        self.doneButton.isEnabled = false
+        let cancelButton = UIButton(type: .custom)
+        cancelButton.setImage(UIImage (named: "close"), for: .normal)
+        cancelButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
+        cancelButton.addTarget(self, action: #selector(cancelAddChatRoom),for: UIControl.Event.touchUpInside)
+        
+        let leftBarButtonItem = UIBarButtonItem(customView: cancelButton)
+        self.navigationItem.leftBarButtonItems = [leftBarButtonItem]
+        
+        //self.doneButton.isEnabled = false
+        
+               
+       let doneButton = UIButton(type: .custom)
+       doneButton.setImage(UIImage (named: "done"), for: .normal)
+       doneButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
+       doneButton.addTarget(self, action: #selector(doneAddChatRoom),for: UIControl.Event.touchUpInside)
+       
+       doneBarButton = UIBarButtonItem(customView: doneButton)
+       self.navigationItem.rightBarButtonItems = [doneBarButton]
         
         self.loadUsersInfo()
     }
@@ -94,11 +111,11 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    @IBAction func cancelAddChatRoom(_ sender: Any) {
+    @objc func cancelAddChatRoom() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func doneAddChatRoom(_ sender: Any) {
+    @objc func doneAddChatRoom() {
         if(self.selectedChatModel.isValid())
         {
             self.addMemberstoChatRoom()
@@ -358,16 +375,16 @@ extension AddChatRoomViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.doneButton.isEnabled = true
+        self.doneBarButton.isEnabled = true
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard self.usersTableView.indexPathsForSelectedRows != nil else {
-            self.doneButton.isEnabled = false
+            self.doneBarButton.isEnabled = false
             return
         }
         
-        self.doneButton.isEnabled = true
+        self.doneBarButton.isEnabled = true
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

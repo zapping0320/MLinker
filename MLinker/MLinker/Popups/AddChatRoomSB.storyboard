@@ -30,20 +30,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1sg-Vz-xBe"/>
                     </view>
-                    <navigationItem key="navigationItem" id="v6L-EM-clF">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hT5-70-HZp">
-                            <connections>
-                                <action selector="cancelAddChatRoom:" destination="JcL-TL-chX" id="KlY-dV-KR3"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VbF-7Q-6gg">
-                            <connections>
-                                <action selector="doneAddChatRoom:" destination="JcL-TL-chX" id="Fub-eT-Bhn"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="v6L-EM-clF"/>
                     <connections>
-                        <outlet property="doneButton" destination="VbF-7Q-6gg" id="fV0-JK-rOf"/>
                         <outlet property="usersTableView" destination="4dd-BD-i9H" id="VjA-JQ-Owu"/>
                     </connections>
                 </viewController>
