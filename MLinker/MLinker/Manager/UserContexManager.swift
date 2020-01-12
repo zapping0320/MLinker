@@ -60,4 +60,9 @@ class UserContexManager{
     {
         return lastChatRoom
     }
+    
+    func isAdminUser() -> Bool
+    {
+        return currentUserModel.isAdminAccount
+    }
 }

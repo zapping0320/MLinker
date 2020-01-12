@@ -191,7 +191,12 @@ extension UsersViewController {
             if(section != 0){
                 return ""
             }
-            return "Friends"
+            if  UserContexManager.shared.isAdminUser() {
+                return "Customers"
+            }
+            else {
+                return "Friends"
+            }
         }
         else {
             if section == 0 {
@@ -199,10 +204,23 @@ extension UsersViewController {
             }
             
             if section == 1 {
-                return "Current processing"
+                guard let dataList = usersArray[section] else {
+                    return ""
+                }
+                if dataList.count > 0 {
+                    return "Current processing"
+                }
+                else {
+                    return ""
+                }
             }
             else {
-                return "Friends"
+                if  UserContexManager.shared.isAdminUser() {
+                    return "Customers"
+                }
+                else {
+                    return "Friends"
+                }
             }
         }
     }
