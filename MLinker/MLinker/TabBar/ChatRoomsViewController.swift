@@ -69,6 +69,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     }
 
     @objc func addChatRoom() {
+        UserContexManager.shared.setLastChatRoom(model: ChatModel())
         let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom")
         addChatRoomVC.modalPresentationStyle = .fullScreen
         self.present(addChatRoomVC, animated: true, completion: nil)

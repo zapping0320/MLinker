@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9m-Cp-Rw9">
-                        <rect key="frame" x="72" y="8" width="35.5" height="22"/>
+                        <rect key="frame" x="72" y="8" width="232" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="BXP-iE-12U"/>
                         </constraints>
@@ -57,6 +57,7 @@
                     <constraint firstAttribute="trailing" secondItem="VXe-D5-HJw" secondAttribute="trailing" constant="16" id="4DM-7Z-k6x"/>
                     <constraint firstItem="sHO-Vj-Rnv" firstAttribute="top" secondItem="T9m-Cp-Rw9" secondAttribute="bottom" id="Bed-kV-iAu"/>
                     <constraint firstItem="jKN-ep-lr2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ixx-Kv-upY"/>
+                    <constraint firstAttribute="trailing" secondItem="T9m-Cp-Rw9" secondAttribute="trailing" constant="16" id="Mk0-bg-NWu"/>
                     <constraint firstItem="sHO-Vj-Rnv" firstAttribute="leading" secondItem="jKN-ep-lr2" secondAttribute="trailing" constant="16" id="VcA-n7-Pgo"/>
                     <constraint firstItem="VXe-D5-HJw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="cI5-yS-VjA"/>
                     <constraint firstItem="jKN-ep-lr2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="msA-gH-afG"/>
