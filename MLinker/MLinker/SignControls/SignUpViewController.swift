@@ -19,7 +19,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBOutlet weak var permissionCodeTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
     
     var isPickedProfileImage: Bool = false
     
@@ -27,18 +26,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileImageView.isUserInteractionEnabled = true
-        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
+        self.profileImageView.layer.cornerRadius = 41
+        self.profileImageView.clipsToBounds = true
+        self.profileImageView.isUserInteractionEnabled = true
+        self.profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
 
-        //set style at buttons
-        signUpButton.layer.cornerRadius = signUpButton.bounds.size.height / 2
-        signUpButton.layer.borderWidth = 1
-        signUpButton.layer.borderColor = UIColor.blue.cgColor
         setSignUpButtonEnabled(value: false)
-        
-        cancelButton.layer.cornerRadius = signUpButton.bounds.size.height / 2
-        cancelButton.layer.borderWidth = 1
-        cancelButton.layer.borderColor = UIColor.blue.cgColor
      
     }
     
