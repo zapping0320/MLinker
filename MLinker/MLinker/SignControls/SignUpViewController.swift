@@ -12,6 +12,7 @@ import Firebase
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -29,7 +30,9 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         self.profileImageView.layer.cornerRadius = 41
         self.profileImageView.clipsToBounds = true
         self.profileImageView.isUserInteractionEnabled = true
-        self.profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
+        self.profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImageFromImageView)))
+        
+        self.cameraButton.layer.cornerRadius = 16
 
         setSignUpButtonEnabled(value: false)
      
@@ -38,14 +41,21 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
           self.view.endEditing(true)
     }
-
     
-    @objc func pickProfileImage() {
+    @IBAction func pickImageFromButton(_ sender: Any) {
+        self.pickImage()
+    }
+    
+    @objc func pickProfileImageFromImageView() {
+        self.pickImage()
+    }
+    
+    func pickImage() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
-        
+               
         self.present(imagePicker, animated: true, completion:  nil)
     }
     

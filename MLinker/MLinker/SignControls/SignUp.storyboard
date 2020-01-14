@@ -150,6 +150,18 @@
                                 <color key="textColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2f2-pa-nwy">
+                                <rect key="frame" x="221" y="181.5" width="32" height="32"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97647058819999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="95J-rg-a0z"/>
+                                    <constraint firstAttribute="width" constant="32" id="z7k-IH-hQg"/>
+                                </constraints>
+                                <state key="normal" image="camera"/>
+                                <connections>
+                                    <action selector="pickImageFromButton:" destination="tnH-fR-ltX" eventType="touchUpInside" id="UH2-U7-Vcn"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGe-sU-HDD">
                                 <rect key="frame" x="28" y="478.5" width="33" height="16"/>
                                 <constraints>
@@ -179,11 +191,13 @@
                             <constraint firstItem="Cjk-UG-dqL" firstAttribute="top" secondItem="s3C-l1-UBv" secondAttribute="bottom" constant="16" id="Ohl-R8-sce"/>
                             <constraint firstItem="ILA-YF-POH" firstAttribute="top" secondItem="fdQ-0m-CEE" secondAttribute="bottom" constant="16" id="Ojk-kj-vZb"/>
                             <constraint firstItem="sCQ-oO-Grz" firstAttribute="trailing" secondItem="qAU-KQ-LIq" secondAttribute="trailing" constant="16" id="PbW-p6-bmf"/>
+                            <constraint firstItem="2f2-pa-nwy" firstAttribute="trailing" secondItem="k3J-aZ-jcL" secondAttribute="trailing" id="PlY-RZ-GFu"/>
                             <constraint firstItem="s3C-l1-UBv" firstAttribute="leading" secondItem="sCQ-oO-Grz" secondAttribute="leading" constant="16" id="Rt2-FN-kMA"/>
                             <constraint firstItem="3HR-ti-0XP" firstAttribute="leading" secondItem="sCQ-oO-Grz" secondAttribute="leading" constant="16" id="TBR-XC-xyJ"/>
                             <constraint firstItem="3HR-ti-0XP" firstAttribute="top" secondItem="fRv-8R-ncg" secondAttribute="bottom" constant="8" id="Vbd-1m-JEi"/>
                             <constraint firstItem="fdQ-0m-CEE" firstAttribute="leading" secondItem="sCQ-oO-Grz" secondAttribute="leading" constant="16" id="WDL-fp-Jyg"/>
                             <constraint firstItem="fRv-8R-ncg" firstAttribute="leading" secondItem="sCQ-oO-Grz" secondAttribute="leading" constant="26" id="eV9-be-Dwp"/>
+                            <constraint firstItem="2f2-pa-nwy" firstAttribute="bottom" secondItem="k3J-aZ-jcL" secondAttribute="bottom" id="fco-u9-m9U"/>
                             <constraint firstItem="fdQ-0m-CEE" firstAttribute="top" secondItem="2Z2-yS-gH2" secondAttribute="bottom" constant="8" id="jKa-Ng-jJV"/>
                             <constraint firstItem="Cjk-UG-dqL" firstAttribute="leading" secondItem="sCQ-oO-Grz" secondAttribute="leading" constant="28" id="lAF-R0-BZe"/>
                             <constraint firstItem="W0B-NY-ct3" firstAttribute="top" secondItem="sCQ-oO-Grz" secondAttribute="top" constant="30" id="oUZ-5e-CVj"/>
@@ -199,6 +213,7 @@
                         <viewLayoutGuide key="safeArea" id="sCQ-oO-Grz"/>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="2f2-pa-nwy" id="8Ih-V4-95a"/>
                         <outlet property="confirmPasswordTextField" destination="eP4-pd-3lZ" id="ePk-yC-tYk"/>
                         <outlet property="emailTextField" destination="3HR-ti-0XP" id="hgf-sq-2q1"/>
                         <outlet property="passwordTextField" destination="fdQ-0m-CEE" id="CdM-uy-0m1"/>
@@ -214,6 +229,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera" width="20" height="20"/>
         <image name="close" width="24" height="24"/>
         <image name="defaulProfileCell" width="24" height="24"/>
         <image name="done" width="24" height="24"/>

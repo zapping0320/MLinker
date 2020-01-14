@@ -187,7 +187,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "signUp(_:)"
+            landmarkName = "setSignUpButtonEnabled(value:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -238,8 +238,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
             endingLineNumber = "106"
-            landmarkName = "signUp(_:)"
-            landmarkType = "7">
+            landmarkName = "SignUpViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "7933C33C-2FB7-4FFF-851D-9FE908614E3D - b8baa5fa2a36fe94"
@@ -289,7 +289,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
-            landmarkName = "signUp(_:)"
+            landmarkName = "setSignUpButtonEnabled(value:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -357,7 +357,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "signUp(_:)"
+            landmarkName = "setSignUpButtonEnabled(value:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1599,8 +1599,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "244"
             endingLineNumber = "244"
-            landmarkName = "SignUpViewController"
-            landmarkType = "3">
+            landmarkName = "makeAllFriendsAtNewAdmin(newUserModel:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1615,7 +1615,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "251"
             endingLineNumber = "251"
-            landmarkName = "addFriendshipInfoAtFriend(targetUserModel:sourceUserModel:)"
+            landmarkName = "makeRelationConnected(newUserModel:existedUserModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1679,8 +1679,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "276"
             endingLineNumber = "276"
-            landmarkName = "SignUpViewController"
-            landmarkType = "3">
+            landmarkName = "addFriendshipInfoAtFriend(targetUserModel:sourceUserModel:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
