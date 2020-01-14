@@ -21,6 +21,9 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.profileImageView.layer.cornerRadius = 22
+        self.profileImageView.clipsToBounds = true
+        
         updaeProfileInfo()
         
         let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
@@ -41,16 +44,10 @@ class SettingViewController: UIViewController {
             profileImageView.kf.setImage(with: profileImageURL)
         }
         
-        self.emailLabel.text = currentUserModel.email
-        self.nameLabel.text = currentUserModel.name
         
-        if currentUserModel.comment?.isEmpty == false {
-            self.commentLabel.text = currentUserModel.comment
-        }
-        else
-        {
-            self.commentLabel.text = "No comments"
-        }
+        self.nameLabel.text = currentUserModel.name
+        self.emailLabel.text = currentUserModel.email
+       
     }
     
     @IBAction func editProfile(_ sender: Any) {
