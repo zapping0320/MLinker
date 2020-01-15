@@ -58,57 +58,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "15D399EF-62C7-4AD2-816F-BCC3C1470448"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MLinker/MLinker/SignControls/SignInViewController.swift"
-            timestampString = "590884146.037209"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "setSignInButtonEnabled(value:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "15D399EF-62C7-4AD2-816F-BCC3C1470448 - 16f15aee4b4b0ab4"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MLinker.SignInViewController.signIn(Any) -&gt; ()"
-                  moduleName = "MLinker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/SignControls/SignInViewController.swift"
-                  timestampString = "588462252.2158999"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "86">
-               </Location>
-               <Location
-                  uuid = "15D399EF-62C7-4AD2-816F-BCC3C1470448 - 446c2d710ca21dc4"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MLinker.SignInViewController.signIn(Any) -&gt; ()"
-                  moduleName = "MLinker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/SignControls/SignInViewController.swift"
-                  timestampString = "588462252.2203"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "121">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B21A5414-F3BF-4053-9B28-26D89BF02E1A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -440,26 +389,9 @@
             timestampString = "590884146.042523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "SignInViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1D2CCCC4-B671-4943-94F0-3715A7BBD5FA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MLinker/MLinker/SignControls/SignInViewController.swift"
-            timestampString = "590884146.042725"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "moveToSignup(_:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "setSignInButtonEnabled(value:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -474,9 +406,9 @@
             timestampString = "590883840.554472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "applyFriendShip(_:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "dismissVC(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -491,10 +423,10 @@
             timestampString = "590883840.554683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "AddFriendViewController"
-            landmarkType = "3">
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "dismissVC(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -508,9 +440,9 @@
             timestampString = "590883840.554786"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "findUserEmail()"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "dismissVC(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -576,8 +508,8 @@
             timestampString = "590883840.555176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -593,8 +525,8 @@
             timestampString = "590883840.5557671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -644,8 +576,8 @@
             timestampString = "590883840.558351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -661,9 +593,9 @@
             timestampString = "590883840.558498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "findUserEmail()"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "dismissVC(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -678,8 +610,8 @@
             timestampString = "590883840.558668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,8 +678,8 @@
             timestampString = "590883840.5605201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -763,8 +695,8 @@
             timestampString = "590883840.560625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -780,8 +712,8 @@
             timestampString = "590883840.560727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -797,8 +729,8 @@
             timestampString = "590883840.5608341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "getFriendshipModel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -814,8 +746,8 @@
             timestampString = "590883840.560938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -831,8 +763,8 @@
             timestampString = "590883840.561031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -848,8 +780,8 @@
             timestampString = "590883840.561137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "getFriendshipModel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -899,8 +831,8 @@
             timestampString = "590883840.561825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "getFriendshipModel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2862,6 +2794,22 @@
             startingLineNumber = "261"
             endingLineNumber = "261"
             landmarkName = "getCurrentUserData(indexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "514EFE34-DD1B-473B-845B-692428650D76"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/SignControls/SignInViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "signIn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

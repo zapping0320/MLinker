@@ -67,14 +67,12 @@ class SignInViewController: UIViewController {
     func setSignInButtonEnabled(value : Bool) {
         if(value){
             signInButton.isEnabled = true
-            signInButton.layer.borderColor = UIColor.blue.cgColor
-            signInButton.setTitleColor(.white, for: .normal)
+            signInButton.backgroundColor = ColorHelper.getButtonNormalBackgroundColor()
         }
         else
         {
             signInButton.isEnabled = false
-            signInButton.layer.borderColor = UIColor.gray.cgColor
-            signInButton.setTitleColor(.gray, for: .normal)
+            signInButton.backgroundColor = ColorHelper.getButtonDisabledBackgroundColor()
         }
     }
   
@@ -106,9 +104,6 @@ class SignInViewController: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        self.emailTextField.text? = "bmwe3@hanmail.net"
-        self.passwordTextField.text? = "@1234asdf"
-        setSignInButtonEnabled(value: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){

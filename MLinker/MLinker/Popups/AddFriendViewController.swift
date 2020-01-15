@@ -36,14 +36,12 @@ class AddFriendViewController: UIViewController {
     func setApplyButtonEnabled(value : Bool) {
         if(value){
             applyButton.isEnabled = true
-            applyButton.layer.borderColor = UIColor.blue.cgColor
-            applyButton.setTitleColor(.white, for: .normal)
+            applyButton.backgroundColor = ColorHelper.getButtonNormalBackgroundColor()
         }
         else
         {
             applyButton.isEnabled = false
-            applyButton.layer.borderColor = UIColor.gray.cgColor
-            applyButton.setTitleColor(.gray, for: .normal)
+            applyButton.backgroundColor = ColorHelper.getButtonDisabledBackgroundColor()
         }
     }
 
