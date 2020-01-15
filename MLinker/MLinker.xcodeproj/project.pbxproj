@@ -44,6 +44,8 @@
 		0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4E8230AFE5500B55D21 /* UIColor.swift */; };
 		0B59526A23AECB4800174564 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B59526923AECB4800174564 /* GoogleService-Info.plist */; };
 		0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB409E2356725D0085933A /* ColorHelper.swift */; };
+		0BF40A5B23CF54D800693BD5 /* CustomTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF40A5923CF54D800693BD5 /* CustomTableViewHeaderCell.swift */; };
+		0BF40A5C23CF54D800693BD5 /* CustomTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40A5A23CF54D800693BD5 /* CustomTableViewHeaderCell.xib */; };
 		0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF1759231727D400CD6561 /* AddFriendViewController.swift */; };
 		0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF175D2317287000CD6561 /* AddFriend.storyboard */; };
 		0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */; };
@@ -91,6 +93,8 @@
 		0B59526923AECB4800174564 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B59526C23BBFA3B00174564 /* MLinker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MLinker.entitlements; sourceTree = "<group>"; };
 		0BCB409E2356725D0085933A /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
+		0BF40A5923CF54D800693BD5 /* CustomTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewHeaderCell.swift; sourceTree = "<group>"; };
+		0BF40A5A23CF54D800693BD5 /* CustomTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewHeaderCell.xib; sourceTree = "<group>"; };
 		0BFF1759231727D400CD6561 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		0BFF175D2317287000CD6561 /* AddFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriend.storyboard; sourceTree = "<group>"; };
 		0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipListModel.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				0B076A5923397B8500B5AF43 /* ChatMyCell.xib */,
 				0B3F4219235A734700CAE1B1 /* ChatNoticeCell.swift */,
 				0B3F421A235A734700CAE1B1 /* ChatNoticeCell.xib */,
+				0BF40A5923CF54D800693BD5 /* CustomTableViewHeaderCell.swift */,
+				0BF40A5A23CF54D800693BD5 /* CustomTableViewHeaderCell.xib */,
 			);
 			path = CommonControls;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				0B59526A23AECB4800174564 /* GoogleService-Info.plist in Resources */,
 				0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */,
 				0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */,
+				0BF40A5C23CF54D800693BD5 /* CustomTableViewHeaderCell.xib in Resources */,
 				0B191FDF233192290016EA85 /* ChatView.storyboard in Resources */,
 				0B3F421C235A734700CAE1B1 /* ChatNoticeCell.xib in Resources */,
 				0B16822123148AD3004F8089 /* UserTableViewCell.xib in Resources */,
@@ -398,6 +405,7 @@
 				0B44C4CE230210D600B55D21 /* ChatRoomsViewController.swift in Sources */,
 				0B44C4C822FB868300B55D21 /* UserModel.swift in Sources */,
 				0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */,
+				0BF40A5B23CF54D800693BD5 /* CustomTableViewHeaderCell.swift in Sources */,
 				0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */,
 				0B16822023148AD3004F8089 /* UserTableViewCell.swift in Sources */,
 				0B16821D23133B97004F8089 /* ViewController.swift in Sources */,

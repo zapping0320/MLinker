@@ -33,6 +33,9 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
+        self.usersTableView.register(UINib(nibName: "CustomTableViewHeaderCell", bundle: nil), forCellReuseIdentifier: "HeaderCell")
+        
+        
         let button = UIButton(type: .custom)
         button.setImage(UIImage (named: "addFriend"), for: .normal)
         button.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
@@ -320,6 +323,26 @@ extension UsersViewController {
         profileVC.selectedUserModel = getCurrentUserData(indexPath: indexPath)
         profileVC.modalPresentationStyle = .fullScreen
         self.present(profileVC, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! CustomTableViewHeaderCell
+       
+        cell.titleLabel.text = self.getTableHeaderString(section: section)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let titleString = self.getTableHeaderString(section: section)
+                
+        if titleString.isEmpty {
+            return 0
+        }
+        else {
+            return 32.0
+        }
     }
 
 }
