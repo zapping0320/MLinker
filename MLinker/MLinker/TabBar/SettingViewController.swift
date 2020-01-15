@@ -24,6 +24,21 @@ class SettingViewController: UIViewController {
         self.profileImageView.layer.cornerRadius = 22
         self.profileImageView.clipsToBounds = true
         
+        let logoutButton = UIButton(type: .custom)
+        logoutButton.setImage(UIImage (named: "logout"), for: .normal)
+        logoutButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
+        logoutButton.addTarget(self, action: #selector(tryLogout),for: UIControl.Event.touchUpInside)
+        let logoutBarButton = UIBarButtonItem(customView: logoutButton)
+        
+        let editButton = UIButton(type: .custom)
+        editButton.setImage(UIImage (named: "setting"), for: .normal)
+        editButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
+        editButton.addTarget(self, action: #selector(editProfile),for: UIControl.Event.touchUpInside)
+        let editBarButton = UIBarButtonItem(customView: editButton)
+        
+        
+        self.navigationItem.rightBarButtonItems = [editBarButton, logoutBarButton ]
+        
         updaeProfileInfo()
         
         let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
@@ -50,7 +65,7 @@ class SettingViewController: UIViewController {
        
     }
     
-    @IBAction func editProfile(_ sender: Any) {
+    @objc func editProfile() {
         let alert = UIAlertController(title: "Coming soon", message: "This function has not been supporting yet", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             
@@ -67,7 +82,7 @@ class SettingViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func logout(_ sender: Any) {
+    @objc func tryLogout() {
         let alert = UIAlertController(title: title,
                                       message: NSLocalizedString("Logout", comment: ""),
                                       preferredStyle: .alert)
