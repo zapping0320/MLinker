@@ -661,8 +661,8 @@
             timestampString = "590969994.687139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -797,9 +797,9 @@
             timestampString = "590969994.687529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "subButtonAction(_:)"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "cancelFriendshipRequest()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -848,8 +848,8 @@
             timestampString = "590969994.68796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "cancelFriendshipRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -865,8 +865,8 @@
             timestampString = "590969994.688172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "cancelFriendshipRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -882,8 +882,8 @@
             timestampString = "590969994.688372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "cancelFriendshipRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -899,8 +899,8 @@
             timestampString = "590969994.688466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "cancelFriendshipRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -916,26 +916,9 @@
             timestampString = "590969994.688599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "acceptFriendshipRequest()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "29A3C0D4-5E5D-4944-8919-216F0233C444"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
-            timestampString = "590969994.688719"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -950,9 +933,9 @@
             timestampString = "590969994.6888551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "closeProfileVC()"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "mainButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -967,9 +950,9 @@
             timestampString = "590969994.689212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "loadFriendShipInfo()"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "updateProfileInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1103,8 +1086,8 @@
             timestampString = "590969994.6903369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "createChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1120,8 +1103,8 @@
             timestampString = "590969994.690503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1137,8 +1120,8 @@
             timestampString = "590969994.690643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "createChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1154,9 +1137,9 @@
             timestampString = "590969994.690749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "acceptFriendshipRequest()"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1171,9 +1154,9 @@
             timestampString = "590969994.69099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "acceptFriendshipRequest()"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
+            landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1188,9 +1171,9 @@
             timestampString = "590969994.691099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "acceptFriendshipRequest()"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
+            landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1205,8 +1188,8 @@
             timestampString = "590969994.691201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "createChatRoom()"
             landmarkType = "7">
             <Locations>
@@ -1254,8 +1237,8 @@
             timestampString = "590969994.691355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1271,8 +1254,8 @@
             timestampString = "590969994.69147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "createChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1288,8 +1271,8 @@
             timestampString = "590969994.691636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "findChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1305,8 +1288,8 @@
             timestampString = "590969994.691965"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "createChatRoom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2073,9 +2056,9 @@
             filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
-            landmarkName = "createChatRoom()"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "moveChatView(chatModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2249,8 +2232,8 @@
             filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "loadFriendShipInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2265,9 +2248,9 @@
             filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "closeVC(_:)"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "loadFriendShipInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2281,8 +2264,8 @@
             filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "loadFriendShipInfo()"
             landmarkType = "7">
             <Locations>
@@ -2329,9 +2312,9 @@
             filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "closeProfileVC()"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "mainButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2403,15 +2386,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "377F307E-AF7F-4E7F-905E-51756DF40913"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
-            landmarkName = "rejectFriendship(includeChat:)"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
+            landmarkName = "enterEditMode()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2823,8 +2806,8 @@
             filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "loadFriendShipInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2839,8 +2822,8 @@
             filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "loadFriendShipInfo()"
             landmarkType = "7">
          </BreakpointContent>

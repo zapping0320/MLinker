@@ -15,14 +15,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var adminAccountLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commetTextField: UITextField!
+    @IBOutlet weak var titleNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var subButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var editProfileButton: UIButton!
     
     public var selectedUserModel: UserModel = UserModel()
     private var selectedFriendshipModel : FriendshipModel?
@@ -42,15 +45,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
-        
-        mainButton.layer.cornerRadius = mainButton.bounds.size.height / 2
-        mainButton.layer.borderWidth = 1
-        mainButton.layer.borderColor = UIColor.blue.cgColor
-        
-        subButton.layer.cornerRadius = subButton.bounds.size.height / 2
-        subButton.layer.borderWidth = 1
-        subButton.layer.borderColor = UIColor.blue.cgColor
-        
         
         adminAccountLabel.isHidden = true
         
@@ -96,7 +90,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     func updateProfileInfo()
     {
+        self.titleNameLabel.text = self.selectedUserModel.name
         self.nameLabel.text = self.selectedUserModel.name
+        self.emailLabel.text = self.selectedUserModel.email
+        
         if self.selectedUserModel.comment?.isEmpty == false {
             self.commentLabel.text = self.selectedUserModel.comment
         }
