@@ -55,7 +55,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         adminAccountLabel.isHidden = true
         
         self.setUIEditMode(mode: false)
-        self.loadFriendShipInfo()
+        if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
+        {
+            self.updateProfileInfo()
+        }
+        else
+        {
+            self.loadFriendShipInfo()
+        }
     }
     
     @IBAction func closeVC(_ sender: Any) {
@@ -63,13 +70,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     }
     
     func loadFriendShipInfo()
-    {
-        if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
-        {
-            return
-        }
-        
-    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+    { Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let friendshipDic = item.value as? [String:AnyObject] {
@@ -80,15 +81,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                         self.selectedFriendshipModel = friendshipModel
                         break
                     }
-                    
-                    DispatchQueue.main.async {
-                        self.updateProfileInfo()
-                        if let profileImageString = self.selectedUserModel.profileURL {
-                            let profileImageURL = URL(string: profileImageString)
-                            self.profileImageView.kf.setImage(with: profileImageURL)
-                        }
-                    }
                 }
+            }
+            
+            DispatchQueue.main.async {
+                self.updateProfileInfo()
             }
         }
     }
@@ -106,6 +103,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         
         if(selectedFriendshipModel != nil)
         {
+            if let profileImageString = self.selectedUserModel.profileURL {
+                let profileImageURL = URL(string: profileImageString)
+                self.profileImageView.kf.setImage(with: profileImageURL)
+            }
+            
             if(selectedFriendshipModel?.status == FriendStatus.Requesting){
                 self.mainButton.setTitle("cancel Request", for: .normal)
                 self.subButton.isHidden = true
