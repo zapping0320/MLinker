@@ -39,11 +39,12 @@ class SettingViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItems = [editBarButton, logoutBarButton ]
         
-        updaeProfileInfo()
-        
         let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
         self.appVersionLabel.text = appVersion
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updaeProfileInfo()
     }
     
     func updaeProfileInfo()
@@ -66,11 +67,11 @@ class SettingViewController: UIViewController {
     }
     
     @objc func editProfile() {
-        let alert = UIAlertController(title: "Coming soon", message: "This function has not been supporting yet", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-            
-        }))
-        self.present(alert, animated: true, completion: nil)
+        let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
+        
+        profileVC.selectedUserModel = UserContexManager.shared.getCurrentUserModel()
+        profileVC.modalPresentationStyle = .fullScreen
+        self.present(profileVC, animated: true, completion: nil)
         
     }
     

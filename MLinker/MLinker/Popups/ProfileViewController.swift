@@ -65,6 +65,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
+    
     @IBAction func closeVC(_ sender: Any) {
         closeProfileVC()
     }
@@ -103,11 +107,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         
         if(selectedFriendshipModel != nil)
         {
-            if let profileImageString = self.selectedUserModel.profileURL {
-                let profileImageURL = URL(string: profileImageString)
-                self.profileImageView.kf.setImage(with: profileImageURL)
-            }
-            
             if(selectedFriendshipModel?.status == FriendStatus.Requesting){
                 self.mainButton.setTitle("cancel Request", for: .normal)
                 self.subButton.isHidden = true
@@ -135,6 +134,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         }
         else
         {
+            if let profileImageString = self.selectedUserModel.profileURL {
+                let profileImageURL = URL(string: profileImageString)
+                self.profileImageView.kf.setImage(with: profileImageURL)
+            }
+            
             if(self.currnetUserUid == self.selectedUserModel.uid)
             {
                 //self
@@ -150,7 +154,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     {
         if(self.changedFriendInfo == true)
         {
-             NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
+            if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
+            {
+                UserContexManager.shared.setCurrentUserModel(model:  self.selectedUserModel)
+            }
+            
+            NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
         }
         
         self.dismiss(animated: true, completion: nil)

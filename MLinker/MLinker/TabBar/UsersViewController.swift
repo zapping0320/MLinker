@@ -317,7 +317,6 @@ extension UsersViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("did select \(indexPath)")
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
         
         profileVC.selectedUserModel = getCurrentUserData(indexPath: indexPath)
