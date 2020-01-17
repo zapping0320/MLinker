@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var subButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -39,8 +40,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.profileImageView.layer.cornerRadius = 75
-        //self.profileImageView.clipsToBounds = true
+        self.profileImageView.layer.cornerRadius = 41
+        self.profileImageView.clipsToBounds = true
+        self.cameraButton.layer.cornerRadius = 16
         
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
         
@@ -439,6 +441,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.rejectFriendship(includeChat: false)
     }
     
+    @IBAction func enterEditModeAction(_ sender: Any) {
+        self.enterEditMode()
+    }
+    
     func enterEditMode() {
         self.setUIEditMode(mode: true)
         self.nameTextField.text = self.selectedUserModel.name
@@ -448,19 +454,33 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     func setUIEditMode(mode : Bool) {
         self.closeButton.isHidden = mode
+        self.editProfileButton.isHidden = mode
+        
+        self.cancelButton.isHidden = !mode
+        self.saveButton.isHidden = !mode
+        
         self.commentLabel.isHidden = mode
         self.commetTextField.isHidden = !mode
         self.nameLabel.isHidden = mode
         self.nameTextField.isHidden = !mode
         
         self.profileImageView.isUserInteractionEnabled = mode
+        self.cameraButton.isHidden = !mode
         
         self.mainButton.isHidden = mode
-        self.cancelButton.isHidden = !mode
-        self.saveButton.isHidden = !mode
+        self.subButton.isHidden = mode
+        
+    }
+    
+    @IBAction func pickProfileAction(_ sender: Any) {
+        self.pickImage()
     }
     
     @objc func pickProfileImage() {
+        self.pickImage()
+    }
+    
+    func pickImage() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true

@@ -16,18 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxQ-d3-1V0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVK-Df-0Sx">
+                                <rect key="frame" x="16" y="74" width="24" height="24"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="cancelProfileEdit:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="Z9T-Xp-OVP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxQ-d3-1V0">
                                 <rect key="frame" x="16" y="74" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="BgY-Jh-HXK"/>
                                     <constraint firstAttribute="width" constant="24" id="WUH-TW-t7C"/>
                                 </constraints>
-                                <state key="normal" title="✕"/>
+                                <state key="normal" image="close"/>
                                 <connections>
                                     <action selector="closeVC:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="Zi3-Pl-C9e"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Prt-mP-alW">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Prt-mP-alW">
                                 <rect key="frame" x="161" y="132" width="92" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="UDy-S3-vUu"/>
@@ -43,17 +50,8 @@
                                 <color key="textColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVK-Df-0Sx">
-                                <rect key="frame" x="30" y="98" width="56" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelProfileEdit:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="Z9T-Xp-OVP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQU-4K-aa4">
-                                <rect key="frame" x="360" y="98" width="24" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQU-4K-aa4">
+                                <rect key="frame" x="374" y="74" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="L8B-Le-23H"/>
                                     <constraint firstAttribute="height" constant="24" id="c3H-EP-1Ar"/>
@@ -124,6 +122,9 @@
                                     <constraint firstAttribute="width" constant="24" id="pVz-Jv-PX1"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="edit"/>
+                                <connections>
+                                    <action selector="enterEditModeAction:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="vt5-kn-5PS"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VV5-P6-exL">
                                 <rect key="frame" x="50" y="74" width="314" height="30"/>
@@ -152,13 +153,34 @@
                                 <color key="textColor" red="0.34901960784313724" green="0.3529411764705882" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-2H-OSh">
+                                <rect key="frame" x="0.0" y="811" width="414" height="1"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Rth-W6-5mC"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ig-0j-acO">
+                                <rect key="frame" x="221" y="192" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="UoD-Sx-i1O"/>
+                                    <constraint firstAttribute="height" constant="32" id="ewx-Az-dJE"/>
+                                </constraints>
+                                <state key="normal" image="camera"/>
+                                <connections>
+                                    <action selector="pickProfileAction:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="aBB-qh-O9A"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Dqp-2H-OSh" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" id="27U-Dk-hxI"/>
+                            <constraint firstItem="9oU-ae-BXf" firstAttribute="top" secondItem="Dqp-2H-OSh" secondAttribute="bottom" id="2Rh-W7-mil"/>
                             <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="5FT-an-eaZ" secondAttribute="trailing" constant="24" id="3S2-co-pf0"/>
                             <constraint firstItem="4zt-sC-skc" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="24" id="5gm-u2-f4q"/>
                             <constraint firstItem="VV5-P6-exL" firstAttribute="top" secondItem="LLa-tR-DIZ" secondAttribute="top" constant="30" id="6qq-Mh-flV"/>
                             <constraint firstItem="VV5-P6-exL" firstAttribute="centerX" secondItem="bEI-WR-ICe" secondAttribute="centerX" id="6wl-8K-nmm"/>
+                            <constraint firstItem="kQU-4K-aa4" firstAttribute="top" secondItem="LLa-tR-DIZ" secondAttribute="top" constant="30" id="8rV-Id-J6C"/>
                             <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="24q-9L-4xB" secondAttribute="trailing" constant="16" id="Aof-Ty-AFu"/>
                             <constraint firstItem="Prt-mP-alW" firstAttribute="centerX" secondItem="bEI-WR-ICe" secondAttribute="centerX" id="BUw-bL-Mfa"/>
                             <constraint firstItem="RXS-2o-g38" firstAttribute="top" secondItem="5FT-an-eaZ" secondAttribute="bottom" id="C31-J7-sRx"/>
@@ -166,16 +188,22 @@
                             <constraint firstItem="Pbg-hF-KiK" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="24" id="HJd-Hf-Qws"/>
                             <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="4zt-sC-skc" secondAttribute="trailing" constant="24" id="JRF-FG-XkU"/>
                             <constraint firstItem="4zt-sC-skc" firstAttribute="top" secondItem="RXS-2o-g38" secondAttribute="bottom" id="MJW-HE-VCl"/>
+                            <constraint firstItem="KVK-Df-0Sx" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="16" id="O4c-bS-COo"/>
                             <constraint firstItem="VV5-P6-exL" firstAttribute="leading" secondItem="TxQ-d3-1V0" secondAttribute="trailing" constant="10" id="Q67-bw-LGh"/>
                             <constraint firstItem="24q-9L-4xB" firstAttribute="top" secondItem="LLa-tR-DIZ" secondAttribute="top" constant="30" id="QEC-eO-r99"/>
+                            <constraint firstItem="6Ig-0j-acO" firstAttribute="bottom" secondItem="Prt-mP-alW" secondAttribute="bottom" id="S6d-eu-utu"/>
                             <constraint firstItem="TxQ-d3-1V0" firstAttribute="top" secondItem="LLa-tR-DIZ" secondAttribute="top" constant="30" id="UaH-sp-3fj"/>
                             <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="9oU-ae-BXf" secondAttribute="trailing" id="UgI-uK-Yut"/>
                             <constraint firstItem="5FT-an-eaZ" firstAttribute="top" secondItem="Prt-mP-alW" secondAttribute="bottom" constant="18" id="XVs-4u-2Gc"/>
+                            <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="kQU-4K-aa4" secondAttribute="trailing" constant="16" id="aEm-b9-BAm"/>
                             <constraint firstItem="5FT-an-eaZ" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="24" id="bYL-J7-VS4"/>
                             <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="RXS-2o-g38" secondAttribute="trailing" constant="24" id="dxg-P0-W0Y"/>
                             <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="Pbg-hF-KiK" secondAttribute="trailing" constant="24" id="iL4-NA-sLG"/>
+                            <constraint firstItem="6Ig-0j-acO" firstAttribute="trailing" secondItem="Prt-mP-alW" secondAttribute="trailing" id="irJ-lt-Pet"/>
+                            <constraint firstItem="KVK-Df-0Sx" firstAttribute="top" secondItem="LLa-tR-DIZ" secondAttribute="top" constant="30" id="lWh-qX-2hU"/>
                             <constraint firstItem="TxQ-d3-1V0" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="16" id="nZi-bx-fGC"/>
                             <constraint firstItem="9oU-ae-BXf" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" id="oHM-cy-DmQ"/>
+                            <constraint firstItem="LLa-tR-DIZ" firstAttribute="trailing" secondItem="Dqp-2H-OSh" secondAttribute="trailing" id="pOO-KK-3qj"/>
                             <constraint firstItem="LLa-tR-DIZ" firstAttribute="bottom" secondItem="9oU-ae-BXf" secondAttribute="bottom" id="scJ-tp-hRq"/>
                             <constraint firstItem="Prt-mP-alW" firstAttribute="top" secondItem="VV5-P6-exL" secondAttribute="bottom" constant="28" id="vnW-PJ-KC5"/>
                             <constraint firstItem="RXS-2o-g38" firstAttribute="leading" secondItem="LLa-tR-DIZ" secondAttribute="leading" constant="24" id="zNn-ik-210"/>
@@ -186,6 +214,7 @@
                     <navigationItem key="navigationItem" id="9p4-p0-noK"/>
                     <connections>
                         <outlet property="adminAccountLabel" destination="4zt-sC-skc" id="UVe-Sp-aEn"/>
+                        <outlet property="cameraButton" destination="6Ig-0j-acO" id="U1C-CX-VHg"/>
                         <outlet property="cancelButton" destination="KVK-Df-0Sx" id="o6Q-fN-t3g"/>
                         <outlet property="closeButton" destination="TxQ-d3-1V0" id="V4f-GO-WCa"/>
                         <outlet property="commentLabel" destination="RXS-2o-g38" id="W9d-t8-YFG"/>
@@ -208,6 +237,8 @@
     </scenes>
     <resources>
         <image name="acceptRequest" width="24" height="24"/>
+        <image name="camera" width="20" height="20"/>
+        <image name="close" width="24" height="24"/>
         <image name="defaultPhoto" width="18" height="18"/>
         <image name="done" width="24" height="24"/>
         <image name="edit" width="24" height="24"/>
