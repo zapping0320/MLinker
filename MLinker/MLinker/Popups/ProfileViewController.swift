@@ -48,6 +48,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.profileImageView.clipsToBounds = true
         self.cameraButton.layer.cornerRadius = 16
         
+        self.emailLabel.layer.borderWidth = 1
+        self.emailLabel.layer.borderColor = ColorHelper.getGray300Color().cgColor
+        self.emailLabel.layer.cornerRadius = 12
+        
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
@@ -523,6 +527,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             {
                 self.selectedUserModel.name = self.nameTextField.text!
                 self.nameLabel.text = self.nameTextField.text!
+                self.titleNameLabel.text = self.nameTextField.text!
                 self.selectedUserModel.comment = self.commetTextField.text!
                 self.commentLabel.text = self.commetTextField.text!
                 self.updateProfileImage()

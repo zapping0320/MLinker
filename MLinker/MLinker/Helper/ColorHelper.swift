@@ -18,6 +18,7 @@ class ColorHelper {
     
     static let buttonDisabledBackgroundColor = UIColor(red: 217/255, green: 218/255, blue: 221/255, alpha: 1)
     
+    static let gray300 = UIColor(red: 217/255, green: 218/255, blue: 221/255, alpha: 1)
     
     static let darkModeMainAlertTextColor = UIColor.lightGray
     
@@ -39,5 +40,10 @@ class ColorHelper {
     static func getButtonDisabledBackgroundColor() -> UIColor
     {
         return buttonDisabledBackgroundColor
+    }
+    
+    static func getGray300Color()-> UIColor
+    {
+        return gray300
     }
 }
