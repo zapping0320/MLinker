@@ -25,12 +25,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var mainButton: UIButton!
-    @IBOutlet weak var subButton: UIButton!
+   
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var editProfileButton: UIButton!
+   
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
     
     public var selectedUserModel: UserModel = UserModel()
     private var selectedFriendshipModel : FriendshipModel?
@@ -115,28 +117,33 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         if(selectedFriendshipModel != nil)
         {
             if(selectedFriendshipModel?.status == FriendStatus.Requesting){
-                self.mainButton.setTitle("cancel Request", for: .normal)
-                self.subButton.isHidden = true
+                self.leftButton.setTitle("cancel Request", for: .normal)
+                self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
+                self.rightButton.isHidden = true
             }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
-                self.mainButton.setTitle("accept Request", for: .normal)
-                self.subButton.setTitle("reject Request", for: .normal)
+                self.leftButton.setTitle("accept Request", for: .normal)
+                self.leftButton.setImage(UIImage (named: "acceptRequest"), for: .normal)
+                self.rightButton.setTitle("reject Request", for: .normal)
+                self.leftButton.setImage(UIImage (named: "rejectRequest"), for: .normal)
             }
             else if(selectedFriendshipModel?.status == FriendStatus.Connected)
             {
-                self.mainButton.setTitle("start Chat", for: .normal)
+                self.leftButton.setTitle("start Chat", for: .normal)
+                //self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
                 if(self.selectedUserModel.isAdminAccount == false)
                 {
-                    self.subButton.setTitle("disconnect Friendship", for: .normal)
+                    self.rightButton.setTitle("disconnect Friendship", for: .normal)
+                    self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
                 }
                 else
                 {
-                    self.subButton.isHidden = true
+                    self.rightButton.isHidden = true
                 }
             }
             else
             {
-                self.mainButton.isHidden = true
-                self.subButton.isHidden = true
+                self.leftButton.isHidden = true
+                self.rightButton.isHidden = true
             }
         }
         else
@@ -149,8 +156,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             if(self.currnetUserUid == self.selectedUserModel.uid)
             {
                 //self
-                self.mainButton.setTitle("edit Profile", for: .normal)
-                self.subButton.isHidden = true
+                self.leftButton.setTitle("ToMe", for: .normal)
+                //self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
+                self.rightButton.isHidden = true
                 self.adminAccountLabel.isHidden = !self.selectedUserModel.isAdminAccount
             }
             
@@ -172,7 +180,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func mainButtonAction(_ sender: Any) {
+    @IBAction func leftButtonAction(_ sender: Any) {
         if(selectedFriendshipModel != nil)
         {
             self.changedFriendInfo = true
@@ -196,13 +204,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         {
             if(self.currnetUserUid == self.selectedUserModel.uid)
             {
-                //edit profile
-                self.enterEditMode()
+                //start self chat
             }
         }
     }
     
-    @IBAction func subButtonAction(_ sender: Any) {
+    @IBAction func rightButtonAction(_ sender: Any) {
         if(selectedFriendshipModel == nil)
         {
             return
@@ -478,8 +485,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.profileImageView.isUserInteractionEnabled = mode
         self.cameraButton.isHidden = !mode
         
-        self.mainButton.isHidden = mode
-        self.subButton.isHidden = mode
+        self.leftButton.isHidden = mode
+        self.rightButton.isHidden = mode
         
     }
     

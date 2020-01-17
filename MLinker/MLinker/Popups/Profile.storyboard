@@ -107,7 +107,7 @@
                                             <color key="titleColor" red="0.42745098039215684" green="0.43137254901960786" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="mainButtonAction:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="fAS-Kw-NvV"/>
+                                            <action selector="leftButtonAction:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="fAS-Kw-NvV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8M-Mg-4rd">
@@ -117,7 +117,7 @@
                                             <color key="titleColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="subButtonAction:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="jj5-vg-FSt"/>
+                                            <action selector="rightButtonAction:" destination="2dy-t7-Ndg" eventType="touchUpInside" id="jj5-vg-FSt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -251,13 +251,13 @@
                         <outlet property="commetTextField" destination="mUH-5c-HtU" id="QS8-kF-lF2"/>
                         <outlet property="editProfileButton" destination="24q-9L-4xB" id="Mp2-Yd-src"/>
                         <outlet property="emailLabel" destination="Pbg-hF-KiK" id="L2Z-Ev-mXV"/>
-                        <outlet property="mainButton" destination="I6W-RO-2Ic" id="A3L-v3-I2O"/>
+                        <outlet property="leftButton" destination="I6W-RO-2Ic" id="A3L-v3-I2O"/>
                         <outlet property="nameEditButton" destination="xpb-Dq-KzM" id="Ato-j2-Bkb"/>
                         <outlet property="nameLabel" destination="5FT-an-eaZ" id="A5u-al-Zm1"/>
                         <outlet property="nameTextField" destination="Pfa-cy-z60" id="Ytd-xK-WUb"/>
                         <outlet property="profileImageView" destination="Prt-mP-alW" id="0rH-dk-zTR"/>
+                        <outlet property="rightButton" destination="P8M-Mg-4rd" id="R38-Fu-c5j"/>
                         <outlet property="saveButton" destination="kQU-4K-aa4" id="J0V-4d-e5I"/>
-                        <outlet property="subButton" destination="P8M-Mg-4rd" id="R38-Fu-c5j"/>
                         <outlet property="titleNameLabel" destination="VV5-P6-exL" id="eAn-3j-dVw"/>
                     </connections>
                 </viewController>
