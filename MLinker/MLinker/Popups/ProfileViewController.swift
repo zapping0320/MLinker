@@ -15,9 +15,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var adminAccountLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commetTextField: UITextField!
+    @IBOutlet weak var commentEditButton: UIButton!
+    
+    
     @IBOutlet weak var titleNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameEditButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
@@ -461,8 +465,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         
         self.commentLabel.isHidden = mode
         self.commetTextField.isHidden = !mode
+        self.commentEditButton.isHidden = !mode
+
         self.nameLabel.isHidden = mode
         self.nameTextField.isHidden = !mode
+        self.nameEditButton.isHidden = !mode
         
         self.profileImageView.isUserInteractionEnabled = mode
         self.cameraButton.isHidden = !mode
