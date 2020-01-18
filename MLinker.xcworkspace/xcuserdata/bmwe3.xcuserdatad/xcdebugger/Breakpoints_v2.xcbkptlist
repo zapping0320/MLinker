@@ -1088,7 +1088,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "377"
             endingLineNumber = "377"
-            landmarkName = "createChatRoom()"
+            landmarkName = "createChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1105,7 +1105,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "344"
             endingLineNumber = "344"
-            landmarkName = "findChatRoom()"
+            landmarkName = "findChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1122,7 +1122,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "388"
             endingLineNumber = "388"
-            landmarkName = "createChatRoom()"
+            landmarkName = "createChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1139,7 +1139,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "332"
             endingLineNumber = "332"
-            landmarkName = "findChatRoom()"
+            landmarkName = "findChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1156,7 +1156,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "329"
             endingLineNumber = "329"
-            landmarkName = "findChatRoom()"
+            landmarkName = "findChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1173,7 +1173,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "328"
             endingLineNumber = "328"
-            landmarkName = "findChatRoom()"
+            landmarkName = "findChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1190,7 +1190,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "373"
             endingLineNumber = "373"
-            landmarkName = "createChatRoom()"
+            landmarkName = "findChatRoom(isStandAlone:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1239,7 +1239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "352"
             endingLineNumber = "352"
-            landmarkName = "findChatRoom()"
+            landmarkName = "findChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1256,8 +1256,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "375"
             endingLineNumber = "375"
-            landmarkName = "createChatRoom()"
-            landmarkType = "7">
+            landmarkName = "ProfileViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1273,7 +1273,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "336"
             endingLineNumber = "336"
-            landmarkName = "findChatRoom()"
+            landmarkName = "findChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1290,7 +1290,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "389"
             endingLineNumber = "389"
-            landmarkName = "createChatRoom()"
+            landmarkName = "createChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1330,7 +1330,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DC647315-E01D-40C9-A1A8-FE911B662F8F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
@@ -2058,8 +2058,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "409"
             endingLineNumber = "409"
-            landmarkName = "ProfileViewController"
-            landmarkType = "3">
+            landmarkName = "createChatRoom(isStandAlone:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2394,8 +2394,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "462"
             endingLineNumber = "462"
-            landmarkName = "ProfileViewController"
-            landmarkType = "3">
+            landmarkName = "rejectFriendship(includeChat:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2841,6 +2841,22 @@
             startingLineNumber = "107"
             endingLineNumber = "107"
             landmarkName = "updateProfileInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C8B457C-95D4-4EB7-8385-92D20CA30B29"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "leftButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

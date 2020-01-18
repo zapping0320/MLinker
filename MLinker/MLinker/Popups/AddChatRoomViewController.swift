@@ -152,6 +152,7 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         
         let chatRoomValue : Dictionary<String, Any> = [
             "isIncludeAdminAccount" :  isIncludeAdmin,
+            "standAlone" : false,
             "chatUserIdDic" : self.selectedChatModel.chatUserIdDic,
             "chatUserProfiles" : self.selectedChatModel.chatUserProfiles,
             "timestamp" : ServerValue.timestamp()
@@ -275,6 +276,7 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         
         let chatRoomValue : Dictionary<String, Any> = [
             "isIncludeAdminAccount" :  isIncludeAdmin ? true : false,
+            "standAlone" : false,
             "chatUserIdDic" : selectedUsersDic,
             "chatUserProfiles" : profileDic,
             "name" : chatRoomName,

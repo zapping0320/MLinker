@@ -197,7 +197,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             else if(selectedFriendshipModel?.status == FriendStatus.Connected)
             {
                 //start chat
-                self.findChatRoom()
+                self.findChatRoom(isStandAlone: false)
             }
         }
         else
@@ -205,6 +205,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             if(self.currnetUserUid == self.selectedUserModel.uid)
             {
                 //start self chat
+                self.findChatRoom(isStandAlone: true)
             }
         }
     }
@@ -322,7 +323,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         }
     }
     
-    func findChatRoom()
+    func findChatRoom(isStandAlone : Bool)
     {
         //find same users' chat room
         Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
@@ -333,13 +334,25 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 if let chatRoomdic = item.value as? [String:AnyObject] {
                     let chatModel = ChatModel(JSON: chatRoomdic)
                     chatModel?.uid = item.key
-                    if(chatModel?.chatUserIdDic.count == 2 &&
-                      (chatModel?.chatUserIdDic[self.currnetUserUid] != nil) &&
-                      chatModel?.chatUserIdDic[self.selectedUserModel.uid!] != nil)
+                    if(isStandAlone)
                     {
-                        foundRoom = true
-                        foundRoomInfo = chatModel!
-                        break
+                        if(chatModel?.chatUserIdDic.count == 1 && (chatModel?.chatUserIdDic[self.currnetUserUid] != nil))
+                        {
+                            foundRoom = true
+                            foundRoomInfo = chatModel!
+                            break
+                        }
+                    }
+                    else
+                    {
+                        if(chatModel?.chatUserIdDic.count == 2 &&
+                            (chatModel?.chatUserIdDic[self.currnetUserUid] != nil) &&
+                            chatModel?.chatUserIdDic[self.selectedUserModel.uid!] != nil)
+                        {
+                            foundRoom = true
+                            foundRoomInfo = chatModel!
+                            break
+                        }
                     }
                     
                 }
@@ -353,35 +366,48 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             else
             {
                 //else make chatroom and move chat view
-                self.createChatRoom()
+                self.createChatRoom(isStandAlone: isStandAlone)
             }
             
         }
         
     }
     
-    func createChatRoom()
+    func createChatRoom(isStandAlone : Bool)
     {
-        let userIdDic : Dictionary<String, Bool> = [
-            self.currnetUserUid : false,
-            self.selectedUserModel.uid! : false
+        var userIdDic : Dictionary<String, Bool> = [
+            self.currnetUserUid : false
         ]
+        
+        if(isStandAlone == false)
+        {
+            userIdDic.updateValue(false, forKey: self.selectedUserModel.uid!)
+        }
         
         var profileDic : Dictionary<String, String> = [
             self.currnetUserUid : "",
         ]
+        
         if let currentUserProfile = UserContexManager.shared.getCurrentUserModel().profileURL {
             profileDic[self.currnetUserUid] = currentUserProfile
         }
         
-        if let selectedUserProfile = self.selectedUserModel.profileURL {
-            profileDic.updateValue(selectedUserProfile, forKey: self.selectedUserModel.uid!)
+        if(isStandAlone == false)
+        {
+            if let selectedUserProfile = self.selectedUserModel.profileURL {
+                profileDic.updateValue(selectedUserProfile, forKey: self.selectedUserModel.uid!)
+            }
         }
         
+        var isAdminAccount = UserContexManager.shared.getCurrentUserModel().isAdminAccount
+        if(isStandAlone == false && self.selectedUserModel.isAdminAccount)
+        {
+            isAdminAccount = true
+        }
         
         let chatRoomName = self.selectedUserModel.name!
         let chatRoomValue : Dictionary<String, Any> = [
-            "isIncludeAdminAccount" : self.selectedUserModel.isAdminAccount ? true : false,
+            "isIncludeAdminAccount" : isAdminAccount,
             "chatUserIdDic" : userIdDic,
             "chatUserProfiles" : profileDic,
             "name" : chatRoomName,
@@ -391,7 +417,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
             (err, ref) in
             if(err == nil) {
-                self.findChatRoom()
+                self.findChatRoom(isStandAlone: isStandAlone)
             }
             else {
                 
