@@ -134,6 +134,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, error) in
             guard let user = authResult?.user, error == nil else {
+                let alert = UIAlertController(title: "Sign Up", message: "Used Email has already registered. Please check your email", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
                 return
             }
             let uid = user.uid
