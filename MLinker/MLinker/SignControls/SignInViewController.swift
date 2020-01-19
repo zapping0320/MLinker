@@ -87,13 +87,33 @@ class SignInViewController: UIViewController {
             (user, error) in
             
             if( error != nil ) {
-                let alert = UIAlertController(title: "error", message: error.debugDescription, preferredStyle: .alert)
+               
+                var errorMessage = error.debugDescription
+                if errorMessage.contains("17009")
+                {
+                    errorMessage = "Password is wrong. Please check your password"
+                }
+                else if(errorMessage.contains("17011"))
+                {
+                    errorMessage = "This email is not registered. Please check your email"
+                }
+                else if(errorMessage.contains("17008"))
+                {
+                    errorMessage = "This email format is invalid. Please check your email"
+                }
+                
+                
+                let alert = UIAlertController(title: "error", message: errorMessage, preferredStyle: .alert)
+                
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
-            let defaults = UserDefaults.standard
-            defaults.set(true, forKey: "loggedIn")
+            else
+            {
+                let defaults = UserDefaults.standard
+                defaults.set(true, forKey: "loggedIn")
+            }
+          
         }
     }
     
