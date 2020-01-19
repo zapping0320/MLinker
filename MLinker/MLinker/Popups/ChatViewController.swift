@@ -204,12 +204,15 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let alert = UIAlertController(title: title,
                                       message: NSLocalizedString("Setting", comment: ""),
                                       preferredStyle: UIAlertController.Style.actionSheet)
-        let actionChangeTitle = UIAlertAction(title: NSLocalizedString("Change Title", comment: ""),
-                                             style: .default, handler: {result in
-                                                self.changeChatRoomTitle()
-        })
-        actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
-        alert.addAction(actionChangeTitle)
+        
+        if self.selectedChatModel.standAlone == false {
+            let actionChangeTitle = UIAlertAction(title: NSLocalizedString("Change Title", comment: ""),
+                                                  style: .default, handler: {result in
+                                                    self.changeChatRoomTitle()
+            })
+            actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
+            alert.addAction(actionChangeTitle)
+        }
         
         let actionAddMember = UIAlertAction(title: NSLocalizedString("Add Members", comment: ""),
                                              style: .default, handler: {result in

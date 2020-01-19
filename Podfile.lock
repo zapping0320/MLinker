@@ -12,6 +12,9 @@ PODS:
   - Firebase/Database (6.8.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 6.1.0)
+  - Firebase/Messaging (6.8.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.1.4)
   - Firebase/RemoteConfig (6.8.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 4.4.0)
@@ -58,6 +61,15 @@ PODS:
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
+  - FirebaseMessaging (4.1.4):
+    - FirebaseAnalyticsInterop (~> 1.3)
+    - FirebaseCore (~> 6.2)
+    - FirebaseInstanceID (~> 4.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Reachability (~> 6.2)
+    - GoogleUtilities/UserDefaults (~> 6.2)
+    - Protobuf (~> 3.1)
   - FirebaseRemoteConfig (4.4.0):
     - FirebaseABTesting (~> 3.1)
     - FirebaseAnalyticsInterop (~> 1.4)
@@ -113,6 +125,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
+  - Firebase/Messaging
   - Firebase/RemoteConfig
   - Firebase/Storage
   - Kingfisher (~> 5.0)
@@ -131,6 +144,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseDatabase
     - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseRemoteConfig
     - FirebaseStorage
     - GoogleAppMeasurement
@@ -156,6 +170,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
   FirebaseDatabase: 518cd94286de2ee999e19383a2a6ae04c81ce993
   FirebaseInstanceID: 88932a31aba5a56cfd3a7541706436c71f7f4598
+  FirebaseMessaging: 9483ac438b7b223c09dad8712310e9ee7d562c99
   FirebaseRemoteConfig: a1b49ebfddeaccda10d76fd8dc2cc1aa215f9c43
   FirebaseStorage: 618dd8fd886b30adf6e5d1915b1f5c18cb5c3944
   GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
@@ -169,6 +184,6 @@ SPEC CHECKSUMS:
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
 
-PODFILE CHECKSUM: 88b852ce0b4992e1d696c2e17c3741f83f4bd7cf
+PODFILE CHECKSUM: f103e977f1de8e5ce3595bb439fc710f59b8126f
 
 COCOAPODS: 1.5.3

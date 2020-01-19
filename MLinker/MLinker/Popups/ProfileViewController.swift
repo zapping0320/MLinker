@@ -338,9 +338,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                     {
                         if(chatModel?.chatUserIdDic.count == 1 && (chatModel?.chatUserIdDic[self.currnetUserUid] != nil))
                         {
-                            foundRoom = true
-                            foundRoomInfo = chatModel!
-                            break
+                            if let standAloneChat = chatModel?.standAlone {
+                                if standAloneChat {
+                                    foundRoom = true
+                                    foundRoomInfo = chatModel!
+                                    break
+                                }
+                            }
                         }
                     }
                     else

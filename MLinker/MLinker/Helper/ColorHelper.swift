@@ -20,11 +20,13 @@ class ColorHelper {
     
     static let gray300 = UIColor(red: 217/255, green: 218/255, blue: 221/255, alpha: 1)
     
+    static let gray900 = UIColor(red: 27/255, green: 27/255, blue: 30/255, alpha: 1)
+    
     static let darkModeMainAlertTextColor = UIColor.lightGray
     
     static func getMainAlertTextColor () -> UIColor
     {
-        return mainAlertTextColor
+        return gray900
     }
     
     static func getCancelTextColor() -> UIColor
