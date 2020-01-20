@@ -157,7 +157,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             {
                 //self
                 self.leftButton.setTitle("ToMe", for: .normal)
-                //self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
+                self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
                 self.rightButton.isHidden = true
                 self.adminAccountLabel.isHidden = !self.selectedUserModel.isAdminAccount
             }
@@ -412,6 +412,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         let chatRoomName = self.selectedUserModel.name!
         let chatRoomValue : Dictionary<String, Any> = [
             "isIncludeAdminAccount" : isAdminAccount,
+            "standAlone" : isStandAlone,
             "chatUserIdDic" : userIdDic,
             "chatUserProfiles" : profileDic,
             "name" : chatRoomName,
@@ -433,8 +434,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     {
         let chatModelDic = ["chatmodel" : chatModel]
         
-        NotificationCenter.default.post(name: .nsStartChat, object: nil, userInfo: chatModelDic)
         self.closeProfileVC()
+        
+        NotificationCenter.default.post(name: .nsStartChat, object: nil, userInfo: chatModelDic)
     }
     
     func rejectFriendship(includeChat : Bool)
@@ -562,6 +564,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             (updateErr, ref) in
             if(updateErr == nil)
             {
+                self.changedFriendInfo = true
                 self.selectedUserModel.name = self.nameTextField.text!
                 self.nameLabel.text = self.nameTextField.text!
                 self.titleNameLabel.text = self.nameTextField.text!
