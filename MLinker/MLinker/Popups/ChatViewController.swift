@@ -361,7 +361,7 @@ extension ChatViewController {
                     cell.profileImageView?.kf.indicatorType = .activity
                     cell.profileImageView?.kf.setImage(
                         with: profileImageURL,
-                        placeholder: UIImage(named: "defaultPhoto"),
+                        placeholder: UIImage(named: "defaulProfileCell"),
                         options: [
                             .processor(processor),
                             .scaleFactor(UIScreen.main.scale),
