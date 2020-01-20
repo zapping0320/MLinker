@@ -67,6 +67,7 @@ extension CounselingChatRoomsViewController {
         
         let chatRoom = self.chatRooms[indexPath.row]
         
+        cell.setStandAlone(value: chatRoom.standAlone) 
         cell.nameLabel.text = chatRoom.name
         
         var hasImage = false
