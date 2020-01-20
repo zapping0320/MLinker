@@ -14,17 +14,28 @@ class ChatRoomTableViewCell: UITableViewCell {
     @IBOutlet weak var lastCommentDateLabel: UILabel!
     @IBOutlet weak var lastCommentLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var selfLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.roomImageView.layer.cornerRadius = 20
         self.roomImageView.clipsToBounds = true
+        
+        self.selfLabel.layer.cornerRadius = 8
+        self.selfLabel.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setStandAlone(value : Bool ) {
+        self.selfLabel.isHidden = !value
+        if value == false {
+            self.selfLabel.widthAnchor.constraint(equalToConstant: 0.0).isActive = true
+        }
     }
     
 }
