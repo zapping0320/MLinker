@@ -212,6 +212,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             })
             actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
             alert.addAction(actionChangeTitle)
+            
+            let actionExitChat = UIAlertAction(title: NSLocalizedString("Exit Chat", comment: ""),
+                                                   style: .default, handler: {result in
+                                                    self.exitChatRoom()
+            })
+            actionExitChat.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
+            alert.addAction(actionExitChat)
         }
         
         let actionAddMember = UIAlertAction(title: NSLocalizedString("Add Members", comment: ""),
@@ -220,13 +227,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
         actionAddMember.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
         alert.addAction(actionAddMember)
-        
-        let actionExitChat = UIAlertAction(title: NSLocalizedString("Exit Chat", comment: ""),
-                                               style: .default, handler: {result in
-                                                self.exitChatRoom()
-        })
-        actionExitChat.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
-        alert.addAction(actionExitChat)
         
         let actionCancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
                                          style: .cancel, handler: nil)
