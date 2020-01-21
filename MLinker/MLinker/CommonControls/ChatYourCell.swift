@@ -10,6 +10,7 @@ import UIKit
 
 class ChatYourCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var commentDateLabel: UILabel!
     @IBOutlet weak var readUserLabel: UILabel!
