@@ -35,6 +35,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var rightButton: UIButton!
     
     public var selectedUserModel: UserModel = UserModel()
+    public var isChatView : Bool = false
+    
     private var selectedFriendshipModel : FriendshipModel?
     
     private var currnetUserUid: String!
@@ -116,6 +118,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         
         if(selectedFriendshipModel != nil)
         {
+            self.editProfileButton.isHidden = true
             if(selectedFriendshipModel?.status == FriendStatus.Requesting){
                 self.leftButton.setTitle("cancel Request", for: .normal)
                 self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
@@ -128,8 +131,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             }
             else if(selectedFriendshipModel?.status == FriendStatus.Connected)
             {
-                self.leftButton.setTitle("start Chat", for: .normal)
-                self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
+                if self.isChatView == false {
+                    self.leftButton.setTitle("start Chat", for: .normal)
+                    self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
+                }
+                else {
+                    self.leftButton.isHidden = true
+                }
+                
                 if(self.selectedUserModel.isAdminAccount == false &&
                     UserContexManager.shared.getCurrentUserModel().isAdminAccount == false)
                 {
@@ -157,6 +166,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             if(self.currnetUserUid == self.selectedUserModel.uid)
             {
                 //self
+                self.editProfileButton.isHidden = false
                 self.leftButton.setTitle("ToMe", for: .normal)
                 self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
                 self.rightButton.isHidden = true
