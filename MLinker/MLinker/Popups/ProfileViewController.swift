@@ -124,16 +124,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 self.leftButton.setTitle("accept Request", for: .normal)
                 self.leftButton.setImage(UIImage (named: "acceptRequest"), for: .normal)
                 self.rightButton.setTitle("reject Request", for: .normal)
-                self.leftButton.setImage(UIImage (named: "rejectRequest"), for: .normal)
+                self.rightButton.setImage(UIImage (named: "rejectRequest"), for: .normal)
             }
             else if(selectedFriendshipModel?.status == FriendStatus.Connected)
             {
                 self.leftButton.setTitle("start Chat", for: .normal)
-                //self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
-                if(self.selectedUserModel.isAdminAccount == false)
+                self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
+                if(self.selectedUserModel.isAdminAccount == false &&
+                    UserContexManager.shared.getCurrentUserModel().isAdminAccount == false)
                 {
                     self.rightButton.setTitle("disconnect Friendship", for: .normal)
-                    self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
+                    self.rightButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
                 }
                 else
                 {

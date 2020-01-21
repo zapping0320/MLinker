@@ -44,6 +44,13 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let barButtonItem = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItems = [barButtonItem]
         
+        NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadUsersInfo), name: .nsUpdateUsersTable, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadSelfInfo), name: .nsUpdateSelf, object: nil)
+        
+        
         self.currnetUserUid = Auth.auth().currentUser?.uid
         UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
         self.loadSelfInfo()
@@ -51,17 +58,11 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
-        
-         NotificationCenter.default.addObserver(self, selector: #selector(loadUsersInfo), name: .nsUpdateUsersTable, object: nil)
-        
-         NotificationCenter.default.addObserver(self, selector: #selector(loadSelfInfo), name: .nsUpdateSelf, object: nil)
-        
         self.loadUsersInfo()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
+       
     }
     
     @objc func popupAddFriend() {
@@ -142,11 +143,11 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func moveChatView(_ notification : Notification) {
-        print("UsersVC - moveChatView")
+       
         if let dict = notification.userInfo as NSDictionary? {
             if let chatModel = dict["chatmodel"] as? ChatModel{
+                self.tabBarController?.selectedIndex = 0
                 let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
-                //chatVC.selectedChatRoomUid = String(indexPath.row)
                 chatVC.selectedChatModel = chatModel
                 self.navigationController?.pushViewController(chatVC, animated: true)
             }
