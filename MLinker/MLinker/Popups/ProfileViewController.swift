@@ -397,13 +397,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             profileDic[self.currnetUserUid] = currentUserProfile
         }
         
-        if(isStandAlone == false)
-        {
-            if let selectedUserProfile = self.selectedUserModel.profileURL {
-                profileDic.updateValue(selectedUserProfile, forKey: self.selectedUserModel.uid!)
-            }
-        }
-        
         var isAdminAccount = UserContexManager.shared.getCurrentUserModel().isAdminAccount
         if(isStandAlone == false && self.selectedUserModel.isAdminAccount)
         {
@@ -415,7 +408,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             "isIncludeAdminAccount" : isAdminAccount,
             "standAlone" : isStandAlone,
             "chatUserIdDic" : userIdDic,
-            "chatUserProfiles" : profileDic,
             "name" : chatRoomName,
             "timestamp" : ServerValue.timestamp()
         ]
@@ -637,14 +629,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                     if(((chatModel?.chatUserIdDic.keys.contains(selfUid)) == true) && (chatModel?.chatUserIdDic.keys.contains(friendUid) == true))
                     {
                         chatModel?.chatUserIdDic.removeValue(forKey: friendUid)
-                        if(chatModel?.chatUserProfiles.keys.contains(friendUid) == true)
-                        {
-                            chatModel?.chatUserProfiles.removeValue(forKey: friendUid)
-                        }
                         
                         let updateChatRoomValue : Dictionary<String, Any> = [
                             "chatUserIdDic" : chatModel?.chatUserIdDic,
-                            "chatUserProfiles" :  chatModel?.chatUserProfiles,
                             "timestamp" : ServerValue.timestamp()
                         ]
                         

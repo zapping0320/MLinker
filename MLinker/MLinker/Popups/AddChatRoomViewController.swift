@@ -83,7 +83,7 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
                         if(self.selectedChatModel.isValid())
                         {
                             let uid = userModel?.uid
-                            if(self.selectedChatModel.chatUserProfiles.keys.contains(uid!) == true)
+                            if(self.selectedChatModel.chatUserIdDic.keys.contains(uid!) == true)
                             {
                                 self.usersArray[0]!.append(userModel!)
                             }
@@ -145,16 +145,12 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
             {
                 isIncludeAdmin = true
             }
-            if let selectedUserProfile = selectedUser.profileURL {
-                self.selectedChatModel.chatUserProfiles.updateValue(selectedUserProfile, forKey: selectedUser.uid!)
-            }
         }
         
         let chatRoomValue : Dictionary<String, Any> = [
             "isIncludeAdminAccount" :  isIncludeAdmin,
             "standAlone" : false,
             "chatUserIdDic" : self.selectedChatModel.chatUserIdDic,
-            "chatUserProfiles" : self.selectedChatModel.chatUserProfiles,
             "timestamp" : ServerValue.timestamp()
         ]
         
@@ -278,7 +274,6 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
             "isIncludeAdminAccount" :  isIncludeAdmin ? true : false,
             "standAlone" : false,
             "chatUserIdDic" : selectedUsersDic,
-            "chatUserProfiles" : profileDic,
             "name" : chatRoomName,
             "timestamp" : ServerValue.timestamp()
         ]
