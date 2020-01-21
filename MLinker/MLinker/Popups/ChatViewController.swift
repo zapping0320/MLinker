@@ -56,6 +56,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.getRelatedUserModels()
         
         self.getMessageList()
     }
@@ -200,6 +204,25 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
+    func getRelatedUserModels()
+    {
+        for userID in self.selectedChatModel.chatUserIdDic.keys { Database.database().reference().child("users").child(userID).observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            if let userDic = datasnapShot.value as? [String:AnyObject] {
+                let userModel = UserModel(JSON: userDic)
+                self.selectedChatModel.chatUserModelDic.updateValue(userModel!, forKey: userID)
+            }
+            
+            DispatchQueue.main.async {
+                self.commentTableView.reloadData()
+                self.scrollTableView()
+            }
+            
+            }
+            
+        }
+    }
+    
     @objc func barBtn_more_Action(){
         let alert = UIAlertController(title: title,
                                       message: NSLocalizedString("Setting", comment: ""),
@@ -268,11 +291,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.sendMessageServer(isNotice: true)
         
         self.selectedChatModel.chatUserIdDic.removeValue(forKey: self.currnetUserUid)
-        self.selectedChatModel.chatUserProfiles.removeValue(forKey: self.currnetUserUid)
+        self.selectedChatModel.chatUserModelDic.removeValue(forKey: self.currnetUserUid)
         
         let updatedChatRoomValue : Dictionary<String, Any> = [
             "chatUserIdDic" : self.selectedChatModel.chatUserIdDic,
-            "chatUserProfiles" : self.selectedChatModel.chatUserProfiles,
             "timestamp" : ServerValue.timestamp()
         ]
         Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updatedChatRoomValue) {
@@ -341,6 +363,16 @@ extension ChatViewController {
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatYourCell", for: indexPath) as! ChatYourCell
+            let currentUserModel = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]
+            var nameString = currentUserModel?.name
+            
+            if let isAdminAccount = currentUserModel?.isAdminAccount {
+                if isAdminAccount {
+                    nameString = nameString! + "(Official)"
+                }
+            }
+            cell.nameLabel.text = nameString
+            
             cell.commentTextView.text = selectedComment.message
             cell.selectionStyle = .none
             if let timeStamp = selectedComment.timestamp {
@@ -352,9 +384,9 @@ extension ChatViewController {
                 cell.readUserLabel.text = String(remainUserCount)
             }
             
-            if(self.selectedChatModel.chatUserProfiles.keys.contains(selectedComment.sender!) == true)
+            if(self.selectedChatModel.chatUserModelDic.keys.contains(selectedComment.sender!) == true)
             {
-                if let profileImageString = self.selectedChatModel.chatUserProfiles[selectedComment.sender!] {
+                if let profileImageString = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]?.profileURL {
                     let profileImageURL = URL(string: profileImageString)
                     let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
                         >> RoundCornerImageProcessor(cornerRadius: 25)
@@ -402,6 +434,7 @@ extension ChatViewController {
                 DispatchQueue.main.async {
                     let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
                     profileVC.selectedUserModel = userModel!
+                    profileVC.isChatView = true
                     profileVC.modalPresentationStyle = .fullScreen
                     self.present(profileVC, animated: true, completion: nil)
                     

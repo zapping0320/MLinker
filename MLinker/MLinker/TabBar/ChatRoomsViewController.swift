@@ -124,7 +124,7 @@ extension ChatRoomsViewController {
             }
             
             if hasImage == false {
-                if let lastCommentUserProfile = chatRoom.chatUserProfiles[recentComment.sender!] {
+                if let lastCommentUserProfile = chatRoom.chatUserModelDic[recentComment.sender!]?.profileURL {
                     hasImage = true
                     imageURL = lastCommentUserProfile
                 }

@@ -19,6 +19,8 @@ class ChatYourCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         readUserLabel.isHidden = true
+        self.profileImageView.layer.cornerRadius = 18
+        self.profileImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
