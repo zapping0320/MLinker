@@ -2072,8 +2072,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
             endingLineNumber = "174"
-            landmarkName = "AddChatRoomViewController"
-            landmarkType = "3">
+            landmarkName = "addCommentAboutAddingMemebers(relatedUsers:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -40,7 +40,7 @@ class ChatModel: Mappable {
     public var isIncludeAdminAccount: Bool = false
     public var standAlone: Bool = false
     public var chatUserIdDic: Dictionary<String,Bool> = [:]
-    public var chatUserProfiles : Dictionary<String,String> = [:]
+    public var chatUserModelDic : Dictionary<String, UserModel> = [:]
     public var name: String = ""
     public var comments : Dictionary<String, Comment> = [:]
     public var timestamp: Int?
@@ -57,7 +57,6 @@ class ChatModel: Mappable {
         isIncludeAdminAccount   <- map["isIncludeAdminAccount"]
         standAlone              <- map["standAlone"]
         chatUserIdDic           <- map["chatUserIdDic"]
-        chatUserProfiles        <- map["chatUserProfiles"]
         name                    <- map["name"]
         comments                <- map["comments"]
         timestamp               <- map["timestamp"]
