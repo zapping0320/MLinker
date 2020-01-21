@@ -80,6 +80,9 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 UserContexManager.shared.setCurrentUserModel(model: userModel!)
                 self.usersArray[0]!.append(userModel!)
                 DispatchQueue.main.async {
+                    if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
+                        self.tabBarController?.viewControllers?.remove(at: 1)
+                    }
                     self.usersTableView.reloadData()
                 }
             }

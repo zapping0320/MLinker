@@ -542,8 +542,8 @@
             timestampString = "590969994.6859829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "getNumberOfSections()"
             landmarkType = "7">
          </BreakpointContent>
@@ -610,8 +610,8 @@
             timestampString = "590969994.686251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "getTableHeaderString(section:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1001,8 +1001,8 @@
             timestampString = "590969994.690065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "getTableHeaderString(section:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1334,8 +1334,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "loadUsersInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1574,8 +1574,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "getTableHeaderString(section:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1798,8 +1798,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -1814,8 +1814,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "UsersViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -1862,8 +1862,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "tableView(_:titleForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1878,8 +1878,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "getNumberOfSections()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1894,8 +1894,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "UsersViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -1910,8 +1910,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "getNumberOfRowsInSection(section:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1926,8 +1926,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "getTableHeaderString(section:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1942,8 +1942,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "getTableHeaderString(section:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1958,8 +1958,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "getTableHeaderString(section:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1974,8 +1974,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2374,8 +2374,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2390,8 +2390,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -2454,8 +2454,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2470,8 +2470,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2486,8 +2486,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
             <Locations>
@@ -2534,8 +2534,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2550,8 +2550,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "loadUsersInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2566,8 +2566,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
             <Locations>
@@ -2614,8 +2614,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "loadUsersInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2644,8 +2644,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "getCurrentUserData(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2676,8 +2676,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "getCurrentUserData(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2692,8 +2692,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "UsersViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -2708,8 +2708,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "getTableHeaderString(section:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2724,8 +2724,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2964,8 +2964,8 @@
             filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "loadUsersInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3063,6 +3063,22 @@
             startingLineNumber = "438"
             endingLineNumber = "438"
             landmarkName = "moveChatView(chatModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3768687-A9E6-45B5-9A81-5294BDC95814"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/TabBar/UsersViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "loadSelfInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
