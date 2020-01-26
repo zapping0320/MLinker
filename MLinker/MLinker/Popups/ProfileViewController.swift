@@ -119,17 +119,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         if(selectedFriendshipModel != nil)
         {
             self.editProfileButton.isHidden = true
-            if(selectedFriendshipModel?.status == FriendStatus.Requesting){
-                self.leftButton.setTitle("cancel Request", for: .normal)
-                self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
-                self.rightButton.isHidden = true
-            }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
-                self.leftButton.setTitle("accept Request", for: .normal)
-                self.leftButton.setImage(UIImage (named: "acceptRequest"), for: .normal)
-                self.rightButton.setTitle("reject Request", for: .normal)
-                self.rightButton.setImage(UIImage (named: "rejectRequest"), for: .normal)
-            }
-            else if(selectedFriendshipModel?.status == FriendStatus.Connected)
+            if(selectedFriendshipModel?.status == FriendStatus.Connected)
             {
                 if self.isChatView == false {
                     self.leftButton.setTitle("start Chat", for: .normal)
@@ -152,8 +142,23 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             }
             else
             {
-                self.leftButton.isHidden = true
-                self.rightButton.isHidden = true
+                self.emailLabel.text = self.selectedFriendshipModel?.friendEmail
+                
+                if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+                    self.leftButton.setTitle("cancel Request", for: .normal)
+                    self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
+                    self.rightButton.isHidden = true
+                }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
+                    self.leftButton.setTitle("accept Request", for: .normal)
+                    self.leftButton.setImage(UIImage (named: "acceptRequest"), for: .normal)
+                    self.rightButton.setTitle("reject Request", for: .normal)
+                    self.rightButton.setImage(UIImage (named: "rejectRequest"), for: .normal)
+                }
+                else
+                {
+                    self.leftButton.isHidden = true
+                    self.rightButton.isHidden = true
+                }
             }
         }
         else
