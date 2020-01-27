@@ -37,8 +37,9 @@ class SettingViewController: UIViewController {
         editButton.addTarget(self, action: #selector(editProfile),for: UIControl.Event.touchUpInside)
         let editBarButton = UIBarButtonItem(customView: editButton)
         
-        
         self.navigationItem.rightBarButtonItems = [editBarButton, logoutBarButton ]
+        
+        self.profileView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editProfile)))
         
         let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
         self.appVersionLabel.text = appVersion
@@ -97,7 +98,7 @@ class SettingViewController: UIViewController {
         alert.addAction(actionCheck)
         
         let actionCancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
-                                         style: .cancel, handler: nil)
+                                         style: .default, handler: nil)
         
         alert.addAction(actionCancel)
         
