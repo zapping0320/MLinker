@@ -255,7 +255,10 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
                }
         
         var isIncludeAdmin = UserContexManager.shared.getCurrentUserModel().isAdminAccount
-        var chatRoomName = UserContexManager.shared.getCurrentUserModel().name!
+        var chatRoomName = "No name"
+        if let userName = UserContexManager.shared.getCurrentUserModel().name {
+            chatRoomName = userName
+        }
         
         for indexPath in indexes {
             let selectedUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
