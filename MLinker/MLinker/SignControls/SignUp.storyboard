@@ -57,7 +57,7 @@
                                     <action selector="signUpInfoChanged:" destination="tnH-fR-ltX" eventType="editingChanged" id="nIf-A7-ixt"/>
                                 </connections>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaulProfileCell" translatesAutoresizingMaskIntoConstraints="NO" id="k3J-aZ-jcL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileCell" translatesAutoresizingMaskIntoConstraints="NO" id="k3J-aZ-jcL">
                                 <rect key="frame" x="161" y="121.5" width="92" height="92"/>
                                 <color key="backgroundColor" red="0.85098039215686272" green="0.85490196078431369" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -231,7 +231,7 @@
     <resources>
         <image name="camera" width="20" height="20"/>
         <image name="close" width="24" height="24"/>
-        <image name="defaulProfileCell" width="24" height="24"/>
+        <image name="defaultProfileCell" width="24" height="24"/>
         <image name="done" width="24" height="24"/>
     </resources>
 </document>

@@ -298,7 +298,7 @@ extension UsersViewController {
             cell.profileImageView?.kf.indicatorType = .activity
             cell.profileImageView?.kf.setImage(
                 with: profileImageURL,
-                placeholder: UIImage(named: "defaulProfileCell"),
+                placeholder: UIImage(named: "defaultProfileCell"),
                 options: [
                     .processor(processor),
                     .scaleFactor(UIScreen.main.scale),

@@ -10,6 +10,7 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
+    @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var adminAccountLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!

@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaulProfileCell" translatesAutoresizingMaskIntoConstraints="NO" id="1Ab-Ea-PkG">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileCell" translatesAutoresizingMaskIntoConstraints="NO" id="1Ab-Ea-PkG">
                         <rect key="frame" x="18" y="10" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="L7V-PP-hYm"/>
@@ -76,6 +76,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="defaulProfileCell" width="50" height="50"/>
+        <image name="defaultProfileCell" width="24" height="24"/>
     </resources>
 </document>
