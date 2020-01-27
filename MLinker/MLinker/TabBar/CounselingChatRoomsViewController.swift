@@ -69,6 +69,7 @@ extension CounselingChatRoomsViewController {
         
         cell.setStandAlone(value: chatRoom.standAlone) 
         cell.nameLabel.text = chatRoom.name
+        cell.memberCountLabel.text = String(chatRoom.chatUserIdDic.count)
         
         var hasImage = false
         var imageURL:String = ""
@@ -77,11 +78,16 @@ extension CounselingChatRoomsViewController {
             imageURL = chatroomImage
         }
         
+        var unreadMessageCount = 0
         if(chatRoom.comments.isEmpty == false)
         {
             var recentComment : ChatModel.Comment = ChatModel.Comment()
             for key in chatRoom.comments.keys {
                 if let comment = chatRoom.comments[key] {
+                    if comment.readUsers.keys.contains(self.currnetUserUid) == false || comment.readUsers[self.currnetUserUid] == false {
+                        unreadMessageCount = unreadMessageCount + 1
+                    }
+                    
                     if recentComment.timestamp == nil || recentComment.timestamp! < comment.timestamp! {
                         recentComment = comment
                     }
@@ -106,6 +112,8 @@ extension CounselingChatRoomsViewController {
             cell.lastCommentLabel.text = ""
             cell.lastCommentDateLabel.text = ""
         }
+        
+        cell.setUnreadMessageCount(value: unreadMessageCount)
         
         if hasImage == true
         {
