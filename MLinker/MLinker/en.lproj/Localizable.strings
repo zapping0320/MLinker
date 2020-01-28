@@ -31,15 +31,15 @@
 
 "No comments" = "No comments";
 
-"start Chat" = "start Chat";
+"Start Chat" = "Start Chat";
 
-"disconnect Friendship" = "disconnect Friendship";
+"Disconnect Friendship" = "Disconnect Friendship";
 
-"cancel Request" = "cancel Request";
+"Cancel Request" = "Cancel Request";
 
-"accept Request" = "accept Request";
+"Accept Request" = "Accept Request";
 
-"reject Request" = "reject Request";
+"Reject Request" = "Reject Request";
 
 "ToMe" = "ToMe";
 
@@ -73,11 +73,11 @@
 
 "Please check permission code. If you don't know it, remove and re-try to sign up" = "Please check permission code. If you don't know it, remove and re-try to sign up";
 
-"Used Email has already registered. Please check your email" = "Used Email has already registered. Please check your email"
+"Used Email has already registered. Please check your email" = "Used Email has already registered. Please check your email";
 
 "Search friends" = "Search friends";
 
-"processing" = "processing";
+"Processing" = "Processing";
 
 "Customers" = "Customers";
 
