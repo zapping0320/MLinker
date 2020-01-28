@@ -126,13 +126,13 @@ class AddFriendViewController: UIViewController {
                 self.getFriendshipModel()
             }
             else {
-                var popupMessage:String = "This email is yours. Please check email"
+                var popupMessage:String = NSLocalizedString("This email is yours. Please check email", comment: "")
                 if(isSelfEmail == false) {
-                    popupMessage = "This email isn't registered.Please check email"
+                    popupMessage = NSLocalizedString("This email isn't registered.Please check email", comment: "")
                 }
                 
-                let alert = UIAlertController(title: "FriendShip", message: popupMessage, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                let alert = UIAlertController(title: NSLocalizedString("FriendShip", comment: ""), message: popupMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (action) in
                     
                 }))
                 self.present(alert, animated: true, completion: nil)
@@ -160,8 +160,8 @@ class AddFriendViewController: UIViewController {
                             popupMessage = self.makePopupMessage(model: friendshipModel!)
                         }
                         
-                        let alert = UIAlertController(title: "FriendShip", message: popupMessage, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                        let alert = UIAlertController(title: NSLocalizedString("FriendShip", comment: ""), message: popupMessage, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (action) in
                             
                         }))
                         self.present(alert, animated: true, completion: nil)
@@ -204,19 +204,19 @@ class AddFriendViewController: UIViewController {
         var popupMessage = ""
         if(model.status == FriendStatus.Requesting)
         {
-            popupMessage = "You'd already requested friendship."
+            popupMessage = NSLocalizedString("You'd already requested friendship.", comment: "")
         }
         else if(model.status == FriendStatus.ReceivingRequest)
         {
-            popupMessage = "You'd already received friendship."
+            popupMessage = NSLocalizedString("You'd already received friendship.", comment: "")
         }
         else if(model.status == FriendStatus.Connected)
         {
-            popupMessage = "You'd already made friendship."
+            popupMessage = NSLocalizedString("You'd already made friendship.", comment: "")
         }
         else if(model.status == FriendStatus.rejected)
         {
-            popupMessage = "You'd been rejected friendship."
+            popupMessage = NSLocalizedString("You'd been rejected friendship.", comment: "")
         }
         
         
@@ -244,7 +244,7 @@ class AddFriendViewController: UIViewController {
         Database.database().reference().child("friendInformations").child(self.friendUserModel!.uid!).child("friendshipList").childByAutoId().setValue(receiveValue) {
             (err, ref) in
             if(err == nil) {
-                let alert = UIAlertController(title: "FriendShip", message: "You have applied for a friend.", preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("FriendShip", comment: ""), message: NSLocalizedString("You have applied for a friend.", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                     
                 }))

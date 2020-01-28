@@ -61,6 +61,8 @@
 
 "Current Members" = "Current Members";
 
+"Error" = "Error";
+
 "Password is wrong. Please check your password" = "Password is wrong. Please check your password";
 
 "This email is not registered. Please check your email" = "This email is not registered. Please check your email";
@@ -93,4 +95,4 @@
 
 "Notice" = "Notice";
 
-"Are you sure to logout?" = "Are you sure to logout?";
+"Are you sure to logout?" = "정말로 로그아웃하시나요?";

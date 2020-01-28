@@ -29,7 +29,7 @@ class NoticeStringHelper {
             resultString = members + resultString
             break
         case NoticeType.ExitMember:
-            resultString = " exited"
+            resultString = NSLocalizedString(" exited", comment: "")
             var members = ""
             if(notice.relatedUsers.count > 0)
             {
@@ -44,7 +44,7 @@ class NoticeStringHelper {
             resultString = members + resultString
             break
         default:
-            resultString = "not defined"
+            resultString = NSLocalizedString("not defined", comment: "")
         }
         
         return resultString

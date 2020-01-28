@@ -48,8 +48,8 @@ class ViewController: UIViewController {
         
         
         if(caps){
-            let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title:"OK", style: .default, handler: { (action) in
+            let alert = UIAlertController(title: NSLocalizedString("Notice", comment: ""), message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:NSLocalizedString("Ok", comment: ""), style: .default, handler: { (action) in
                 exit(0)
             }))
             

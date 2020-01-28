@@ -317,11 +317,11 @@ extension AddChatRoomViewController {
         {
             if(section == 0)
             {
-                return "Current Members"
+                return NSLocalizedString("Current Members", comment: "")
             }
             else
             {
-                return "Add Members"
+                return NSLocalizedString("Add Members", comment: "")
             }
         }
         else

@@ -109,8 +109,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         var isPermitted = false
         if(passwordTextField.text != confirmPasswordTextField.text)
         {
-            let alert = UIAlertController(title: "Sign Up", message: "Please check password are they are not the same", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            let alert = UIAlertController(title: NSLocalizedString("Sign Up", comment: ""), message: NSLocalizedString("Please check password are they are not the same", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (action) in
                 
             }))
             self.present(alert, animated: true, completion: nil)
@@ -121,8 +121,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         {
             if(permissionCodeTextField.text! != UserContexManager.shared.getPermissionCode())
             {
-                let alert = UIAlertController(title: "Sign Up", message: "Please check permission code. If you don't know it, remove and re-try to sign up", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                let alert = UIAlertController(title: NSLocalizedString("Sign Up", comment: ""), message: NSLocalizedString("Please check permission code. If you don't know it, remove and re-try to sign up", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (action) in
                     
                 }))
                 self.present(alert, animated: true, completion: nil)
@@ -134,8 +134,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, error) in
             guard let user = authResult?.user, error == nil else {
-                let alert = UIAlertController(title: "Sign Up", message: "Used Email has already registered. Please check your email", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                let alert = UIAlertController(title: NSLocalizedString("Sign Up", comment: ""), message: NSLocalizedString("Used Email has already registered. Please check your email", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (action) in
                     
                 }))
                 self.present(alert, animated: true, completion: nil)

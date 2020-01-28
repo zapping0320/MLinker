@@ -25,7 +25,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let searchControl = UISearchController(searchResultsController: nil)
         searchControl.searchResultsUpdater = self
         searchControl.obscuresBackgroundDuringPresentation = false
-        searchControl.searchBar.placeholder = "Search friends"
+        searchControl.searchBar.placeholder = NSLocalizedString("Search friends", comment: "")
         self.navigationItem.searchController = searchControl
         
         //self.navigationItem.hidesSearchBarWhenScrolling = true
@@ -131,7 +131,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         userModel.uid = friendshipModel?.friendId
                         userModel.name = friendshipModel?.friendEmail
                         userModel.profileURL = friendshipModel?.friendUserModel?.profileURL
-                        userModel.comment = "processing"
+                        userModel.comment = NSLocalizedString("Processing", comment: "")
                         processingFriendList.append(userModel)
                     }
                 }
@@ -199,10 +199,10 @@ extension UsersViewController {
                 return ""
             }
             if  UserContexManager.shared.isAdminUser() {
-                return "Customers"
+                return NSLocalizedString("Customers", comment: "")
             }
             else {
-                return "Friends"
+                return NSLocalizedString("Friends", comment: "")
             }
         }
         else {
@@ -215,7 +215,7 @@ extension UsersViewController {
                     return ""
                 }
                 if dataList.count > 0 {
-                    return "Current processing"
+                    return NSLocalizedString("Current processing", comment: "")
                 }
                 else {
                     return ""
@@ -223,10 +223,10 @@ extension UsersViewController {
             }
             else {
                 if  UserContexManager.shared.isAdminUser() {
-                    return "Customers"
+                    return NSLocalizedString("Customers", comment: "")
                 }
                 else {
-                    return "Friends"
+                    return NSLocalizedString("Friends", comment: "")
                 }
             }
         }

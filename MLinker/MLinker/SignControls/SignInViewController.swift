@@ -91,21 +91,21 @@ class SignInViewController: UIViewController {
                 var errorMessage = error.debugDescription
                 if errorMessage.contains("17009")
                 {
-                    errorMessage = "Password is wrong. Please check your password"
+                    errorMessage = NSLocalizedString("Password is wrong. Please check your password", comment: "")
                 }
                 else if(errorMessage.contains("17011"))
                 {
-                    errorMessage = "This email is not registered. Please check your email"
+                    errorMessage = NSLocalizedString("This email is not registered. Please check your email", comment: "")
                 }
                 else if(errorMessage.contains("17008"))
                 {
-                    errorMessage = "This email format is invalid. Please check your email"
+                    errorMessage = NSLocalizedString("This email format is invalid. Please check your email", comment: "")
                 }
                 
                 
-                let alert = UIAlertController(title: "error", message: errorMessage, preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: errorMessage, preferredStyle: .alert)
                 
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
             else
