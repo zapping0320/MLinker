@@ -14,7 +14,7 @@ class NoticeStringHelper {
         var resultString = ""
         switch notice.noticeType {
         case NoticeType.EnterMember:
-            resultString = " entered newly"
+            resultString = NSLocalizedString(" entered newly", comment: "")
             var members = ""
             if(notice.relatedUsers.count > 0)
             {

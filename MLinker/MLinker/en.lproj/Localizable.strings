@@ -7,4 +7,90 @@
 */
 " entered newly" = " entered newly";
 
-"log out" = "log out";
+" exited" = " exited";
+
+"not defined" = "not defined";
+
+"This email is yours. Please check email" = "This email is yours. Please check email";
+
+"This email isn't registered.Please check email" = "This email isn't registered.Please check email";
+
+"FriendShip" = "FriendShip";
+
+"Ok" = "Ok";
+
+"You'd already requested friendship." = "You'd already requested friendship.";
+
+"You'd already received friendship." = "You'd already received friendship.";
+
+"You'd already made friendship." = "You'd already made friendship.";
+
+"You'd been rejected friendship." = "You'd been rejected friendship.";
+
+"You have applied for a friend." = "You have applied for a friend.";
+
+"No comments" = "No comments";
+
+"start Chat" = "start Chat";
+
+"disconnect Friendship" = "disconnect Friendship";
+
+"cancel Request" = "cancel Request";
+
+"accept Request" = "accept Request";
+
+"reject Request" = "reject Request";
+
+"ToMe" = "ToMe";
+
+"Are you sure to disconnect friendship?" = "Are you sure to disconnect friendship?";
+
+"Cancel" = "Cancel";
+
+"Setting" = "Setting";
+
+"Change Title" = "Change Title";
+
+"Exit Chat" = "Exit Chat";
+
+"Add Members" = "Add Members";
+
+"Update" = "Update";
+
+"[Official]" = "[Official]";
+
+"Current Members" = "Current Members";
+
+"Password is wrong. Please check your password" = "Password is wrong. Please check your password";
+
+"This email is not registered. Please check your email" = "This email is not registered. Please check your email";
+
+"This email format is invalid. Please check your email" = "This email format is invalid. Please check your email";
+
+"Sign Up" = "Sign Up";
+
+"Please check password are they are not the same" = "Please check password are they are not the same";
+
+"Please check permission code. If you don't know it, remove and re-try to sign up" = "Please check permission code. If you don't know it, remove and re-try to sign up";
+
+"Used Email has already registered. Please check your email" = "Used Email has already registered. Please check your email"
+
+"Search friends" = "Search friends";
+
+"processing" = "processing";
+
+"Customers" = "Customers";
+
+"Friends" = "Friends";
+
+"Current processing" = "Current processing";
+
+"Coming soon" = "Coming soon";
+
+"This function has not been supporting yet" = "This function has not been supporting yet";
+
+"Logout" = "Logout";
+
+"Notice" = "Notice";
+
+"Are you sure to logout?" = "Are you sure to logout?";
