@@ -8,8 +8,16 @@
 
 import ObjectMapper
 
+public enum CommentType : Int {
+    case None       = 0
+    case Comment    = 1
+    case Notice     = 2
+    case Date       = 3
+}
+
 class ChatModel: Mappable {
     public class Comment : Mappable {
+        public var commentType : CommentType = CommentType.None
         public var uid: String?
         public var sender: String?
         public var message: String?
