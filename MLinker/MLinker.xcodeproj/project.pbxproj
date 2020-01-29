@@ -24,6 +24,8 @@
 		0B191FDD233192190016EA85 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B191FDC233192190016EA85 /* ChatViewController.swift */; };
 		0B191FDF233192290016EA85 /* ChatView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B191FDE233192290016EA85 /* ChatView.storyboard */; };
 		0B1D800A23DF2B6D00CAA4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B1D800C23DF2B6D00CAA4BD /* Localizable.strings */; };
+		0B1D801023E236B600CAA4BD /* ChatDateDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1D800E23E236B600CAA4BD /* ChatDateDisplayCell.swift */; };
+		0B1D801123E236B600CAA4BD /* ChatDateDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1D800F23E236B600CAA4BD /* ChatDateDisplayCell.xib */; };
 		0B3F421B235A734700CAE1B1 /* ChatNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F4219235A734700CAE1B1 /* ChatNoticeCell.swift */; };
 		0B3F421C235A734700CAE1B1 /* ChatNoticeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B3F421A235A734700CAE1B1 /* ChatNoticeCell.xib */; };
 		0B3F421E235E5FAB00CAE1B1 /* NoticeStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F421D235E5FAB00CAE1B1 /* NoticeStringHelper.swift */; };
@@ -74,6 +76,8 @@
 		0B1D800723DF29D700CAA4BD /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		0B1D800B23DF2B6D00CAA4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0B1D800D23DF2B8300CAA4BD /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0B1D800E23E236B600CAA4BD /* ChatDateDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDateDisplayCell.swift; sourceTree = "<group>"; };
+		0B1D800F23E236B600CAA4BD /* ChatDateDisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatDateDisplayCell.xib; sourceTree = "<group>"; };
 		0B3F4219235A734700CAE1B1 /* ChatNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNoticeCell.swift; sourceTree = "<group>"; };
 		0B3F421A235A734700CAE1B1 /* ChatNoticeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatNoticeCell.xib; sourceTree = "<group>"; };
 		0B3F421D235E5FAB00CAE1B1 /* NoticeStringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeStringHelper.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				0B3F421A235A734700CAE1B1 /* ChatNoticeCell.xib */,
 				0BF40A5923CF54D800693BD5 /* CustomTableViewHeaderCell.swift */,
 				0BF40A5A23CF54D800693BD5 /* CustomTableViewHeaderCell.xib */,
+				0B1D800E23E236B600CAA4BD /* ChatDateDisplayCell.swift */,
+				0B1D800F23E236B600CAA4BD /* ChatDateDisplayCell.xib */,
 			);
 			path = CommonControls;
 			sourceTree = "<group>";
@@ -328,6 +334,7 @@
 				0B076A5723397B7100B5AF43 /* ChatYourCell.xib in Resources */,
 				0B191FDB23318CDC0016EA85 /* ChatRoomTableViewCell.xib in Resources */,
 				0B59526A23AECB4800174564 /* GoogleService-Info.plist in Resources */,
+				0B1D801123E236B600CAA4BD /* ChatDateDisplayCell.xib in Resources */,
 				0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */,
 				0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */,
 				0BF40A5C23CF54D800693BD5 /* CustomTableViewHeaderCell.xib in Resources */,
@@ -412,6 +419,7 @@
 			files = (
 				0B44C4CE230210D600B55D21 /* ChatRoomsViewController.swift in Sources */,
 				0B44C4C822FB868300B55D21 /* UserModel.swift in Sources */,
+				0B1D801023E236B600CAA4BD /* ChatDateDisplayCell.swift in Sources */,
 				0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */,
 				0BF40A5B23CF54D800693BD5 /* CustomTableViewHeaderCell.swift in Sources */,
 				0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */,
