@@ -33,14 +33,19 @@ extension Int {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         
-        if(Calendar.current.isDateInToday(date))
-        {
-            dateFormatter.dateFormat = "hh:mm"
-        }
-        else
-        {
-            dateFormatter.dateFormat = "yyyy.MM.dd hh:mm"
-        }
+        dateFormatter.dateFormat = "hh:mm"
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    var toChatDisplayDate : String {
+        let date = Date(timeIntervalSince1970: Double(self) / 1000)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+       
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        
         return dateFormatter.string(from: date)
     }
 }

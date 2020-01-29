@@ -1335,7 +1335,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "330"
             endingLineNumber = "330"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkName = "exitChatRoom()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1703,7 +1703,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
             endingLineNumber = "230"
-            landmarkName = "barBtn_more_Action()"
+            landmarkName = "addDateString(comment:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1719,7 +1719,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "barBtn_more_Action()"
+            landmarkName = "getRelatedUserModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1735,7 +1735,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
             endingLineNumber = "241"
-            landmarkName = "barBtn_more_Action()"
+            landmarkName = "getRelatedUserModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1751,7 +1751,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
             endingLineNumber = "231"
-            landmarkName = "barBtn_more_Action()"
+            landmarkName = "addDateString(comment:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1959,7 +1959,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "295"
             endingLineNumber = "295"
-            landmarkName = "exitChatRoom()"
+            landmarkName = "changeChatRoomTitle()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3045,7 +3045,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "viewDidAppear(_:)"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3093,7 +3093,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
             endingLineNumber = "213"
-            landmarkName = "getRelatedUserModels()"
+            landmarkName = "getMessageList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

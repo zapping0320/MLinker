@@ -34,13 +34,18 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var comments: [ChatModel.Comment] = []
     var databaseRef: DatabaseReference?
     var observe : UInt?
+    var dateStrings : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.commentTableView.register(UINib(nibName: "ChatYourCell", bundle: nil), forCellReuseIdentifier: "ChatYourCell")
         self.commentTableView.register(UINib(nibName: "ChatMyCell", bundle: nil), forCellReuseIdentifier: "ChatMyCell")
+        
         self.commentTableView.register(UINib(nibName: "ChatNoticeCell", bundle: nil), forCellReuseIdentifier: "ChatNoticeCell")
+        
+        self.commentTableView.register(UINib(nibName: "ChatDateDisplayCell", bundle: nil), forCellReuseIdentifier: "ChatDateDisplayCell")
+        
         
         let button = UIButton(type: .custom)
         button.setImage(UIImage (named: "setting"), for: .normal)
@@ -169,6 +174,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.observe = self.databaseRef!.observe(DataEventType.value, with: {
             (snapshot) in
             self.comments.removeAll()
+            self.dateStrings.removeAll()
+            
             var readUsersDic : Dictionary<String,AnyObject> = [:]
             
             for item in snapshot.children.allObjects as! [DataSnapshot] {
@@ -177,6 +184,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
                 comment_modify?.readUsers[self.currnetUserUid!] = true
                 readUsersDic[key] = comment_modify?.toJSON() as! NSDictionary
+                if comment!.isNotice {
+                    comment?.commentType = CommentType.Notice
+                }
+                else
+                {
+                    comment?.commentType = CommentType.Comment
+                }
+                self.addDateString(comment: comment!)
                 self.comments.append(comment!)
             }
             
@@ -202,6 +217,20 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
               }
             }
         })
+    }
+    
+    func addDateString(comment : ChatModel.Comment)
+    {
+        if let timeStamp = comment.timestamp {
+            let dateString = timeStamp.toChatDisplayDate
+            if self.dateStrings.contains(dateString) == false {
+                self.dateStrings.append(dateString)
+                let dateComment = ChatModel.Comment()
+                dateComment.commentType = CommentType.Date
+                dateComment.message = dateString
+                self.comments.append(dateComment)
+            }
+        }
     }
     
     func getRelatedUserModels()
@@ -329,14 +358,20 @@ extension ChatViewController {
         
         let selectedComment = self.comments[indexPath.row]
         
-        if selectedComment.isNotice == true {
+        if selectedComment.commentType == CommentType.Notice {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatNoticeCell", for: indexPath) as! ChatNoticeCell
             cell.noticeTextView.text = NoticeStringHelper.makeNoticeString(notice: selectedComment.notice)
             cell.selectionStyle = .none
             
             return cell
         }
-        
+       
+        if selectedComment.commentType == CommentType.Date {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatDateDisplayCell", for: indexPath) as! ChatDateDisplayCell
+            cell.dateLabel.text = selectedComment.message
+            cell.selectionStyle = .none
+            return cell
+        }
         
         let remainUserCount = self.selectedChatModel.chatUserIdDic.count - selectedComment.readUsers.count
         
