@@ -5,94 +5,94 @@
   Created by 김동현 on 27/01/2020.
   Copyright © 2020 John Kim. All rights reserved.
 */
-" entered newly" = " entered newly";
+" entered newly" = " 입장하였습니다.";
 
-" exited" = " exited";
+" exited" = " 나갔습니다.";
 
-"not defined" = "not defined";
+"not defined" = "미정의";
 
-"This email is yours. Please check email" = "This email is yours. Please check email";
+"This email is yours. Please check email" = "이 이메일은 자신 메일입니다. 확인해주세요.";
 
-"This email isn't registered.Please check email" = "This email isn't registered.Please check email";
+"This email isn't registered.Please check email" = "등록되지 않은 이메일입니다. 확인해주세요.";
 
-"FriendShip" = "FriendShip";
+"FriendShip" = "친구설정";
 
-"Ok" = "Ok";
+"Ok" = "확인";
 
-"You'd already requested friendship." = "You'd already requested friendship.";
+"You'd already requested friendship." = "이미 친구요청하였습니다.";
 
-"You'd already received friendship." = "You'd already received friendship.";
+"You'd already received friendship." = "이미 친구요청을 받았습니다.";
 
-"You'd already made friendship." = "You'd already made friendship.";
+"You'd already made friendship." = "이미 친구입니다.";
 
-"You'd been rejected friendship." = "You'd been rejected friendship.";
+"You'd been rejected friendship." = "거절된 친구요청입니다.";
 
-"You have applied for a friend." = "You have applied for a friend.";
+"You have applied for a friend." = "친구가 되었습니다.";
 
-"No comments" = "No comments";
+"No comments" = "미입력";
 
-"Start Chat" = "Start Chat";
+"Start Chat" = "채팅하기";
 
-"Disconnect Friendship" = "Disconnect Friendship";
+"Disconnect Friendship" = "친구 끊기";
 
-"Cancel Request" = "Cancel Request";
+"Cancel Request" = "친구요청 취소";
 
-"Accept Request" = "Accept Request";
+"Accept Request" = "친구요청 수락";
 
-"Reject Request" = "Reject Request";
+"Reject Request" = "친구요청 거절";
 
-"ToMe" = "ToMe";
+"ToMe" = "나에게";
 
-"Are you sure to disconnect friendship?" = "Are you sure to disconnect friendship?";
+"Are you sure to disconnect friendship?" = "정말 친구를 끊겠습니까?";
 
-"Cancel" = "Cancel";
+"Cancel" = "취소";
 
-"Setting" = "Setting";
+"Setting" = "설정";
 
-"Change Title" = "Change Title";
+"Change Title" = "방제 바꾸기";
 
-"Exit Chat" = "Exit Chat";
+"Exit Chat" = "채팅 나가기";
 
-"Add Members" = "Add Members";
+"Add Members" = "멤버 추가하기";
 
 "Update" = "Update";
 
-"[Official]" = "[Official]";
+"[Official]" = "[공식]";
 
-"Current Members" = "Current Members";
+"Current Members" = "현재 멤버";
 
-"Error" = "Error";
+"Error" = "에러";
 
-"Password is wrong. Please check your password" = "Password is wrong. Please check your password";
+"Password is wrong. Please check your password" = "비밀번호가 틀렸습니다.확인해주세요.";
 
-"This email is not registered. Please check your email" = "This email is not registered. Please check your email";
+"This email is not registered. Please check your email" = "등록되지 않은 이메일입니다. 확인해주세요.";
 
-"This email format is invalid. Please check your email" = "This email format is invalid. Please check your email";
+"This email format is invalid. Please check your email" = "이메일 형식에 맞지 않습니다. 확인해주세요.";
 
-"Sign Up" = "Sign Up";
+"Sign Up" = "가입하기";
 
-"Please check password are they are not the same" = "Please check password are they are not the same";
+"Please check password are they are not the same" = "입력한 비밀번호가 동일하지 확인해주세요.";
 
-"Please check permission code. If you don't know it, remove and re-try to sign up" = "Please check permission code. If you don't know it, remove and re-try to sign up";
+"Please check permission code. If you don't know it, remove and re-try to sign up" = "허가 코드를 확인해주세요. 모른다면 지우고 다시 가입해주세요.";
 
-"Used Email has already registered. Please check your email" = "Used Email has already registered. Please check your email";
+"Used Email has already registered. Please check your email" = "입력한 이메일은 이미 가입되어 있습니다. 확인해주세요.";
 
-"Search friends" = "Search friends";
+"Search friends" = "친구 검색";
 
-"Processing" = "Processing";
+"Processing" = "처리중";
 
-"Customers" = "Customers";
+"Customers" = "고객";
 
-"Friends" = "Friends";
+"Friends" = "친구";
 
-"Current processing" = "Current processing";
+"Current processing" = "처리중";
 
 "Coming soon" = "Coming soon";
 
-"This function has not been supporting yet" = "This function has not been supporting yet";
+"This function has not been supporting yet" = "아직 지원하지 않는 기능입니다.";
 
-"Logout" = "Logout";
+"Logout" = "로그아웃";
 
-"Notice" = "Notice";
+"Notice" = "공지";
 
-"Are you sure to logout?" = "정말로 로그아웃하시나요?";
+"Are you sure to logout?" = "정말로 로그아웃하시겠습니까?";

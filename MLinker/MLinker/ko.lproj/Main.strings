@@ -1,42 +1,42 @@
 
 /* Class = "UILabel"; text = "email"; ObjectID = "4As-NY-rqa"; */
-"4As-NY-rqa.text" = "email";
+"4As-NY-rqa.text" = "이메일";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "678-RC-51M"; */
-"678-RC-51M.text" = "Version";
+"678-RC-51M.text" = "버전";
 
 /* Class = "UINavigationItem"; title = "Friends"; ObjectID = "CxR-M9-j8W"; */
-"CxR-M9-j8W.title" = "Friends";
+"CxR-M9-j8W.title" = "친구";
 
 /* Class = "UITabBarItem"; title = "Chats"; ObjectID = "EaL-98-XAm"; */
-"EaL-98-XAm.title" = "Chats";
+"EaL-98-XAm.title" = "채팅";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "GxW-dL-62V"; */
-"GxW-dL-62V.text" = "Version";
+"GxW-dL-62V.text" = "버전";
 
 /* Class = "UILabel"; text = "[Official]"; ObjectID = "Kb8-Xw-kKi"; */
-"Kb8-Xw-kKi.text" = "[Official]";
+"Kb8-Xw-kKi.text" = "[공식]";
 
 /* Class = "UITabBarItem"; title = "Settings"; ObjectID = "Yp2-Tp-8jk"; */
-"Yp2-Tp-8jk.title" = "Settings";
+"Yp2-Tp-8jk.title" = "설정";
 
 /* Class = "UINavigationItem"; title = "Chats"; ObjectID = "gos-pj-h5z"; */
-"gos-pj-h5z.title" = "Chats";
+"gos-pj-h5z.title" = "채팅";
 
 /* Class = "UILabel"; text = "name"; ObjectID = "jIC-41-ku0"; */
-"jIC-41-ku0.text" = "name";
+"jIC-41-ku0.text" = "이름";
 
 /* Class = "UITabBarItem"; title = "Users"; ObjectID = "oSS-Oo-AdO"; */
-"oSS-Oo-AdO.title" = "Users";
+"oSS-Oo-AdO.title" = "친구";
 
 /* Class = "UITabBarItem"; title = "Counseling"; ObjectID = "to8-mb-9bo"; */
-"to8-mb-9bo.title" = "Counseling";
+"to8-mb-9bo.title" = "상담";
 
 /* Class = "UINavigationItem"; title = "My"; ObjectID = "v1P-5l-0u8"; */
-"v1P-5l-0u8.title" = "My";
+"v1P-5l-0u8.title" = "설정";
 
 /* Class = "UINavigationItem"; title = "Counselling"; ObjectID = "y0D-eP-PBc"; */
-"y0D-eP-PBc.title" = "Counselling";
+"y0D-eP-PBc.title" = "상담";
 
 /* Class = "UILabel"; text = "1.0.0"; ObjectID = "yuN-Aw-57W"; */
 "yuN-Aw-57W.text" = "1.0.0";

@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "email"; ObjectID = "4As-NY-rqa"; */
-"4As-NY-rqa.text" = "email";
+"4As-NY-rqa.text" = "Email";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "678-RC-51M"; */
 "678-RC-51M.text" = "Version";
@@ -24,7 +24,7 @@
 "gos-pj-h5z.title" = "Chats";
 
 /* Class = "UILabel"; text = "name"; ObjectID = "jIC-41-ku0"; */
-"jIC-41-ku0.text" = "name";
+"jIC-41-ku0.text" = "Name";
 
 /* Class = "UITabBarItem"; title = "Users"; ObjectID = "oSS-Oo-AdO"; */
 "oSS-Oo-AdO.title" = "Users";
