@@ -116,6 +116,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             self.commentLabel.text = NSLocalizedString("No comments", comment: "")
         }
         
+        if let profileImageString = self.selectedUserModel.profileURL {
+            let profileImageURL = URL(string: profileImageString)
+            self.profileImageView.kf.setImage(with: profileImageURL)
+        }
+        
         if(selectedFriendshipModel != nil)
         {
             self.editProfileButton.isHidden = true
@@ -163,11 +168,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         }
         else
         {
-            if let profileImageString = self.selectedUserModel.profileURL {
-                let profileImageURL = URL(string: profileImageString)
-                self.profileImageView.kf.setImage(with: profileImageURL)
-            }
-            
             if(self.currnetUserUid == self.selectedUserModel.uid)
             {
                 //self
