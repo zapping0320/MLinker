@@ -13,7 +13,6 @@ class UserModel: Mappable {
     var email : String?
     var profileURL : String?
     var name: String?
-    //pushtoken
     var comment:String?
     var isAdminAccount : Bool = false
     public var timestamp: Int?
@@ -35,6 +34,7 @@ class UserModel: Mappable {
         comment         <- map["comment"]
         isAdminAccount  <- map["isAdminAccount"]
         timestamp       <- map["timestamp"]
+        pushToken       <- map["pushToken"]
     }
     
     public func containsText(text :String) -> Bool {

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import Alamofire
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
@@ -114,6 +115,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if(isNotice == false)
         {
             commentDic.updateValue(self.chatInputView.text!, forKey: "message")
+            self.sendGCM()
         }
         else
         {
@@ -133,6 +135,32 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.chatInputViewHeight.constant = 40
             self.updateChatRoomTimeStamp()
         })
+    }
+    
+    func sendGCM() {
+        let url = "https://fcm.googleapis.com/fcm/send"//"https://gcm-http.googleapis.com/gcm/send"
+        let header : HTTPHeaders = [
+            "Content-Type":"application/json",
+            "Authorization": "key=AAAAYORzEGs:APA91bFTd1_Y-gV-lLkbHGEayd5LSiI5hrErPlxERgvo37uMRCAZgYBcVvchK8B7eUomwcSZdXj7n9OqNQ6wZEVVvwVPwK96jV8RQC9I-X6VGotebzqm2fD-Yk9aOPnz3tKZMcEowhQj"
+        ]
+        
+        for key in self.selectedChatModel.chatUserModelDic.keys {
+            if key == self.currnetUserUid {
+                continue
+            }
+            
+            let currentUserModel = self.selectedChatModel.chatUserModelDic[key]
+            let notificationModel = NotificationModel()
+            notificationModel.to = currentUserModel?.pushToken
+            notificationModel.notification.title = NSLocalizedString("Sender :", comment: "") + (currentUserModel?.name!)!
+            notificationModel.notification.body = self.chatInputView.text!
+            
+            
+            let params = notificationModel.toJSON()
+            Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+                print(response.result.value)
+            }
+        }
     }
     
     func updateChatRoomTimeStamp() {

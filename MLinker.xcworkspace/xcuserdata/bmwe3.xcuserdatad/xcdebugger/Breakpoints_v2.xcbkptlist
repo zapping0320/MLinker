@@ -1253,8 +1253,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1269,8 +1269,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "keyboardWillShow(noti:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1285,8 +1285,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "sendMessageServer(isNotice:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1333,8 +1333,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "exitChatRoom()"
             landmarkType = "7">
             <Locations>
@@ -1701,8 +1701,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "addDateString(comment:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1717,8 +1717,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "getRelatedUserModels()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1733,8 +1733,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "getRelatedUserModels()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1749,8 +1749,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "addDateString(comment:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1957,8 +1957,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "changeChatRoomTitle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2053,8 +2053,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "textViewDidChange(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2069,8 +2069,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "textViewDidChange(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2085,8 +2085,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "getMessageList()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2101,8 +2101,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "sendMessageServer(isNotice:)"
             landmarkType = "7">
             <Locations>
@@ -2149,8 +2149,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "getMessageList()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3043,8 +3043,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3059,8 +3059,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "getMessageList()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3075,8 +3075,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3091,8 +3091,8 @@
             filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "getMessageList()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3223,6 +3223,86 @@
             endingLineNumber = "119"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7F7DCFA4-CC81-4064-B56D-27B91C2A015E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "sendGCM()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4C9F4BA-7CDA-4AFB-811C-733DDEE8421F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "sendGCM()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD4602EB-F07C-4083-AAF7-39345D91D2B9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "sendGCM()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BD4602EB-F07C-4083-AAF7-39345D91D2B9 - be90fc36c763f141"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MLinker.ChatViewController.sendGCM() -&gt; ()"
+                  moduleName = "MLinker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/Popups/ChatViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "3180">
+               </Location>
+               <Location
+                  uuid = "BD4602EB-F07C-4083-AAF7-39345D91D2B9 - b771561774a4e891"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in MLinker.ChatViewController.sendGCM() -&gt; ()"
+                  moduleName = "MLinker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/Popups/ChatViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
