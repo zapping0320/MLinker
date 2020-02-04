@@ -327,7 +327,12 @@ extension UsersViewController {
        
         cell.setAdminAccount(value: currentUser.isAdminAccount)
         cell.nameLabel?.text = currentUser.name
-        cell.commentLabel?.text = currentUser.comment
+        if currentUser.comment!.isEmpty {
+            cell.commentLabel?.text = NSLocalizedString("No comments", comment: "")
+        }
+        else {
+            cell.commentLabel?.text = currentUser.comment
+        }
         
         if let profileImageString = currentUser.profileURL {
             let profileImageURL = URL(string: profileImageString)
