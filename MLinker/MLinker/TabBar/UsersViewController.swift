@@ -22,11 +22,15 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.usersArray[0] = [UserModel]()
+        self.usersArray[1] = [UserModel]()
+        self.usersArray[2] = [UserModel]()
+        
         let searchControl = UISearchController(searchResultsController: nil)
         searchControl.searchResultsUpdater = self
         searchControl.obscuresBackgroundDuringPresentation = false
         searchControl.searchBar.placeholder = NSLocalizedString("Search friends", comment: "")
-        self.navigationItem.searchController = searchControl
+        //self.navigationItem.searchController = searchControl
         
         //self.navigationItem.hidesSearchBarWhenScrolling = true
         definesPresentationContext = true
@@ -45,16 +49,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationItem.rightBarButtonItems = [barButtonItem]
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
-        
-        //NotificationCenter.default.addObserver(self, selector: #selector(loadUsersInfo), name: .nsUpdateUsersTable, object: nil)
-        
-        //NotificationCenter.default.addObserver(self, selector: #selector(loadSelfInfo), name: .nsUpdateSelf, object: nil)
-        
-        
+       
         self.currnetUserUid = Auth.auth().currentUser?.uid
         UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
         self.loadSelfInfo()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,42 +69,37 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(addFriendVC, animated: true, completion: nil)
     }
     
-    @objc func loadSelfInfo() {
-        //self.usersArray[0] = [UserModel]()
-        Database.database().reference().child("users").child(self.currnetUserUid).observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            if let userDic = datasnapShot.value as? [String:AnyObject] {
-                let userModel = UserModel(JSON: userDic)
-                if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
-                    self.tabBarController?.viewControllers?.remove(at: 1)
-                }
-
-                guard let selfDataList = self.usersArray[0] else {
+    @objc func loadSelfInfo() { Database.database().reference().child("users").child(self.currnetUserUid).observeSingleEvent(of: DataEventType.value) {
+        (datasnapShot) in
+        if let userDic = datasnapShot.value as? [String:AnyObject] {
+            let userModel = UserModel(JSON: userDic)
+            if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
+                self.tabBarController?.viewControllers?.remove(at: 1)
+            }
+            
+            guard let selfDataList = self.usersArray[0] else {
+                return
+            }
+            
+            if selfDataList.count > 0 {
+                let currentSelfModel = selfDataList[0]
+                if currentSelfModel.timestamp! >= (userModel?.timestamp!)! {
                     return
                 }
-
-                if selfDataList.count > 0 {
-                    let currentSelfModel = selfDataList[0]
-                    if currentSelfModel.timestamp >= userModel.timestamp {
-                        return
-                    }
-                }                
-                self.usersArray[0] = [UserModel]()
-                UserContexManager.shared.setCurrentUserModel(model: userModel!)
-                self.usersArray[0]!.append(userModel!)
-                DispatchQueue.main.async {
-                    
-                    self.usersTableView.reloadData()
-                }
+            }
+            self.usersArray[0] = [UserModel]()
+            UserContexManager.shared.setCurrentUserModel(model: userModel!)
+            self.usersArray[0]!.append(userModel!)
+            DispatchQueue.main.async {
+                self.usersTableView.reloadData()
             }
         }
+    }
     }
     
     @objc func loadUsersInfo() {
       
         var processingFriendList = [UserModel]()
-        //self.usersArray[1] = [UserModel]()
-        //self.usersArray[2] = [UserModel]()
     Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
@@ -132,11 +125,22 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             if let userDic = datasnapShot.value as? [String:AnyObject] {
                                 let userModel = UserModel(JSON: userDic)
                                 //find same usermodel
+                                let index = self.findUserModel(key: userModel!.uid!)
                                 //check timestamp
+                                if index != -1 {
+                                    let foundUserModel = self.usersArray[2]![index]
+                                    if foundUserModel.timestamp! >= userModel!.timestamp! {
+                                        return
+                                    }
+                                }
                                 self.usersArray[2]!.append(userModel!)
                                 DispatchQueue.main.async {
-                                    //reload one row
-                                    self.usersTableView.reloadData()
+                                    if index == -1 {
+                                        self.usersTableView.reloadData()
+                                    }
+                                    else {
+                                        self.usersTableView.rectForRow(at: IndexPath.init(row: index, section: 2))
+                                    }
                                 }
                             }
                         }
@@ -166,6 +170,21 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
         }
+    }
+    
+    func findUserModel(key : String) -> Int {
+        guard let userModelList = self.usersArray[2] else {
+            return -1
+        }
+        
+        for (index, userModel) in userModelList.enumerated() {
+            if userModel.uid == key {
+                return index
+            }
+            
+        }
+        
+        return -1
     }
     
     @objc func moveChatView(_ notification : Notification) {
