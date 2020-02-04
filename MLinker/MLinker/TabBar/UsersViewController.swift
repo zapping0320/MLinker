@@ -46,9 +46,9 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(loadUsersInfo), name: .nsUpdateUsersTable, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(loadUsersInfo), name: .nsUpdateUsersTable, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(loadSelfInfo), name: .nsUpdateSelf, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(loadSelfInfo), name: .nsUpdateSelf, object: nil)
         
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
@@ -72,17 +72,30 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func loadSelfInfo() {
-        self.usersArray[0] = [UserModel]()
+        //self.usersArray[0] = [UserModel]()
         Database.database().reference().child("users").child(self.currnetUserUid).observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             if let userDic = datasnapShot.value as? [String:AnyObject] {
                 let userModel = UserModel(JSON: userDic)
+                if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
+                    self.tabBarController?.viewControllers?.remove(at: 1)
+                }
+
+                guard let selfDataList = self.usersArray[0] else {
+                    return
+                }
+
+                if selfDataList.count > 0 {
+                    let currentSelfModel = selfDataList[0]
+                    if currentSelfModel.timestamp >= userModel.timestamp {
+                        return
+                    }
+                }                
+                self.usersArray[0] = [UserModel]()
                 UserContexManager.shared.setCurrentUserModel(model: userModel!)
                 self.usersArray[0]!.append(userModel!)
                 DispatchQueue.main.async {
-                    if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
-                        self.tabBarController?.viewControllers?.remove(at: 1)
-                    }
+                    
                     self.usersTableView.reloadData()
                 }
             }
@@ -92,8 +105,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @objc func loadUsersInfo() {
       
         var processingFriendList = [UserModel]()
-        self.usersArray[1] = [UserModel]()
-        self.usersArray[2] = [UserModel]()
+        //self.usersArray[1] = [UserModel]()
+        //self.usersArray[2] = [UserModel]()
     Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
@@ -118,8 +131,11 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             (datasnapShot) in
                             if let userDic = datasnapShot.value as? [String:AnyObject] {
                                 let userModel = UserModel(JSON: userDic)
+                                //find same usermodel
+                                //check timestamp
                                 self.usersArray[2]!.append(userModel!)
                                 DispatchQueue.main.async {
+                                    //reload one row
                                     self.usersTableView.reloadData()
                                 }
                             }
@@ -137,10 +153,17 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
         
-            self.usersArray[1] = processingFriendList
+            guard let dataList = self.usersArray[1] else {
+                return
+            }
+
+            if dataList.count != processingFriendList.count {
+
+                self.usersArray[1] = processingFriendList
         
-            DispatchQueue.main.async {
-                self.usersTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.usersTableView.reloadData()
+                }
             }
         }
     }
