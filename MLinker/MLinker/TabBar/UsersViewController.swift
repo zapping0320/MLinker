@@ -56,6 +56,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.loadSelfInfo()
         self.loadUsersInfo()
     }
     
