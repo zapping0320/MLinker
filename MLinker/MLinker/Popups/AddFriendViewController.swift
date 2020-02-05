@@ -102,6 +102,10 @@ class AddFriendViewController: UIViewController {
                 userModel.name = userName
                 userModel.profileURL = profileURL
                 userModel.comment = dataDic?["comment"] as? String ?? ""
+                userModel.pushToken = dataDic?["pushToken"] as? String ?? ""
+//                let userDic = fchild.value as? [String:AnyObject]
+//                let userModel = UserModel(JSON: userDic!)
+                
                 
                 if(uid == self.currnetUserUid)
                 {
@@ -194,11 +198,24 @@ class AddFriendViewController: UIViewController {
                     (err, ref) in
                     if(err == nil) {
                         self.addFriendshipInfoAtFriend()
+                        self.sendGCM()
                     }
                 }
             }
         }
     }
+    
+    func sendGCM() {
+       let notificationModel = NotificationModel()
+        notificationModel.to = self.friendUserModel?.pushToken
+       notificationModel.notification.title = NSLocalizedString("Sender :", comment: "") + (currentUserModel?.name!)!
+        notificationModel.notification.body = (self.currentUserModel?.name!)! + " request friendship"
+       
+       let params = notificationModel.toJSON()
+       PushMessageManager.sendGCM(params: params)
+        
+    }
+    
     
     func makePopupMessage(model : FriendshipModel) -> String {
         var popupMessage = ""

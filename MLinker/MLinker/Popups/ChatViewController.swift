@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import Kingfisher
-import Alamofire
+
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
@@ -138,11 +138,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func sendGCM() {
-        let url = "https://fcm.googleapis.com/fcm/send"//"https://gcm-http.googleapis.com/gcm/send"
-        let header : HTTPHeaders = [
-            "Content-Type":"application/json",
-            "Authorization": "key=AAAAYORzEGs:APA91bFTd1_Y-gV-lLkbHGEayd5LSiI5hrErPlxERgvo37uMRCAZgYBcVvchK8B7eUomwcSZdXj7n9OqNQ6wZEVVvwVPwK96jV8RQC9I-X6VGotebzqm2fD-Yk9aOPnz3tKZMcEowhQj"
-        ]
         
         for key in self.selectedChatModel.chatUserModelDic.keys {
             if key == self.currnetUserUid {
@@ -157,9 +152,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             
             let params = notificationModel.toJSON()
-            Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
-                print(response.result.value)
-            }
+            PushMessageManager.sendGCM(params: params)
         }
     }
     

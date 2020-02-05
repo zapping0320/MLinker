@@ -508,8 +508,8 @@
             timestampString = "590883840.555176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -525,8 +525,8 @@
             timestampString = "590883840.5557671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -559,8 +559,8 @@
             timestampString = "590883840.558351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -712,8 +712,8 @@
             timestampString = "590883840.5608341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "getFriendshipModel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,8 +746,8 @@
             timestampString = "590883840.561031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "findUserEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -763,8 +763,8 @@
             timestampString = "590883840.561137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "getFriendshipModel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -814,8 +814,8 @@
             timestampString = "590883840.561825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "getFriendshipModel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1735,7 +1735,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
             endingLineNumber = "258"
-            landmarkName = "addDateString(comment:)"
+            landmarkName = "getRelatedUserModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1783,7 +1783,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "259"
             endingLineNumber = "259"
-            landmarkName = "addDateString(comment:)"
+            landmarkName = "getRelatedUserModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2087,7 +2087,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "192"
             endingLineNumber = "192"
-            landmarkName = "textViewDidChange(_:)"
+            landmarkName = "getMessageList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3260,22 +3260,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7F7DCFA4-CC81-4064-B56D-27B91C2A015E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "sendGCM()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A4C9F4BA-7CDA-4AFB-811C-733DDEE8421F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3285,7 +3269,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
             endingLineNumber = "161"
-            landmarkName = "sendGCM()"
+            landmarkName = "updateChatRoomTimeStamp()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3301,7 +3285,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
             endingLineNumber = "160"
-            landmarkName = "sendGCM()"
+            landmarkName = "updateChatRoomTimeStamp()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -3414,6 +3398,54 @@
             startingLineNumber = "85"
             endingLineNumber = "85"
             landmarkName = "loadSelfInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8722136B-4EC7-4C2C-9700-71CF6DC5B295"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Manager/PushMessageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "sendGCM(params:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E3AC165-852B-4D03-BB20-69B60E0EBCB0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/AddFriendViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "sendGCM()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6485A0D6-FA9C-4E31-BC63-76FB74AA0F22"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Manager/PushMessageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "sendGCM(params:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
