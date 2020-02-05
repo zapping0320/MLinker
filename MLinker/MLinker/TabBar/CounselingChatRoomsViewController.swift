@@ -35,7 +35,7 @@ class CounselingChatRoomsViewController: UIViewController, UITableViewDelegate, 
     }
     
     func getChatRoomsList() {
-        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
+        Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             self.chatRooms.removeAll()
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
