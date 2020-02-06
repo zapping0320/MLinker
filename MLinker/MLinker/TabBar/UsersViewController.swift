@@ -115,6 +115,11 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     if(friendshipModel?.status == FriendStatus.cancelled ||
                         friendshipModel?.status == FriendStatus.rejected)
                     {
+                        let index = self.findUserModel(key:riendshipModel?.friendEmail!)                                
+                        if index != -1 {
+                            let foundUserModel = self.usersArray[2]![index]
+                             self.usersArray[2]!.remove(at: index)
+                        }
                         continue
                     }
                     
@@ -126,20 +131,21 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             if let userDic = datasnapShot.value as? [String:AnyObject] {
                                 let userModel = UserModel(JSON: userDic)
                                 //find same usermodel
-                                let index = self.findUserModel(key: userModel!.uid!)
+                                let index = self.findUserModel(key: userModel!.email!)
                                 //check timestamp
                                 if index != -1 {
                                     let foundUserModel = self.usersArray[2]![index]
                                     if foundUserModel.timestamp! >= userModel!.timestamp! {
                                         return
                                     }
-                                }
-                                self.usersArray[2]!.append(userModel!)
+                                }                                
                                 DispatchQueue.main.async {
                                     if index == -1 {
+                                        self.usersArray[2]!.append(userModel!)
                                         self.usersTableView.reloadData()
                                     }
                                     else {
+                                        self.usersArray[2][index] = userModel!
                                         self.usersTableView.rectForRow(at: IndexPath.init(row: index, section: 2))
                                     }
                                 }
@@ -179,7 +185,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         for (index, userModel) in userModelList.enumerated() {
-            if userModel.uid == key {
+            if userModel.email == key {
                 return index
             }
             
