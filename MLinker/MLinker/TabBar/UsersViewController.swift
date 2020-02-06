@@ -115,10 +115,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     if(friendshipModel?.status == FriendStatus.cancelled ||
                         friendshipModel?.status == FriendStatus.rejected)
                     {
-                        let index = self.findUserModel(key:riendshipModel?.friendEmail!)                                
+                        let index = self.findUserModel(key: friendshipModel!.friendEmail!)
                         if index != -1 {
-                            let foundUserModel = self.usersArray[2]![index]
-                             self.usersArray[2]!.remove(at: index)
+                            self.usersArray[2]!.remove(at: index)
+                            self.usersTableView.reloadData()
                         }
                         continue
                     }
@@ -145,7 +145,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                         self.usersTableView.reloadData()
                                     }
                                     else {
-                                        self.usersArray[2][index] = userModel!
+                                        self.usersArray[2]![index] = userModel!
                                         self.usersTableView.rectForRow(at: IndexPath.init(row: index, section: 2))
                                     }
                                 }
