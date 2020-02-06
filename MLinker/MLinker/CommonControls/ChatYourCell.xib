@@ -41,7 +41,6 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileCell" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-mj-pAy">
                         <rect key="frame" x="18" y="0.0" width="36" height="36"/>
-                        <color key="backgroundColor" red="0.85098039219999999" green="0.85490196080000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="3jK-rc-WyW"/>
                             <constraint firstAttribute="height" constant="36" id="cr3-mS-qXm"/>

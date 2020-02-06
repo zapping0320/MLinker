@@ -36,7 +36,6 @@
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileCell" translatesAutoresizingMaskIntoConstraints="NO" id="Prt-mP-alW">
                                 <rect key="frame" x="161" y="132" width="92" height="92"/>
-                                <color key="backgroundColor" red="0.85098039219999999" green="0.85490196080000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="UDy-S3-vUu"/>
                                     <constraint firstAttribute="height" constant="92" id="yLg-j0-UDX"/>

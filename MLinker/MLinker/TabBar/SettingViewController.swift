@@ -29,21 +29,15 @@ class SettingViewController: UIViewController {
         logoutButton.setImage(UIImage (named: "logout"), for: .normal)
         logoutButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
         logoutButton.addTarget(self, action: #selector(tryLogout),for: UIControl.Event.touchUpInside)
+        let logoutBarButton = UIBarButtonItem(customView: logoutButton)
         
         let editButton = UIButton(type: .custom)
         editButton.setImage(UIImage (named: "setting"), for: .normal)
         editButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
         editButton.addTarget(self, action: #selector(editProfile),for: UIControl.Event.touchUpInside)
+        let editBarButton = UIBarButtonItem(customView: editButton)
         
-        let stackview = UIStackView.init(arrangedSubviews: [editButton, logoutButton])
-        stackview.distribution = .equalSpacing
-        stackview.axis = .horizontal
-        stackview.alignment = .center
-        stackview.spacing = 24
-        
-        let rightBarButton = UIBarButtonItem(customView: stackview)
-        
-        self.navigationItem.rightBarButtonItem = rightBarButton
+        self.navigationItem.rightBarButtonItems = [editBarButton, logoutBarButton ]
         
         self.profileView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editProfile)))
         
