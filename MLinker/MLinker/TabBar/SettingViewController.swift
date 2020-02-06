@@ -35,7 +35,7 @@ class SettingViewController: UIViewController {
         editButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
         editButton.addTarget(self, action: #selector(editProfile),for: UIControl.Event.touchUpInside)
         
-        let stackview = UIStackView.init(arrangedSubviews: [editButton, logoutButton])
+        let stackview = UIStackView.init(arrangedSubviews: [logoutButton, editButton])
         stackview.distribution = .equalSpacing
         stackview.axis = .horizontal
         stackview.alignment = .center
@@ -97,9 +97,7 @@ class SettingViewController: UIViewController {
                                       preferredStyle: .alert)
         let actionCheck = UIAlertAction(title: NSLocalizedString("Are you sure to logout?", comment: ""),
             style: .default, handler: {result in
-            let defaults = UserDefaults.standard
-            defaults.set(false, forKey: "loggedIn")
-            UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+            self.logout()
         })
         alert.addAction(actionCheck)
         
@@ -109,7 +107,15 @@ class SettingViewController: UIViewController {
         alert.addAction(actionCancel)
         
         self.present(alert, animated: true, completion: nil)
-        
        
+    }
+    
+    func logout() {
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "loggedIn")
+        self.tabBarController?.selectedIndex = 0
+        let signInVC = UIStoryboard(name: "SigninStoryboard", bundle: nil).instantiateViewController(withIdentifier: "naviSignin")
+        signInVC.modalPresentationStyle = .fullScreen
+        self.present(signInVC, animated: true, completion: nil)
     }
 }
