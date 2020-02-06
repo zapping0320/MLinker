@@ -28,6 +28,7 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultChatRoomCell" translatesAutoresizingMaskIntoConstraints="NO" id="jKN-ep-lr2">
                         <rect key="frame" x="16" y="8" width="40" height="40"/>
+                        <color key="backgroundColor" red="0.85098039219999999" green="0.85490196080000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="2LN-U0-nWh"/>
                             <constraint firstAttribute="height" constant="40" id="xhc-j5-hZH"/>

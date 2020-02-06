@@ -48,7 +48,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.profileImageView.layer.cornerRadius = 41
+        self.profileImageView.layer.cornerRadius = 46
         self.profileImageView.clipsToBounds = true
         self.cameraButton.layer.cornerRadius = 16
         
