@@ -106,9 +106,15 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return
         }
         
+         let readUsersDic : Dictionary<String,Any> = [
+            self.currnetUserUid! : true
+        ]
+        
+        
         var commentDic : Dictionary<String, Any> = [
             "sender": self.currnetUserUid!,
-            "timestamp" : ServerValue.timestamp()
+            "timestamp" : ServerValue.timestamp(),
+            "readUsers" : readUsersDic
         ]
         
         
