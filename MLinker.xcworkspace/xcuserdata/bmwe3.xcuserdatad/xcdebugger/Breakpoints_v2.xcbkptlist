@@ -1735,7 +1735,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "264"
             endingLineNumber = "264"
-            landmarkName = "getRelatedUserModels()"
+            landmarkName = "addDateString(comment:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1783,8 +1783,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
             endingLineNumber = "265"
-            landmarkName = "getRelatedUserModels()"
-            landmarkType = "7">
+            landmarkName = "ChatViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2121,38 +2121,6 @@
             endingLineNumber = "231"
             landmarkName = "getMessageList()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B2BC4461-1F18-458F-A8F2-9BC2C08A471F - a32d0a9061fa9261"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in MLinker.ChatViewController.getMessageList() -&gt; ()"
-                  moduleName = "MLinker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/Popups/ChatViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "225"
-                  endingLineNumber = "225"
-                  offsetFromSymbolStart = "5534">
-               </Location>
-               <Location
-                  uuid = "B2BC4461-1F18-458F-A8F2-9BC2C08A471F - a32d0a9061fa9261"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in MLinker.ChatViewController.getMessageList() -&gt; ()"
-                  moduleName = "MLinker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/Popups/ChatViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "225"
-                  endingLineNumber = "225"
-                  offsetFromSymbolStart = "5664">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2614,7 +2582,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
-            endingLineNumber = "40">
+            endingLineNumber = "40"
+            landmarkName = "UserTableViewCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3477,6 +3447,166 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
             endingLineNumber = "211"
+            landmarkName = "getMessageList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C2C338A1-1995-469F-B868-2D1D2192B7C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "getMessageList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4F534E48-BBBD-48B8-9E6E-7DEFFAF37837"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "getMessageList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4F534E48-BBBD-48B8-9E6E-7DEFFAF37837 - a32d0a9061fa9261"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in MLinker.ChatViewController.getMessageList() -&gt; ()"
+                  moduleName = "MLinker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/Popups/ChatViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "5893">
+               </Location>
+               <Location
+                  uuid = "4F534E48-BBBD-48B8-9E6E-7DEFFAF37837 - a32d0a9061fa9261"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in MLinker.ChatViewController.getMessageList() -&gt; ()"
+                  moduleName = "MLinker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/Popups/ChatViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "5957">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10169D69-6956-46BC-A2CD-FC2038A9DBF8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "getMessageList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "00F492D7-760B-4239-BBF0-19A336A44E0A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "getMessageList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "00F492D7-760B-4239-BBF0-19A336A44E0A - a32d0a9061fa9261"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in MLinker.ChatViewController.getMessageList() -&gt; ()"
+                  moduleName = "MLinker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/Popups/ChatViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "243"
+                  endingLineNumber = "243"
+                  offsetFromSymbolStart = "7152">
+               </Location>
+               <Location
+                  uuid = "00F492D7-760B-4239-BBF0-19A336A44E0A - 6ac2f00cc229b9d9"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in MLinker.ChatViewController.getMessageList() -&gt; ()"
+                  moduleName = "MLinker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Transcend/projectx/MLinker/MLinker/MLinker/Popups/ChatViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8FD1024-C1DB-4F25-BC10-0E50AAC5BF9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75CA7011-87EA-4034-BCC4-CE17147E9E57"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MLinker/MLinker/Popups/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "getMessageList()"
             landmarkType = "7">
          </BreakpointContent>

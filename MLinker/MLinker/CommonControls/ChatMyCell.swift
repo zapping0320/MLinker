@@ -24,6 +24,19 @@ class ChatMyCell: UITableViewCell {
 
     }
     
+    func setShowReadUserCountLabel(remainUserCount : Int) {
+        if(remainUserCount > 0)
+        {
+            self.readUserLabel.isHidden = false
+            self.readUserLabel.text = String(remainUserCount)
+        }
+        else
+        {
+            self.readUserLabel.isHidden = true
+        }
+    }
+    
+    
 }
 
 extension Int {

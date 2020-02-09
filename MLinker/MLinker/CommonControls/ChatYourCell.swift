@@ -26,4 +26,16 @@ class ChatYourCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func setShowReadUserCountLabel(remainUserCount : Int) {
+        if(remainUserCount > 0)
+        {
+            self.readUserLabel.isHidden = false
+            self.readUserLabel.text = String(remainUserCount)
+        }
+        else
+        {
+            self.readUserLabel.isHidden = true
+        }
+    }
 }

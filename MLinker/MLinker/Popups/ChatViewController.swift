@@ -198,6 +198,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func getMessageList() {
         self.databaseRef = Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments")
         
+        var lastComment:ChatModel.Comment?
+        
         self.observe = self.databaseRef!.observe(DataEventType.value, with: {
             (snapshot) in
             self.comments.removeAll()
@@ -220,15 +222,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 self.addDateString(comment: comment!)
                 self.comments.append(comment!)
+                lastComment = comment!
             }
             
             let nsDic = readUsersDic as NSDictionary
             
-            if(self.comments.last?.readUsers.keys == nil){
+            if(lastComment?.readUsers.keys == nil){
                 return
             }
             
-            if(!(self.comments.last?.readUsers.keys.contains(self.currnetUserUid!))!){
+            if(!(lastComment?.readUsers.keys.contains(self.currnetUserUid!))!){
                 snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
                     DispatchQueue.main.async {
                         self.commentTableView.reloadData()
@@ -402,13 +405,6 @@ extension ChatViewController {
         
         let remainUserCount = self.selectedChatModel.chatUserIdDic.count - selectedComment.readUsers.count
         
-        var showReadUserCountLabel = false
-        if(remainUserCount > 0)
-        {
-            showReadUserCountLabel = true
-        }
-        
-        
         if(selectedComment.sender == self.currnetUserUid){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
             cell.selectionStyle = .none
@@ -417,10 +413,8 @@ extension ChatViewController {
                 cell.commentDateLabel.text = timeStamp.toChatCellDayTime
             }
             
-            if(showReadUserCountLabel){
-                cell.readUserLabel.isHidden = false
-                cell.readUserLabel.text = String(remainUserCount)
-            }
+            cell.setShowReadUserCountLabel(remainUserCount: remainUserCount)
+           
             return cell
         }
         else {
@@ -441,10 +435,7 @@ extension ChatViewController {
                 cell.commentDateLabel.text = timeStamp.toChatCellDayTime
             }
             
-            if(showReadUserCountLabel){
-                cell.readUserLabel.isHidden = false
-                cell.readUserLabel.text = String(remainUserCount)
-            }
+            cell.setShowReadUserCountLabel(remainUserCount: remainUserCount)
             
             if(self.selectedChatModel.chatUserModelDic.keys.contains(selectedComment.sender!) == true)
             {
