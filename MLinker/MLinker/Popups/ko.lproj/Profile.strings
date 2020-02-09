@@ -1,0 +1,33 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "0Kv-73-NPg"; */
+"0Kv-73-NPg.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "24q-9L-4xB"; */
+"24q-9L-4xB.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "[Official]"; ObjectID = "4zt-sC-skc"; */
+"4zt-sC-skc.text" = "[Official]";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5FT-an-eaZ"; */
+"5FT-an-eaZ.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "I6W-RO-2Ic"; */
+"I6W-RO-2Ic.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "P8M-Mg-4rd"; */
+"P8M-Mg-4rd.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Pbg-hF-KiK"; */
+"Pbg-hF-KiK.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "name"; ObjectID = "Pfa-cy-z60"; */
+"Pfa-cy-z60.placeholder" = "이름";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RXS-2o-g38"; */
+"RXS-2o-g38.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "VV5-P6-exL"; */
+"VV5-P6-exL.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "comment"; ObjectID = "mUH-5c-HtU"; */
+"mUH-5c-HtU.placeholder" = "자기소개";

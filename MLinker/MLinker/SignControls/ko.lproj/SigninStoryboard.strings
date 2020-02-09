@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "2G4-Nm-LCU"; */
+"2G4-Nm-LCU.text" = "비밀번호";
+
+/* Class = "UITextField"; placeholder = "Insert email "; ObjectID = "5Qa-0g-m2J"; */
+"5Qa-0g-m2J.placeholder" = "이메일 넣기";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "Ks2-8R-2HS"; */
+"Ks2-8R-2HS.normalTitle" = "Sign up";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "Rpp-NT-Us9"; */
+"Rpp-NT-Us9.normalTitle" = "Sign in";
+
+/* Class = "UILabel"; text = "Linker"; ObjectID = "hcG-gN-Eqd"; */
+"hcG-gN-Eqd.text" = "Linker";
+
+/* Class = "UILabel"; text = "M"; ObjectID = "kKZ-cl-gj4"; */
+"kKZ-cl-gj4.text" = "M";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "p3r-ZQ-5r0"; */
+"p3r-ZQ-5r0.placeholder" = "비밀번호";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "qA7-IV-MZY"; */
+"qA7-IV-MZY.text" = "이메일";

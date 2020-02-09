@@ -15,15 +15,18 @@
 		0B16822023148AD3004F8089 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16821E23148AD3004F8089 /* UserTableViewCell.swift */; };
 		0B16822123148AD3004F8089 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B16821F23148AD3004F8089 /* UserTableViewCell.xib */; };
 		0B173F5D231DCE2E00A36DAB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173F5B231DCE2E00A36DAB /* ProfileViewController.swift */; };
-		0B173F602321B67200A36DAB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B173F5F2321B67200A36DAB /* Profile.storyboard */; };
 		0B1783052353D2330097A79C /* AddChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1783042353D2330097A79C /* AddChatRoomViewController.swift */; };
-		0B1783072353D2510097A79C /* AddChatRoomSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1783062353D2510097A79C /* AddChatRoomSB.storyboard */; };
 		0B1792BB23455EE20098D7AC /* UserContexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1792BA23455EE20098D7AC /* UserContexManager.swift */; };
 		0B191FDA23318CDC0016EA85 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B191FD823318CDC0016EA85 /* ChatRoomTableViewCell.swift */; };
 		0B191FDB23318CDC0016EA85 /* ChatRoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B191FD923318CDC0016EA85 /* ChatRoomTableViewCell.xib */; };
 		0B191FDD233192190016EA85 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B191FDC233192190016EA85 /* ChatViewController.swift */; };
-		0B191FDF233192290016EA85 /* ChatView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B191FDE233192290016EA85 /* ChatView.storyboard */; };
 		0B1B418723EB70A7004C426F /* PushMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B418623EB70A7004C426F /* PushMessageManager.swift */; };
+		0B1B418F23F06B1A004C426F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1B419123F06B1A004C426F /* SignUp.storyboard */; };
+		0B1B419623F06B2E004C426F /* SigninStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1B419823F06B2E004C426F /* SigninStoryboard.storyboard */; };
+		0B1B419D23F06B55004C426F /* AddFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1B419F23F06B55004C426F /* AddFriend.storyboard */; };
+		0B1B41A423F06B68004C426F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1B41A623F06B68004C426F /* Profile.storyboard */; };
+		0B1B41AB23F06B80004C426F /* ChatView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1B41AD23F06B80004C426F /* ChatView.storyboard */; };
+		0B1B41B223F06B8F004C426F /* AddChatRoomSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1B41B423F06B8F004C426F /* AddChatRoomSB.storyboard */; };
 		0B1D800A23DF2B6D00CAA4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B1D800C23DF2B6D00CAA4BD /* Localizable.strings */; };
 		0B1D801023E236B600CAA4BD /* ChatDateDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1D800E23E236B600CAA4BD /* ChatDateDisplayCell.swift */; };
 		0B1D801123E236B600CAA4BD /* ChatDateDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1D800F23E236B600CAA4BD /* ChatDateDisplayCell.xib */; };
@@ -44,15 +47,12 @@
 		0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4D12302115D00B55D21 /* SettingViewController.swift */; };
 		0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4DA230212E700B55D21 /* SignInViewController.swift */; };
 		0B44C4DD230212E700B55D21 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4DB230212E700B55D21 /* SignUpViewController.swift */; };
-		0B44C4E42302165400B55D21 /* SigninStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */; };
-		0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B44C4E32302165400B55D21 /* SignUp.storyboard */; };
 		0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44C4E8230AFE5500B55D21 /* UIColor.swift */; };
 		0B59526A23AECB4800174564 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B59526923AECB4800174564 /* GoogleService-Info.plist */; };
 		0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB409E2356725D0085933A /* ColorHelper.swift */; };
 		0BF40A5B23CF54D800693BD5 /* CustomTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF40A5923CF54D800693BD5 /* CustomTableViewHeaderCell.swift */; };
 		0BF40A5C23CF54D800693BD5 /* CustomTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40A5A23CF54D800693BD5 /* CustomTableViewHeaderCell.xib */; };
 		0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF1759231727D400CD6561 /* AddFriendViewController.swift */; };
-		0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF175D2317287000CD6561 /* AddFriend.storyboard */; };
 		0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 /* End PBXBuildFile section */
@@ -66,15 +66,30 @@
 		0B16821E23148AD3004F8089 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0B16821F23148AD3004F8089 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		0B173F5B231DCE2E00A36DAB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0B173F5F2321B67200A36DAB /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0B1783042353D2330097A79C /* AddChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatRoomViewController.swift; sourceTree = "<group>"; };
-		0B1783062353D2510097A79C /* AddChatRoomSB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddChatRoomSB.storyboard; sourceTree = "<group>"; };
 		0B1792BA23455EE20098D7AC /* UserContexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContexManager.swift; sourceTree = "<group>"; };
 		0B191FD823318CDC0016EA85 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
 		0B191FD923318CDC0016EA85 /* ChatRoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomTableViewCell.xib; sourceTree = "<group>"; };
 		0B191FDC233192190016EA85 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		0B191FDE233192290016EA85 /* ChatView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatView.storyboard; sourceTree = "<group>"; };
 		0B1B418623EB70A7004C426F /* PushMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushMessageManager.swift; sourceTree = "<group>"; };
+		0B1B419023F06B1A004C426F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
+		0B1B419323F06B21004C426F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SignUp.strings; sourceTree = "<group>"; };
+		0B1B419523F06B24004C426F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SignUp.strings; sourceTree = "<group>"; };
+		0B1B419723F06B2E004C426F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SigninStoryboard.storyboard; sourceTree = "<group>"; };
+		0B1B419A23F06B3B004C426F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SigninStoryboard.strings; sourceTree = "<group>"; };
+		0B1B419C23F06B3E004C426F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SigninStoryboard.strings; sourceTree = "<group>"; };
+		0B1B419E23F06B55004C426F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddFriend.storyboard; sourceTree = "<group>"; };
+		0B1B41A123F06B5A004C426F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddFriend.strings; sourceTree = "<group>"; };
+		0B1B41A323F06B5D004C426F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AddFriend.strings; sourceTree = "<group>"; };
+		0B1B41A523F06B68004C426F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		0B1B41A823F06B73004C426F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Profile.strings; sourceTree = "<group>"; };
+		0B1B41AA23F06B76004C426F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Profile.strings; sourceTree = "<group>"; };
+		0B1B41AC23F06B80004C426F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatView.storyboard; sourceTree = "<group>"; };
+		0B1B41AF23F06B83004C426F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ChatView.strings; sourceTree = "<group>"; };
+		0B1B41B123F06B86004C426F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ChatView.strings; sourceTree = "<group>"; };
+		0B1B41B323F06B8F004C426F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddChatRoomSB.storyboard; sourceTree = "<group>"; };
+		0B1B41B623F06B93004C426F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddChatRoomSB.strings; sourceTree = "<group>"; };
+		0B1B41B823F06B96004C426F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AddChatRoomSB.strings; sourceTree = "<group>"; };
 		0B1D800623DF299700CAA4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		0B1D800723DF29D700CAA4BD /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		0B1D800B23DF2B6D00CAA4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -100,8 +115,6 @@
 		0B44C4D12302115D00B55D21 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0B44C4DA230212E700B55D21 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0B44C4DB230212E700B55D21 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SigninStoryboard.storyboard; sourceTree = "<group>"; };
-		0B44C4E32302165400B55D21 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		0B44C4E8230AFE5500B55D21 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		0B59526923AECB4800174564 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B59526C23BBFA3B00174564 /* MLinker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MLinker.entitlements; sourceTree = "<group>"; };
@@ -109,7 +122,6 @@
 		0BF40A5923CF54D800693BD5 /* CustomTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewHeaderCell.swift; sourceTree = "<group>"; };
 		0BF40A5A23CF54D800693BD5 /* CustomTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewHeaderCell.xib; sourceTree = "<group>"; };
 		0BFF1759231727D400CD6561 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
-		0BFF175D2317287000CD6561 /* AddFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriend.storyboard; sourceTree = "<group>"; };
 		0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipListModel.swift; sourceTree = "<group>"; };
 		1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLinker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
@@ -226,8 +238,8 @@
 		0B44C4D9230212E700B55D21 /* SignControls */ = {
 			isa = PBXGroup;
 			children = (
-				0B44C4E22302165400B55D21 /* SigninStoryboard.storyboard */,
-				0B44C4E32302165400B55D21 /* SignUp.storyboard */,
+				0B1B419823F06B2E004C426F /* SigninStoryboard.storyboard */,
+				0B1B419123F06B1A004C426F /* SignUp.storyboard */,
 				0B44C4DA230212E700B55D21 /* SignInViewController.swift */,
 				0B44C4DB230212E700B55D21 /* SignUpViewController.swift */,
 			);
@@ -247,13 +259,13 @@
 			isa = PBXGroup;
 			children = (
 				0BFF1759231727D400CD6561 /* AddFriendViewController.swift */,
-				0BFF175D2317287000CD6561 /* AddFriend.storyboard */,
+				0B1B419F23F06B55004C426F /* AddFriend.storyboard */,
 				0B173F5B231DCE2E00A36DAB /* ProfileViewController.swift */,
-				0B173F5F2321B67200A36DAB /* Profile.storyboard */,
+				0B1B41A623F06B68004C426F /* Profile.storyboard */,
 				0B191FDC233192190016EA85 /* ChatViewController.swift */,
-				0B191FDE233192290016EA85 /* ChatView.storyboard */,
+				0B1B41AD23F06B80004C426F /* ChatView.storyboard */,
 				0B1783042353D2330097A79C /* AddChatRoomViewController.swift */,
-				0B1783062353D2510097A79C /* AddChatRoomSB.storyboard */,
+				0B1B41B423F06B8F004C426F /* AddChatRoomSB.storyboard */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -342,17 +354,17 @@
 				0B59526A23AECB4800174564 /* GoogleService-Info.plist in Resources */,
 				0B1D801123E236B600CAA4BD /* ChatDateDisplayCell.xib in Resources */,
 				0B44C4BB22FA2E1F00B55D21 /* LaunchScreen.storyboard in Resources */,
-				0B44C4E52302165400B55D21 /* SignUp.storyboard in Resources */,
+				0B1B418F23F06B1A004C426F /* SignUp.storyboard in Resources */,
 				0BF40A5C23CF54D800693BD5 /* CustomTableViewHeaderCell.xib in Resources */,
-				0B191FDF233192290016EA85 /* ChatView.storyboard in Resources */,
+				0B1B41AB23F06B80004C426F /* ChatView.storyboard in Resources */,
 				0B3F421C235A734700CAE1B1 /* ChatNoticeCell.xib in Resources */,
 				0B16822123148AD3004F8089 /* UserTableViewCell.xib in Resources */,
-				0BFF175E2317287000CD6561 /* AddFriend.storyboard in Resources */,
+				0B1B419D23F06B55004C426F /* AddFriend.storyboard in Resources */,
 				0B44C4B822FA2E1F00B55D21 /* Assets.xcassets in Resources */,
 				0B076A5B23397B8500B5AF43 /* ChatMyCell.xib in Resources */,
-				0B173F602321B67200A36DAB /* Profile.storyboard in Resources */,
-				0B44C4E42302165400B55D21 /* SigninStoryboard.storyboard in Resources */,
-				0B1783072353D2510097A79C /* AddChatRoomSB.storyboard in Resources */,
+				0B1B41A423F06B68004C426F /* Profile.storyboard in Resources */,
+				0B1B419623F06B2E004C426F /* SigninStoryboard.storyboard in Resources */,
+				0B1B41B223F06B8F004C426F /* AddChatRoomSB.storyboard in Resources */,
 				0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +474,66 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0B1B419123F06B1A004C426F /* SignUp.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B1B419023F06B1A004C426F /* Base */,
+				0B1B419323F06B21004C426F /* en */,
+				0B1B419523F06B24004C426F /* ko */,
+			);
+			name = SignUp.storyboard;
+			sourceTree = "<group>";
+		};
+		0B1B419823F06B2E004C426F /* SigninStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B1B419723F06B2E004C426F /* Base */,
+				0B1B419A23F06B3B004C426F /* en */,
+				0B1B419C23F06B3E004C426F /* ko */,
+			);
+			name = SigninStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		0B1B419F23F06B55004C426F /* AddFriend.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B1B419E23F06B55004C426F /* Base */,
+				0B1B41A123F06B5A004C426F /* en */,
+				0B1B41A323F06B5D004C426F /* ko */,
+			);
+			name = AddFriend.storyboard;
+			sourceTree = "<group>";
+		};
+		0B1B41A623F06B68004C426F /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B1B41A523F06B68004C426F /* Base */,
+				0B1B41A823F06B73004C426F /* en */,
+				0B1B41AA23F06B76004C426F /* ko */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		0B1B41AD23F06B80004C426F /* ChatView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B1B41AC23F06B80004C426F /* Base */,
+				0B1B41AF23F06B83004C426F /* en */,
+				0B1B41B123F06B86004C426F /* ko */,
+			);
+			name = ChatView.storyboard;
+			sourceTree = "<group>";
+		};
+		0B1B41B423F06B8F004C426F /* AddChatRoomSB.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B1B41B323F06B8F004C426F /* Base */,
+				0B1B41B623F06B93004C426F /* en */,
+				0B1B41B823F06B96004C426F /* ko */,
+			);
+			name = AddChatRoomSB.storyboard;
+			sourceTree = "<group>";
+		};
 		0B1D800C23DF2B6D00CAA4BD /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

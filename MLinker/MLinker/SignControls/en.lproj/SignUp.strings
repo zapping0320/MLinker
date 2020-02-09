@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "21i-KM-MSM"; */
+"21i-KM-MSM.text" = "Sign Up";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "2Z2-yS-gH2"; */
+"2Z2-yS-gH2.text" = "Password";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "3HR-ti-0XP"; */
+"3HR-ti-0XP.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Permission Code"; ObjectID = "Cjk-UG-dqL"; */
+"Cjk-UG-dqL.text" = "Permission Code";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "GGe-sU-HDD"; */
+"GGe-sU-HDD.text" = "Name";
+
+/* Class = "UILabel"; text = "Confirm Password"; ObjectID = "ILA-YF-POH"; */
+"ILA-YF-POH.text" = "Confirm Password";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "eP4-pd-3lZ"; */
+"eP4-pd-3lZ.placeholder" = "Confirm Password";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "fRv-8R-ncg"; */
+"fRv-8R-ncg.text" = "Email";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "fdQ-0m-CEE"; */
+"fdQ-0m-CEE.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Permission code if needed(optional)"; ObjectID = "qAU-KQ-LIq"; */
+"qAU-KQ-LIq.placeholder" = "Permission code if needed(optional)";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "s3C-l1-UBv"; */
+"s3C-l1-UBv.placeholder" = "Name";

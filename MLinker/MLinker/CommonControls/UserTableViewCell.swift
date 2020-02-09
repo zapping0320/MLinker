@@ -20,6 +20,7 @@ class UserTableViewCell: UITableViewCell {
         // Initialization code
         self.profileImageView.layer.cornerRadius = 22
         self.profileImageView.clipsToBounds = true
+        self.adminAccountLabel.text = NSLocalizedString("[Official]", comment: "")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

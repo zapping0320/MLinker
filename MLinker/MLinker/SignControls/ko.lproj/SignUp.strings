@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "21i-KM-MSM"; */
+"21i-KM-MSM.text" = "Sign Up";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "2Z2-yS-gH2"; */
+"2Z2-yS-gH2.text" = "비밀번호";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "3HR-ti-0XP"; */
+"3HR-ti-0XP.placeholder" = "이메일";
+
+/* Class = "UILabel"; text = "Permission Code"; ObjectID = "Cjk-UG-dqL"; */
+"Cjk-UG-dqL.text" = "관리자 코드";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "GGe-sU-HDD"; */
+"GGe-sU-HDD.text" = "이름";
+
+/* Class = "UILabel"; text = "Confirm Password"; ObjectID = "ILA-YF-POH"; */
+"ILA-YF-POH.text" = "비밀번호 확인하기";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "eP4-pd-3lZ"; */
+"eP4-pd-3lZ.placeholder" = "비밀번호 확인하기";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "fRv-8R-ncg"; */
+"fRv-8R-ncg.text" = "이메일";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "fdQ-0m-CEE"; */
+"fdQ-0m-CEE.placeholder" = "비밀번호";
+
+/* Class = "UITextField"; placeholder = "Permission code if needed(optional)"; ObjectID = "qAU-KQ-LIq"; */
+"qAU-KQ-LIq.placeholder" = "관리자코드가 필요한 경우(선택)";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "s3C-l1-UBv"; */
+"s3C-l1-UBv.placeholder" = "이름";

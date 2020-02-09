@@ -209,7 +209,7 @@ class AddFriendViewController: UIViewController {
        let notificationModel = NotificationModel()
         notificationModel.to = self.friendUserModel?.pushToken
        notificationModel.notification.title = NSLocalizedString("Sender :", comment: "") + (currentUserModel?.name!)!
-        notificationModel.notification.body = (self.currentUserModel?.name!)! + " request friendship"
+        notificationModel.notification.body = (self.currentUserModel?.name!)! + NSLocalizedString(" requests a friendship", comment: "")
        
        let params = notificationModel.toJSON()
        PushMessageManager.sendGCM(params: params)

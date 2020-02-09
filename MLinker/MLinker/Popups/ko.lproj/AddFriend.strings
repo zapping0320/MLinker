@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Apply"; ObjectID = "Agc-bh-Jcp"; */
+"Agc-bh-Jcp.normalTitle" = "신청하기";
+
+/* Class = "UIButton"; normalTitle = "✕"; ObjectID = "SuB-WY-lJf"; */
+"SuB-WY-lJf.normalTitle" = "✕";
+
+/* Class = "UILabel"; text = "fill friend's email"; ObjectID = "XKb-mJ-ciV"; */
+"XKb-mJ-ciV.text" = "친구 이메일 입력하기";
+
+/* Class = "UILabel"; text = "Add Friend"; ObjectID = "vAd-Ha-kqT"; */
+"vAd-Ha-kqT.text" = "친구 추가";
