@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 
 class SignInViewController: UIViewController {
+    @IBOutlet weak var appMainTitle: UILabel!
+    @IBOutlet weak var appMainTitleTopMargin: NSLayoutConstraint!
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -25,6 +27,11 @@ class SignInViewController: UIViewController {
         setSignInButtonEnabled(value: false)
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        //keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+               
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let defaults = UserDefaults.standard
         let loggedIn = defaults.bool(forKey: "loggedIn")
@@ -128,6 +135,41 @@ class SignInViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
           self.view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(noti : Notification){
+        let viewHeight = UIScreen.main.bounds.height
+        if viewHeight > 667 {
+            return
+        }
+        if let notiInfo = noti.userInfo {
+            let keyboardFrame = notiInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+            let height = keyboardFrame.size.height - self.view.safeAreaInsets.bottom
+            
+            
+            
+            let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+            
+            UIView.animate(withDuration: animationDuration) {
+                self.appMainTitleTopMargin.constant = 200 - height
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(noti : Notification){
+        let viewHeight = UIScreen.main.bounds.height
+        if viewHeight > 667 {
+            return
+        }
+        if let notiInfo = noti.userInfo {
+            let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+            
+            UIView.animate(withDuration: animationDuration) {
+                self.appMainTitleTopMargin.constant = 200
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }
 

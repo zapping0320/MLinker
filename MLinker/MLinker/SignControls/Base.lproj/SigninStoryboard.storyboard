@@ -117,11 +117,11 @@
                             <constraint firstItem="kKZ-cl-gj4" firstAttribute="leading" secondItem="CFj-7K-D8R" secondAttribute="leading" constant="120" id="I7H-MZ-Kcd"/>
                             <constraint firstItem="qA7-IV-MZY" firstAttribute="leading" secondItem="CFj-7K-D8R" secondAttribute="leading" constant="28" id="Lt8-aI-Jcc"/>
                             <constraint firstItem="CFj-7K-D8R" firstAttribute="trailing" secondItem="hcG-gN-Eqd" secondAttribute="trailing" constant="10" id="MEd-Zn-zXz"/>
+                            <constraint firstItem="hcG-gN-Eqd" firstAttribute="top" secondItem="kKZ-cl-gj4" secondAttribute="top" id="MQd-Pg-lMk"/>
                             <constraint firstItem="Rpp-NT-Us9" firstAttribute="leading" secondItem="CFj-7K-D8R" secondAttribute="leading" constant="16" id="TvK-pE-bDB"/>
                             <constraint firstItem="p3r-ZQ-5r0" firstAttribute="leading" secondItem="CFj-7K-D8R" secondAttribute="leading" constant="16" id="V8y-Jh-dbk"/>
                             <constraint firstItem="p3r-ZQ-5r0" firstAttribute="top" secondItem="2G4-Nm-LCU" secondAttribute="bottom" constant="8" id="WZe-GU-F0c"/>
                             <constraint firstItem="qA7-IV-MZY" firstAttribute="top" secondItem="kKZ-cl-gj4" secondAttribute="bottom" constant="70" id="Wd5-Cm-Vt7"/>
-                            <constraint firstItem="hcG-gN-Eqd" firstAttribute="top" secondItem="CFj-7K-D8R" secondAttribute="top" constant="200" id="bc7-fy-unb"/>
                             <constraint firstItem="2G4-Nm-LCU" firstAttribute="leading" secondItem="CFj-7K-D8R" secondAttribute="leading" constant="28" id="cmB-4X-grt"/>
                             <constraint firstItem="Ks2-8R-2HS" firstAttribute="top" secondItem="Rpp-NT-Us9" secondAttribute="bottom" constant="25" id="dJo-kq-Sc2"/>
                             <constraint firstItem="kKZ-cl-gj4" firstAttribute="top" secondItem="CFj-7K-D8R" secondAttribute="top" constant="200" id="iEK-aN-aeR"/>
@@ -135,6 +135,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="mPe-iE-5jI"/>
                     <connections>
+                        <outlet property="appMainTitle" destination="kKZ-cl-gj4" id="f4y-LV-AtO"/>
+                        <outlet property="appMainTitleTopMargin" destination="iEK-aN-aeR" id="Wgo-vb-Lhl"/>
                         <outlet property="emailTextField" destination="5Qa-0g-m2J" id="J0b-2X-eyZ"/>
                         <outlet property="passwordTextField" destination="p3r-ZQ-5r0" id="xMi-57-w0u"/>
                         <outlet property="signInButton" destination="Rpp-NT-Us9" id="S4j-1M-vxA"/>
