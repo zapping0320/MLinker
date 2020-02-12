@@ -287,32 +287,31 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                       message: NSLocalizedString("Setting", comment: ""),
                                       preferredStyle: UIAlertController.Style.actionSheet)
         
+        let actionChangeTitle = UIAlertAction(title: NSLocalizedString("Change Title", comment: ""),
+                                              style: .default, handler: {result in
+                                                self.changeChatRoomTitle()
+        })
+        actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
+        alert.addAction(actionChangeTitle)
+        
         if self.selectedChatModel.standAlone == false {
-            let actionChangeTitle = UIAlertAction(title: NSLocalizedString("Change Title", comment: ""),
-                                                  style: .default, handler: {result in
-                                                    self.changeChatRoomTitle()
-            })
-            actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
-            alert.addAction(actionChangeTitle)
-            
             let actionExitChat = UIAlertAction(title: NSLocalizedString("Exit Chat", comment: ""),
-                                                   style: .default, handler: {result in
-                                                    self.exitChatRoom()
+                                               style: .default, handler: {result in
+                                                self.exitChatRoom()
             })
             actionExitChat.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
             alert.addAction(actionExitChat)
+            let actionAddMember = UIAlertAction(title: NSLocalizedString("Add Members", comment: ""),
+                                                style: .default, handler: {result in
+                                                    self.addMember()
+            })
+            actionAddMember.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
+            alert.addAction(actionAddMember)
         }
-        
-        let actionAddMember = UIAlertAction(title: NSLocalizedString("Add Members", comment: ""),
-                                             style: .default, handler: {result in
-                                                self.addMember()
-        })
-        actionAddMember.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
-        alert.addAction(actionAddMember)
         
         let actionCancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
                                          style: .cancel, handler: nil)
-       
+        
         actionCancel.setValue(ColorHelper.getCancelTextColor(), forKey: "titleTextColor")
         alert.addAction(actionCancel)
         
