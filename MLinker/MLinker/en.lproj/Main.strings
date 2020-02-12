@@ -15,7 +15,7 @@
 "GxW-dL-62V.text" = "Version";
 
 /* Class = "UILabel"; text = "[Official]"; ObjectID = "Kb8-Xw-kKi"; */
-"Kb8-Xw-kKi.text" = "[Official]";
+"Kb8-Xw-kKi.text" = "Official";
 
 /* Class = "UITabBarItem"; title = "Settings"; ObjectID = "Yp2-Tp-8jk"; */
 "Yp2-Tp-8jk.title" = "Settings";

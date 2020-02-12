@@ -17,12 +17,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var commetTextField: UITextField!
     @IBOutlet weak var commentEditButton: UIButton!
     
-    
-    @IBOutlet weak var titleNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameEditButton: UIButton!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var emailLabelButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
    
@@ -52,11 +50,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.profileImageView.clipsToBounds = true
         self.cameraButton.layer.cornerRadius = 16
         
-        self.emailLabel.layer.borderWidth = 1
-        self.emailLabel.layer.borderColor = ColorHelper.getGray300Color().cgColor
-        self.emailLabel.layer.cornerRadius = 12
+        self.emailLabelButton.layer.borderWidth = 1
+        self.emailLabelButton.layer.borderColor = ColorHelper.getGray300Color().cgColor
+        self.emailLabelButton.layer.cornerRadius = 12
         
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
+        
+        self.leftButton.alignImageAndTitleVertically()
+        self.rightButton.alignImageAndTitleVertically()
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
         
@@ -104,9 +105,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     func updateProfileInfo()
     {
-        self.titleNameLabel.text = self.selectedUserModel.name
         self.nameLabel.text = self.selectedUserModel.name
-        self.emailLabel.text = self.selectedUserModel.email
+        self.emailLabelButton.setTitle(self.selectedUserModel.email, for: .normal)
         
         if self.selectedUserModel.comment?.isEmpty == false {
             self.commentLabel.text = self.selectedUserModel.comment
@@ -147,8 +147,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             }
             else
             {
-                self.emailLabel.text = self.selectedFriendshipModel?.friendEmail
-                
+                 self.emailLabelButton.setTitle(self.selectedFriendshipModel?.friendEmail, for: .normal)
                 if(selectedFriendshipModel?.status == FriendStatus.Requesting){
                     self.leftButton.setTitle(NSLocalizedString("Cancel Request", comment: ""), for: .normal)
                     self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
@@ -575,7 +574,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 self.changedFriendInfo = true
                 self.selectedUserModel.name = self.nameTextField.text!
                 self.nameLabel.text = self.nameTextField.text!
-                self.titleNameLabel.text = self.nameTextField.text!
                 self.selectedUserModel.comment = self.commetTextField.text!
                 self.commentLabel.text = self.commetTextField.text!
                 self.updateProfileImage()
@@ -667,4 +665,26 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         }
     }
     
+}
+
+extension UIButton {
+  func alignImageAndTitleVertically(padding: CGFloat = 4.0) {
+        let imageSize = imageView!.frame.size
+        let titleSize = titleLabel!.frame.size
+        let totalHeight = imageSize.height + titleSize.height + padding
+
+        imageEdgeInsets = UIEdgeInsets(
+            top: -(totalHeight - imageSize.height),
+            left: 0,
+            bottom: 0,
+            right: -titleSize.width
+        )
+
+        titleEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: -imageSize.width,
+            bottom: -(totalHeight - titleSize.height),
+            right: 0
+        )
+    }
 }

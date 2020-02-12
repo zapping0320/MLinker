@@ -424,7 +424,7 @@ extension ChatViewController {
             
             if let isAdminAccount = currentUserModel?.isAdminAccount {
                 if isAdminAccount {
-                    nameString = nameString! + NSLocalizedString("[Official]", comment: "")
+                    nameString = nameString! + NSLocalizedString("Official", comment: "")
                 }
             }
             cell.nameLabel.text = nameString
