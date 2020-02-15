@@ -644,7 +644,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                         chatModel?.chatUserIdDic.removeValue(forKey: friendUid)
                         
                         let updateChatRoomValue : Dictionary<String, Any> = [
-                            "chatUserIdDic" : chatModel?.chatUserIdDic,
+                            "chatUserIdDic" : chatModel!.chatUserIdDic,
                             "timestamp" : ServerValue.timestamp()
                         ]
                         

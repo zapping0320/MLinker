@@ -348,7 +348,7 @@ extension UsersViewController {
             }
             
             let processor = DownsamplingImageProcessor(size: CGSize(width: 44, height: 44))
-                >> RoundCornerImageProcessor(cornerRadius: 40)
+                |> RoundCornerImageProcessor(cornerRadius: 40)
             cell.profileImageView?.kf.indicatorType = .activity
             cell.profileImageView?.kf.setImage(
                 with: profileImageURL,

@@ -212,7 +212,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
                 let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
                 comment_modify?.readUsers[self.currnetUserUid!] = true
-                readUsersDic[key] = comment_modify?.toJSON() as! NSDictionary
+                readUsersDic[key] = comment_modify?.toJSON() as NSDictionary?
                 if comment!.isNotice {
                     comment?.commentType = CommentType.Notice
                 }
@@ -441,7 +441,7 @@ extension ChatViewController {
                 if let profileImageString = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]?.profileURL {
                     let profileImageURL = URL(string: profileImageString)
                     let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
-                        >> RoundCornerImageProcessor(cornerRadius: 25)
+                        |> RoundCornerImageProcessor(cornerRadius: 25)
                     cell.profileImageView?.kf.indicatorType = .activity
                     cell.profileImageView?.kf.setImage(
                         with: profileImageURL,
