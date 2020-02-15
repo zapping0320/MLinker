@@ -100,3 +100,7 @@
 "Sender :" = "보낸 사람 :";
 
 " requests a friendship" = "님이 친구신청하였습니다.";
+
+"Reset Password" = "비밀번호 초기화";
+
+"Sent resetPassword email successfully" = "비밀번호 갱신 이메일을 보냈습니다.";

@@ -100,3 +100,7 @@
 "Sender :" = "Sender :";
 
 " requests a friendship" = " requests a friendship";
+
+"Reset Password" = "Reset Password";
+
+"Sent resetPassword email successfully" = "Sent resetPassword email successfully";

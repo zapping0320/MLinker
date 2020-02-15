@@ -16,6 +16,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var passwordResetButton: UIButton!
     
     let firebaseAuth = Auth.auth()
     
@@ -25,6 +26,8 @@ class SignInViewController: UIViewController {
         signInButton.layer.cornerRadius = 4
         
         setSignInButtonEnabled(value: false)
+        
+        self.passwordResetButton.setTitle(NSLocalizedString("Reset Password", comment: ""), for: .normal)
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
@@ -63,9 +66,13 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInInfoChanged(_ sender: Any) {
+        
+        self.passwordResetButton.isEnabled = !self.emailTextField.text!.isEmpty
+        
         if(self.emailTextField.text?.isEmpty == false && self.passwordTextField.text?.isEmpty == false)
         {
             setSignInButtonEnabled(value: true)
+            
         }else {
             setSignInButtonEnabled(value: false)
         }
@@ -94,26 +101,7 @@ class SignInViewController: UIViewController {
             (user, error) in
             
             if( error != nil ) {
-               
-                var errorMessage = error.debugDescription
-                if errorMessage.contains("17009")
-                {
-                    errorMessage = NSLocalizedString("Password is wrong. Please check your password", comment: "")
-                }
-                else if(errorMessage.contains("17011"))
-                {
-                    errorMessage = NSLocalizedString("This email is not registered. Please check your email", comment: "")
-                }
-                else if(errorMessage.contains("17008"))
-                {
-                    errorMessage = NSLocalizedString("This email format is invalid. Please check your email", comment: "")
-                }
-                
-                
-                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: errorMessage, preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.showLoginErrorMessage(errorMessage: error.debugDescription)
             }
             else
             {
@@ -170,6 +158,48 @@ class SignInViewController: UIViewController {
                 self.view.layoutIfNeeded()
             }
         }
+    }
+    
+    @IBAction func sendPasswordResetButton(_ sender: Any) {
+        firebaseAuth.sendPasswordReset(withEmail: self.emailTextField.text!)
+        {
+            (error) in
+            if(error != nil ) {
+                self.showLoginErrorMessage(errorMessage: error.debugDescription)
+                
+            }
+            else
+            {
+                let alert = UIAlertController(title: NSLocalizedString("Email", comment: ""), message: NSLocalizedString("Sent resetPassword email successfully", comment: ""), preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+            
+        }
+    }
+    
+    func showLoginErrorMessage(errorMessage : String) {
+        var message = ""
+        if errorMessage.contains("17009")
+        {
+            message = NSLocalizedString("Password is wrong. Please check your password", comment: "")
+        }
+        else if(errorMessage.contains("17011"))
+        {
+            message = NSLocalizedString("This email is not registered. Please check your email", comment: "")
+        }
+        else if(errorMessage.contains("17008"))
+        {
+            message = NSLocalizedString("This email format is invalid. Please check your email", comment: "")
+        }
+        
+        
+        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
