@@ -130,8 +130,13 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             (datasnapShot) in
                             if let userDic = datasnapShot.value as? [String:AnyObject] {
                                 let userModel = UserModel(JSON: userDic)
+                                
+                                guard let email = userModel!.email else {
+                                    return
+                                }
+                                
                                 //find same usermodel
-                                let index = self.findUserModel(key: userModel!.email!)
+                                let index = self.findUserModel(key: email)
                                 //check timestamp
                                 if index != -1 {
                                     let foundUserModel = self.usersArray[2]![index]
