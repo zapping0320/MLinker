@@ -104,3 +104,5 @@
 "Reset Password" = "비밀번호 초기화";
 
 "Sent resetPassword email successfully" = "비밀번호 갱신 이메일을 보냈습니다.";
+
+"Me" = "나";

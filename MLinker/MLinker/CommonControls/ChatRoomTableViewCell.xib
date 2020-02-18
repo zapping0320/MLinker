@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9m-Cp-Rw9">
-                        <rect key="frame" x="92.5" y="8" width="31" height="22"/>
+                        <rect key="frame" x="95" y="8" width="31" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="BXP-iE-12U"/>
                         </constraints>
@@ -43,18 +43,8 @@
                         <color key="textColor" red="0.34901960784313724" green="0.3529411764705882" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7m-rb-P86">
-                        <rect key="frame" x="72" y="8" width="16.5" height="16"/>
-                        <color key="backgroundColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="16" id="jOs-Ia-WzT"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKF-fP-OHX">
-                        <rect key="frame" x="131.5" y="10" width="31" height="16"/>
+                        <rect key="frame" x="134" y="10" width="31" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="wvf-Vw-jEN"/>
                         </constraints>
@@ -82,6 +72,20 @@
                         <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBt-C3-fW3">
+                        <rect key="frame" x="72" y="11" width="19" height="14"/>
+                        <color key="backgroundColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="12" id="nAi-xE-Piu"/>
+                            <constraint firstAttribute="height" constant="14" id="nqa-x9-93s"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <inset key="contentEdgeInsets" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Me">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="T9m-Cp-Rw9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="0BH-om-jaU"/>
@@ -90,18 +94,18 @@
                     <constraint firstAttribute="trailing" secondItem="5eE-IL-7LX" secondAttribute="trailing" constant="16" id="AJL-bc-CzL"/>
                     <constraint firstItem="sHO-Vj-Rnv" firstAttribute="top" secondItem="T9m-Cp-Rw9" secondAttribute="bottom" id="Bed-kV-iAu"/>
                     <constraint firstItem="jKN-ep-lr2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ixx-Kv-upY"/>
-                    <constraint firstItem="i7m-rb-P86" firstAttribute="leading" secondItem="jKN-ep-lr2" secondAttribute="trailing" constant="16" id="U7c-Co-POT"/>
+                    <constraint firstItem="vBt-C3-fW3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Mz0-6a-XH4"/>
+                    <constraint firstItem="T9m-Cp-Rw9" firstAttribute="leading" secondItem="vBt-C3-fW3" secondAttribute="trailing" constant="4" id="QcX-RQ-ria"/>
                     <constraint firstItem="sHO-Vj-Rnv" firstAttribute="leading" secondItem="jKN-ep-lr2" secondAttribute="trailing" constant="16" id="VcA-n7-Pgo"/>
                     <constraint firstItem="5eE-IL-7LX" firstAttribute="top" secondItem="sHO-Vj-Rnv" secondAttribute="top" id="bDG-r6-BGT"/>
                     <constraint firstItem="VKF-fP-OHX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="bzM-kq-uUJ"/>
                     <constraint firstItem="5eE-IL-7LX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHO-Vj-Rnv" secondAttribute="trailing" id="gBl-tG-VCY"/>
                     <constraint firstItem="jKN-ep-lr2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="msA-gH-afG"/>
                     <constraint firstItem="VXe-D5-HJw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VKF-fP-OHX" secondAttribute="trailing" constant="8" id="nLO-jB-eB6"/>
-                    <constraint firstItem="T9m-Cp-Rw9" firstAttribute="leading" secondItem="i7m-rb-P86" secondAttribute="trailing" constant="4" id="nkI-91-7Kb"/>
                     <constraint firstItem="VXe-D5-HJw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="oFN-Pf-mgo"/>
                     <constraint firstAttribute="bottom" secondItem="jKN-ep-lr2" secondAttribute="bottom" constant="8" id="unl-B5-AUD"/>
+                    <constraint firstItem="vBt-C3-fW3" firstAttribute="leading" secondItem="jKN-ep-lr2" secondAttribute="trailing" constant="16" id="waH-7S-1Gh"/>
                     <constraint firstAttribute="bottom" secondItem="sHO-Vj-Rnv" secondAttribute="bottom" constant="8" id="y3F-Qb-aCz"/>
-                    <constraint firstItem="i7m-rb-P86" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="y5V-re-pM2"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,7 +116,7 @@
                 <outlet property="memberCountLabel" destination="VKF-fP-OHX" id="rmq-sK-fnM"/>
                 <outlet property="nameLabel" destination="T9m-Cp-Rw9" id="4Xa-nY-oGe"/>
                 <outlet property="roomImageView" destination="jKN-ep-lr2" id="PKu-7c-TBk"/>
-                <outlet property="selfLabel" destination="i7m-rb-P86" id="bhr-Yy-9o0"/>
+                <outlet property="selfLabelButton" destination="vBt-C3-fW3" id="Uzx-iD-whf"/>
                 <outlet property="unreadMessageCountLabel" destination="5eE-IL-7LX" id="nXD-uG-jJY"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="68.303571428571431"/>

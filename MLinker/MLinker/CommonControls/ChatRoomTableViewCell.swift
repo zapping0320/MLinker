@@ -13,8 +13,9 @@ class ChatRoomTableViewCell: UITableViewCell {
     @IBOutlet weak var roomImageView: UIImageView!
     @IBOutlet weak var lastCommentDateLabel: UILabel!
     @IBOutlet weak var lastCommentLabel: UILabel!
+    
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var selfLabel: UILabel!
+    @IBOutlet weak var selfLabelButton: UIButton!
     @IBOutlet weak var memberCountLabel: UILabel!
     @IBOutlet weak var unreadMessageCountLabel: UILabel!
     
@@ -24,8 +25,9 @@ class ChatRoomTableViewCell: UITableViewCell {
         self.roomImageView.layer.cornerRadius = 20
         self.roomImageView.clipsToBounds = true
         
-        self.selfLabel.layer.cornerRadius = 6
-        self.selfLabel.clipsToBounds = true
+        self.selfLabelButton.layer.cornerRadius = 6
+        self.selfLabelButton.clipsToBounds = true
+        self.selfLabelButton.setTitle(NSLocalizedString("Me", comment: ""), for: .normal) 
         
         self.unreadMessageCountLabel.layer.cornerRadius = 6
         self.unreadMessageCountLabel.clipsToBounds = true
@@ -39,9 +41,9 @@ class ChatRoomTableViewCell: UITableViewCell {
     }
     
     func setStandAlone(value : Bool ) {
-        self.selfLabel.isHidden = !value
+        self.selfLabelButton.isHidden = !value
         if value == false {
-            self.selfLabel.widthAnchor.constraint(equalToConstant: 0.0).isActive = true
+            self.selfLabelButton.widthAnchor.constraint(equalToConstant: 0.0).isActive = true
         }
     }
     
