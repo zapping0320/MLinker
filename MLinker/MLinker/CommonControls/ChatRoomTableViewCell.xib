@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9m-Cp-Rw9">
-                        <rect key="frame" x="95" y="8" width="31" height="22"/>
+                        <rect key="frame" x="99" y="8" width="31" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="BXP-iE-12U"/>
                         </constraints>
@@ -26,16 +26,16 @@
                         <color key="textColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultChatRoomCell" translatesAutoresizingMaskIntoConstraints="NO" id="jKN-ep-lr2">
-                        <rect key="frame" x="16" y="8" width="40" height="40"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultChatRoomCell" translatesAutoresizingMaskIntoConstraints="NO" id="jKN-ep-lr2">
+                        <rect key="frame" x="16" y="8" width="44" height="40"/>
                         <color key="backgroundColor" red="0.85098039219999999" green="0.85490196080000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="2LN-U0-nWh"/>
+                            <constraint firstAttribute="width" constant="44" id="2LN-U0-nWh"/>
                             <constraint firstAttribute="height" constant="40" id="xhc-j5-hZH"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHO-Vj-Rnv">
-                        <rect key="frame" x="72" y="30" width="31" height="22"/>
+                        <rect key="frame" x="76" y="30" width="31" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="ZbZ-1E-EcS"/>
                         </constraints>
@@ -44,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKF-fP-OHX">
-                        <rect key="frame" x="134" y="10" width="31" height="16"/>
+                        <rect key="frame" x="138" y="10" width="31" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="wvf-Vw-jEN"/>
                         </constraints>
@@ -73,7 +73,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBt-C3-fW3">
-                        <rect key="frame" x="72" y="11" width="19" height="14"/>
+                        <rect key="frame" x="76" y="11" width="19" height="14"/>
                         <color key="backgroundColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="12" id="nAi-xE-Piu"/>
