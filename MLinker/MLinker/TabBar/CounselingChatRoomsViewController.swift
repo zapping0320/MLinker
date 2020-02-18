@@ -46,7 +46,7 @@ class CounselingChatRoomsViewController: UIViewController, UITableViewDelegate, 
                     {
                         continue
                     }
-                    self.chatRooms.append(chatModel!)
+                    self.chatRooms.insert(chatModel!, at: 0)
                 }
             }
             DispatchQueue.main.async {
@@ -119,7 +119,7 @@ extension CounselingChatRoomsViewController {
         {
             let profileImageURL = URL(string: imageURL)
             let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
-                >> RoundCornerImageProcessor(cornerRadius: 40)
+                |> RoundCornerImageProcessor(cornerRadius: 40)
             cell.roomImageView?.kf.indicatorType = .activity
             cell.roomImageView?.kf.setImage(
                 with: profileImageURL,
