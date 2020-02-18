@@ -782,7 +782,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "268"
             endingLineNumber = "268"
-            landmarkName = "cancelFriendshipRequest()"
+            landmarkName = "rightButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1037,7 +1037,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "396"
             endingLineNumber = "396"
-            landmarkName = "createChatRoom(isStandAlone:)"
+            landmarkName = "findChatRoom(isStandAlone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1105,8 +1105,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "348"
             endingLineNumber = "348"
-            landmarkName = "findChatRoom(isStandAlone:)"
-            landmarkType = "7">
+            landmarkName = "ProfileViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1122,7 +1122,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "347"
             endingLineNumber = "347"
-            landmarkName = "findChatRoom(isStandAlone:)"
+            landmarkName = "acceptFriendshipRequest()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1205,8 +1205,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "394"
             endingLineNumber = "394"
-            landmarkName = "ProfileViewController"
-            landmarkType = "3">
+            landmarkName = "findChatRoom(isStandAlone:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2679,8 +2679,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "ProfileViewController"
-            landmarkType = "3">
+            landmarkName = "loadFriendShipInfo()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2711,8 +2711,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "227"
             endingLineNumber = "227"
-            landmarkName = "ProfileViewController"
-            landmarkType = "3">
+            landmarkName = "leftButtonAction(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2919,7 +2919,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "450"
             endingLineNumber = "450"
-            landmarkName = "rejectFriendship(includeChat:)"
+            landmarkName = "moveChatView(chatModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2967,7 +2967,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189"
-            landmarkName = "closeProfileVC()"
+            landmarkName = "updateProfileInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2983,8 +2983,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "448"
             endingLineNumber = "448"
-            landmarkName = "ProfileViewController"
-            landmarkType = "3">
+            landmarkName = "moveChatView(chatModel:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -57,7 +57,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickProfileImage)))
         
         self.leftButton.alignImageAndTitleVertically()
+        self.leftButton.isHidden = true
         self.rightButton.alignImageAndTitleVertically()
+        self.rightButton.isHidden = true
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
         
@@ -127,6 +129,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             if(selectedFriendshipModel?.status == FriendStatus.Connected)
             {
                 if self.isChatView == false {
+                    self.leftButton.isHidden = false
                     self.leftButton.setTitle(NSLocalizedString("Start Chat", comment: ""), for: .normal)
                     self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
                 }
@@ -137,6 +140,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 if(self.selectedUserModel.isAdminAccount == false &&
                     UserContexManager.shared.getCurrentUserModel().isAdminAccount == false)
                 {
+                    self.rightButton.isHidden = false
                     self.rightButton.setTitle(NSLocalizedString("Disconnect Friendship", comment: ""), for: .normal)
                     self.rightButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
                 }
@@ -149,12 +153,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             {
                  self.emailLabelButton.setTitle(self.selectedFriendshipModel?.friendEmail, for: .normal)
                 if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+                    self.leftButton.isHidden = false
                     self.leftButton.setTitle(NSLocalizedString("Cancel Request", comment: ""), for: .normal)
                     self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
                     self.rightButton.isHidden = true
                 }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
+                    self.leftButton.isHidden = false
                     self.leftButton.setTitle(NSLocalizedString("Accept Request", comment: ""), for: .normal)
                     self.leftButton.setImage(UIImage (named: "acceptRequest"), for: .normal)
+                    self.rightButton.isHidden = false
                     self.rightButton.setTitle(NSLocalizedString("Reject Request", comment: ""), for: .normal)
                     self.rightButton.setImage(UIImage (named: "rejectRequest"), for: .normal)
                 }
@@ -171,6 +178,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             {
                 //self
                 self.editProfileButton.isHidden = false
+                self.leftButton.isHidden = false
                 self.leftButton.setTitle(NSLocalizedString("ToMe", comment: ""), for: .normal)
                 self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
                 self.rightButton.isHidden = true
