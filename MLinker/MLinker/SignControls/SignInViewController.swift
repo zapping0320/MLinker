@@ -25,6 +25,8 @@ class SignInViewController: UIViewController {
         
         signInButton.layer.cornerRadius = 4
         
+         self.passwordResetButton.isEnabled = false
+        
         setSignInButtonEnabled(value: false)
         
         self.passwordResetButton.setTitle(NSLocalizedString("Reset Password", comment: ""), for: .normal)
