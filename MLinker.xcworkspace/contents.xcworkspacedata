@@ -5,9 +5,6 @@
       location = "container:MLinker/MLinker.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:MLinker/MLinker.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

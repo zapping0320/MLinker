@@ -143,7 +143,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.4)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - Firebase
     - FirebaseABTesting
@@ -203,4 +203,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2754d36d6d13f4b6db184b1e811cd9beccf88e90
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.3
