@@ -92,10 +92,10 @@ class SettingViewController: UIViewController {
     }
     
     @objc func tryLogout() {
-        let alert = UIAlertController(title: title,
-                                      message: NSLocalizedString("Logout", comment: ""),
+        let alert = UIAlertController(title: NSLocalizedString("Logout", comment: ""),
+                                      message: NSLocalizedString("Are you sure to logout?", comment: ""),
                                       preferredStyle: .alert)
-        let actionCheck = UIAlertAction(title: NSLocalizedString("Are you sure to logout?", comment: ""),
+        let actionCheck = UIAlertAction(title: NSLocalizedString("Ok", comment: ""),
             style: .default, handler: {result in
             self.logout()
         })
