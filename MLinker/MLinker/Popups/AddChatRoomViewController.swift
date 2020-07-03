@@ -348,7 +348,7 @@ extension AddChatRoomViewController {
         if let profileImageString = currentUser.profileURL {
             let profileImageURL = URL(string: profileImageString)
             let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
-                >> RoundCornerImageProcessor(cornerRadius: 40)
+                |> RoundCornerImageProcessor(cornerRadius: 40)
             cell.profileImageView?.kf.indicatorType = .activity
             cell.profileImageView?.kf.setImage(
                 with: profileImageURL,
