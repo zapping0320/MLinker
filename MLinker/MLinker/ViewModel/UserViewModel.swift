@@ -14,6 +14,7 @@ class UserViewModel {
     var currentUserUid: String!
     
     public var didNotificationUpdated: (() -> Void)?
+    public var checkTabControllerUpdate: (() -> Void)?
     
     var selfUserModel = UserModel()
     var processingUserModels = [UserModel]()
@@ -121,9 +122,9 @@ class UserViewModel {
             (datasnapShot) in
             if let userDic = datasnapShot.value as? [String:AnyObject] {
                 let userModel = UserModel(JSON: userDic)
-                //            if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
-                //                self.tabBarController?.viewControllers?.remove(at: 1)
-                //            }
+                if userModel?.isAdminAccount == true {
+                    self.checkTabControllerUpdate?()
+                }
                 
                 if self.selfUserModel.uid != nil && self.selfUserModel.timestamp! >= (userModel?.timestamp!)! {
                     return
@@ -141,7 +142,6 @@ class UserViewModel {
     
     @objc func loadUsersInfo()
     {
-        print("loadUsersInfo")
         var processingFriendList = [UserModel]()
         
         Database.database().reference().child("friendInformations").child(self.currentUserUid).child("friendshipList").observeSingleEvent(of: DataEventType.value)
@@ -161,8 +161,6 @@ class UserViewModel {
                     {
                         let index = self.findUserModel(key: friendshipModel!.friendEmail!)
                         if index != -1 {
-                            //self.usersArray[2]!.remove(at: index)
-                            //self.usersTableView.reloadData()
                             self.friendsUserModels.remove(at: index)
                             self.didNotificationUpdated?()
                         }
@@ -190,19 +188,14 @@ class UserViewModel {
                                         return
                                     }
                                 }
-                                //DispatchQueue.main.async {
-                                    if index == -1 {
-                                        //                                                            self.usersArray[2]!.append(userModel!)
-                                        //                                                            self.usersTableView.reloadData()
-                                        self.friendsUserModels.append(userModel!)
-                                    }
-                                    else {
-                                        //                                                            self.usersArray[2]![index] = userModel!
-                                        //                                                            self.usersTableView.rectForRow(at: IndexPath.init(row: index, section: 2))
-                                        self.friendsUserModels[index] = userModel!
-                                    }
-                                    self.didNotificationUpdated?()
-                                //}
+                                if index == -1 {
+                                    self.friendsUserModels.append(userModel!)
+                                }
+                                else {
+                                    self.friendsUserModels[index] = userModel!
+                                }
+                                self.didNotificationUpdated?()
+                                
                             }
                         }
                         
@@ -216,34 +209,20 @@ class UserViewModel {
                         processingFriendList.append(userModel)
                     }
                 }
-                
-                
             }
             
-            
             if self.processingUserModels.count != processingFriendList.count {
-                
-                //self.usersArray[1] = processingFriendList
-                
+                self.processingUserModels = processingFriendList
                 self.didNotificationUpdated?()
-                
-                //                DispatchQueue.main.async {
-                //                    self.usersTableView.reloadData()
-                //                }
             }
         }
     }
     
     func findUserModel(key : String) -> Int {
-//        guard let userModelList = self.usersArray[2] else {
-//            return -1
-//        }
-//
         for (index, userModel) in self.friendsUserModels.enumerated() {
             if userModel.email == key {
                 return index
             }
-            
         }
         
         return -1

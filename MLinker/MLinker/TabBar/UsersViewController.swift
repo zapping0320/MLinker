@@ -24,9 +24,15 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         userViewModel.didNotificationUpdated = { [weak self] in
-            print("didNotificationUpdated")
             self?.usersTableView.reloadData()
         }
+        
+        userViewModel.checkTabControllerUpdate = { [weak self] in
+            if self?.tabBarController?.viewControllers?.count == 4 {
+                self?.tabBarController?.viewControllers?.remove(at: 1)
+            }
+        }
+        
         
         let searchControl = UISearchController(searchResultsController: nil)
         searchControl.searchResultsUpdater = self
@@ -52,7 +58,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
        
-        //self.currnetUserUid = Auth.auth().currentUser?.uid
         self.userViewModel.currentUserUid = Auth.auth().currentUser?.uid
         UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
       
