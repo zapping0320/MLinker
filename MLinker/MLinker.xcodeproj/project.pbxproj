@@ -56,6 +56,7 @@
 		0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 		E34818DA24B42E3C00498932 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818D924B42E3C00498932 /* UserViewModel.swift */; };
+		E36C710924B530B100BEFA19 /* chatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
 		E34818D924B42E3C00498932 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatRoomViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				E34818D924B42E3C00498932 /* UserViewModel.swift */,
+				E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				0B3F4220235E603F00CAE1B1 /* NoticeModel.swift in Sources */,
 				0B191FDD233192190016EA85 /* ChatViewController.swift in Sources */,
 				0B44C4B122FA2E1800B55D21 /* AppDelegate.swift in Sources */,
+				E36C710924B530B100BEFA19 /* chatRoomViewModel.swift in Sources */,
 				0B44C4CA22FB86DA00B55D21 /* ChatModel.swift in Sources */,
 				0B076A5623397B7100B5AF43 /* ChatYourCell.swift in Sources */,
 				0B173F5D231DCE2E00A36DAB /* ProfileViewController.swift in Sources */,

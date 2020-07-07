@@ -20,12 +20,18 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     var currnetUserUid: String!
     var chatRooms: [ChatModel]! = []
     
+    let chatRoomViewModel = ChatRoomViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
        self.chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatRoomCell")
         
         self.currnetUserUid = Auth.auth().currentUser?.uid
+        chatRoomViewModel.currnetUserUid = Auth.auth().currentUser?.uid
+        chatRoomViewModel.didNotificationUpdated = { [weak self] in
+            self?.chatRoomTableView.reloadData()
+        }
         
         let button = UIButton(type: .custom)
         button.setImage(UIImage (named: "addChatRoom"), for: .normal)
@@ -40,31 +46,12 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
         
-        self.getChatRoomsList()
+        //self.getChatRoomsList()
+        self.chatRoomViewModel.getChatRoomsList()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    func getChatRoomsList() {
-        Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            self.chatRooms.removeAll()
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let chatRoomdic = item.value as? [String:AnyObject] {
-                    let chatModel = ChatModel(JSON: chatRoomdic)
-                    chatModel?.uid = item.key
-                    if((chatModel?.chatUserIdDic.keys.contains(self.currnetUserUid!)) == true)
-                    {
-                        self.chatRooms.insert(chatModel!, at: 0)
-                    }
-                }
-            }
-            DispatchQueue.main.async {
-                self.chatRoomTableView.reloadData()
-            }
-        }
     }
 
     @objc func addChatRoom() {
