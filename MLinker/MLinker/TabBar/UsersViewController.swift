@@ -58,14 +58,14 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
        
         //self.currnetUserUid = Auth.auth().currentUser?.uid
-        self.userViewModel.currnetUserUid = Auth.auth().currentUser?.uid
+        self.userViewModel.currentUserUid = Auth.auth().currentUser?.uid
         UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
-        //self.loadSelfInfo()
+      
          self.userViewModel.loadSelfInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //self.loadSelfInfo()
+       
         //self.loadUsersInfo()
         self.userViewModel.loadSelfInfo()
         self.userViewModel.loadUsersInfo()
@@ -81,135 +81,94 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(addFriendVC, animated: true, completion: nil)
     }
     
-//    @objc func loadSelfInfo() { Database.database().reference().child("users").child(self.currnetUserUid).observeSingleEvent(of: DataEventType.value) {
-//        (datasnapShot) in
-//        if let userDic = datasnapShot.value as? [String:AnyObject] {
-//            let userModel = UserModel(JSON: userDic)
-//            if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
-//                self.tabBarController?.viewControllers?.remove(at: 1)
+//    @objc func loadUsersInfo()
+//    {
+//      
+//        var processingFriendList = [UserModel]()
+//    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+//            (datasnapShot) in
+//            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+//                if let friendshipDic = item.value as? [String:AnyObject] {
+//                    
+//                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
+//                    friendshipModel?.uid = item.key
+//                    if(friendshipModel == nil){
+//                        continue
+//                    }
+//                    
+//                    if(friendshipModel?.status == FriendStatus.cancelled ||
+//                        friendshipModel?.status == FriendStatus.rejected)
+//                    {
+//                        let index = self.findUserModel(key: friendshipModel!.friendEmail!)
+//                        if index != -1 {
+//                            self.usersArray[2]!.remove(at: index)
+//                            self.usersTableView.reloadData()
+//                        }
+//                        continue
+//                    }
+//                    
+//                    if(friendshipModel?.status == FriendStatus.Connected)
+//                    {
+//                        //select friend info
+//                    Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
+//                            (datasnapShot) in
+//                            if let userDic = datasnapShot.value as? [String:AnyObject] {
+//                                let userModel = UserModel(JSON: userDic)
+//                                
+//                                guard let email = userModel!.email else {
+//                                    return
+//                                }
+//                                
+//                                //find same usermodel
+//                                let index = self.findUserModel(key: email)
+//                                //check timestamp
+//                                if index != -1 {
+//                                    let foundUserModel = self.usersArray[2]![index]
+//                                    if foundUserModel.timestamp! >= userModel!.timestamp! {
+//                                        return
+//                                    }
+//                                }                                
+//                                DispatchQueue.main.async {
+//                                    if index == -1 {
+//                                        self.usersArray[2]!.append(userModel!)
+//                                        self.usersTableView.reloadData()
+//                                    }
+//                                    else {
+//                                        self.usersArray[2]![index] = userModel!
+//                                        self.usersTableView.rectForRow(at: IndexPath.init(row: index, section: 2))
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        
+//                    }
+//                    else {
+//                        let userModel = UserModel()
+//                        userModel.uid = friendshipModel?.friendId
+//                        userModel.name = friendshipModel?.friendEmail
+//                        userModel.profileURL = friendshipModel?.friendUserModel?.profileURL
+//                        userModel.comment = NSLocalizedString("Processing", comment: "")
+//                        processingFriendList.append(userModel)
+//                    }
+//                }
 //            }
-//
-//            guard let selfDataList = self.usersArray[0] else {
+//        
+//            guard let dataList = self.usersArray[1] else {
 //                return
 //            }
 //
-//            if selfDataList.count > 0 {
-//                let currentSelfModel = selfDataList[0]
-//                if currentSelfModel.timestamp! >= (userModel?.timestamp!)! {
-//                    return
+//            if dataList.count != processingFriendList.count {
+//
+//                self.usersArray[1] = processingFriendList
+//        
+//                DispatchQueue.main.async {
+//                    self.usersTableView.reloadData()
 //                }
-//            }
-//            self.usersArray[0] = [UserModel]()
-//            UserContexManager.shared.setCurrentUserModel(model: userModel!)
-//            self.usersArray[0]!.append(userModel!)
-//            DispatchQueue.main.async {
-//                self.usersTableView.reloadData()
 //            }
 //        }
 //    }
-//    }
     
-    @objc func loadUsersInfo()
-    {
-      
-        var processingFriendList = [UserModel]()
-    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let friendshipDic = item.value as? [String:AnyObject] {
-                    
-                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
-                    friendshipModel?.uid = item.key
-                    if(friendshipModel == nil){
-                        continue
-                    }
-                    
-                    if(friendshipModel?.status == FriendStatus.cancelled ||
-                        friendshipModel?.status == FriendStatus.rejected)
-                    {
-                        let index = self.findUserModel(key: friendshipModel!.friendEmail!)
-                        if index != -1 {
-                            self.usersArray[2]!.remove(at: index)
-                            self.usersTableView.reloadData()
-                        }
-                        continue
-                    }
-                    
-                    if(friendshipModel?.status == FriendStatus.Connected)
-                    {
-                        //select friend info
-                    Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
-                            (datasnapShot) in
-                            if let userDic = datasnapShot.value as? [String:AnyObject] {
-                                let userModel = UserModel(JSON: userDic)
-                                
-                                guard let email = userModel!.email else {
-                                    return
-                                }
-                                
-                                //find same usermodel
-                                let index = self.findUserModel(key: email)
-                                //check timestamp
-                                if index != -1 {
-                                    let foundUserModel = self.usersArray[2]![index]
-                                    if foundUserModel.timestamp! >= userModel!.timestamp! {
-                                        return
-                                    }
-                                }                                
-                                DispatchQueue.main.async {
-                                    if index == -1 {
-                                        self.usersArray[2]!.append(userModel!)
-                                        self.usersTableView.reloadData()
-                                    }
-                                    else {
-                                        self.usersArray[2]![index] = userModel!
-                                        self.usersTableView.rectForRow(at: IndexPath.init(row: index, section: 2))
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }
-                    else {
-                        let userModel = UserModel()
-                        userModel.uid = friendshipModel?.friendId
-                        userModel.name = friendshipModel?.friendEmail
-                        userModel.profileURL = friendshipModel?.friendUserModel?.profileURL
-                        userModel.comment = NSLocalizedString("Processing", comment: "")
-                        processingFriendList.append(userModel)
-                    }
-                }
-            }
-        
-            guard let dataList = self.usersArray[1] else {
-                return
-            }
-
-            if dataList.count != processingFriendList.count {
-
-                self.usersArray[1] = processingFriendList
-        
-                DispatchQueue.main.async {
-                    self.usersTableView.reloadData()
-                }
-            }
-        }
-    }
     
-    func findUserModel(key : String) -> Int {
-        guard let userModelList = self.usersArray[2] else {
-            return -1
-        }
-        
-        for (index, userModel) in userModelList.enumerated() {
-            if userModel.email == key {
-                return index
-            }
-            
-        }
-        
-        return -1
-    }
     
     @objc func moveChatView(_ notification : Notification) {
        
