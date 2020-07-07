@@ -18,6 +18,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     fileprivate var filteredUsersArray = [UserModel]()
     var currnetUserUid: String!
     var isFiltered : Bool = false
+    
+    let userViewModel = UserViewModel()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -237,57 +239,10 @@ extension UsersViewController {
 
 
 extension UsersViewController {
-    func getNumberOfSections() -> Int{
-        if (isFiltered == true) {
-            return 3
-        }
-        else
-        {
-            return 3 // 0 - self 1 - requesting 2 - friends
-        }
-    }
     
-    func getTableHeaderString(section :Int) -> String {
-        if (isFiltered == true) {
-            if(section != 0){
-                return ""
-            }
-            if  UserContexManager.shared.isAdminUser() {
-                return NSLocalizedString("Customers", comment: "")
-            }
-            else {
-                return NSLocalizedString("Friends", comment: "")
-            }
-        }
-        else {
-            if section == 0 {
-                return ""
-            }
-            
-            if section == 1 {
-                guard let dataList = usersArray[section] else {
-                    return ""
-                }
-                if dataList.count > 0 {
-                    return NSLocalizedString("Current processing", comment: "")
-                }
-                else {
-                    return ""
-                }
-            }
-            else {
-                if  UserContexManager.shared.isAdminUser() {
-                    return NSLocalizedString("Customers", comment: "")
-                }
-                else {
-                    return NSLocalizedString("Friends", comment: "")
-                }
-            }
-        }
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.getNumberOfSections()
+        return self.userViewModel.getNumOfSection(isFiltered: self.isFiltered)
     }
     
     func getNumberOfRowsInSection(section : Int) -> Int {
@@ -323,7 +278,7 @@ extension UsersViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return getTableHeaderString(section: section)
+        return self.userViewModel.getTableHeaderString(section: section, isFiltered: self.isFiltered)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -391,13 +346,13 @@ extension UsersViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! CustomTableViewHeaderCell
        
-        cell.titleLabel.text = self.getTableHeaderString(section: section)
+        cell.titleLabel.text = self.userViewModel.getTableHeaderString(section: section, isFiltered: self.isFiltered)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let titleString = self.getTableHeaderString(section: section)
+        let titleString = self.userViewModel.getTableHeaderString(section: section, isFiltered: self.isFiltered)
                 
         if titleString.isEmpty {
             return 0

@@ -55,6 +55,7 @@
 		0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF1759231727D400CD6561 /* AddFriendViewController.swift */; };
 		0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
+		E34818DA24B42E3C00498932 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818D924B42E3C00498932 /* UserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +127,7 @@
 		1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLinker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
+		E34818D924B42E3C00498932 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 		0B44C4AF22FA2E1800B55D21 /* MLinker */ = {
 			isa = PBXGroup;
 			children = (
+				E34818D824B42DF200498932 /* ViewModel */,
 				0B59526C23BBFA3B00174564 /* MLinker.entitlements */,
 				0BCB409D235672040085933A /* Helper */,
 				0B1792B923455EA10098D7AC /* Manager */,
@@ -276,6 +279,14 @@
 				1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E34818D824B42DF200498932 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E34818D924B42E3C00498932 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E3D034AFCBEA09F01A3CC530 /* Pods */ = {
@@ -431,6 +442,7 @@
 				0B191FDA23318CDC0016EA85 /* ChatRoomTableViewCell.swift in Sources */,
 				0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */,
 				0B44C4D02302115100B55D21 /* CounselingChatRoomsViewController.swift in Sources */,
+				E34818DA24B42E3C00498932 /* UserViewModel.swift in Sources */,
 				0B076A5A23397B8500B5AF43 /* ChatMyCell.swift in Sources */,
 				0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */,
 				0B1D801323E70D8C00CAA4BD /* NotificationModel.swift in Sources */,
