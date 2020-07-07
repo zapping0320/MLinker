@@ -248,4 +248,10 @@ class UserViewModel {
         
         return -1
     }
+    
+    func getFilteredFriendModels(searchText : String) -> [UserModel] {
+        return self.friendsUserModels.filter({(element) -> Bool in
+            return element.containsText(text: searchText)
+        })
+    }
 }

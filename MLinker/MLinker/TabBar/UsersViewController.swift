@@ -14,9 +14,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var usersTableView: UITableView!
     
-    fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
     fileprivate var filteredUsersArray = [UserModel]()
-    var currentUserUid: String!
+ 
     var isFiltered : Bool = false
     
     let userViewModel = UserViewModel()
@@ -28,10 +27,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
             print("didNotificationUpdated")
             self?.usersTableView.reloadData()
         }
-        
-        self.usersArray[0] = [UserModel]()
-        self.usersArray[1] = [UserModel]()
-        self.usersArray[2] = [UserModel]()
         
         let searchControl = UISearchController(searchResultsController: nil)
         searchControl.searchResultsUpdater = self
@@ -81,94 +76,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(addFriendVC, animated: true, completion: nil)
     }
     
-//    @objc func loadUsersInfo()
-//    {
-//      
-//        var processingFriendList = [UserModel]()
-//    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-//            (datasnapShot) in
-//            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-//                if let friendshipDic = item.value as? [String:AnyObject] {
-//                    
-//                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
-//                    friendshipModel?.uid = item.key
-//                    if(friendshipModel == nil){
-//                        continue
-//                    }
-//                    
-//                    if(friendshipModel?.status == FriendStatus.cancelled ||
-//                        friendshipModel?.status == FriendStatus.rejected)
-//                    {
-//                        let index = self.findUserModel(key: friendshipModel!.friendEmail!)
-//                        if index != -1 {
-//                            self.usersArray[2]!.remove(at: index)
-//                            self.usersTableView.reloadData()
-//                        }
-//                        continue
-//                    }
-//                    
-//                    if(friendshipModel?.status == FriendStatus.Connected)
-//                    {
-//                        //select friend info
-//                    Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
-//                            (datasnapShot) in
-//                            if let userDic = datasnapShot.value as? [String:AnyObject] {
-//                                let userModel = UserModel(JSON: userDic)
-//                                
-//                                guard let email = userModel!.email else {
-//                                    return
-//                                }
-//                                
-//                                //find same usermodel
-//                                let index = self.findUserModel(key: email)
-//                                //check timestamp
-//                                if index != -1 {
-//                                    let foundUserModel = self.usersArray[2]![index]
-//                                    if foundUserModel.timestamp! >= userModel!.timestamp! {
-//                                        return
-//                                    }
-//                                }                                
-//                                DispatchQueue.main.async {
-//                                    if index == -1 {
-//                                        self.usersArray[2]!.append(userModel!)
-//                                        self.usersTableView.reloadData()
-//                                    }
-//                                    else {
-//                                        self.usersArray[2]![index] = userModel!
-//                                        self.usersTableView.rectForRow(at: IndexPath.init(row: index, section: 2))
-//                                    }
-//                                }
-//                            }
-//                        }
-//                        
-//                    }
-//                    else {
-//                        let userModel = UserModel()
-//                        userModel.uid = friendshipModel?.friendId
-//                        userModel.name = friendshipModel?.friendEmail
-//                        userModel.profileURL = friendshipModel?.friendUserModel?.profileURL
-//                        userModel.comment = NSLocalizedString("Processing", comment: "")
-//                        processingFriendList.append(userModel)
-//                    }
-//                }
-//            }
-//        
-//            guard let dataList = self.usersArray[1] else {
-//                return
-//            }
-//
-//            if dataList.count != processingFriendList.count {
-//
-//                self.usersArray[1] = processingFriendList
-//        
-//                DispatchQueue.main.async {
-//                    self.usersTableView.reloadData()
-//                }
-//            }
-//        }
-//    }
-    
-    
+
     
     @objc func moveChatView(_ notification : Notification) {
        
@@ -194,9 +102,7 @@ extension UsersViewController {
             else
             {
                 isFiltered = true
-                self.filteredUsersArray = self.usersArray[2]!.filter({(element) -> Bool in
-                    return element.containsText(text: hasText)
-                })
+                self.filteredUsersArray = self.userViewModel.getFilteredFriendModels(searchText: hasText)
             }
             DispatchQueue.main.async {
                 self.usersTableView.reloadData()
@@ -209,41 +115,8 @@ extension UsersViewController {
 
 extension UsersViewController {
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.userViewModel.getNumOfSection(isFiltered: self.isFiltered)
-    }
-    
-//    func getNumberOfRowsInSection(section : Int) -> Int {
-//        if(isFiltered == true){
-//            if(section != 0){
-//                return 0
-//            }
-//            return filteredUsersArray.count
-//        }
-//        else
-//        {
-//            guard let dataList = usersArray[section] else {
-//                return 0
-//            }
-//            return dataList.count
-//        }
-//    }
-    
-    func getCurrentUserData(indexPath: IndexPath) -> UserModel
-    {
-        if(isFiltered == true)
-        {
-            if(indexPath.row >= self.filteredUsersArray.count)
-            {
-                return UserModel()
-            }
-            return self.filteredUsersArray[indexPath.row]
-        }
-        else
-        {
-            return self.usersArray[indexPath.section]![indexPath.row] as UserModel
-        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -251,8 +124,6 @@ extension UsersViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //isFiltered
-       //return getNumberOfRowsInSection(section: section)
         return self.userViewModel.getNumberOfRowsInSection(section: section, isFiltered: self.isFiltered)
     }
     
@@ -307,7 +178,7 @@ extension UsersViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
         
-        profileVC.selectedUserModel = getCurrentUserData(indexPath: indexPath)
+        profileVC.selectedUserModel = self.userViewModel.getCurrentUserData(indexPath: indexPath, isFiltered: self.isFiltered)
         profileVC.modalPresentationStyle = .fullScreen
         self.present(profileVC, animated: true, completion: nil)
     }
