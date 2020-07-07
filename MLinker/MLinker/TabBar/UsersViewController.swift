@@ -16,13 +16,18 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
     fileprivate var filteredUsersArray = [UserModel]()
-    var currnetUserUid: String!
+    var currentUserUid: String!
     var isFiltered : Bool = false
     
     let userViewModel = UserViewModel()
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userViewModel.didNotificationUpdated = { [weak self] in
+            print("didNotificationUpdated")
+            self?.usersTableView.reloadData()
+        }
         
         self.usersArray[0] = [UserModel]()
         self.usersArray[1] = [UserModel]()
@@ -52,14 +57,18 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
        
-        self.currnetUserUid = Auth.auth().currentUser?.uid
+        //self.currnetUserUid = Auth.auth().currentUser?.uid
+        self.userViewModel.currnetUserUid = Auth.auth().currentUser?.uid
         UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
-        self.loadSelfInfo()
+        //self.loadSelfInfo()
+         self.userViewModel.loadSelfInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.loadSelfInfo()
-        self.loadUsersInfo()
+        //self.loadSelfInfo()
+        //self.loadUsersInfo()
+        self.userViewModel.loadSelfInfo()
+        self.userViewModel.loadUsersInfo()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -72,38 +81,39 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(addFriendVC, animated: true, completion: nil)
     }
     
-    @objc func loadSelfInfo() { Database.database().reference().child("users").child(self.currnetUserUid).observeSingleEvent(of: DataEventType.value) {
-        (datasnapShot) in
-        if let userDic = datasnapShot.value as? [String:AnyObject] {
-            let userModel = UserModel(JSON: userDic)
-            if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
-                self.tabBarController?.viewControllers?.remove(at: 1)
-            }
-            
-            guard let selfDataList = self.usersArray[0] else {
-                return
-            }
-            
-            if selfDataList.count > 0 {
-                let currentSelfModel = selfDataList[0]
-                if currentSelfModel.timestamp! >= (userModel?.timestamp!)! {
-                    return
-                }
-            }
-            self.usersArray[0] = [UserModel]()
-            UserContexManager.shared.setCurrentUserModel(model: userModel!)
-            self.usersArray[0]!.append(userModel!)
-            DispatchQueue.main.async {
-                self.usersTableView.reloadData()
-            }
-        }
-    }
-    }
+//    @objc func loadSelfInfo() { Database.database().reference().child("users").child(self.currnetUserUid).observeSingleEvent(of: DataEventType.value) {
+//        (datasnapShot) in
+//        if let userDic = datasnapShot.value as? [String:AnyObject] {
+//            let userModel = UserModel(JSON: userDic)
+//            if userModel?.isAdminAccount == true && self.tabBarController?.viewControllers?.count == 4 {
+//                self.tabBarController?.viewControllers?.remove(at: 1)
+//            }
+//
+//            guard let selfDataList = self.usersArray[0] else {
+//                return
+//            }
+//
+//            if selfDataList.count > 0 {
+//                let currentSelfModel = selfDataList[0]
+//                if currentSelfModel.timestamp! >= (userModel?.timestamp!)! {
+//                    return
+//                }
+//            }
+//            self.usersArray[0] = [UserModel]()
+//            UserContexManager.shared.setCurrentUserModel(model: userModel!)
+//            self.usersArray[0]!.append(userModel!)
+//            DispatchQueue.main.async {
+//                self.usersTableView.reloadData()
+//            }
+//        }
+//    }
+//    }
     
-    @objc func loadUsersInfo() {
+    @objc func loadUsersInfo()
+    {
       
         var processingFriendList = [UserModel]()
-    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
                 if let friendshipDic = item.value as? [String:AnyObject] {
@@ -245,21 +255,21 @@ extension UsersViewController {
         return self.userViewModel.getNumOfSection(isFiltered: self.isFiltered)
     }
     
-    func getNumberOfRowsInSection(section : Int) -> Int {
-        if(isFiltered == true){
-            if(section != 0){
-                return 0
-            }
-            return filteredUsersArray.count
-        }
-        else
-        {
-            guard let dataList = usersArray[section] else {
-                return 0
-            }
-            return dataList.count
-        }
-    }
+//    func getNumberOfRowsInSection(section : Int) -> Int {
+//        if(isFiltered == true){
+//            if(section != 0){
+//                return 0
+//            }
+//            return filteredUsersArray.count
+//        }
+//        else
+//        {
+//            guard let dataList = usersArray[section] else {
+//                return 0
+//            }
+//            return dataList.count
+//        }
+//    }
     
     func getCurrentUserData(indexPath: IndexPath) -> UserModel
     {
@@ -283,14 +293,15 @@ extension UsersViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //isFiltered
-       return getNumberOfRowsInSection(section: section)
+       //return getNumberOfRowsInSection(section: section)
+        return self.userViewModel.getNumberOfRowsInSection(section: section, isFiltered: self.isFiltered)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
         //isFiltered list
-        let currentUser = getCurrentUserData(indexPath: indexPath)
+        let currentUser = self.userViewModel.getCurrentUserData(indexPath: indexPath, isFiltered: self.isFiltered)
        
         cell.setAdminAccount(value: currentUser.isAdminAccount)
         cell.nameLabel?.text = currentUser.name
