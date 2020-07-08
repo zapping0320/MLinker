@@ -18,136 +18,45 @@ class CounselingChatRoomsViewController: UIViewController, UITableViewDelegate, 
         }
     }
     
-    var currnetUserUid: String!
-    var chatRooms: [ChatModel]! = []
+    let chatRoomViewModel = ChatRoomViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatRoomCell")
         
-        self.currnetUserUid = Auth.auth().currentUser?.uid
+        //self.currentUserUid = Auth.auth().currentUser?.uid
+        chatRoomViewModel.currentUserUid = Auth.auth().currentUser?.uid
+        chatRoomViewModel.didNotificationUpdated = { [weak self] in
+            self?.chatRoomTableView.reloadData()
+        }
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.getChatRoomsList()
+        self.chatRoomViewModel.getChatRoomsList(isIncludeAdminAccount: true)
     }
     
-    func getChatRoomsList() {
-        Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            self.chatRooms.removeAll()
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let chatRoomdic = item.value as? [String:AnyObject] {
-                    let chatModel = ChatModel(JSON: chatRoomdic)
-                    chatModel?.uid = item.key
-                    if((chatModel?.chatUserIdDic.keys.contains(self.currnetUserUid!)) != true || chatModel?.isIncludeAdminAccount == false)
-                    {
-                        continue
-                    }
-                    self.chatRooms.insert(chatModel!, at: 0)
-                }
-            }
-            DispatchQueue.main.async {
-                self.chatRoomTableView.reloadData()
-            }
-        }
-    }
-
 }
 
 extension CounselingChatRoomsViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatRooms.count
+        return self.chatRoomViewModel.getNumberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomCell", for: indexPath) as! ChatRoomTableViewCell
         
-        let chatRoom = self.chatRooms[indexPath.row]
+        let chatRoom = self.chatRoomViewModel.getChatRoomData(indexPath: indexPath)
         
-        cell.setStandAlone(value: chatRoom.isStandAlone) 
-        cell.nameLabel.text = chatRoom.name
-        cell.memberCountLabel.text = String(chatRoom.chatUserIdDic.count)
-        
-        var hasImage = false
-        var imageURL:String = ""
-        if let chatroomImage = chatRoom.chatRoomImageURL {
-            hasImage = true
-            imageURL = chatroomImage
-        }
-        
-        var unreadMessageCount = 0
-        if(chatRoom.comments.isEmpty == false)
-        {
-            var recentComment : ChatModel.Comment = ChatModel.Comment()
-            for key in chatRoom.comments.keys {
-                if let comment = chatRoom.comments[key] {
-                    if comment.readUsers.keys.contains(self.currnetUserUid) == false || comment.readUsers[self.currnetUserUid] == false {
-                        unreadMessageCount = unreadMessageCount + 1
-                    }
-                    
-                    if recentComment.timestamp == nil || recentComment.timestamp! < comment.timestamp! {
-                        recentComment = comment
-                    }
-                }
-            }
-            
-            cell.lastCommentLabel.text = recentComment.message
-            if let timeStamp = recentComment.timestamp {
-                cell.lastCommentDateLabel.text = timeStamp.toChatRoomCellDayTime
-            }
-            
-            if hasImage == false {
-                if let lastCommentUserProfile = chatRoom.chatUserModelDic[recentComment.sender!]?.profileURL {
-                    hasImage = true
-                    imageURL = lastCommentUserProfile
-                }
-            }
-            
-        }
-        else
-        {
-            cell.lastCommentLabel.text = ""
-            cell.lastCommentDateLabel.text = ""
-        }
-        
-        cell.setUnreadMessageCount(value: unreadMessageCount)
-        
-        if hasImage == true
-        {
-            let profileImageURL = URL(string: imageURL)
-            let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
-                |> RoundCornerImageProcessor(cornerRadius: 40)
-            cell.roomImageView?.kf.indicatorType = .activity
-            cell.roomImageView?.kf.setImage(
-                with: profileImageURL,
-                placeholder: UIImage(named: "defaultPhoto"),
-                options: [
-                    .processor(processor),
-                    .scaleFactor(UIScreen.main.scale),
-                    .transition(.fade(1)),
-                    .cacheOriginalImage
-                ])
-            {
-                result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
-            
-        }
+        cell.updateUI(chatRoom: chatRoom)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
-        chatVC.selectedChatModel = self.chatRooms[indexPath.row]
+        chatVC.selectedChatModel = self.chatRoomViewModel.getChatRoomData(indexPath: indexPath)
         self.navigationController?.pushViewController(chatVC, animated: true)
     }
 }

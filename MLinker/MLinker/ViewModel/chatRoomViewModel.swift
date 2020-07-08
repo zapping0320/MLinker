@@ -13,11 +13,11 @@ class ChatRoomViewModel {
     
     public var didNotificationUpdated: (() -> Void)?
     
-    var currnetUserUid: String!
+    var currentUserUid: String!
     
     var chatRooms: [ChatModel]! = []
     
-    func getChatRoomsList() {
+    func getChatRoomsList(isIncludeAdminAccount : Bool) {
         Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             self.chatRooms.removeAll()
@@ -25,10 +25,12 @@ class ChatRoomViewModel {
                 if let chatRoomdic = item.value as? [String:AnyObject] {
                     let chatModel = ChatModel(JSON: chatRoomdic)
                     chatModel?.uid = item.key
-                    if((chatModel?.chatUserIdDic.keys.contains(self.currnetUserUid!)) == true)
+                    if((chatModel?.chatUserIdDic.keys.contains(self.currentUserUid!)) != true || chatModel?.isIncludeAdminAccount != isIncludeAdminAccount)
                     {
-                        self.chatRooms.insert(chatModel!, at: 0)
+                        continue
                     }
+                    self.chatRooms.insert(chatModel!, at: 0)
+                    
                 }
             }
             self.didNotificationUpdated?()
