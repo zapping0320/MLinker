@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Kingfisher
 
 class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating{
     
@@ -65,8 +64,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       
-        //self.loadUsersInfo()
         self.userViewModel.loadSelfInfo()
         self.userViewModel.loadUsersInfo()
     }
@@ -80,8 +77,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         addFriendVC.modalPresentationStyle = .fullScreen
         self.present(addFriendVC, animated: true, completion: nil)
     }
-    
-
     
     @objc func moveChatView(_ notification : Notification) {
        
@@ -137,45 +132,8 @@ extension UsersViewController {
         
         //isFiltered list
         let currentUser = self.userViewModel.getCurrentUserData(indexPath: indexPath, isFiltered: self.isFiltered)
-       
-        cell.setAdminAccount(value: currentUser.isAdminAccount)
-        cell.nameLabel?.text = currentUser.name
-        if currentUser.comment!.isEmpty {
-            cell.commentLabel?.text = NSLocalizedString("No comments", comment: "")
-        }
-        else {
-            cell.commentLabel?.text = currentUser.comment
-        }
         
-        if let profileImageString = currentUser.profileURL {
-            let profileImageURL = URL(string: profileImageString)
-            if profileImageURL == nil {
-                return cell
-            }
-            
-            let processor = DownsamplingImageProcessor(size: CGSize(width: 44, height: 44))
-                |> RoundCornerImageProcessor(cornerRadius: 40)
-            cell.profileImageView?.kf.indicatorType = .activity
-            cell.profileImageView?.kf.setImage(
-                with: profileImageURL,
-                placeholder: UIImage(named: "defaultProfileCell"),
-                options: [
-                    .processor(processor),
-                    .scaleFactor(UIScreen.main.scale),
-                    .transition(.fade(1)),
-                    .cacheOriginalImage
-                ])
-            {
-                result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
-            
-        }
+        cell.updateUI(userModel: currentUser)
         
         return cell
     }

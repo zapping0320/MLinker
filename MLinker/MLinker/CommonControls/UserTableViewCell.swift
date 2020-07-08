@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserTableViewCell: UITableViewCell {
 
@@ -29,8 +30,47 @@ class UserTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func updateUI(userModel : UserModel) {
+        self.nameLabel.text = userModel.name
+        self.setAdminAccount(value: userModel.isAdminAccount)
+        
+        if userModel.comment!.isEmpty {
+            commentLabel?.text = NSLocalizedString("No comments", comment: "")
+        }
+        else {
+            commentLabel?.text = userModel.comment
+        }
+
+        if let profileImageString = userModel.profileURL {
+            guard let profileImageURL = URL(string: profileImageString) else { return }
+            
+            let processor = DownsamplingImageProcessor(size: CGSize(width: 44, height: 44))
+                |> RoundCornerImageProcessor(cornerRadius: 40)
+            profileImageView?.kf.indicatorType = .activity
+            profileImageView?.kf.setImage(
+                with: profileImageURL,
+                placeholder: UIImage(named: "defaultProfileCell"),
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
+
+        }
+    }
+    
     func setAdminAccount(value : Bool) {
-         self.adminAccountLabel.isHidden = !value
+        self.adminAccountLabel.isHidden = !value
         if(value == false)
         {
             self.adminAccountLabel.text = ""

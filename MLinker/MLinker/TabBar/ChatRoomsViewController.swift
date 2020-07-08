@@ -45,8 +45,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
-        
-        //self.getChatRoomsList()
+      
         self.chatRoomViewModel.getChatRoomsList()
     }
     
@@ -66,7 +65,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
         if let dict = notification.userInfo as NSDictionary? {
             if let chatModel = dict["chatmodel"] as? ChatModel{
                 let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
-                //chatVC.selectedChatRoomUid = String(indexPath.row)
+               
                 chatVC.selectedChatModel = chatModel
                 self.navigationController?.pushViewController(chatVC, animated: true)
             }
