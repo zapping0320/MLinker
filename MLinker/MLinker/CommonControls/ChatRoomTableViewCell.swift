@@ -65,78 +65,57 @@ class ChatRoomTableViewCell: UITableViewCell {
     
         nameLabel.text = chatRoom.name
         memberCountLabel.text = String(chatRoom.chatUserIdDic.count)
-
-        var hasImage = false
-        var imageURL:String = ""
-        if let chatroomImage = chatRoom.chatRoomImageURL {
-            hasImage = true
-            imageURL = chatroomImage
-        }
-
-        var unreadMessageCount = 0
-        if(chatRoom.comments.isEmpty == false)
-        {
-            var recentComment : ChatModel.Comment = ChatModel.Comment()
-//            for key in chatRoom.comments.keys {
-//                if let comment = chatRoom.comments[key] {
-//                    if comment.readUsers.keys.contains(self.currnetUserUid) == false || comment.readUsers[self.currnetUserUid] == false {
-//                        unreadMessageCount = unreadMessageCount + 1
-//                    }
-//
-//                    if recentComment.timestamp == nil || recentComment.timestamp! < comment.timestamp! {
-//                        recentComment = comment
-//                    }
-//                }
-//            }
-
-            lastCommentLabel.text = recentComment.message
-            if let timeStamp = recentComment.timestamp {
-                lastCommentDateLabel.text = timeStamp.toChatRoomCellDayTime
-            }
-
-//            if hasImage == false {
-//                if let lastCommentUserProfile = chatRoom.chatUserModelDic[recentComment.sender!]?.profileURL {
-//                    hasImage = true
-//                    imageURL = lastCommentUserProfile
-//                }
-//            }
-
-        }
-        else
-        {
-            lastCommentLabel.text = ""
-            lastCommentDateLabel.text = ""
+        
+        let commentInfo = chatRoom.getCommentInfo()
+        lastCommentLabel.text = commentInfo.recentComment.message
+        if let timeStamp = commentInfo.recentComment.timestamp {
+            lastCommentDateLabel.text = timeStamp.toChatRoomCellDayTime
         }
         
-        self.setUnreadMessageCount(value: unreadMessageCount)
+        self.setUnreadMessageCount(value: commentInfo.unreadMessageCount)
 
-        if hasImage == true
-        {
-            let profileImageURL = URL(string: imageURL)
-            let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
-                |> RoundCornerImageProcessor(cornerRadius: 40)
-            roomImageView?.kf.indicatorType = .activity
-            roomImageView?.kf.setImage(
-                with: profileImageURL,
-                placeholder: UIImage(named: "defaultChatRoomCell"),
-                options: [
-                    .processor(processor),
-                    .scaleFactor(UIScreen.main.scale),
-                    .transition(.fade(1)),
-                    .cacheOriginalImage
-                ])
-            {
-                result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
-
-        }
-    
+/***************************************/
+//if implement chatroom image, must do this comment codes
+//        var hasImage = false
+//               var imageURL:String = ""
+//               if let chatroomImage = chatRoom.chatRoomImageURL {
+//                   hasImage = true
+//                   imageURL = chatroomImage
+//               }
+//        if hasImage == false {
+//            if let lastCommentUserProfile = chatRoom.chatUserModelDic[recentComment.sender!]?.profileURL {
+//                hasImage = true
+//                imageURL = lastCommentUserProfile
+//            }
+//        }
+//
+//        if hasImage == true
+//        {
+//            let profileImageURL = URL(string: imageURL)
+//            let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
+//                |> RoundCornerImageProcessor(cornerRadius: 40)
+//            roomImageView?.kf.indicatorType = .activity
+//            roomImageView?.kf.setImage(
+//                with: profileImageURL,
+//                placeholder: UIImage(named: "defaultChatRoomCell"),
+//                options: [
+//                    .processor(processor),
+//                    .scaleFactor(UIScreen.main.scale),
+//                    .transition(.fade(1)),
+//                    .cacheOriginalImage
+//                ])
+//            {
+//                result in
+//                switch result {
+//                case .success(let value):
+//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                case .failure(let error):
+//                    print("Job failed: \(error.localizedDescription)")
+//                }
+//            }
+//
+//        }
+/***************************************/
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import ObjectMapper
+import Firebase
 
 public enum CommentType : Int {
     case None       = 0
@@ -63,7 +64,7 @@ class ChatModel: Mappable {
     func mapping(map: Map) {
         uid                     <- map["uid"]
         isIncludeAdminAccount   <- map["isIncludeAdminAccount"]
-        isStandAlone              <- map["standAlone"]
+        isStandAlone            <- map["standAlone"]
         chatUserIdDic           <- map["chatUserIdDic"]
         name                    <- map["name"]
         comments                <- map["comments"]
@@ -73,6 +74,35 @@ class ChatModel: Mappable {
     
     public func isValid() -> Bool {
         return uid.isEmpty == false
+    }
+    
+    public func getCommentInfo() -> (unreadMessageCount : Int, recentComment: ChatModel.Comment) {
+         var unreadMessageCount = 0
+        
+        if(self.comments.isEmpty)
+        {
+            return (unreadMessageCount: 0, recentComment: ChatModel.Comment())
+        }
+        
+        guard let currentUserUid = Auth.auth().currentUser?.uid else {
+            return (unreadMessageCount: 0, recentComment: ChatModel.Comment())
+        }
+        
+        var recentComment : ChatModel.Comment = ChatModel.Comment()
+        for key in self.comments.keys {
+            if let comment = self.comments[key] {
+                if comment.readUsers.keys.contains(currentUserUid) == false
+                    || comment.readUsers[currentUserUid] == false {
+                    unreadMessageCount = unreadMessageCount + 1
+                }
+
+                if recentComment.timestamp == nil || recentComment.timestamp! < comment.timestamp! {
+                    recentComment = comment
+                }
+            }
+        }
+        
+        return (unreadMessageCount: unreadMessageCount, recentComment: recentComment)
     }
     
 }
