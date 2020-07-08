@@ -67,7 +67,7 @@ extension CounselingChatRoomsViewController {
         
         let chatRoom = self.chatRooms[indexPath.row]
         
-        cell.setStandAlone(value: chatRoom.standAlone) 
+        cell.setStandAlone(value: chatRoom.isStandAlone) 
         cell.nameLabel.text = chatRoom.name
         cell.memberCountLabel.text = String(chatRoom.chatUserIdDic.count)
         

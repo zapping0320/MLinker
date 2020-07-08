@@ -46,7 +46,7 @@ class ChatModel: Mappable {
     
     var uid : String = ""
     public var isIncludeAdminAccount: Bool = false
-    public var standAlone: Bool = false
+    public var isStandAlone: Bool = false
     public var chatUserIdDic: Dictionary<String,Bool> = [:]
     public var chatUserModelDic : Dictionary<String, UserModel> = [:]
     public var name: String = ""
@@ -63,7 +63,7 @@ class ChatModel: Mappable {
     func mapping(map: Map) {
         uid                     <- map["uid"]
         isIncludeAdminAccount   <- map["isIncludeAdminAccount"]
-        standAlone              <- map["standAlone"]
+        isStandAlone              <- map["standAlone"]
         chatUserIdDic           <- map["chatUserIdDic"]
         name                    <- map["name"]
         comments                <- map["comments"]

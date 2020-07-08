@@ -294,7 +294,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
         alert.addAction(actionChangeTitle)
         
-        if self.selectedChatModel.standAlone == false {
+        if self.selectedChatModel.isStandAlone == false {
             let actionExitChat = UIAlertAction(title: NSLocalizedString("Exit Chat", comment: ""),
                                                style: .default, handler: {result in
                                                 self.exitChatRoom()

@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import Kingfisher
+//import Kingfisher
 
 class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var chatRoomTableView: UITableView! {
@@ -82,80 +82,81 @@ extension ChatRoomsViewController {
        
         let chatRoom = self.chatRoomViewModel.getChatRoomData(indexPath: indexPath)
         
-        cell.setStandAlone(value: chatRoom.standAlone) 
-        cell.nameLabel.text = chatRoom.name
-        cell.memberCountLabel.text = String(chatRoom.chatUserIdDic.count)
-        
-        var hasImage = false
-        var imageURL:String = ""
-        if let chatroomImage = chatRoom.chatRoomImageURL {
-            hasImage = true
-            imageURL = chatroomImage
-        }
-        
-        var unreadMessageCount = 0
-        if(chatRoom.comments.isEmpty == false)
-        {
-            var recentComment : ChatModel.Comment = ChatModel.Comment()
-            for key in chatRoom.comments.keys {
-                if let comment = chatRoom.comments[key] {
-                    if comment.readUsers.keys.contains(self.currnetUserUid) == false || comment.readUsers[self.currnetUserUid] == false {
-                        unreadMessageCount = unreadMessageCount + 1
-                    }
-                    
-                    if recentComment.timestamp == nil || recentComment.timestamp! < comment.timestamp! {
-                        recentComment = comment
-                    }
-                }
-            }
-            
-            cell.lastCommentLabel.text = recentComment.message
-            if let timeStamp = recentComment.timestamp {
-                cell.lastCommentDateLabel.text = timeStamp.toChatRoomCellDayTime
-            }
-            
-            if hasImage == false {
-                if let lastCommentUserProfile = chatRoom.chatUserModelDic[recentComment.sender!]?.profileURL {
-                    hasImage = true
-                    imageURL = lastCommentUserProfile
-                }
-            }
-            
-        }
-        else
-        {
-            cell.lastCommentLabel.text = ""
-            cell.lastCommentDateLabel.text = ""
-        }
-        
-        cell.setUnreadMessageCount(value: unreadMessageCount)
-        
-        if hasImage == true
-        {
-            let profileImageURL = URL(string: imageURL)
-            let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
-                |> RoundCornerImageProcessor(cornerRadius: 40)
-            cell.roomImageView?.kf.indicatorType = .activity
-            cell.roomImageView?.kf.setImage(
-                with: profileImageURL,
-                placeholder: UIImage(named: "defaultChatRoomCell"),
-                options: [
-                    .processor(processor),
-                    .scaleFactor(UIScreen.main.scale),
-                    .transition(.fade(1)),
-                    .cacheOriginalImage
-                ])
-            {
-                result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
-            
-        }
+        cell.updateUI(chatRoom: chatRoom)
+//        cell.setStandAlone(value: chatRoom.standAlone)
+//        cell.nameLabel.text = chatRoom.name
+//        cell.memberCountLabel.text = String(chatRoom.chatUserIdDic.count)
+//
+//        var hasImage = false
+//        var imageURL:String = ""
+//        if let chatroomImage = chatRoom.chatRoomImageURL {
+//            hasImage = true
+//            imageURL = chatroomImage
+//        }
+//
+//        var unreadMessageCount = 0
+//        if(chatRoom.comments.isEmpty == false)
+//        {
+//            var recentComment : ChatModel.Comment = ChatModel.Comment()
+//            for key in chatRoom.comments.keys {
+//                if let comment = chatRoom.comments[key] {
+//                    if comment.readUsers.keys.contains(self.currnetUserUid) == false || comment.readUsers[self.currnetUserUid] == false {
+//                        unreadMessageCount = unreadMessageCount + 1
+//                    }
+//
+//                    if recentComment.timestamp == nil || recentComment.timestamp! < comment.timestamp! {
+//                        recentComment = comment
+//                    }
+//                }
+//            }
+//
+//            cell.lastCommentLabel.text = recentComment.message
+//            if let timeStamp = recentComment.timestamp {
+//                cell.lastCommentDateLabel.text = timeStamp.toChatRoomCellDayTime
+//            }
+//
+//            if hasImage == false {
+//                if let lastCommentUserProfile = chatRoom.chatUserModelDic[recentComment.sender!]?.profileURL {
+//                    hasImage = true
+//                    imageURL = lastCommentUserProfile
+//                }
+//            }
+//
+//        }
+//        else
+//        {
+//            cell.lastCommentLabel.text = ""
+//            cell.lastCommentDateLabel.text = ""
+//        }
+//
+//        cell.setUnreadMessageCount(value: unreadMessageCount)
+//
+//        if hasImage == true
+//        {
+//            let profileImageURL = URL(string: imageURL)
+//            let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
+//                |> RoundCornerImageProcessor(cornerRadius: 40)
+//            cell.roomImageView?.kf.indicatorType = .activity
+//            cell.roomImageView?.kf.setImage(
+//                with: profileImageURL,
+//                placeholder: UIImage(named: "defaultChatRoomCell"),
+//                options: [
+//                    .processor(processor),
+//                    .scaleFactor(UIScreen.main.scale),
+//                    .transition(.fade(1)),
+//                    .cacheOriginalImage
+//                ])
+//            {
+//                result in
+//                switch result {
+//                case .success(let value):
+//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                case .failure(let error):
+//                    print("Job failed: \(error.localizedDescription)")
+//                }
+//            }
+//
+//        }
         
         return cell
     }
