@@ -57,10 +57,10 @@ class AddFriendViewController: UIViewController {
     }
     
     @IBAction func dismissVC(_ sender: Any) {
-        if(self.changedFriendInfo == true)
-        {
-            NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
-        }
+//        if(self.changedFriendInfo == true)
+//        {
+//            NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
+//        }
         self.dismiss(animated: true, completion: nil)
     }
     

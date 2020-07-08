@@ -141,7 +141,9 @@ extension UsersViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
         
-        profileVC.selectedUserModel = self.userViewModel.getCurrentUserData(indexPath: indexPath, isFiltered: self.isFiltered)
+        let selectedUserModel = self.userViewModel.getCurrentUserData(indexPath: indexPath, isFiltered: self.isFiltered)
+        profileVC.selectedUserModel = selectedUserModel
+        profileVC.setSelectedUserModel(selectedUserModel: selectedUserModel)
         profileVC.modalPresentationStyle = .fullScreen
         self.present(profileVC, animated: true, completion: nil)
     }
@@ -170,7 +172,4 @@ extension UsersViewController {
 
 extension Notification.Name {
     static let nsStartChat = Notification.Name("startChat")
-    static let nsUpdateUsersTable = Notification.Name("updateUsersTable")
-    static let nsUpdateSelf = Notification.Name("updateSelf")
-    
 }

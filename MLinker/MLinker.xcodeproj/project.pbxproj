@@ -56,6 +56,7 @@
 		0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 		E34818DA24B42E3C00498932 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818D924B42E3C00498932 /* UserViewModel.swift */; };
+		E368FBC724B67B360088AF28 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBC624B67B360088AF28 /* ProfileViewModel.swift */; };
 		E36C710924B530B100BEFA19 /* chatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,7 @@
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
 		E34818D924B42E3C00498932 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		E368FBC624B67B360088AF28 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatRoomViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -288,6 +290,7 @@
 			children = (
 				E34818D924B42E3C00498932 /* UserViewModel.swift */,
 				E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */,
+				E368FBC624B67B360088AF28 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */,
 				0B44C4D02302115100B55D21 /* CounselingChatRoomsViewController.swift in Sources */,
 				E34818DA24B42E3C00498932 /* UserViewModel.swift in Sources */,
+				E368FBC724B67B360088AF28 /* ProfileViewModel.swift in Sources */,
 				0B076A5A23397B8500B5AF43 /* ChatMyCell.swift in Sources */,
 				0B44C4DC230212E700B55D21 /* SignInViewController.swift in Sources */,
 				0B1D801323E70D8C00CAA4BD /* NotificationModel.swift in Sources */,

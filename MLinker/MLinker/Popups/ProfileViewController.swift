@@ -37,11 +37,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     private var selectedFriendshipModel : FriendshipModel?
     
-    private var currnetUserUid: String!
+    private var currentUserUid: String!
     
     var changedFriendInfo : Bool = false
     
     var isPickedProfileImage: Bool = false
+    
+    let profileViewModel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,19 +63,31 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.rightButton.alignImageAndTitleVertically()
         self.rightButton.isHidden = true
         
-        self.currnetUserUid = Auth.auth().currentUser?.uid
-        
-        adminAccountLabel.isHidden = true
+        self.adminAccountLabel.isHidden = true
         
         self.setUIEditMode(mode: false)
-        if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
+        
+        self.currentUserUid = Auth.auth().currentUser?.uid
+        profileViewModel.currentUserUid = Auth.auth().currentUser?.uid
+        
+        profileViewModel.didNotificationUpdated = { [weak self] in
+            self?.updateProfileInfo()
+        }
+        
+        //if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
+        if(self.profileViewModel.isSelfCurrentUser())
         {
             self.updateProfileInfo()
         }
         else
         {
-            self.loadFriendShipInfo()
+            //self.loadFriendShipInfo()
+            self.profileViewModel.loadFriendShipInfo()
         }
+    }
+    
+    public func setSelectedUserModel(selectedUserModel : UserModel) {
+        profileViewModel.selectedUserModel = selectedUserModel
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -84,49 +98,68 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         closeProfileVC()
     }
     
-    func loadFriendShipInfo()
-    { Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let friendshipDic = item.value as? [String:AnyObject] {
-                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
-                    friendshipModel?.uid = item.key
-                    if(friendshipModel?.friendId == self.selectedUserModel.uid)
-                    {
-                        self.selectedFriendshipModel = friendshipModel
-                        break
-                    }
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.updateProfileInfo()
-            }
-        }
-    }
+//    func loadFriendShipInfo()
+//    { Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+//            (datasnapShot) in
+//            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+//                if let friendshipDic = item.value as? [String:AnyObject] {
+//                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
+//                    friendshipModel?.uid = item.key
+//                    if(friendshipModel?.friendId == self.selectedUserModel.uid)
+//                    {
+//                        self.selectedFriendshipModel = friendshipModel
+//                        break
+//                    }
+//                }
+//            }
+//            
+//            DispatchQueue.main.async {
+//                self.updateProfileInfo()
+//            }
+//        }
+//    }
     
     func updateProfileInfo()
     {
-        self.nameLabel.text = self.selectedUserModel.name
-        self.emailLabelButton.setTitle(self.selectedUserModel.email, for: .normal)
+        let selectedUserModel = self.profileViewModel.selectedUserModel
+        self.nameLabel.text = selectedUserModel.name
+        self.emailLabelButton.setTitle(selectedUserModel.email, for: .normal)
         
-        if self.selectedUserModel.comment?.isEmpty == false {
-            self.commentLabel.text = self.selectedUserModel.comment
+        if selectedUserModel.comment?.isEmpty == false {
+            self.commentLabel.text = selectedUserModel.comment
         }
         else
         {
             self.commentLabel.text = NSLocalizedString("No comments", comment: "")
         }
         
-        if let profileImageString = self.selectedUserModel.profileURL {
+        if let profileImageString = selectedUserModel.profileURL {
             let profileImageURL = URL(string: profileImageString)
             self.profileImageView.kf.setImage(with: profileImageURL)
         }
         
-        if(selectedFriendshipModel != nil)
+        
+        //if(selectedFriendshipModel != nil)
+        if(self.profileViewModel.isSelfCurrentUser())
         {
+            if(self.currentUserUid != selectedUserModel.uid) {
+                return
+            }
+            
+            //self
+            self.editProfileButton.isHidden = false
+            self.leftButton.isHidden = false
+            self.leftButton.setTitle(NSLocalizedString("ToMe", comment: ""), for: .normal)
+            self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
+            self.rightButton.isHidden = true
+            self.adminAccountLabel.isHidden = !selectedUserModel.isAdminAccount
+            
+        }
+        else
+        {
+            guard let selectedFriendshipModel = self.profileViewModel.selectedFriendshipModel else { return }
             self.editProfileButton.isHidden = true
-            if(selectedFriendshipModel?.status == FriendStatus.Connected)
+            if(selectedFriendshipModel.status == FriendStatus.Connected)
             {
                 if self.isChatView == false {
                     self.leftButton.isHidden = false
@@ -137,7 +170,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                     self.leftButton.isHidden = true
                 }
                 
-                if(self.selectedUserModel.isAdminAccount == false &&
+                if(selectedUserModel.isAdminAccount == false &&
                     UserContexManager.shared.getCurrentUserModel().isAdminAccount == false)
                 {
                     self.rightButton.isHidden = false
@@ -151,13 +184,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             }
             else
             {
-                 self.emailLabelButton.setTitle(self.selectedFriendshipModel?.friendEmail, for: .normal)
-                if(selectedFriendshipModel?.status == FriendStatus.Requesting){
+                self.emailLabelButton.setTitle(self.selectedFriendshipModel?.friendEmail, for: .normal)
+                if(selectedFriendshipModel.status == FriendStatus.Requesting){
                     self.leftButton.isHidden = false
                     self.leftButton.setTitle(NSLocalizedString("Cancel Request", comment: ""), for: .normal)
                     self.leftButton.setImage(UIImage (named: "cancelRequest"), for: .normal)
                     self.rightButton.isHidden = true
-                }else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
+                }else if(selectedFriendshipModel.status == FriendStatus.ReceivingRequest){
                     self.leftButton.isHidden = false
                     self.leftButton.setTitle(NSLocalizedString("Accept Request", comment: ""), for: .normal)
                     self.leftButton.setImage(UIImage (named: "acceptRequest"), for: .normal)
@@ -172,32 +205,20 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 }
             }
         }
-        else
-        {
-            if(self.currnetUserUid == self.selectedUserModel.uid)
-            {
-                //self
-                self.editProfileButton.isHidden = false
-                self.leftButton.isHidden = false
-                self.leftButton.setTitle(NSLocalizedString("ToMe", comment: ""), for: .normal)
-                self.leftButton.setImage(UIImage (named: "chat"), for: .normal)
-                self.rightButton.isHidden = true
-                self.adminAccountLabel.isHidden = !self.selectedUserModel.isAdminAccount
-            }
-            
-        }
+        
     }
     
     func closeProfileVC()
     {
         if(self.changedFriendInfo == true)
         {
-            if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
-            {
-                UserContexManager.shared.setCurrentUserModel(model:  self.selectedUserModel)
-            }
-            
-            NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
+//            if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
+//            {
+//                UserContexManager.shared.setCurrentUserModel(model:  self.selectedUserModel)
+//            }
+//
+//            NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
+            self.profileViewModel.updateSelfUserModel()
         }
         
         self.dismiss(animated: true, completion: nil)
@@ -225,7 +246,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         }
         else
         {
-            if(self.currnetUserUid == self.selectedUserModel.uid)
+            if(self.currentUserUid == self.selectedUserModel.uid)
             {
                 //start self chat
                 self.findChatRoom(isStandAlone: true)
@@ -273,7 +294,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             "status" : 4,
             "timestamp" : ServerValue.timestamp()
         ]
-    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
+    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
             (updateErr, ref) in
             if(updateErr == nil)
             {
@@ -286,7 +307,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                             let friendshipModel = FriendshipModel(JSON: friendshipDic)
                             friendshipModel?.uid = item.key
                             
-                            if(friendshipModel?.friendId != self.currnetUserUid!)
+                            if(friendshipModel?.friendId != self.currentUserUid!)
                             {
                                 continue
                             }
@@ -313,7 +334,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             "status" : 3,
             "timestamp" : ServerValue.timestamp()
         ]
-    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateValue) {
+    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateValue) {
             (updateErr, ref) in
             if(updateErr == nil)
             {
@@ -326,7 +347,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                             let friendshipModel = FriendshipModel(JSON: friendshipDic)
                             friendshipModel?.uid = item.key
                             
-                            if(friendshipModel?.friendId != self.currnetUserUid!)
+                            if(friendshipModel?.friendId != self.currentUserUid!)
                             {
                                 continue
                             }
@@ -359,7 +380,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                     chatModel?.uid = item.key
                     if(isStandAlone)
                     {
-                        if(chatModel?.chatUserIdDic.count == 1 && (chatModel?.chatUserIdDic[self.currnetUserUid] != nil))
+                        if(chatModel?.chatUserIdDic.count == 1 && (chatModel?.chatUserIdDic[self.currentUserUid] != nil))
                         {
                             if let standAloneChat = chatModel?.isStandAlone {
                                 if standAloneChat {
@@ -373,7 +394,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                     else
                     {
                         if(chatModel?.chatUserIdDic.count == 2 &&
-                            (chatModel?.chatUserIdDic[self.currnetUserUid] != nil) &&
+                            (chatModel?.chatUserIdDic[self.currentUserUid] != nil) &&
                             chatModel?.chatUserIdDic[self.selectedUserModel.uid!] != nil)
                         {
                             foundRoom = true
@@ -403,7 +424,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     func createChatRoom(isStandAlone : Bool)
     {
         var userIdDic : Dictionary<String, Bool> = [
-            self.currnetUserUid : false
+            self.currentUserUid : false
         ]
         
         if(isStandAlone == false)
@@ -412,11 +433,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         }
         
         var profileDic : Dictionary<String, String> = [
-            self.currnetUserUid : "",
+            self.currentUserUid : "",
         ]
         
         if let currentUserProfile = UserContexManager.shared.getCurrentUserModel().profileURL {
-            profileDic[self.currnetUserUid] = currentUserProfile
+            profileDic[self.currentUserUid] = currentUserProfile
         }
         
         var isAdminAccount = UserContexManager.shared.getCurrentUserModel().isAdminAccount
@@ -462,7 +483,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 "status" : 5,
                 "timestamp" : ServerValue.timestamp()
             ]
-        Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
+        Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
                 (updateErr, ref) in
                 if(updateErr == nil)
                 {
@@ -475,7 +496,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                                 let friendshipModel = FriendshipModel(JSON: friendshipDic)
                                 friendshipModel?.uid = item.key
                                 
-                                if(friendshipModel?.friendId != self.currnetUserUid!)
+                                if(friendshipModel?.friendId != self.currentUserUid!)
                                 {
                                     continue
                                 }
@@ -597,7 +618,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     func updateProfileImage() {
         if(self.isPickedProfileImage == false)
         {
-             NotificationCenter.default.post(name: .nsUpdateSelf, object: nil, userInfo: nil)
             return
         }
         
@@ -626,7 +646,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                     } else {
                         print("profileURL saved successfully!")
                         self.selectedUserModel.profileURL = userDownloadURL
-                         NotificationCenter.default.post(name: .nsUpdateSelf, object: nil, userInfo: nil)
                     }
                 }
                 
