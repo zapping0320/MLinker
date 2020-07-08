@@ -35,5 +35,12 @@ class ChatRoomViewModel {
         }
     }
     
+    func getNumberOfRowsInSection() -> Int {
+        return chatRooms.count
+    }
+    
+    func getChatRoomData(indexPath: IndexPath) -> ChatModel {
+        return chatRooms[indexPath.row]
+    }
     
 }

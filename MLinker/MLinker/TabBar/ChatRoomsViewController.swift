@@ -18,7 +18,6 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
         }
     }
     var currnetUserUid: String!
-    var chatRooms: [ChatModel]! = []
     
     let chatRoomViewModel = ChatRoomViewModel()
     
@@ -75,13 +74,13 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
 
 extension ChatRoomsViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatRooms.count
+        return self.chatRoomViewModel.getNumberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomCell", for: indexPath) as! ChatRoomTableViewCell
-        
-        let chatRoom = self.chatRooms[indexPath.row]
+       
+        let chatRoom = self.chatRoomViewModel.getChatRoomData(indexPath: indexPath)
         
         cell.setStandAlone(value: chatRoom.standAlone) 
         cell.nameLabel.text = chatRoom.name
@@ -163,7 +162,8 @@ extension ChatRoomsViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
-        chatVC.selectedChatModel = self.chatRooms[indexPath.row]
+      
+        chatVC.selectedChatModel = self.chatRoomViewModel.getChatRoomData(indexPath: indexPath)
         self.navigationController?.pushViewController(chatVC, animated: true)
     }
 }
