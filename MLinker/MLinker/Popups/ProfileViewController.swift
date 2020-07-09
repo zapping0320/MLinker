@@ -74,14 +74,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             self?.updateProfileInfo()
         }
         
-        //if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
         if(self.profileViewModel.isSelfCurrentUser())
         {
             self.updateProfileInfo()
         }
         else
         {
-            //self.loadFriendShipInfo()
             self.profileViewModel.loadFriendShipInfo()
         }
     }
@@ -97,27 +95,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBAction func closeVC(_ sender: Any) {
         closeProfileVC()
     }
-    
-//    func loadFriendShipInfo()
-//    { Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-//            (datasnapShot) in
-//            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-//                if let friendshipDic = item.value as? [String:AnyObject] {
-//                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
-//                    friendshipModel?.uid = item.key
-//                    if(friendshipModel?.friendId == self.selectedUserModel.uid)
-//                    {
-//                        self.selectedFriendshipModel = friendshipModel
-//                        break
-//                    }
-//                }
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self.updateProfileInfo()
-//            }
-//        }
-//    }
     
     func updateProfileInfo()
     {
@@ -138,8 +115,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             self.profileImageView.kf.setImage(with: profileImageURL)
         }
         
-        
-        //if(selectedFriendshipModel != nil)
         if(self.profileViewModel.isSelfCurrentUser())
         {
             if(self.currentUserUid != selectedUserModel.uid) {
@@ -219,47 +194,44 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     }
     
     @IBAction func leftButtonAction(_ sender: Any) {
-        if(selectedFriendshipModel != nil)
+        if(self.profileViewModel.isSelfCurrentUser())
+        {
+            self.findChatRoom(isStandAlone: true)
+        }
+        else
         {
             self.changedFriendInfo = true
-            if(selectedFriendshipModel?.status == FriendStatus.Requesting)
+            guard let selectedFriendshipModel = self.profileViewModel.selectedFriendshipModel else { return }
+            
+            if(selectedFriendshipModel.status == FriendStatus.Requesting)
             {
                //cancel
                 self.cancelFriendshipRequest()
             }
-            else if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest)
+            else if(selectedFriendshipModel.status == FriendStatus.ReceivingRequest)
             {
                 //accept
                 self.acceptFriendshipRequest()
             }
-            else if(selectedFriendshipModel?.status == FriendStatus.Connected)
+            else if(selectedFriendshipModel.status == FriendStatus.Connected)
             {
                 //start chat
                 self.findChatRoom(isStandAlone: false)
             }
         }
-        else
-        {
-            if(self.currentUserUid == self.selectedUserModel.uid)
-            {
-                //start self chat
-                self.findChatRoom(isStandAlone: true)
-            }
-        }
+        
     }
     
     @IBAction func rightButtonAction(_ sender: Any) {
-        if(selectedFriendshipModel == nil)
-        {
-            return
-        }
+        guard let selectedFriendshipModel = self.profileViewModel.selectedFriendshipModel else { return }
         
-        if(selectedFriendshipModel?.status == FriendStatus.ReceivingRequest){
+        if(selectedFriendshipModel.status == FriendStatus.ReceivingRequest)
+        {
             //reject
             self.rejectFriendshipRequest()
             
         }
-        else if(selectedFriendshipModel?.status == FriendStatus.Connected)
+        else if(selectedFriendshipModel.status == FriendStatus.Connected)
         {
             
             let alert = UIAlertController(title: title,
