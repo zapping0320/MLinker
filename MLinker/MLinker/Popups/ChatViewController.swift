@@ -485,7 +485,7 @@ extension ChatViewController {
                 let userModel = UserModel(JSON: userDic)
                 DispatchQueue.main.async {
                     let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
-                    profileVC.selectedUserModel = userModel!
+                    profileVC.setSelectedUserModel(selectedUserModel: userModel!)
                     profileVC.isChatView = true
                     profileVC.modalPresentationStyle = .fullScreen
                     self.present(profileVC, animated: true, completion: nil)

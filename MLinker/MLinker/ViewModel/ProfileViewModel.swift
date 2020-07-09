@@ -12,6 +12,7 @@ import Firebase
 class ProfileViewModel {
     
     public var didNotificationUpdated: (() -> Void)?
+    public var updateTextInfo: (() -> Void)?
     public var didFoundChatRoom: ((ChatModel) -> Void)?
     public var needCloseVC: (() -> Void)?
     
@@ -53,7 +54,30 @@ class ProfileViewModel {
         
     }
     
+    func saveChangedProfileInfo(updateInfoValue : Dictionary<String, Any>, imageData : Data?) {
+        Database.database().reference().child("users").child(self.selectedUserModel.uid!).updateChildValues(updateInfoValue) {
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                
+                self.selectedUserModel.name = updateInfoValue["name"] as? String ?? "" //self.nameTextField.text!
+                self.selectedUserModel.comment = updateInfoValue["comment"] as? String ?? ""// self.commetTextField.text!
+                self.selectedUserModel.timestamp = updateInfoValue["timestamp"] as? Int ?? 0
+                guard let image = imageData else {
+                    self.updateSelfUserModel()
+                    self.updateTextInfo?()
+                    return
+                }
+                self.updateProfileImageUrl(image: image)
+                
+            }else {
+                print("update userinfo error")
+            }
+        }
+    }
+    
     func updateProfileImageUrl(image : Data) {
+        
         let storageRef = Storage.storage().reference()
         
         var userDownloadURL:String?
@@ -77,6 +101,8 @@ class ProfileViewModel {
                     } else {
                         print("profileURL saved successfully!")
                         self.selectedUserModel.profileURL = userDownloadURL
+                        self.updateSelfUserModel()
+                        self.updateTextInfo?()
                     }
                 }
                 

@@ -77,7 +77,8 @@ class SettingViewController: UIViewController {
     @objc func editProfile() {
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
         
-        profileVC.selectedUserModel = UserContexManager.shared.getCurrentUserModel()
+        let selfUserModel = UserContexManager.shared.getCurrentUserModel()
+        profileVC.setSelectedUserModel(selectedUserModel: selfUserModel)
         profileVC.modalPresentationStyle = .fullScreen
         self.present(profileVC, animated: true, completion: nil)
         

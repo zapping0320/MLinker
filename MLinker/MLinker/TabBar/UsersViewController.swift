@@ -142,7 +142,6 @@ extension UsersViewController {
         let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
         
         let selectedUserModel = self.userViewModel.getCurrentUserData(indexPath: indexPath, isFiltered: self.isFiltered)
-        profileVC.selectedUserModel = selectedUserModel
         profileVC.setSelectedUserModel(selectedUserModel: selectedUserModel)
         profileVC.modalPresentationStyle = .fullScreen
         self.present(profileVC, animated: true, completion: nil)

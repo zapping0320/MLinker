@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-//import Kingfisher
 
 class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var chatRoomTableView: UITableView! {

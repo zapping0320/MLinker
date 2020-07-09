@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Kingfisher
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
 
@@ -32,12 +31,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
-    public var selectedUserModel: UserModel = UserModel()
     public var isChatView : Bool = false
     
-    private var selectedFriendshipModel : FriendshipModel?
     
-    private var currentUserUid: String!
+   // private var currentUserUid: String!
     
     var isPickedProfileImage: Bool = false
     
@@ -64,12 +61,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         self.adminAccountLabel.isHidden = true
         
         self.setUIEditMode(mode: false)
-        
-        self.currentUserUid = Auth.auth().currentUser?.uid
+       
         profileViewModel.currentUserUid = Auth.auth().currentUser?.uid
         
         profileViewModel.didNotificationUpdated = { [weak self] in
             self?.updateProfileInfo()
+        }
+        
+        profileViewModel.updateTextInfo = { [weak self] in
+            self?.updateTextInfoUI()
         }
         
         profileViewModel.didFoundChatRoom = { [weak self] (chatModel) in
@@ -105,8 +105,23 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     func updateProfileInfo()
     {
         let selectedUserModel = self.profileViewModel.selectedUserModel
-        self.nameLabel.text = selectedUserModel.name
+        
         self.emailLabelButton.setTitle(selectedUserModel.email, for: .normal)
+        
+        if let profileImageString = selectedUserModel.profileURL {
+            let profileImageURL = URL(string: profileImageString)
+            self.profileImageView.kf.setImage(with: profileImageURL)
+        }
+        
+        self.updateTextInfoUI()
+        
+        self.applyUISetting()
+        
+    }
+    
+    func updateTextInfoUI() {
+        let selectedUserModel = self.profileViewModel.selectedUserModel
+        self.nameLabel.text = selectedUserModel.name
         
         if selectedUserModel.comment?.isEmpty == false {
             self.commentLabel.text = selectedUserModel.comment
@@ -116,18 +131,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             self.commentLabel.text = NSLocalizedString("No comments", comment: "")
         }
         
-        if let profileImageString = selectedUserModel.profileURL {
-            let profileImageURL = URL(string: profileImageString)
-            self.profileImageView.kf.setImage(with: profileImageURL)
-        }
-        
+    }
+    
+    func applyUISetting() {
+        let selectedUserModel = self.profileViewModel.selectedUserModel
         if(self.profileViewModel.isSelfCurrentUser())
         {
-            if(self.currentUserUid != selectedUserModel.uid) {
-                return
-            }
-            
-            //self
             self.editProfileButton.isHidden = false
             self.leftButton.isHidden = false
             self.leftButton.setTitle(NSLocalizedString("ToMe", comment: ""), for: .normal)
@@ -165,7 +174,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             }
             else
             {
-                self.emailLabelButton.setTitle(self.selectedFriendshipModel?.friendEmail, for: .normal)
+                self.emailLabelButton.setTitle(selectedFriendshipModel.friendEmail, for: .normal)
                 if(selectedFriendshipModel.status == FriendStatus.Requesting){
                     self.leftButton.isHidden = false
                     self.leftButton.setTitle(NSLocalizedString("Cancel Request", comment: ""), for: .normal)
@@ -186,7 +195,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
                 }
             }
         }
-        
     }
     
     func closeProfileVC()
@@ -274,8 +282,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     func enterEditMode() {
         self.setUIEditMode(mode: true)
-        self.nameTextField.text = self.selectedUserModel.name
-        self.commetTextField.text = self.selectedUserModel.comment
+        self.nameTextField.text = self.profileViewModel.selectedUserModel.name
+        self.commetTextField.text = self.profileViewModel.selectedUserModel.comment
         
     }
     
@@ -340,35 +348,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             "timestamp" : ServerValue.timestamp()
         ]
         
-    Database.database().reference().child("users").child(self.selectedUserModel.uid!).updateChildValues(updateInfoValue) {
-            (updateErr, ref) in
-            if(updateErr == nil)
-            {
-                self.selectedUserModel.name = self.nameTextField.text!
-                self.nameLabel.text = self.nameTextField.text!
-                self.selectedUserModel.comment = self.commetTextField.text!
-                self.commentLabel.text = self.commetTextField.text!
-                self.updateProfileImage()
-                self.profileViewModel.updateSelfUserModel()
-                
-            }else {
-                print("update userinfo error")
-            }
-            
-            
-        }
-    }
-        
-    func updateProfileImage() {
-        if(self.isPickedProfileImage == false)
+        var imageData : Data?
+        if(self.isPickedProfileImage == true)
         {
-            return
+            imageData = self.profileImageView.image?.jpegData(compressionQuality: 0.1)
         }
+        self.isPickedProfileImage = false
         
-        guard let image = self.profileImageView.image?.jpegData(compressionQuality: 0.1) else { return }
-        
-        self.profileViewModel.updateProfileImageUrl(image: image)
-
+        self.profileViewModel.saveChangedProfileInfo(updateInfoValue: updateInfoValue, imageData: imageData)
     }
     
     func disconnectFriendship()
