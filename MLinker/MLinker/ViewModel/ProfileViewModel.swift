@@ -54,4 +54,35 @@ class ProfileViewModel {
         UserContexManager.shared.setCurrentUserModel(model:  self.selectedUserModel)
         
     }
+    
+    func updateProfileImageUrl(image : Data) {
+        let storageRef = Storage.storage().reference()
+        
+        var userDownloadURL:String?
+        
+        storageRef.child("profileImages").child(self.selectedUserModel.uid!).putData(image, metadata: nil, completion: { (metadata, error) in
+            
+            guard let _ = metadata else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            storageRef.child("profileImages").child(self.selectedUserModel.uid!).downloadURL{ (url, error) in
+                guard let downloadURL = url else {
+                    print("Downloading profileURL is failed!")
+                    return
+                }
+                userDownloadURL = downloadURL.absoluteString
+                Database.database().reference().child("users").child(self.selectedUserModel.uid!).updateChildValues(["profileURL": userDownloadURL!] ) {
+                    (error:Error?, ref:DatabaseReference) in
+                    if let error = error {
+                        print("profileURL could not be saved: \(error).")
+                    } else {
+                        print("profileURL saved successfully!")
+                        self.selectedUserModel.profileURL = userDownloadURL
+                    }
+                }
+                
+            }
+        })
+    }
 }

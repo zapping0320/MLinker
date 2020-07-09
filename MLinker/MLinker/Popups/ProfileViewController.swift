@@ -212,12 +212,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     {
         if(self.changedFriendInfo == true)
         {
-//            if(self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid())
-//            {
-//                UserContexManager.shared.setCurrentUserModel(model:  self.selectedUserModel)
-//            }
-//
-//            NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
             self.profileViewModel.updateSelfUserModel()
         }
         
@@ -621,36 +615,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             return
         }
         
-        let image = self.profileImageView.image?.jpegData(compressionQuality: 0.1)
+        guard let image = self.profileImageView.image?.jpegData(compressionQuality: 0.1) else { return }
         
-        let storageRef = Storage.storage().reference()
-        
-        var userDownloadURL:String?
-        
-        storageRef.child("profileImages").child(self.selectedUserModel.uid!).putData(image!, metadata: nil, completion: { (metadata, error) in
-            
-            guard let _ = metadata else {
-                // Uh-oh, an error occurred!
-                return
-            }
-            storageRef.child("profileImages").child(self.selectedUserModel.uid!).downloadURL{ (url, error) in
-                guard let downloadURL = url else {
-                    // Uh-oh, an error occurred!
-                    return
-                }
-                userDownloadURL = downloadURL.absoluteString
-                Database.database().reference().child("users").child(self.selectedUserModel.uid!).updateChildValues(["profileURL": userDownloadURL!] ) {
-                    (error:Error?, ref:DatabaseReference) in
-                    if let error = error {
-                        print("profileURL could not be saved: \(error).")
-                    } else {
-                        print("profileURL saved successfully!")
-                        self.selectedUserModel.profileURL = userDownloadURL
-                    }
-                }
-                
-            }
-        })
+        self.profileViewModel.updateProfileImageUrl(image: image)
+
     }
     
     func disconnectFriendship()
