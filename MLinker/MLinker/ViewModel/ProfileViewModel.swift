@@ -124,16 +124,59 @@ class ProfileViewModel {
             
             if(foundRoom == true)
             {
-                //if true > move chatview
                 self.didFoundChatRoom?(foundRoomInfo)
             }
             else
             {
-                //else make chatroom and move chat view
-                //self.createChatRoom(isStandAlone: isStandAlone)
+                self.createChatRoom(isStandAlone: isStandAlone)
             }
             
         }
         
+    }
+    
+    func createChatRoom(isStandAlone : Bool)
+    {
+        var userIdDic : Dictionary<String, Bool> = [
+            self.currentUserUid : false
+        ]
+        
+        if(isStandAlone == false)
+        {
+            userIdDic.updateValue(false, forKey: self.selectedUserModel.uid!)
+        }
+        
+        var profileDic : Dictionary<String, String> = [
+            self.currentUserUid : "",
+        ]
+        
+        if let currentUserProfile = UserContexManager.shared.getCurrentUserModel().profileURL {
+            profileDic[self.currentUserUid] = currentUserProfile
+        }
+        
+        var isAdminAccount = UserContexManager.shared.getCurrentUserModel().isAdminAccount
+        if(isStandAlone == false && self.selectedUserModel.isAdminAccount)
+        {
+            isAdminAccount = true
+        }
+        
+        let chatRoomName = self.selectedUserModel.name!
+        let chatRoomValue : Dictionary<String, Any> = [
+            "isIncludeAdminAccount" : isAdminAccount,
+            "standAlone" : isStandAlone,
+            "chatUserIdDic" : userIdDic,
+            "name" : chatRoomName,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+        Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
+            (err, ref) in
+            if(err == nil) {
+                self.findChatRoom(isStandAlone: isStandAlone)
+            }
+            else {
+                print("createChatRoom is failed")
+            }
+        }
     }
 }
