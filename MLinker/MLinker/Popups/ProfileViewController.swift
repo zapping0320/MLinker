@@ -39,8 +39,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     private var currentUserUid: String!
     
-    var changedFriendInfo : Bool = false
-    
     var isPickedProfileImage: Bool = false
     
     let profileViewModel = ProfileViewModel()
@@ -193,22 +191,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     func closeProfileVC()
     {
-        if(self.changedFriendInfo == true)
-        {
-            self.profileViewModel.updateSelfUserModel()
-        }
-        
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func leftButtonAction(_ sender: Any) {
+    @IBAction func leftButtonAction(_ sender: Any)
+    {
         if(self.profileViewModel.isSelfCurrentUser())
         {
             self.profileViewModel.findChatRoom(isStandAlone: true)
         }
         else
         {
-            self.changedFriendInfo = true
             guard let selectedFriendshipModel = self.profileViewModel.selectedFriendshipModel else { return }
             
             if(selectedFriendshipModel.status == FriendStatus.Requesting)
@@ -271,53 +264,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         NotificationCenter.default.post(name: .nsStartChat, object: nil, userInfo: chatModelDic)
     }
     
-    func rejectFriendship(includeChat : Bool)
-    {
-        self.changedFriendInfo = true
-        //update self
-            let updateSelfValue : Dictionary<String, Any> = [
-                "status" : 5,
-                "timestamp" : ServerValue.timestamp()
-            ]
-        Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
-                (updateErr, ref) in
-                if(updateErr == nil)
-                {
-                    let friendUid = self.selectedFriendshipModel!.friendId!
-                Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-                        (datasnapShot) in
-                        for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                            if let friendshipDic = item.value as? [String:AnyObject] {
-                                
-                                let friendshipModel = FriendshipModel(JSON: friendshipDic)
-                                friendshipModel?.uid = item.key
-                                
-                                if(friendshipModel?.friendId != self.currentUserUid!)
-                                {
-                                    continue
-                                }
-                            Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).removeValue() {
-                                    (deleteErr, ref) in
-                                    if(deleteErr == nil) {
-                                        if(includeChat == true)
-                                        {
-                                            self.removeFriendInfoFromChatRooms(selfUid: self.selectedFriendshipModel!.uid!, friendUid: friendUid)
-                                        }
-                                    }
-                                }
-                            }
-                            
-                        }
-                    }
-                }else {
-                    print("error update self freindshipmodel")
-                }
-               self.closeProfileVC()
-            }
-    }
-    
     func rejectFriendshipRequest() {
-        self.rejectFriendship(includeChat: false)
+        self.profileViewModel.rejectFriendship(includeChat: false)
     }
     
     @IBAction func enterEditModeAction(_ sender: Any) {
@@ -396,12 +344,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             (updateErr, ref) in
             if(updateErr == nil)
             {
-                self.changedFriendInfo = true
                 self.selectedUserModel.name = self.nameTextField.text!
                 self.nameLabel.text = self.nameTextField.text!
                 self.selectedUserModel.comment = self.commetTextField.text!
                 self.commentLabel.text = self.commetTextField.text!
                 self.updateProfileImage()
+                self.profileViewModel.updateSelfUserModel()
                 
             }else {
                 print("update userinfo error")
@@ -425,41 +373,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     
     func disconnectFriendship()
     {
-        self.rejectFriendship(includeChat: true)
-    }
-    
-    func removeFriendInfoFromChatRooms(selfUid: String, friendUid : String)
-    {
-        Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let chatRoomdic = item.value as? [String:AnyObject] {
-                    let chatModel = ChatModel(JSON: chatRoomdic)
-                    chatModel?.uid = item.key
-                    if(((chatModel?.chatUserIdDic.keys.contains(selfUid)) == true) && (chatModel?.chatUserIdDic.keys.contains(friendUid) == true))
-                    {
-                        chatModel?.chatUserIdDic.removeValue(forKey: friendUid)
-                        
-                        let updateChatRoomValue : Dictionary<String, Any> = [
-                            "chatUserIdDic" : chatModel!.chatUserIdDic,
-                            "timestamp" : ServerValue.timestamp()
-                        ]
-                        
-                        datasnapShot.ref.updateChildValues(updateChatRoomValue, withCompletionBlock: { (err, ref) in
-                                if(err == nil)
-                                {
-                                    print("chat room update success")
-                            }
-                            else
-                                {
-                                    print("error update self freindshipmodel")
-                            }
-                            
-                        })
-                    }
-                }
-            }
-        }
+        self.profileViewModel.rejectFriendship(includeChat: true)
     }
     
 }
