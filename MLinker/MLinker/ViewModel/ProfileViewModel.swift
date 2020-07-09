@@ -13,6 +13,7 @@ class ProfileViewModel {
     
     public var didNotificationUpdated: (() -> Void)?
     public var didFoundChatRoom: ((ChatModel) -> Void)?
+    public var needCloseVC: (() -> Void)?
     
     var currentUserUid: String!
     
@@ -177,6 +178,88 @@ class ProfileViewModel {
             else {
                 print("createChatRoom is failed")
             }
+        }
+    }
+    
+    func acceptFriendshipRequest() {
+        //update self
+        let updateValue : Dictionary<String, Any> = [
+            "status" : 3,
+            "timestamp" : ServerValue.timestamp()
+        ]
+    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateValue) {
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                let friendUid = self.selectedFriendshipModel!.friendId!
+            Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+                    (datasnapShot) in
+                    for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                        if let friendshipDic = item.value as? [String:AnyObject] {
+                            
+                            let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                            friendshipModel?.uid = item.key
+                            
+                            if(friendshipModel?.friendId != self.currentUserUid!)
+                            {
+                                continue
+                            }
+                        Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).updateChildValues(updateValue) {
+                                (friendUpdateErr, ref) in
+                                if(friendUpdateErr == nil) {
+                                    self.needCloseVC?()
+                                }
+                                else {
+                                    print("remove friendshipinfo is failed")
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }else {
+                print("error update self freindshipmodel")
+            }
+        }
+    }
+    
+    func cancelFriendshipRequest() {
+        //update self
+        let updateSelfValue : Dictionary<String, Any> = [
+            "status" : 4,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                let friendUid = self.selectedFriendshipModel!.friendId!
+                Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+                    (datasnapShot) in
+                    for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                        if let friendshipDic = item.value as? [String:AnyObject] {
+                            
+                            let friendshipModel = FriendshipModel(JSON: friendshipDic)
+                            friendshipModel?.uid = item.key
+                            
+                            if(friendshipModel?.friendId != self.currentUserUid!)
+                            {
+                                continue
+                            }
+                            Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).removeValue() {
+                                (deleteErr, ref) in
+                                if(deleteErr == nil) {
+                                    
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }else {
+                print("error update self freindshipmodel")
+            }
+            self.needCloseVC?()
         }
     }
 }

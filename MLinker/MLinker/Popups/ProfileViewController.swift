@@ -78,6 +78,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             self?.moveChatView(chatModel: chatModel)
         }
         
+        profileViewModel.needCloseVC = { [weak self] in
+            self?.closeProfileVC()
+        }
+        
         if(self.profileViewModel.isSelfCurrentUser())
         {
             self.updateProfileInfo()
@@ -210,12 +214,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             if(selectedFriendshipModel.status == FriendStatus.Requesting)
             {
                //cancel
-                self.cancelFriendshipRequest()
+                self.profileViewModel.cancelFriendshipRequest()
             }
             else if(selectedFriendshipModel.status == FriendStatus.ReceivingRequest)
             {
                 //accept
-                self.acceptFriendshipRequest()
+                self.profileViewModel.acceptFriendshipRequest()
             }
             else if(selectedFriendshipModel.status == FriendStatus.Connected)
             {
@@ -255,85 +259,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             
             self.present(alert, animated: true, completion: nil)
             
-        }
-    }
-    
-    func cancelFriendshipRequest() {
-        //update self
-        let updateSelfValue : Dictionary<String, Any> = [
-            "status" : 4,
-            "timestamp" : ServerValue.timestamp()
-        ]
-    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateSelfValue) {
-            (updateErr, ref) in
-            if(updateErr == nil)
-            {
-                let friendUid = self.selectedFriendshipModel!.friendId!
-            Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-                    (datasnapShot) in
-                    for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                        if let friendshipDic = item.value as? [String:AnyObject] {
-                            
-                            let friendshipModel = FriendshipModel(JSON: friendshipDic)
-                            friendshipModel?.uid = item.key
-                            
-                            if(friendshipModel?.friendId != self.currentUserUid!)
-                            {
-                                continue
-                            }
-                        Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).removeValue() {
-                                (deleteErr, ref) in
-                                if(deleteErr == nil) {
-                                    
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }else {
-                print("error update self freindshipmodel")
-            }
-            self.closeProfileVC()
-        }
-    }
-    
-    func acceptFriendshipRequest() {
-        //update self
-        let updateValue : Dictionary<String, Any> = [
-            "status" : 3,
-            "timestamp" : ServerValue.timestamp()
-        ]
-    Database.database().reference().child("friendInformations").child(self.currentUserUid!).child("friendshipList").child(self.selectedFriendshipModel!.uid!).updateChildValues(updateValue) {
-            (updateErr, ref) in
-            if(updateErr == nil)
-            {
-                let friendUid = self.selectedFriendshipModel!.friendId!
-            Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-                    (datasnapShot) in
-                    for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                        if let friendshipDic = item.value as? [String:AnyObject] {
-                            
-                            let friendshipModel = FriendshipModel(JSON: friendshipDic)
-                            friendshipModel?.uid = item.key
-                            
-                            if(friendshipModel?.friendId != self.currentUserUid!)
-                            {
-                                continue
-                            }
-                        Database.database().reference().child("friendInformations").child(friendUid).child("friendshipList").child(item.key).updateChildValues(updateValue) {
-                                (friendUpdateErr, ref) in
-                                if(friendUpdateErr == nil) {
-                                    self.closeProfileVC()
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }else {
-                print("error update self freindshipmodel")
-            }
         }
     }
     
