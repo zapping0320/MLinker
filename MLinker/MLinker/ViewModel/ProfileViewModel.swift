@@ -12,6 +12,7 @@ import Firebase
 class ProfileViewModel {
     
     public var didNotificationUpdated: (() -> Void)?
+    public var didFoundChatRoom: ((ChatModel) -> Void)?
     
     var currentUserUid: String!
     
@@ -39,10 +40,6 @@ class ProfileViewModel {
             }
         
         self.didNotificationUpdated?()
-            
-//            DispatchQueue.main.async {
-//                self.updateProfileInfo()
-//            }
         }
     }
     
@@ -84,5 +81,59 @@ class ProfileViewModel {
                 
             }
         })
+    }
+    
+    func findChatRoom(isStandAlone : Bool)
+    {
+        //find same users' chat room
+        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
+            (datasnapShot) in
+            var foundRoom = false
+            var foundRoomInfo = ChatModel()
+            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+                if let chatRoomdic = item.value as? [String:AnyObject] {
+                    let chatModel = ChatModel(JSON: chatRoomdic)
+                    chatModel?.uid = item.key
+                    if(isStandAlone)
+                    {
+                        if(chatModel?.chatUserIdDic.count == 1 && (chatModel?.chatUserIdDic[self.currentUserUid] != nil))
+                        {
+                            if let standAloneChat = chatModel?.isStandAlone {
+                                if standAloneChat {
+                                    foundRoom = true
+                                    foundRoomInfo = chatModel!
+                                    break
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(chatModel?.chatUserIdDic.count == 2 &&
+                            (chatModel?.chatUserIdDic[self.currentUserUid] != nil) &&
+                            chatModel?.chatUserIdDic[self.selectedUserModel.uid!] != nil)
+                        {
+                            foundRoom = true
+                            foundRoomInfo = chatModel!
+                            break
+                        }
+                    }
+                    
+                }
+            }
+            
+            if(foundRoom == true)
+            {
+                //if true > move chatview
+                self.didFoundChatRoom?(foundRoomInfo)
+            }
+            else
+            {
+                //else make chatroom and move chat view
+                //self.createChatRoom(isStandAlone: isStandAlone)
+            }
+            
+        }
+        
     }
 }

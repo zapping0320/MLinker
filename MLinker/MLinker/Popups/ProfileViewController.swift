@@ -74,6 +74,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             self?.updateProfileInfo()
         }
         
+        profileViewModel.didFoundChatRoom = { [weak self] (chatModel) in
+            self?.moveChatView(chatModel: chatModel)
+        }
+        
         if(self.profileViewModel.isSelfCurrentUser())
         {
             self.updateProfileInfo()
@@ -196,7 +200,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBAction func leftButtonAction(_ sender: Any) {
         if(self.profileViewModel.isSelfCurrentUser())
         {
-            self.findChatRoom(isStandAlone: true)
+            self.profileViewModel.findChatRoom(isStandAlone: true)
         }
         else
         {
@@ -216,7 +220,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
             else if(selectedFriendshipModel.status == FriendStatus.Connected)
             {
                 //start chat
-                self.findChatRoom(isStandAlone: false)
+                self.profileViewModel.findChatRoom(isStandAlone: false)
             }
         }
         
@@ -333,60 +337,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         }
     }
     
-    func findChatRoom(isStandAlone : Bool)
-    {
-        //find same users' chat room
-        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            var foundRoom = false
-            var foundRoomInfo = ChatModel()
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let chatRoomdic = item.value as? [String:AnyObject] {
-                    let chatModel = ChatModel(JSON: chatRoomdic)
-                    chatModel?.uid = item.key
-                    if(isStandAlone)
-                    {
-                        if(chatModel?.chatUserIdDic.count == 1 && (chatModel?.chatUserIdDic[self.currentUserUid] != nil))
-                        {
-                            if let standAloneChat = chatModel?.isStandAlone {
-                                if standAloneChat {
-                                    foundRoom = true
-                                    foundRoomInfo = chatModel!
-                                    break
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if(chatModel?.chatUserIdDic.count == 2 &&
-                            (chatModel?.chatUserIdDic[self.currentUserUid] != nil) &&
-                            chatModel?.chatUserIdDic[self.selectedUserModel.uid!] != nil)
-                        {
-                            foundRoom = true
-                            foundRoomInfo = chatModel!
-                            break
-                        }
-                    }
-                    
-                }
-            }
-            
-            if(foundRoom == true)
-            {
-                //if true > move chatview
-                self.moveChatView(chatModel: foundRoomInfo)
-            }
-            else
-            {
-                //else make chatroom and move chat view
-                self.createChatRoom(isStandAlone: isStandAlone)
-            }
-            
-        }
-        
-    }
-    
     func createChatRoom(isStandAlone : Bool)
     {
         var userIdDic : Dictionary<String, Bool> = [
@@ -424,7 +374,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
             (err, ref) in
             if(err == nil) {
-                self.findChatRoom(isStandAlone: isStandAlone)
+                self.profileViewModel.findChatRoom(isStandAlone: isStandAlone)
             }
             else {
                 
