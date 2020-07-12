@@ -58,6 +58,7 @@ class SignInViewController: UIViewController {
                   } else if let result = result {
                     print("Remote instance ID token: \(result.token)")
                     let uid = Auth.auth().currentUser?.uid
+                    UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
                     let token  = result.token
                     Database.database().reference().child("users").child(uid!).updateChildValues(["pushToken":token])
                   }

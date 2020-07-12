@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
 
@@ -32,9 +31,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var rightButton: UIButton!
     
     public var isChatView : Bool = false
-    
-    
-   // private var currentUserUid: String!
     
     var isPickedProfileImage: Bool = false
     
@@ -62,7 +58,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         
         self.setUIEditMode(mode: false)
        
-        profileViewModel.currentUserUid = Auth.auth().currentUser?.uid
+        profileViewModel.currentUserUid = UserContexManager.shared.getCurrentUid()
         
         profileViewModel.didNotificationUpdated = { [weak self] in
             self?.updateProfileInfo()
@@ -345,7 +341,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         let updateInfoValue : Dictionary<String, Any> = [
             "name": self.nameTextField.text!,
             "comment" : self.commetTextField.text!,
-            "timestamp" : ServerValue.timestamp()
         ]
         
         var imageData : Data?

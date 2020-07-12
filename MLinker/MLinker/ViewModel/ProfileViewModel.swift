@@ -55,7 +55,10 @@ class ProfileViewModel {
     }
     
     func saveChangedProfileInfo(updateInfoValue : Dictionary<String, Any>, imageData : Data?) {
-        Database.database().reference().child("users").child(self.selectedUserModel.uid!).updateChildValues(updateInfoValue) {
+        var updageDic = updateInfoValue
+        updageDic.updateValue(ServerValue.timestamp(), forKey: "timestamp")
+        
+        Database.database().reference().child("users").child(self.selectedUserModel.uid!).updateChildValues(updageDic) {
             (updateErr, ref) in
             if(updateErr == nil)
             {

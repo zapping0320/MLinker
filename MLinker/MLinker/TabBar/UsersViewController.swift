@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating{
     
@@ -56,11 +55,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationItem.rightBarButtonItems = [barButtonItem]
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
-       
-        self.userViewModel.currentUserUid = Auth.auth().currentUser?.uid
-        UserContexManager.shared.setCurrentUid(uid: Auth.auth().currentUser?.uid)
-      
-         self.userViewModel.loadSelfInfo()
+        
+        self.userViewModel.currentUserUid = UserContexManager.shared.getCurrentUid()
+        
+        self.userViewModel.loadSelfInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {

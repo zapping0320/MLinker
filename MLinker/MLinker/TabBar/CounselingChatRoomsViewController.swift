@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class CounselingChatRoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var chatRoomTableView: UITableView!{
@@ -24,7 +23,7 @@ class CounselingChatRoomsViewController: UIViewController, UITableViewDelegate, 
         
         self.chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatRoomCell")
         
-        chatRoomViewModel.currentUserUid = Auth.auth().currentUser?.uid
+        chatRoomViewModel.currentUserUid = UserContexManager.shared.getCurrentUid()
         chatRoomViewModel.didNotificationUpdated = { [weak self] in
             self?.chatRoomTableView.reloadData()
         }
