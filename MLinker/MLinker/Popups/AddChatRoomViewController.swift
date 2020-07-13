@@ -35,7 +35,7 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
-
+        
         currnetUserUid = UserContexManager.shared.getCurrentUid()
         selectedChatModel = UserContexManager.shared.getLastChatRoom()
         
@@ -53,71 +53,18 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
         
         //self.doneButton.isEnabled = false
         
-               
-       let doneButton = UIButton(type: .custom)
-       doneButton.setImage(UIImage (named: "done"), for: .normal)
-       doneButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
-       doneButton.addTarget(self, action: #selector(doneAddChatRoom),for: UIControl.Event.touchUpInside)
-       
-       doneBarButton = UIBarButtonItem(customView: doneButton)
-       self.navigationItem.rightBarButtonItems = [doneBarButton]
-       
+        
+        let doneButton = UIButton(type: .custom)
+        doneButton.setImage(UIImage (named: "done"), for: .normal)
+        doneButton.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
+        doneButton.addTarget(self, action: #selector(doneAddChatRoom),for: UIControl.Event.touchUpInside)
+        
+        doneBarButton = UIBarButtonItem(customView: doneButton)
+        self.navigationItem.rightBarButtonItems = [doneBarButton]
+        
         self.addChatRoomViewModel.loadChatRoomMembers()
         
     }
-    
-//    func loadUsersInfo() {
-//        self.usersArray[0] = [UserModel]()
-//        self.usersArray[1] = [UserModel]()
-//    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-//            (datasnapShot) in
-//            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-//                if let friendshipDic = item.value as? [String:AnyObject] {
-//                    
-//                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
-//                    friendshipModel?.uid = item.key
-//                    if(friendshipModel == nil){
-//                        continue
-//                    }
-//                    
-//                    if(friendshipModel?.status != FriendStatus.Connected)
-//                    {
-//                        continue
-//                    }
-//                Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
-//                        (datasnapShot) in
-//                    if let userDic = datasnapShot.value as? [String:AnyObject] {
-//                        let userModel = UserModel(JSON: userDic)
-//                        if(self.selectedChatModel.isValid())
-//                        {
-//                            let uid = userModel?.uid
-//                            if(self.selectedChatModel.chatUserIdDic.keys.contains(uid!) == true)
-//                            {
-//                                self.usersArray[0]!.append(userModel!)
-//                            }
-//                            else
-//                            {
-//                                self.usersArray[1]!.append(userModel!)
-//                            }
-//                        }
-//                        else
-//                        {
-//                            self.usersArray[0]!.append(userModel!)
-//                        }
-//                        DispatchQueue.main.async {
-//                            self.usersTableView.reloadData()
-//                        }
-//                    }
-//                    }
-//                    
-//                }
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self.usersTableView.reloadData()
-//            }
-//        }
-//    }
     
     @objc func cancelAddChatRoom() {
         self.dismiss(animated: true, completion: nil)
@@ -311,75 +258,22 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
 
 extension AddChatRoomViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if(self.selectedChatModel.isValid()){
-            return 2
-        }
-        else
-        {
-            return 1
-        }
+        return self.addChatRoomViewModel.getNumOfSection()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(self.selectedChatModel.isValid())
-        {
-            if(section == 0)
-            {
-                return NSLocalizedString("Current Members", comment: "")
-            }
-            else
-            {
-                return NSLocalizedString("Add Members", comment: "")
-            }
-        }
-        else
-        {
-            return ""
-        }
+        return self.addChatRoomViewModel.getTableHeaderString(section: section)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let dataList = usersArray[section] else {
-//            return 0
-//        }
-//        return dataList.count
         return self.addChatRoomViewModel.getNumberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
-        //let currentUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
         let currentUser = self.addChatRoomViewModel.getCurrentUserData(indexPath: indexPath)
-       
-        cell.setAdminAccount(value: currentUser.isAdminAccount)
-        cell.nameLabel?.text = currentUser.name
-        cell.commentLabel?.text = currentUser.comment
         
-        if let profileImageString = currentUser.profileURL {
-            let profileImageURL = URL(string: profileImageString)
-            let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
-                |> RoundCornerImageProcessor(cornerRadius: 40)
-            cell.profileImageView?.kf.indicatorType = .activity
-            cell.profileImageView?.kf.setImage(
-                with: profileImageURL,
-                placeholder: UIImage(named: "defaultPhoto"),
-                options: [
-                    .processor(processor),
-                    .scaleFactor(UIScreen.main.scale),
-                    .transition(.fade(1)),
-                    .cacheOriginalImage
-                ])
-            {
-                result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
-            
-        }
+        cell.updateUI(userModel: currentUser)
         
         return cell
     }
@@ -398,13 +292,7 @@ extension AddChatRoomViewController {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if(self.selectedChatModel.isValid() && indexPath.section == 0){
-            return false
-        }
-        else
-        {
-            return true
-        }
+        return self.addChatRoomViewModel.isCanEditRowAt(indexPath: indexPath)
     }
 
 }

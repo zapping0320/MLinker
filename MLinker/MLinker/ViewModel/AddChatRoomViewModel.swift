@@ -70,12 +70,42 @@ class AddChatRoomViewModel {
         }
     }
     
+    func getNumOfSection() -> Int{
+        let selectedChatModel   = UserContexManager.shared.getLastChatRoom()
+        if(selectedChatModel.isValid()){
+            return 2
+        }
+        else
+        {
+            return 1
+        }
+    }
+    
     func getNumberOfRowsInSection(section : Int) -> Int{
         if section == 0 {
             return self.defaultUserModels.count
         }
         else {
             return self.availableUserModels.count
+        }
+    }
+    
+    func getTableHeaderString(section :Int) -> String {
+        let selectedChatModel   = UserContexManager.shared.getLastChatRoom()
+        if(selectedChatModel.isValid())
+        {
+            if(section == 0)
+            {
+                return NSLocalizedString("Current Members", comment: "")
+            }
+            else
+            {
+                return NSLocalizedString("Add Members", comment: "")
+            }
+        }
+        else
+        {
+            return ""
         }
     }
     
@@ -88,5 +118,16 @@ class AddChatRoomViewModel {
             return self.availableUserModels[indexPath.row]
         }
         
+    }
+    
+    func isCanEditRowAt(indexPath : IndexPath) -> Bool  {
+        let selectedChatModel   = UserContexManager.shared.getLastChatRoom()
+        if(selectedChatModel.isValid() && indexPath.section == 0){
+            return false
+        }
+        else
+        {
+            return true
+        }
     }
 }
