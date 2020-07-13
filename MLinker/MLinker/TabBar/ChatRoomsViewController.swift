@@ -41,7 +41,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(moveChatView), name: .nsStartChat, object: nil)
       
-        self.chatRoomViewModel.getChatRoomsList(isIncludeAdminAccount: false)
+        self.chatRoomViewModel.loadChatRoomsList(isIncludeAdminAccount: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

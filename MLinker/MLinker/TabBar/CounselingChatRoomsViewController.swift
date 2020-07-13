@@ -31,7 +31,7 @@ class CounselingChatRoomsViewController: UIViewController, UITableViewDelegate, 
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.chatRoomViewModel.getChatRoomsList(isIncludeAdminAccount: true)
+        self.chatRoomViewModel.loadChatRoomsList(isIncludeAdminAccount: true)
     }
     
 }

@@ -57,10 +57,6 @@ class AddFriendViewController: UIViewController {
     }
     
     @IBAction func dismissVC(_ sender: Any) {
-//        if(self.changedFriendInfo == true)
-//        {
-//            NotificationCenter.default.post(name: .nsUpdateUsersTable, object: nil, userInfo: nil)
-//        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -77,7 +73,7 @@ class AddFriendViewController: UIViewController {
             for child in snapshot.children {
                 let fchild = child as! DataSnapshot
                 let dataDic = fchild.value as? NSDictionary
-             
+                
                 let uid = dataDic?["uid"] as? String ?? ""
                 
                 if(uid == ""){
@@ -95,7 +91,6 @@ class AddFriendViewController: UIViewController {
                 
                 let userName = dataDic?["name"] as? String ?? ""
                 let profileURL = dataDic?["profileURL"] as? String ?? ""
-                //userModel.setValuesForKeys(fchild.value as! [String: Any])
                 let userModel = UserModel()
                 userModel.uid = uid
                 userModel.email = email
@@ -103,9 +98,6 @@ class AddFriendViewController: UIViewController {
                 userModel.profileURL = profileURL
                 userModel.comment = dataDic?["comment"] as? String ?? ""
                 userModel.pushToken = dataDic?["pushToken"] as? String ?? ""
-//                let userDic = fchild.value as? [String:AnyObject]
-//                let userModel = UserModel(JSON: userDic!)
-                
                 
                 if(uid == self.currnetUserUid)
                 {

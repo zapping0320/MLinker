@@ -57,6 +57,8 @@
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 		E34818DA24B42E3C00498932 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818D924B42E3C00498932 /* UserViewModel.swift */; };
 		E368FBC724B67B360088AF28 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBC624B67B360088AF28 /* ProfileViewModel.swift */; };
+		E368FBC924BBF2200088AF28 /* FriendshipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBC824BBF2200088AF28 /* FriendshipViewModel.swift */; };
+		E368FBCB24BC04050088AF28 /* AddChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBCA24BC04050088AF28 /* AddChatRoomViewModel.swift */; };
 		E36C710924B530B100BEFA19 /* chatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +133,8 @@
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
 		E34818D924B42E3C00498932 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		E368FBC624B67B360088AF28 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		E368FBC824BBF2200088AF28 /* FriendshipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipViewModel.swift; sourceTree = "<group>"; };
+		E368FBCA24BC04050088AF28 /* AddChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatRoomViewModel.swift; sourceTree = "<group>"; };
 		E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatRoomViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,6 +295,8 @@
 				E34818D924B42E3C00498932 /* UserViewModel.swift */,
 				E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */,
 				E368FBC624B67B360088AF28 /* ProfileViewModel.swift */,
+				E368FBC824BBF2200088AF28 /* FriendshipViewModel.swift */,
+				E368FBCA24BC04050088AF28 /* AddChatRoomViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				0B1B418723EB70A7004C426F /* PushMessageManager.swift in Sources */,
 				0B16822023148AD3004F8089 /* UserTableViewCell.swift in Sources */,
 				0B16821D23133B97004F8089 /* ViewController.swift in Sources */,
+				E368FBCB24BC04050088AF28 /* AddChatRoomViewModel.swift in Sources */,
 				0B3F421B235A734700CAE1B1 /* ChatNoticeCell.swift in Sources */,
 				0B191FDA23318CDC0016EA85 /* ChatRoomTableViewCell.swift in Sources */,
 				0BCB409F2356725D0085933A /* ColorHelper.swift in Sources */,
@@ -464,6 +471,7 @@
 				0B076A5623397B7100B5AF43 /* ChatYourCell.swift in Sources */,
 				0B173F5D231DCE2E00A36DAB /* ProfileViewController.swift in Sources */,
 				0B1792BB23455EE20098D7AC /* UserContexManager.swift in Sources */,
+				E368FBC924BBF2200088AF28 /* FriendshipViewModel.swift in Sources */,
 				0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */,
 				0B1783052353D2330097A79C /* AddChatRoomViewController.swift in Sources */,
 				0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */,

@@ -18,7 +18,7 @@ class ChatRoomViewModel {
     
     var chatRooms: [ChatModel]! = []
     
-    func getChatRoomsList(isIncludeAdminAccount : Bool) {
+    func loadChatRoomsList(isIncludeAdminAccount : Bool) {
         Database.database().reference().child("chatRooms").queryOrdered(byChild: "timestamp").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             self.chatRooms.removeAll()

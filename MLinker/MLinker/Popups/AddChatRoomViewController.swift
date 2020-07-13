@@ -26,7 +26,10 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
     private var doneBarButton: UIBarButtonItem = UIBarButtonItem()
     
     fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
+    
     var currnetUserUid: String!
+    
+    let addChatRoomViewModel = AddChatRoomViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,10 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
 
         currnetUserUid = UserContexManager.shared.getCurrentUid()
         selectedChatModel = UserContexManager.shared.getLastChatRoom()
+        
+        addChatRoomViewModel.didNotificationUpdated = { [weak self] in
+            self?.usersTableView.reloadData()
+        }
         
         let cancelButton = UIButton(type: .custom)
         cancelButton.setImage(UIImage (named: "close"), for: .normal)
@@ -54,62 +61,63 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
        
        doneBarButton = UIBarButtonItem(customView: doneButton)
        self.navigationItem.rightBarButtonItems = [doneBarButton]
+       
+        self.addChatRoomViewModel.loadChatRoomMembers()
         
-        self.loadUsersInfo()
     }
     
-    func loadUsersInfo() {
-        self.usersArray[0] = [UserModel]()
-        self.usersArray[1] = [UserModel]()
-    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let friendshipDic = item.value as? [String:AnyObject] {
-                    
-                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
-                    friendshipModel?.uid = item.key
-                    if(friendshipModel == nil){
-                        continue
-                    }
-                    
-                    if(friendshipModel?.status != FriendStatus.Connected)
-                    {
-                        continue
-                    }
-                Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
-                        (datasnapShot) in
-                    if let userDic = datasnapShot.value as? [String:AnyObject] {
-                        let userModel = UserModel(JSON: userDic)
-                        if(self.selectedChatModel.isValid())
-                        {
-                            let uid = userModel?.uid
-                            if(self.selectedChatModel.chatUserIdDic.keys.contains(uid!) == true)
-                            {
-                                self.usersArray[0]!.append(userModel!)
-                            }
-                            else
-                            {
-                                self.usersArray[1]!.append(userModel!)
-                            }
-                        }
-                        else
-                        {
-                            self.usersArray[0]!.append(userModel!)
-                        }
-                        DispatchQueue.main.async {
-                            self.usersTableView.reloadData()
-                        }
-                    }
-                    }
-                    
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.usersTableView.reloadData()
-            }
-        }
-    }
+//    func loadUsersInfo() {
+//        self.usersArray[0] = [UserModel]()
+//        self.usersArray[1] = [UserModel]()
+//    Database.database().reference().child("friendInformations").child(self.currnetUserUid!).child("friendshipList").observeSingleEvent(of: DataEventType.value) {
+//            (datasnapShot) in
+//            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
+//                if let friendshipDic = item.value as? [String:AnyObject] {
+//                    
+//                    let friendshipModel = FriendshipModel(JSON: friendshipDic)
+//                    friendshipModel?.uid = item.key
+//                    if(friendshipModel == nil){
+//                        continue
+//                    }
+//                    
+//                    if(friendshipModel?.status != FriendStatus.Connected)
+//                    {
+//                        continue
+//                    }
+//                Database.database().reference().child("users").child(friendshipModel!.friendId!).observeSingleEvent(of: DataEventType.value) {
+//                        (datasnapShot) in
+//                    if let userDic = datasnapShot.value as? [String:AnyObject] {
+//                        let userModel = UserModel(JSON: userDic)
+//                        if(self.selectedChatModel.isValid())
+//                        {
+//                            let uid = userModel?.uid
+//                            if(self.selectedChatModel.chatUserIdDic.keys.contains(uid!) == true)
+//                            {
+//                                self.usersArray[0]!.append(userModel!)
+//                            }
+//                            else
+//                            {
+//                                self.usersArray[1]!.append(userModel!)
+//                            }
+//                        }
+//                        else
+//                        {
+//                            self.usersArray[0]!.append(userModel!)
+//                        }
+//                        DispatchQueue.main.async {
+//                            self.usersTableView.reloadData()
+//                        }
+//                    }
+//                    }
+//                    
+//                }
+//            }
+//            
+//            DispatchQueue.main.async {
+//                self.usersTableView.reloadData()
+//            }
+//        }
+//    }
     
     @objc func cancelAddChatRoom() {
         self.dismiss(animated: true, completion: nil)
@@ -331,15 +339,17 @@ extension AddChatRoomViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let dataList = usersArray[section] else {
-            return 0
-        }
-        return dataList.count
+//        guard let dataList = usersArray[section] else {
+//            return 0
+//        }
+//        return dataList.count
+        return self.addChatRoomViewModel.getNumberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
-        let currentUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
+        //let currentUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
+        let currentUser = self.addChatRoomViewModel.getCurrentUserData(indexPath: indexPath)
        
         cell.setAdminAccount(value: currentUser.isAdminAccount)
         cell.nameLabel?.text = currentUser.name
