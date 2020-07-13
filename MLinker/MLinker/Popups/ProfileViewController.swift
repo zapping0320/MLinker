@@ -58,7 +58,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate,UI
         
         self.setUIEditMode(mode: false)
        
-        profileViewModel.currentUserUid = UserContexManager.shared.getCurrentUid()
+        profileViewModel.setUserID(userId: UserContexManager.shared.getCurrentUid())
         
         profileViewModel.didNotificationUpdated = { [weak self] in
             self?.updateProfileInfo()

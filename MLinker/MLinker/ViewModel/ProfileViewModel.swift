@@ -22,6 +22,13 @@ class ProfileViewModel {
     
     var selectedFriendshipModel : FriendshipModel?
     
+    let chatRoomViewModel = ChatRoomViewModel()
+    
+    func setUserID(userId : String) {
+        self.currentUserUid = userId
+        self.chatRoomViewModel.currentUserUid = userId
+    }
+    
     func isSelfCurrentUser() -> Bool {
         return self.selectedUserModel.uid == UserContexManager.shared.getCurrentUid()
     }
@@ -115,99 +122,11 @@ class ProfileViewModel {
     
     func findChatRoom(isStandAlone : Bool)
     {
-        //find same users' chat room
-        Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            var foundRoom = false
-            var foundRoomInfo = ChatModel()
-            for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                if let chatRoomdic = item.value as? [String:AnyObject] {
-                    let chatModel = ChatModel(JSON: chatRoomdic)
-                    chatModel?.uid = item.key
-                    if(isStandAlone)
-                    {
-                        if(chatModel?.chatUserIdDic.count == 1 && (chatModel?.chatUserIdDic[self.currentUserUid] != nil))
-                        {
-                            if let standAloneChat = chatModel?.isStandAlone {
-                                if standAloneChat {
-                                    foundRoom = true
-                                    foundRoomInfo = chatModel!
-                                    break
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if(chatModel?.chatUserIdDic.count == 2 &&
-                            (chatModel?.chatUserIdDic[self.currentUserUid] != nil) &&
-                            chatModel?.chatUserIdDic[self.selectedUserModel.uid!] != nil)
-                        {
-                            foundRoom = true
-                            foundRoomInfo = chatModel!
-                            break
-                        }
-                    }
-                    
-                }
-            }
-            
-            if(foundRoom == true)
-            {
-                self.didFoundChatRoom?(foundRoomInfo)
-            }
-            else
-            {
-                self.createChatRoom(isStandAlone: isStandAlone)
-            }
-            
+        self.chatRoomViewModel.didFoundChatRoom = { [weak self] (chatModel) in
+            self?.didFoundChatRoom?(chatModel)
         }
         
-    }
-    
-    func createChatRoom(isStandAlone : Bool)
-    {
-        var userIdDic : Dictionary<String, Bool> = [
-            self.currentUserUid : false
-        ]
-        
-        if(isStandAlone == false)
-        {
-            userIdDic.updateValue(false, forKey: self.selectedUserModel.uid!)
-        }
-        
-        var profileDic : Dictionary<String, String> = [
-            self.currentUserUid : "",
-        ]
-        
-        if let currentUserProfile = UserContexManager.shared.getCurrentUserModel().profileURL {
-            profileDic[self.currentUserUid] = currentUserProfile
-        }
-        
-        var isAdminAccount = UserContexManager.shared.getCurrentUserModel().isAdminAccount
-        if(isStandAlone == false && self.selectedUserModel.isAdminAccount)
-        {
-            isAdminAccount = true
-        }
-        
-        let chatRoomName = self.selectedUserModel.name!
-        let chatRoomValue : Dictionary<String, Any> = [
-            "isIncludeAdminAccount" : isAdminAccount,
-            "standAlone" : isStandAlone,
-            "chatUserIdDic" : userIdDic,
-            "name" : chatRoomName,
-            "timestamp" : ServerValue.timestamp()
-        ]
-        
-        Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
-            (err, ref) in
-            if(err == nil) {
-                self.findChatRoom(isStandAlone: isStandAlone)
-            }
-            else {
-                print("createChatRoom is failed")
-            }
-        }
+        self.chatRoomViewModel.findChatRoom(isStandAlone: false, selectedUserModel: self.selectedUserModel)
     }
     
     func acceptFriendshipRequest() {
