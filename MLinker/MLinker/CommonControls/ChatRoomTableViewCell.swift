@@ -70,6 +70,8 @@ class ChatRoomTableViewCell: UITableViewCell {
         lastCommentLabel.text = commentInfo.recentComment.message
         if let timeStamp = commentInfo.recentComment.timestamp {
             lastCommentDateLabel.text = timeStamp.toChatRoomCellDayTime
+        }else {
+             lastCommentDateLabel.text = ""
         }
         
         self.setUnreadMessageCount(value: commentInfo.unreadMessageCount)

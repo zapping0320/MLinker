@@ -13,6 +13,7 @@ import Kingfisher
 class AddChatRoomViewModel {
     
     public var didNotificationUpdated: (() -> Void)?
+    public var moveChatRoom: ((ChatModel) -> Void)?
  
     var defaultUserModels    = [UserModel]()
     var availableUserModels = [UserModel]()
@@ -129,5 +130,52 @@ class AddChatRoomViewModel {
         {
             return true
         }
+    }
+    
+    func addMemberstoChatRoom(isIncludeAdmin : Bool, chatUserIdDic: Dictionary<String,Bool>, membersAdded : [String])
+    {
+        let selectedChatModel   = UserContexManager.shared.getLastChatRoom()
+        let chatRoomValue : Dictionary<String, Any> = [
+            "isIncludeAdminAccount" :  isIncludeAdmin,
+            "standAlone" : false,
+            "chatUserIdDic" : chatUserIdDic,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+        Database.database().reference().child("chatRooms").child(selectedChatModel.uid).updateChildValues(chatRoomValue) {
+            (err, ref) in
+            if(err == nil) {
+                self.addCommentAboutAddingMemebers(relatedUsers: membersAdded)
+            }
+            else {
+                print("[error] addMemberstoChatRoom ")
+            }
+        }
+        
+    }
+    
+    func addCommentAboutAddingMemebers(relatedUsers : [String])
+    {
+        let currnetUserUid      = UserContexManager.shared.getCurrentUid()
+        let selectedChatModel   = UserContexManager.shared.getLastChatRoom()
+        
+        var commentDic : Dictionary<String, Any> = [
+            "sender"    : currnetUserUid,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        
+        let noticeDic : Dictionary<String, Any> = [
+            "noticeType" : 1,
+            "relatedUsers" : relatedUsers
+        ]
+        
+        commentDic.updateValue(true, forKey: "isNotice")
+        commentDic.updateValue(noticeDic, forKey: "notice")
+        
+        Database.database().reference().child("chatRooms").child(selectedChatModel.uid).child("comments").childByAutoId().setValue(commentDic, withCompletionBlock: {
+            (err, ref) in
+            //self.moveChatView(chatModel: selectedChatModel)
+            self.moveChatRoom?(selectedChatModel)
+        })
     }
 }
