@@ -26,10 +26,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.chatInputView.delegate = self
         }
     }
+    
     @IBOutlet weak var chatInputViewHeight: NSLayoutConstraint!
     @IBOutlet weak var inputViewBottomMargin: NSLayoutConstraint!
     
     public var selectedChatModel:ChatModel = ChatModel()
+    
+    let chatViewViewModel = ChatViewViewModel()
     
     private var currnetUserUid: String!
     var comments: [ChatModel.Comment] = []
@@ -46,6 +49,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.commentTableView.register(UINib(nibName: "ChatNoticeCell", bundle: nil), forCellReuseIdentifier: "ChatNoticeCell")
         
         self.commentTableView.register(UINib(nibName: "ChatDateDisplayCell", bundle: nil), forCellReuseIdentifier: "ChatDateDisplayCell")
+        
+        self.chatViewViewModel.updatedChatModel = { [weak self] (chatModel) in
+            self?.selectedChatModel = chatModel
+            self?.commentTableView.reloadData()
+            self?.scrollTableView()
+        }
         
         
         let button = UIButton(type: .custom)
@@ -65,7 +74,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.getRelatedUserModels()
+        self.chatViewViewModel.getRelatedUserModels()
         
         self.getMessageList()
     }
@@ -263,24 +272,24 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func getRelatedUserModels()
-    {
-        for userID in self.selectedChatModel.chatUserIdDic.keys { Database.database().reference().child("users").child(userID).observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            if let userDic = datasnapShot.value as? [String:AnyObject] {
-                let userModel = UserModel(JSON: userDic)
-                self.selectedChatModel.chatUserModelDic.updateValue(userModel!, forKey: userID)
-            }
-            
-            DispatchQueue.main.async {
-                self.commentTableView.reloadData()
-                self.scrollTableView()
-            }
-            
-            }
-            
-        }
-    }
+//    func getRelatedUserModels()
+//    {
+//        for userID in self.selectedChatModel.chatUserIdDic.keys { Database.database().reference().child("users").child(userID).observeSingleEvent(of: DataEventType.value) {
+//            (datasnapShot) in
+//            if let userDic = datasnapShot.value as? [String:AnyObject] {
+//                let userModel = UserModel(JSON: userDic)
+//                self.selectedChatModel.chatUserModelDic.updateValue(userModel!, forKey: userID)
+//            }
+//            
+//            DispatchQueue.main.async {
+//                self.commentTableView.reloadData()
+//                self.scrollTableView()
+//            }
+//            
+//            }
+//            
+//        }
+//    }
     
     @objc func barBtn_more_Action(){
         let alert = UIAlertController(title: title,

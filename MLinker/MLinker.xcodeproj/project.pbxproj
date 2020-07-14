@@ -59,6 +59,7 @@
 		E368FBC724B67B360088AF28 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBC624B67B360088AF28 /* ProfileViewModel.swift */; };
 		E368FBC924BBF2200088AF28 /* FriendshipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBC824BBF2200088AF28 /* FriendshipViewModel.swift */; };
 		E368FBCB24BC04050088AF28 /* AddChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBCA24BC04050088AF28 /* AddChatRoomViewModel.swift */; };
+		E368FBCD24BD78450088AF28 /* ChatViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBCC24BD78450088AF28 /* ChatViewViewModel.swift */; };
 		E36C710924B530B100BEFA19 /* chatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +136,7 @@
 		E368FBC624B67B360088AF28 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E368FBC824BBF2200088AF28 /* FriendshipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipViewModel.swift; sourceTree = "<group>"; };
 		E368FBCA24BC04050088AF28 /* AddChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatRoomViewModel.swift; sourceTree = "<group>"; };
+		E368FBCC24BD78450088AF28 /* ChatViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewViewModel.swift; sourceTree = "<group>"; };
 		E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatRoomViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -297,6 +299,7 @@
 				E368FBC624B67B360088AF28 /* ProfileViewModel.swift */,
 				E368FBC824BBF2200088AF28 /* FriendshipViewModel.swift */,
 				E368FBCA24BC04050088AF28 /* AddChatRoomViewModel.swift */,
+				E368FBCC24BD78450088AF28 /* ChatViewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				0B173F5D231DCE2E00A36DAB /* ProfileViewController.swift in Sources */,
 				0B1792BB23455EE20098D7AC /* UserContexManager.swift in Sources */,
 				E368FBC924BBF2200088AF28 /* FriendshipViewModel.swift in Sources */,
+				E368FBCD24BD78450088AF28 /* ChatViewViewModel.swift in Sources */,
 				0B44C4E9230AFE5500B55D21 /* UIColor.swift in Sources */,
 				0B1783052353D2330097A79C /* AddChatRoomViewController.swift in Sources */,
 				0BFF175B231727D400CD6561 /* AddFriendViewController.swift in Sources */,
