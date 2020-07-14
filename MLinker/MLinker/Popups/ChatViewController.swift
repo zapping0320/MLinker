@@ -56,6 +56,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self?.scrollTableView()
         }
         
+        self.chatViewViewModel.didNotificationUpdated = { [weak self]  in
+            self?.commentTableView.reloadData()
+            self?.scrollTableView()
+        }
+        
         
         let button = UIButton(type: .custom)
         button.setImage(UIImage (named: "setting"), for: .normal)
@@ -76,7 +81,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(_ animated: Bool) {
         self.chatViewViewModel.getRelatedUserModels()
         
-        self.getMessageList()
+        self.chatViewViewModel.getMessageList()
+       
     }
     
     @objc func keyboardWillShow(noti : Notification){
@@ -204,73 +210,73 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func getMessageList() {
-        self.databaseRef = Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments")
-        
-        var lastComment:ChatModel.Comment?
-        
-        self.observe = self.databaseRef!.observe(DataEventType.value, with: {
-            (snapshot) in
-            self.comments.removeAll()
-            self.dateStrings.removeAll()
-            
-            var readUsersDic : Dictionary<String,AnyObject> = [:]
-            
-            for item in snapshot.children.allObjects as! [DataSnapshot] {
-                let key = item.key as String
-                let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                comment_modify?.readUsers[self.currnetUserUid!] = true
-                readUsersDic[key] = comment_modify?.toJSON() as NSDictionary?
-                if comment!.isNotice {
-                    comment?.commentType = CommentType.Notice
-                }
-                else
-                {
-                    comment?.commentType = CommentType.Comment
-                }
-                self.addDateString(comment: comment!)
-                self.comments.append(comment!)
-                lastComment = comment!
-            }
-            
-            let nsDic = readUsersDic as NSDictionary
-            
-            if(lastComment?.readUsers.keys == nil){
-                return
-            }
-            
-            if(!(lastComment?.readUsers.keys.contains(self.currnetUserUid!))!){
-                snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
-                    DispatchQueue.main.async {
-                        self.commentTableView.reloadData()
-                        self.scrollTableView()
-                    }
-                })
-
-            }else {
-                DispatchQueue.main.async {
-                    self.commentTableView.reloadData()
-                    self.scrollTableView()
-                    
-              }
-            }
-        })
-    }
+//    func getMessageList() {
+//        self.databaseRef = Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments")
+//        
+//        var lastComment:ChatModel.Comment?
+//        
+//        self.observe = self.databaseRef!.observe(DataEventType.value, with: {
+//            (snapshot) in
+//            self.comments.removeAll()
+//            self.dateStrings.removeAll()
+//            
+//            var readUsersDic : Dictionary<String,AnyObject> = [:]
+//            
+//            for item in snapshot.children.allObjects as! [DataSnapshot] {
+//                let key = item.key as String
+//                let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+//                let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+//                comment_modify?.readUsers[self.currnetUserUid!] = true
+//                readUsersDic[key] = comment_modify?.toJSON() as NSDictionary?
+//                if comment!.isNotice {
+//                    comment?.commentType = CommentType.Notice
+//                }
+//                else
+//                {
+//                    comment?.commentType = CommentType.Comment
+//                }
+//                //self.addDateString(comment: comment!)
+//                self.comments.append(comment!)
+//                lastComment = comment!
+//            }
+//            
+//            let nsDic = readUsersDic as NSDictionary
+//            
+//            if(lastComment?.readUsers.keys == nil){
+//                return
+//            }
+//            
+//            if(!(lastComment?.readUsers.keys.contains(self.currnetUserUid!))!){
+//                snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
+//                    DispatchQueue.main.async {
+//                        self.commentTableView.reloadData()
+//                        self.scrollTableView()
+//                    }
+//                })
+//
+//            }else {
+//                DispatchQueue.main.async {
+//                    self.commentTableView.reloadData()
+//                    self.scrollTableView()
+//                    
+//              }
+//            }
+//        })
+//    }
     
-    func addDateString(comment : ChatModel.Comment)
-    {
-        if let timeStamp = comment.timestamp {
-            let dateString = timeStamp.toChatDisplayDate
-            if self.dateStrings.contains(dateString) == false {
-                self.dateStrings.append(dateString)
-                let dateComment = ChatModel.Comment()
-                dateComment.commentType = CommentType.Date
-                dateComment.message = dateString
-                self.comments.append(dateComment)
-            }
-        }
-    }
+//    func addDateString(comment : ChatModel.Comment)
+//    {
+//        if let timeStamp = comment.timestamp {
+//            let dateString = timeStamp.toChatDisplayDate
+//            if self.dateStrings.contains(dateString) == false {
+//                self.dateStrings.append(dateString)
+//                let dateComment = ChatModel.Comment()
+//                dateComment.commentType = CommentType.Date
+//                dateComment.message = dateString
+//                self.comments.append(dateComment)
+//            }
+//        }
+//    }
     
 //    func getRelatedUserModels()
 //    {
@@ -280,14 +286,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //                let userModel = UserModel(JSON: userDic)
 //                self.selectedChatModel.chatUserModelDic.updateValue(userModel!, forKey: userID)
 //            }
-//            
+//
 //            DispatchQueue.main.async {
 //                self.commentTableView.reloadData()
 //                self.scrollTableView()
 //            }
-//            
+//
 //            }
-//            
+//
 //        }
 //    }
     
@@ -389,12 +395,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 extension ChatViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.comments.count
+        //return self.comments.count
+        return self.chatViewViewModel.getNumberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let selectedComment = self.comments[indexPath.row]
+        //let selectedComment = self.comments[indexPath.row]
+        let selectedComment = self.chatViewViewModel.getCommentData(indexPath: indexPath)
         
         if selectedComment.commentType == CommentType.Notice {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatNoticeCell", for: indexPath) as! ChatNoticeCell
