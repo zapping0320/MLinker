@@ -46,8 +46,21 @@ class ChatRoomViewModel {
         return chatRooms[indexPath.row]
     }
     
-    func findChatRoom(isStandAlone : Bool, selectedUserModel:UserModel)
+    func findChatRoom(isStandAlone : Bool, selectedUserModels:[UserModel])
     {
+        if(selectedUserModels.count < 1) {
+            return
+        }
+        
+        var targetUserModels = selectedUserModels
+        let currentUserModel = UserContexManager.shared.getCurrentUserModel()
+        targetUserModels.append(currentUserModel)
+        
+        var selectedUsersDic : Dictionary<String, Bool> = Dictionary<String, Bool>()
+        for userModel in targetUserModels {
+            selectedUsersDic.updateValue(false, forKey: userModel.uid!)
+        }
+        
         //find same users' chat room
         Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
@@ -72,9 +85,7 @@ class ChatRoomViewModel {
                     }
                     else
                     {
-                        if(chatModel?.chatUserIdDic.count == 2 &&
-                            (chatModel?.chatUserIdDic[self.currentUserUid] != nil) &&
-                            chatModel?.chatUserIdDic[selectedUserModel.uid!] != nil)
+                        if(chatModel?.chatUserIdDic == selectedUsersDic)
                         {
                             foundRoom = true
                             foundRoomInfo = chatModel!
@@ -91,41 +102,55 @@ class ChatRoomViewModel {
             }
             else
             {
-                self.createChatRoom(isStandAlone: false, selectedUserModel: selectedUserModel)
+                self.createChatRoom(isStandAlone: isStandAlone, selectedUserModels: selectedUserModels)
             }
             
         }
         
     }
+   
     
-    func createChatRoom(isStandAlone : Bool, selectedUserModel:UserModel)
+    func createChatRoom(isStandAlone : Bool, selectedUserModels:[UserModel])
     {
-        var userIdDic : Dictionary<String, Bool> = [
-            self.currentUserUid : false
-        ]
+        if (selectedUserModels.count < 1) {
+            return
+        }
         
-        if(isStandAlone == false)
+        
+        var userIdDic : Dictionary<String, Bool> = Dictionary<String, Bool>()
+        let currentUserModel = UserContexManager.shared.getCurrentUserModel()
+        
+        var isIncludeAdmin = false
+        var chatRoomName = "No name"
+        
+        if(isStandAlone == true)
         {
-            userIdDic.updateValue(false, forKey: selectedUserModel.uid!)
+            isIncludeAdmin = UserContexManager.shared.getCurrentUserModel().isAdminAccount
+            chatRoomName = currentUserModel.name ?? ""
+            userIdDic.updateValue(false, forKey: currentUserModel.uid!)
         }
-        
-        var profileDic : Dictionary<String, String> = [
-            self.currentUserUid : "",
-        ]
-        
-        if let currentUserProfile = UserContexManager.shared.getCurrentUserModel().profileURL {
-            profileDic[self.currentUserUid] = currentUserProfile
+        else {
+            chatRoomName = ""
+            var targetUserModels = selectedUserModels
+            targetUserModels.append(currentUserModel)
+            for userModel in targetUserModels {
+                userIdDic.updateValue(false, forKey: userModel.uid!)
+                isIncludeAdmin = isIncludeAdmin || userModel.isAdminAccount
+                if chatRoomName.isEmpty == false {
+                    chatRoomName += ","
+                }
+                chatRoomName += userModel.name!
+            }
         }
+
+        self.createChatRoomInfo(isStandAlone: isStandAlone, isIncludeAdmin: isIncludeAdmin, userIdDic: userIdDic, chatRoomName: chatRoomName, selectedUserModels: selectedUserModels)
         
-        var isAdminAccount = UserContexManager.shared.getCurrentUserModel().isAdminAccount
-        if(isStandAlone == false && selectedUserModel.isAdminAccount)
-        {
-            isAdminAccount = true
-        }
-        
-        let chatRoomName = selectedUserModel.name!
+    }
+    
+    func createChatRoomInfo(isStandAlone : Bool, isIncludeAdmin : Bool, userIdDic : Dictionary<String, Bool>, chatRoomName: String, selectedUserModels:[UserModel])
+    {
         let chatRoomValue : Dictionary<String, Any> = [
-            "isIncludeAdminAccount" : isAdminAccount,
+            "isIncludeAdminAccount" : isIncludeAdmin,
             "standAlone" : isStandAlone,
             "chatUserIdDic" : userIdDic,
             "name" : chatRoomName,
@@ -135,7 +160,7 @@ class ChatRoomViewModel {
         Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
             (err, ref) in
             if(err == nil) {
-                self.findChatRoom(isStandAlone: isStandAlone, selectedUserModel: selectedUserModel)
+                self.findChatRoom(isStandAlone: isStandAlone, selectedUserModels: selectedUserModels)
             }
             else {
                 print("createChatRoom is failed")

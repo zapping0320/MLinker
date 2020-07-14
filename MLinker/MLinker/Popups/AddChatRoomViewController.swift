@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import Kingfisher
+//import Kingfisher
 
 class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -25,22 +25,24 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
     
     private var doneBarButton: UIBarButtonItem = UIBarButtonItem()
     
-    fileprivate var usersArray: [Int:[UserModel]] = [Int:[UserModel]]()
-    
-    var currnetUserUid: String!
-    
     let addChatRoomViewModel = AddChatRoomViewModel()
+    let chatRoomViewModel = ChatRoomViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
-        currnetUserUid = UserContexManager.shared.getCurrentUid()
         selectedChatModel = UserContexManager.shared.getLastChatRoom()
         
         addChatRoomViewModel.didNotificationUpdated = { [weak self] in
             self?.usersTableView.reloadData()
+        }
+        
+        chatRoomViewModel.currentUserUid = UserContexManager.shared.getCurrentUid()
+        
+        chatRoomViewModel.didFoundChatRoom = { [weak self] (chatModel) in
+            self?.moveChatView(chatModel: chatModel)
         }
         
         let cancelButton = UIButton(type: .custom)
@@ -114,101 +116,14 @@ class AddChatRoomViewController: UIViewController, UITableViewDelegate, UITableV
              return
          }
         
-         var selectedUsersDic : Dictionary<String, Bool> = [
-             self.currnetUserUid : false,
-         ]
-         
-         for indexPath in indexes {
-             let selectedUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
-             selectedUsersDic.updateValue(false, forKey: selectedUser.uid!)
-         }
-         
-         Database.database().reference().child("chatRooms").observeSingleEvent(of: DataEventType.value) {
-             (datasnapShot) in
-             var foundRoom = false
-             var foundRoomInfo = ChatModel()
-             for item in datasnapShot.children.allObjects as! [DataSnapshot] {
-                 if let chatRoomdic = item.value as? [String:AnyObject] {
-                     let chatModel = ChatModel(JSON: chatRoomdic)
-                     chatModel?.uid = item.key
-                     if(chatModel?.chatUserIdDic == selectedUsersDic)
-                     {
-                         foundRoom = true
-                         foundRoomInfo = chatModel!
-                         break
-                     }
-                     
-                 }
-             }
-             
-             if(foundRoom == true)
-             {
-                 //if true > move chatview
-                 self.moveChatView(chatModel: foundRoomInfo)
-             }
-             else
-             {
-                 //else make chatroom and move chat view
-                 self.createChatRoom()
-             }
-             
-         }
-    }
-    
-    func createChatRoom()
-    {
-        guard let indexes = self.usersTableView.indexPathsForSelectedRows else{
-            return
-        }
-        
-        var selectedUsersDic : Dictionary<String, Bool> = [
-            self.currnetUserUid : false,
-        ]
-        
-        var profileDic : Dictionary<String, String> = [
-            self.currnetUserUid : "",
-        ]
-        
-        if let currentUserProfile = UserContexManager.shared.getCurrentUserModel().profileURL {
-                   profileDic[self.currnetUserUid] = currentUserProfile
-               }
-        
-        var isIncludeAdmin = UserContexManager.shared.getCurrentUserModel().isAdminAccount
-        var chatRoomName = "No name"
-        if let userName = UserContexManager.shared.getCurrentUserModel().name {
-            chatRoomName = userName
-        }
-        
+        var selectedUserModels = [UserModel]()
         for indexPath in indexes {
-            let selectedUser = self.usersArray[indexPath.section]![indexPath.row] as UserModel
-            selectedUsersDic.updateValue(false, forKey: selectedUser.uid!)
-            isIncludeAdmin = isIncludeAdmin && selectedUser.isAdminAccount
-            chatRoomName += ","
-            chatRoomName += selectedUser.name!
-            if let selectedUserProfile = selectedUser.profileURL {
-                profileDic.updateValue(selectedUserProfile, forKey: selectedUser.uid!)
-            }
+            let selectedUser = self.addChatRoomViewModel.getCurrentUserData(indexPath: indexPath)
+            selectedUserModels.append(selectedUser)
         }
         
-        
-        
-        let chatRoomValue : Dictionary<String, Any> = [
-            "isIncludeAdminAccount" :  isIncludeAdmin ? true : false,
-            "standAlone" : false,
-            "chatUserIdDic" : selectedUsersDic,
-            "name" : chatRoomName,
-            "timestamp" : ServerValue.timestamp()
-        ]
-        
-    Database.database().reference().child("chatRooms").childByAutoId().setValue(chatRoomValue) {
-            (err, ref) in
-            if(err == nil) {
-                self.findChatRoom()
-            }
-            else {
-                
-            }
-        }
+        self.chatRoomViewModel.findChatRoom(isStandAlone: false, selectedUserModels: selectedUserModels)
+
     }
     
     func moveChatView(chatModel : ChatModel)

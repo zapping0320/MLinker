@@ -127,7 +127,7 @@ class ProfileViewModel {
             self?.didFoundChatRoom?(chatModel)
         }
         
-        self.chatRoomViewModel.findChatRoom(isStandAlone: false, selectedUserModel: self.selectedUserModel)
+        self.chatRoomViewModel.findChatRoom(isStandAlone: false, selectedUserModels: [ self.selectedUserModel])
     }
     
     func acceptFriendshipRequest() {
