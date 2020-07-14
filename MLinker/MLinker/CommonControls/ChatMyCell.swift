@@ -24,6 +24,15 @@ class ChatMyCell: UITableViewCell {
 
     }
     
+    func updateUI(comment : ChatModel.Comment, remainUserCount : Int) {
+        selectionStyle = .none
+        commentTextView.text = comment.message
+        if let timeStamp = comment.timestamp {
+            commentDateLabel.text = timeStamp.toChatCellDayTime
+        }
+        setShowReadUserCountLabel(remainUserCount: remainUserCount)
+    }
+    
     func setShowReadUserCountLabel(remainUserCount : Int) {
         if(remainUserCount > 0)
         {

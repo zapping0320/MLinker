@@ -212,16 +212,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
 //    func getMessageList() {
 //        self.databaseRef = Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments")
-//        
+//
 //        var lastComment:ChatModel.Comment?
-//        
+//
 //        self.observe = self.databaseRef!.observe(DataEventType.value, with: {
 //            (snapshot) in
 //            self.comments.removeAll()
 //            self.dateStrings.removeAll()
-//            
+//
 //            var readUsersDic : Dictionary<String,AnyObject> = [:]
-//            
+//
 //            for item in snapshot.children.allObjects as! [DataSnapshot] {
 //                let key = item.key as String
 //                let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
@@ -239,13 +239,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //                self.comments.append(comment!)
 //                lastComment = comment!
 //            }
-//            
+//
 //            let nsDic = readUsersDic as NSDictionary
-//            
+//
 //            if(lastComment?.readUsers.keys == nil){
 //                return
 //            }
-//            
+//
 //            if(!(lastComment?.readUsers.keys.contains(self.currnetUserUid!))!){
 //                snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
 //                    DispatchQueue.main.async {
@@ -258,7 +258,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //                DispatchQueue.main.async {
 //                    self.commentTableView.reloadData()
 //                    self.scrollTableView()
-//                    
+//
 //              }
 //            }
 //        })
@@ -423,13 +423,14 @@ extension ChatViewController {
         
         if(selectedComment.sender == self.currnetUserUid){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
-            cell.selectionStyle = .none
-            cell.commentTextView.text = selectedComment.message
-            if let timeStamp = selectedComment.timestamp {
-                cell.commentDateLabel.text = timeStamp.toChatCellDayTime
-            }
-            
-            cell.setShowReadUserCountLabel(remainUserCount: remainUserCount)
+            cell.updateUI(comment: selectedComment, remainUserCount: remainUserCount)
+//            cell.selectionStyle = .none
+//            cell.commentTextView.text = selectedComment.message
+//            if let timeStamp = selectedComment.timestamp {
+//                cell.commentDateLabel.text = timeStamp.toChatCellDayTime
+//            }
+//
+//            cell.setShowReadUserCountLabel(remainUserCount: remainUserCount)
            
             return cell
         }
