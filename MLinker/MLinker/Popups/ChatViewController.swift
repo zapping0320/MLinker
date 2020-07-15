@@ -153,7 +153,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let actionChangeTitle = UIAlertAction(title: NSLocalizedString("Change Title", comment: ""),
                                               style: .default, handler: {result in
-                                                self.changeChatRoomTitle()
+                                                self.tryChangeChatRoomTitle()
         })
         actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
         alert.addAction(actionChangeTitle)
@@ -182,28 +182,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.present(alert, animated: true, completion: nil)
     }
     
-    func changeChatRoomTitle() {
+    func tryChangeChatRoomTitle() {
         let alert = UIAlertController(title: "", message: NSLocalizedString("Change Title", comment: ""), preferredStyle: .alert)
         alert.addTextField(configurationHandler: { (textField) in
             textField.text = self.selectedChatModel.name
         })
         alert.addAction(UIAlertAction(title: NSLocalizedString("Update", comment: ""), style: .default, handler: { (updateAction) in
             
-            let updateChatRoomValue : Dictionary<String, Any> = [
-                "name" : alert.textFields!.first!.text!,
-                "timestamp" : ServerValue.timestamp()
-            ]
-        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updateChatRoomValue) {
-                (updateErr, ref) in
-                if(updateErr == nil)
-                {
-                    self.selectedChatModel.name = alert.textFields!.first!.text!
-                }
-                else
-                {
-                    print("update chatRoom name error")
-                }
-            }
+            self.chatViewViewModel.changeChatRoomTitle(newTitle: alert.textFields!.first!.text!)
+            
+           
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         self.present(alert, animated: false)

@@ -199,4 +199,22 @@ class ChatViewViewModel {
             PushMessageManager.sendGCM(params: params)
         }
     }
+    
+    func changeChatRoomTitle(newTitle : String) {
+        let updateChatRoomValue : Dictionary<String, Any> = [
+            "name" : newTitle,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updateChatRoomValue) {
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                self.selectedChatModel.name = newTitle
+            }
+            else
+            {
+                print("update chatRoom name error")
+            }
+        }
+    }
 }
