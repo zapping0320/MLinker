@@ -35,10 +35,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let chatViewViewModel = ChatViewViewModel()
     
     private var currnetUserUid: String!
-    var comments: [ChatModel.Comment] = []
-    var databaseRef: DatabaseReference?
-    var observe : UInt?
-    var dateStrings : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -192,8 +188,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func scrollTableView()
     {
-        if self.comments.count > 0 {
-            self.commentTableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: .bottom, animated: false)
+        if self.chatViewViewModel.getNumberOfRowsInSection() > 0 {
+            self.commentTableView.scrollToRow(at: IndexPath(item: self.chatViewViewModel.getNumberOfRowsInSection() - 1, section: 0), at: .bottom, animated: false)
         }
     }
     
@@ -209,93 +205,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.chatInputViewHeight.constant = textView.contentSize.height
         }
     }
-    
-//    func getMessageList() {
-//        self.databaseRef = Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments")
-//
-//        var lastComment:ChatModel.Comment?
-//
-//        self.observe = self.databaseRef!.observe(DataEventType.value, with: {
-//            (snapshot) in
-//            self.comments.removeAll()
-//            self.dateStrings.removeAll()
-//
-//            var readUsersDic : Dictionary<String,AnyObject> = [:]
-//
-//            for item in snapshot.children.allObjects as! [DataSnapshot] {
-//                let key = item.key as String
-//                let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-//                let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-//                comment_modify?.readUsers[self.currnetUserUid!] = true
-//                readUsersDic[key] = comment_modify?.toJSON() as NSDictionary?
-//                if comment!.isNotice {
-//                    comment?.commentType = CommentType.Notice
-//                }
-//                else
-//                {
-//                    comment?.commentType = CommentType.Comment
-//                }
-//                //self.addDateString(comment: comment!)
-//                self.comments.append(comment!)
-//                lastComment = comment!
-//            }
-//
-//            let nsDic = readUsersDic as NSDictionary
-//
-//            if(lastComment?.readUsers.keys == nil){
-//                return
-//            }
-//
-//            if(!(lastComment?.readUsers.keys.contains(self.currnetUserUid!))!){
-//                snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
-//                    DispatchQueue.main.async {
-//                        self.commentTableView.reloadData()
-//                        self.scrollTableView()
-//                    }
-//                })
-//
-//            }else {
-//                DispatchQueue.main.async {
-//                    self.commentTableView.reloadData()
-//                    self.scrollTableView()
-//
-//              }
-//            }
-//        })
-//    }
-    
-//    func addDateString(comment : ChatModel.Comment)
-//    {
-//        if let timeStamp = comment.timestamp {
-//            let dateString = timeStamp.toChatDisplayDate
-//            if self.dateStrings.contains(dateString) == false {
-//                self.dateStrings.append(dateString)
-//                let dateComment = ChatModel.Comment()
-//                dateComment.commentType = CommentType.Date
-//                dateComment.message = dateString
-//                self.comments.append(dateComment)
-//            }
-//        }
-//    }
-    
-//    func getRelatedUserModels()
-//    {
-//        for userID in self.selectedChatModel.chatUserIdDic.keys { Database.database().reference().child("users").child(userID).observeSingleEvent(of: DataEventType.value) {
-//            (datasnapShot) in
-//            if let userDic = datasnapShot.value as? [String:AnyObject] {
-//                let userModel = UserModel(JSON: userDic)
-//                self.selectedChatModel.chatUserModelDic.updateValue(userModel!, forKey: userID)
-//            }
-//
-//            DispatchQueue.main.async {
-//                self.commentTableView.reloadData()
-//                self.scrollTableView()
-//            }
-//
-//            }
-//
-//        }
-//    }
     
     @objc func barBtn_more_Action(){
         let alert = UIAlertController(title: title,
@@ -395,13 +304,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 extension ChatViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.comments.count
         return self.chatViewViewModel.getNumberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //let selectedComment = self.comments[indexPath.row]
         let selectedComment = self.chatViewViewModel.getCommentData(indexPath: indexPath)
         
         if selectedComment.commentType == CommentType.Notice {
@@ -423,67 +330,17 @@ extension ChatViewController {
         
         if(selectedComment.sender == self.currnetUserUid){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
+
             cell.updateUI(comment: selectedComment, remainUserCount: remainUserCount)
-//            cell.selectionStyle = .none
-//            cell.commentTextView.text = selectedComment.message
-//            if let timeStamp = selectedComment.timestamp {
-//                cell.commentDateLabel.text = timeStamp.toChatCellDayTime
-//            }
-//
-//            cell.setShowReadUserCountLabel(remainUserCount: remainUserCount)
-           
+
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatYourCell", for: indexPath) as! ChatYourCell
-            //let currentUserModel = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]
+      
             let currentUserModel = self.chatViewViewModel.getCommentSenderUserModel(sender: selectedComment.sender!)
             
             cell.updateUI(comment: selectedComment, remainUserCount: remainUserCount, currentUserModel : currentUserModel)
-//            var nameString = currentUserModel?.name
-//
-//            if let isAdminAccount = currentUserModel?.isAdminAccount {
-//                if isAdminAccount {
-//                    nameString = nameString! + NSLocalizedString("Official", comment: "")
-//                }
-//            }
-//            cell.nameLabel.text = nameString
-//            
-//            cell.commentTextView.text = selectedComment.message
-//            cell.selectionStyle = .none
-//            if let timeStamp = selectedComment.timestamp {
-//                cell.commentDateLabel.text = timeStamp.toChatCellDayTime
-//            }
-//            
-//            cell.setShowReadUserCountLabel(remainUserCount: remainUserCount)
-            
-//            if(self.selectedChatModel.chatUserModelDic.keys.contains(selectedComment.sender!) == true)
-//            {
-//                if let profileImageString = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]?.profileURL {
-//                    let profileImageURL = URL(string: profileImageString)
-//                    let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
-//                        |> RoundCornerImageProcessor(cornerRadius: 25)
-//                    cell.profileImageView?.kf.indicatorType = .activity
-//                    cell.profileImageView?.kf.setImage(
-//                        with: profileImageURL,
-//                        placeholder: UIImage(named: "defaultProfileCell"),
-//                        options: [
-//                            .processor(processor),
-//                            .scaleFactor(UIScreen.main.scale),
-//                            .transition(.fade(1)),
-//                            .cacheOriginalImage
-//                        ])
-//                    {
-//                        result in
-//                        switch result {
-//                        case .success(let value):
-//                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
-//                        case .failure(let error):
-//                            print("Job failed: \(error.localizedDescription)")
-//                        }
-//                    }
-//                }
-//            }
             
             return cell
         }
@@ -491,7 +348,8 @@ extension ChatViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedComment = self.comments[indexPath.row]
+        let selectedComment = self.chatViewViewModel.getCommentData(indexPath: indexPath)
+        
         guard let selectedUserId = selectedComment.sender else {
             return
         }
@@ -500,19 +358,13 @@ extension ChatViewController {
         {
             return
         }
-        Database.database().reference().child("users").child(selectedUserId).observeSingleEvent(of: DataEventType.value) {
-            (datasnapShot) in
-            if let userDic = datasnapShot.value as? [String:AnyObject] {
-                let userModel = UserModel(JSON: userDic)
-                DispatchQueue.main.async {
-                    let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
-                    profileVC.setSelectedUserModel(selectedUserModel: userModel!)
-                    profileVC.isChatView = true
-                    profileVC.modalPresentationStyle = .fullScreen
-                    self.present(profileVC, animated: true, completion: nil)
-                    
-                }
-            }
-        }
+        
+        let userModel = self.chatViewViewModel.getCommentSenderUserModel(sender: selectedUserId)
+        
+        let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "profileNavi") as! ProfileViewController
+        profileVC.setSelectedUserModel(selectedUserModel: userModel)
+        profileVC.isChatView = true
+        profileVC.modalPresentationStyle = .fullScreen
+        self.present(profileVC, animated: true, completion: nil)
     }
 }
