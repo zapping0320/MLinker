@@ -57,6 +57,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self?.scrollTableView()
         }
         
+        self.chatViewViewModel.clearTextInput = { [weak self] in
+            self?.chatInputView.text = ""
+            self?.chatInputViewHeight.constant = 40
+        }
         
         let button = UIButton(type: .custom)
         button.setImage(UIImage (named: "setting"), for: .normal)
@@ -108,82 +112,18 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     @IBAction func sendMessage(_ sender: Any) {
-        self.sendMessageServer(isNotice: false)
+        self.trySendMessageServer(isNotice: false)
     }
     
-    func sendMessageServer(isNotice:Bool)
+    func trySendMessageServer(isNotice:Bool)
     {
         if(isNotice == false && self.chatInputView.text.isEmpty){
             return
         }
         
-         let readUsersDic : Dictionary<String,Any> = [
-            self.currnetUserUid! : true
-        ]
+        let textInputString = self.chatInputView.text!
+        self.chatViewViewModel.sendMessageServer(isNotice: isNotice, textInputString: textInputString)
         
-        
-        var commentDic : Dictionary<String, Any> = [
-            "sender": self.currnetUserUid!,
-            "timestamp" : ServerValue.timestamp(),
-            "readUsers" : readUsersDic
-        ]
-        
-        
-        if(isNotice == false)
-        {
-            commentDic.updateValue(self.chatInputView.text!, forKey: "message")
-            self.sendGCM()
-        }
-        else
-        {
-            let relatedUsers: [String] = [UserContexManager.shared.getCurrentUserModel().name!]
-            
-            let noticeDic : Dictionary<String, Any> = [
-                "noticeType" : 2,
-                "relatedUsers" : relatedUsers
-            ]
-            
-            commentDic.updateValue(true, forKey: "isNotice")
-            commentDic.updateValue(noticeDic, forKey: "notice")
-        }
-        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments").childByAutoId().setValue(commentDic, withCompletionBlock: {
-            (err, ref) in
-            self.chatInputView.text = ""
-            self.chatInputViewHeight.constant = 40
-            self.updateChatRoomTimeStamp()
-        })
-    }
-    
-    func sendGCM() {
-        
-        for key in self.selectedChatModel.chatUserModelDic.keys {
-            if key == self.currnetUserUid {
-                continue
-            }
-            
-            let currentUserModel = self.selectedChatModel.chatUserModelDic[key]
-            let notificationModel = NotificationModel()
-            notificationModel.to = currentUserModel?.pushToken
-            notificationModel.notification.title = NSLocalizedString("Sender :", comment: "") + (currentUserModel?.name!)!
-            notificationModel.notification.body = self.chatInputView.text!
-            
-            
-            let params = notificationModel.toJSON()
-            PushMessageManager.sendGCM(params: params)
-        }
-    }
-    
-    func updateChatRoomTimeStamp() {
-        let updateChatRoomValue : Dictionary<String, Any> = [
-                "timestamp" : ServerValue.timestamp()
-            ]
-        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updateChatRoomValue) {
-                (updateErr, ref) in
-                if(updateErr != nil)
-                {
-                    print("update chatRoom name error")
-                }
-            }
     }
     
     func scrollTableView()
@@ -270,7 +210,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func exitChatRoom() {
-        self.sendMessageServer(isNotice: true)
+        self.trySendMessageServer(isNotice: true)
         
         self.selectedChatModel.chatUserIdDic.removeValue(forKey: self.currnetUserUid)
         self.selectedChatModel.chatUserModelDic.removeValue(forKey: self.currnetUserUid)

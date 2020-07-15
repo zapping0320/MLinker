@@ -16,6 +16,7 @@ class ChatViewViewModel {
     
     public var didNotificationUpdated: (() -> Void)?
     public var updatedChatModel: ((ChatModel) -> Void)?
+    public var clearTextInput: (() -> Void)?
     
     var selectedChatModel:ChatModel = ChatModel()
     var comments: [ChatModel.Comment] = []
@@ -117,6 +118,85 @@ class ChatViewViewModel {
                 dateComment.message = dateString
                 self.comments.append(dateComment)
             }
+        }
+    }
+    
+    func sendMessageServer(isNotice:Bool, textInputString : String)
+    {
+        let currentUserUid = UserContexManager.shared.getCurrentUid()
+        
+        let readUsersDic : Dictionary<String,Any> = [
+            currentUserUid : true
+        ]
+        
+        
+        var commentDic : Dictionary<String, Any> = [
+            "sender"    : currentUserUid,
+            "timestamp" : ServerValue.timestamp(),
+            "readUsers" : readUsersDic
+        ]
+        
+        
+        if(isNotice == false)
+        {
+            commentDic.updateValue(textInputString, forKey: "message")
+            self.sendGCM(notificationbody: textInputString)
+        }
+        else
+        {
+            let relatedUsers: [String] = [UserContexManager.shared.getCurrentUserModel().name!]
+            
+            let noticeDic : Dictionary<String, Any> = [
+                "noticeType" : 2,
+                "relatedUsers" : relatedUsers
+            ]
+            
+            commentDic.updateValue(true, forKey: "isNotice")
+            commentDic.updateValue(noticeDic, forKey: "notice")
+        }
+        
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).child("comments").childByAutoId().setValue(commentDic, withCompletionBlock: {
+            (err, ref) in
+            if err == nil {
+                self.updateChatRoomTimeStamp()
+            }
+            else {
+                print("error sendMessageServer")
+            }
+        })
+    }
+    
+    func updateChatRoomTimeStamp() {
+        let updateChatRoomValue : Dictionary<String, Any> = [
+            "timestamp" : ServerValue.timestamp()
+        ]
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updateChatRoomValue) {
+            (updateErr, ref) in
+            if(updateErr != nil)
+            {
+                print("update chatRoom name error")
+            }
+            else {
+                self.clearTextInput?()
+            }
+        }
+    }
+    
+    func sendGCM(notificationbody : String) {
+        let currentUserUid = UserContexManager.shared.getCurrentUid()
+        for key in self.selectedChatModel.chatUserModelDic.keys {
+            if key == currentUserUid {
+                continue
+            }
+            
+            let currentUserModel = self.selectedChatModel.chatUserModelDic[key]
+            let notificationModel = NotificationModel()
+            notificationModel.to = currentUserModel?.pushToken
+            notificationModel.notification.title = NSLocalizedString("Sender :", comment: "") + (currentUserModel?.name!)!
+            notificationModel.notification.body = notificationbody
+            
+            let params = notificationModel.toJSON()
+            PushMessageManager.sendGCM(params: params)
         }
     }
 }
