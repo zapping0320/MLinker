@@ -17,6 +17,7 @@ class ChatViewViewModel {
     public var didNotificationUpdated: (() -> Void)?
     public var updatedChatModel: ((ChatModel) -> Void)?
     
+    var selectedChatModel:ChatModel = ChatModel()
     var comments: [ChatModel.Comment] = []
     var dateStrings : [String] = []
     
@@ -28,27 +29,28 @@ class ChatViewViewModel {
         return comments[indexPath.row]
     }
     
+    func getCommentSenderUserModel(sender : String) -> UserModel {
+        if self.selectedChatModel.chatUserModelDic[sender] == nil {
+            return UserModel()
+        }
+        guard let senderModel = self.selectedChatModel.chatUserModelDic[sender] else { return UserModel() }
+        
+        return senderModel
+    }
+    
     func getRelatedUserModels()
     {
-        
         let selectedChatModel   = UserContexManager.shared.getLastChatRoom()
         
         for userID in selectedChatModel.chatUserIdDic.keys { Database.database().reference().child("users").child(userID).observeSingleEvent(of: DataEventType.value) {
             (datasnapShot) in
             if let userDic = datasnapShot.value as? [String:AnyObject] {
                 let userModel = UserModel(JSON: userDic)
-                //self.selectedChatModel.chatUserModelDic.updateValue(userModel!, forKey: userID)
                 selectedChatModel.chatUserModelDic.updateValue(userModel!, forKey: userID)
                 self.updatedChatModel?(selectedChatModel)
+                self.selectedChatModel = selectedChatModel
             }
-            
-            //               DispatchQueue.main.async {
-            //                   self.commentTableView.reloadData()
-            //                   self.scrollTableView()
-            //               }
-            
             }
-            
         }
     }
     
@@ -58,59 +60,52 @@ class ChatViewViewModel {
         let selectedChatModel   = UserContexManager.shared.getLastChatRoom()
         
         self.databaseRef = Database.database().reference().child("chatRooms").child(selectedChatModel.uid).child("comments")
-           
-           var lastComment:ChatModel.Comment?
-           
+        
+        var lastComment:ChatModel.Comment?
+        
         self.observe = self.databaseRef!.observe(DataEventType.value, with: {
-               (snapshot) in
-               self.comments.removeAll()
-               self.dateStrings.removeAll()
-               
-               var readUsersDic : Dictionary<String,AnyObject> = [:]
-               
-               for item in snapshot.children.allObjects as! [DataSnapshot] {
-                   let key = item.key as String
-                   let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                   let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                   comment_modify?.readUsers[currnetUserUid] = true
-                   readUsersDic[key] = comment_modify?.toJSON() as NSDictionary?
-                   if comment!.isNotice {
-                       comment?.commentType = CommentType.Notice
-                   }
-                   else
-                   {
-                       comment?.commentType = CommentType.Comment
-                   }
-                   self.addDateString(comment: comment!)
-                   self.comments.append(comment!)
-                   lastComment = comment!
-               }
-               
-               let nsDic = readUsersDic as NSDictionary
-               
-               if(lastComment?.readUsers.keys == nil){
-                   return
-               }
-               
-               if(!(lastComment?.readUsers.keys.contains(currnetUserUid))!){
-                   snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
+            (snapshot) in
+            self.comments.removeAll()
+            self.dateStrings.removeAll()
+            
+            var readUsersDic : Dictionary<String,AnyObject> = [:]
+            
+            for item in snapshot.children.allObjects as! [DataSnapshot] {
+                let key = item.key as String
+                let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                comment_modify?.readUsers[currnetUserUid] = true
+                readUsersDic[key] = comment_modify?.toJSON() as NSDictionary?
+                if comment!.isNotice {
+                    comment?.commentType = CommentType.Notice
+                }
+                else
+                {
+                    comment?.commentType = CommentType.Comment
+                }
+                self.addDateString(comment: comment!)
+                self.comments.append(comment!)
+                lastComment = comment!
+            }
+            
+            let nsDic = readUsersDic as NSDictionary
+            
+            if(lastComment?.readUsers.keys == nil){
+                return
+            }
+            
+            if(!(lastComment?.readUsers.keys.contains(currnetUserUid))!){
+                snapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
                     self.didNotificationUpdated?()
-//                       DispatchQueue.main.async {
-//                           //self.commentTableView.reloadData()
-//                           //self.scrollTableView()
-//                       }
-                   })
-
-               }else {
-                    self.didNotificationUpdated?()
-//                   DispatchQueue.main.async {
-//                       //self.commentTableView.reloadData()
-//                       //self.scrollTableView()
-//
-//                 }
-               }
-           })
-       }
+                })
+                
+            }else {
+                self.didNotificationUpdated?()
+            }
+        })
+    }
+    
+    
     func addDateString(comment : ChatModel.Comment)
     {
         if let timeStamp = comment.timestamp {

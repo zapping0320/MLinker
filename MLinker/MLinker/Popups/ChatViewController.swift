@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import Kingfisher
+
 
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
@@ -436,51 +436,54 @@ extension ChatViewController {
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatYourCell", for: indexPath) as! ChatYourCell
-            let currentUserModel = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]
-            var nameString = currentUserModel?.name
+            //let currentUserModel = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]
+            let currentUserModel = self.chatViewViewModel.getCommentSenderUserModel(sender: selectedComment.sender!)
             
-            if let isAdminAccount = currentUserModel?.isAdminAccount {
-                if isAdminAccount {
-                    nameString = nameString! + NSLocalizedString("Official", comment: "")
-                }
-            }
-            cell.nameLabel.text = nameString
+            cell.updateUI(comment: selectedComment, remainUserCount: remainUserCount, currentUserModel : currentUserModel)
+//            var nameString = currentUserModel?.name
+//
+//            if let isAdminAccount = currentUserModel?.isAdminAccount {
+//                if isAdminAccount {
+//                    nameString = nameString! + NSLocalizedString("Official", comment: "")
+//                }
+//            }
+//            cell.nameLabel.text = nameString
+//            
+//            cell.commentTextView.text = selectedComment.message
+//            cell.selectionStyle = .none
+//            if let timeStamp = selectedComment.timestamp {
+//                cell.commentDateLabel.text = timeStamp.toChatCellDayTime
+//            }
+//            
+//            cell.setShowReadUserCountLabel(remainUserCount: remainUserCount)
             
-            cell.commentTextView.text = selectedComment.message
-            cell.selectionStyle = .none
-            if let timeStamp = selectedComment.timestamp {
-                cell.commentDateLabel.text = timeStamp.toChatCellDayTime
-            }
-            
-            cell.setShowReadUserCountLabel(remainUserCount: remainUserCount)
-            
-            if(self.selectedChatModel.chatUserModelDic.keys.contains(selectedComment.sender!) == true)
-            {
-                if let profileImageString = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]?.profileURL {
-                    let profileImageURL = URL(string: profileImageString)
-                    let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
-                        |> RoundCornerImageProcessor(cornerRadius: 25)
-                    cell.profileImageView?.kf.indicatorType = .activity
-                    cell.profileImageView?.kf.setImage(
-                        with: profileImageURL,
-                        placeholder: UIImage(named: "defaultProfileCell"),
-                        options: [
-                            .processor(processor),
-                            .scaleFactor(UIScreen.main.scale),
-                            .transition(.fade(1)),
-                            .cacheOriginalImage
-                        ])
-                    {
-                        result in
-                        switch result {
-                        case .success(let value):
-                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                        case .failure(let error):
-                            print("Job failed: \(error.localizedDescription)")
-                        }
-                    }
-                }
-            }
+//            if(self.selectedChatModel.chatUserModelDic.keys.contains(selectedComment.sender!) == true)
+//            {
+//                if let profileImageString = self.selectedChatModel.chatUserModelDic[selectedComment.sender!]?.profileURL {
+//                    let profileImageURL = URL(string: profileImageString)
+//                    let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
+//                        |> RoundCornerImageProcessor(cornerRadius: 25)
+//                    cell.profileImageView?.kf.indicatorType = .activity
+//                    cell.profileImageView?.kf.setImage(
+//                        with: profileImageURL,
+//                        placeholder: UIImage(named: "defaultProfileCell"),
+//                        options: [
+//                            .processor(processor),
+//                            .scaleFactor(UIScreen.main.scale),
+//                            .transition(.fade(1)),
+//                            .cacheOriginalImage
+//                        ])
+//                    {
+//                        result in
+//                        switch result {
+//                        case .success(let value):
+//                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                        case .failure(let error):
+//                            print("Job failed: \(error.localizedDescription)")
+//                        }
+//                    }
+//                }
+//            }
             
             return cell
         }
