@@ -15,8 +15,8 @@ class ChatViewViewModel {
     var observe : UInt?
     
     public var didNotificationUpdated: (() -> Void)?
-    public var updatedChatModel: ((ChatModel) -> Void)?
     public var clearTextInput: (() -> Void)?
+    public var closeVC: (() -> Void)?
     
     var selectedChatModel:ChatModel = ChatModel()
     var comments: [ChatModel.Comment] = []
@@ -48,7 +48,7 @@ class ChatViewViewModel {
             if let userDic = datasnapShot.value as? [String:AnyObject] {
                 let userModel = UserModel(JSON: userDic)
                 selectedChatModel.chatUserModelDic.updateValue(userModel!, forKey: userID)
-                self.updatedChatModel?(selectedChatModel)
+                self.didNotificationUpdated?()
                 self.selectedChatModel = selectedChatModel
             }
             }
@@ -214,6 +214,31 @@ class ChatViewViewModel {
             else
             {
                 print("update chatRoom name error")
+            }
+        }
+    }
+    
+    func exitChatRoom() {
+        self.sendMessageServer(isNotice: true, textInputString: "")
+        
+        let currentUserUid = UserContexManager.shared.getCurrentUid()
+        
+        self.selectedChatModel.chatUserIdDic.removeValue(forKey: currentUserUid)
+        self.selectedChatModel.chatUserModelDic.removeValue(forKey: currentUserUid)
+        
+        let updatedChatRoomValue : Dictionary<String, Any> = [
+            "chatUserIdDic" : self.selectedChatModel.chatUserIdDic,
+            "timestamp" : ServerValue.timestamp()
+        ]
+        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updatedChatRoomValue) {
+            (updateErr, ref) in
+            if(updateErr == nil)
+            {
+                self.closeVC?()
+            }
+            else
+            {
+                print("error exitChatRoom")
             }
         }
     }

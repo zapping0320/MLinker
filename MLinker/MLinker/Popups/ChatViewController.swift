@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Firebase
-
-
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
@@ -30,11 +27,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var chatInputViewHeight: NSLayoutConstraint!
     @IBOutlet weak var inputViewBottomMargin: NSLayoutConstraint!
     
-    public var selectedChatModel:ChatModel = ChatModel()
-    
     let chatViewViewModel = ChatViewViewModel()
-    
-    private var currnetUserUid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +38,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.commentTableView.register(UINib(nibName: "ChatNoticeCell", bundle: nil), forCellReuseIdentifier: "ChatNoticeCell")
         
         self.commentTableView.register(UINib(nibName: "ChatDateDisplayCell", bundle: nil), forCellReuseIdentifier: "ChatDateDisplayCell")
-        
-        self.chatViewViewModel.updatedChatModel = { [weak self] (chatModel) in
-            self?.selectedChatModel = chatModel
-            self?.commentTableView.reloadData()
-            self?.scrollTableView()
-        }
-        
+       
         self.chatViewViewModel.didNotificationUpdated = { [weak self]  in
             self?.commentTableView.reloadData()
             self?.scrollTableView()
@@ -60,6 +47,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.chatViewViewModel.clearTextInput = { [weak self] in
             self?.chatInputView.text = ""
             self?.chatInputViewHeight.constant = 40
+        }
+        
+        self.chatViewViewModel.closeVC = { [weak self] in
+            if let navController = self?.navigationController {
+                navController.popViewController(animated: true)
+            }
         }
         
         let button = UIButton(type: .custom)
@@ -74,8 +67,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        self.currnetUserUid = Auth.auth().currentUser?.uid
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -158,7 +149,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         actionChangeTitle.setValue(ColorHelper.getMainAlertTextColor(), forKey: "titleTextColor")
         alert.addAction(actionChangeTitle)
         
-        if self.selectedChatModel.isStandAlone == false {
+        if self.chatViewViewModel.selectedChatModel.isStandAlone == false {
             let actionExitChat = UIAlertAction(title: NSLocalizedString("Exit Chat", comment: ""),
                                                style: .default, handler: {result in
                                                 self.exitChatRoom()
@@ -185,7 +176,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tryChangeChatRoomTitle() {
         let alert = UIAlertController(title: "", message: NSLocalizedString("Change Title", comment: ""), preferredStyle: .alert)
         alert.addTextField(configurationHandler: { (textField) in
-            textField.text = self.selectedChatModel.name
+            textField.text = self.chatViewViewModel.selectedChatModel.name
         })
         alert.addAction(UIAlertAction(title: NSLocalizedString("Update", comment: ""), style: .default, handler: { (updateAction) in
             
@@ -198,32 +189,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func exitChatRoom() {
-        self.trySendMessageServer(isNotice: true)
-        
-        self.selectedChatModel.chatUserIdDic.removeValue(forKey: self.currnetUserUid)
-        self.selectedChatModel.chatUserModelDic.removeValue(forKey: self.currnetUserUid)
-        
-        let updatedChatRoomValue : Dictionary<String, Any> = [
-            "chatUserIdDic" : self.selectedChatModel.chatUserIdDic,
-            "timestamp" : ServerValue.timestamp()
-        ]
-        Database.database().reference().child("chatRooms").child(self.selectedChatModel.uid).updateChildValues(updatedChatRoomValue) {
-            (updateErr, ref) in
-            if(updateErr == nil)
-            {
-                if let navController = self.navigationController {
-                    navController.popViewController(animated: true)
-                }
-            }
-            else
-            {
-                
-            }
-        }
+        self.chatViewViewModel.exitChatRoom()
     }
     
     func addMember() {
-        UserContexManager.shared.setLastChatRoom(model: self.selectedChatModel)
+       
         let addChatRoomVC = UIStoryboard(name: "AddChatRoomSB", bundle: nil).instantiateViewController(withIdentifier: "addChatRoom")
         addChatRoomVC.modalPresentationStyle = .fullScreen
         self.present(addChatRoomVC, animated: true, completion: nil)
@@ -254,9 +224,9 @@ extension ChatViewController {
             return cell
         }
         
-        let remainUserCount = self.selectedChatModel.chatUserIdDic.count - selectedComment.readUsers.count
+        let remainUserCount = self.chatViewViewModel.selectedChatModel.chatUserIdDic.count - selectedComment.readUsers.count
         
-        if(selectedComment.sender == self.currnetUserUid){
+        if(selectedComment.sender == UserContexManager.shared.getCurrentUid()){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMyCell", for: indexPath) as! ChatMyCell
 
             cell.updateUI(comment: selectedComment, remainUserCount: remainUserCount)
@@ -282,7 +252,7 @@ extension ChatViewController {
             return
         }
         
-        if (selectedUserId == self.currnetUserUid)
+        if (selectedUserId == UserContexManager.shared.getCurrentUid())
         {
             return
         }

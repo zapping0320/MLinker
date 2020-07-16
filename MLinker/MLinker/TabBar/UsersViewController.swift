@@ -77,12 +77,13 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func moveChatView(_ notification : Notification) {
-       
+        
         if let dict = notification.userInfo as NSDictionary? {
             if let chatModel = dict["chatmodel"] as? ChatModel{
                 self.tabBarController?.selectedIndex = 0
                 let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
-                chatVC.selectedChatModel = chatModel
+                
+                UserContexManager.shared.setLastChatRoom(model: chatModel)
                 self.navigationController?.pushViewController(chatVC, animated: true)
             }
         }

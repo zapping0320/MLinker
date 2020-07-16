@@ -53,7 +53,9 @@ extension CounselingChatRoomsViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
-        chatVC.selectedChatModel = self.chatRoomViewModel.getChatRoomData(indexPath: indexPath)
+       
+        let selectedChatModel = self.chatRoomViewModel.getChatRoomData(indexPath: indexPath)
+        UserContexManager.shared.setLastChatRoom(model: selectedChatModel)
         self.navigationController?.pushViewController(chatVC, animated: true)
     }
 }

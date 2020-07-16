@@ -61,7 +61,6 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate, UITableView
             if let chatModel = dict["chatmodel"] as? ChatModel{
                 let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
                 
-                chatVC.selectedChatModel = chatModel
                 UserContexManager.shared.setLastChatRoom(model: chatModel)
                 self.navigationController?.pushViewController(chatVC, animated: true)
             }
@@ -87,7 +86,7 @@ extension ChatRoomsViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatVC = UIStoryboard(name: "ChatView", bundle: nil).instantiateViewController(withIdentifier: "IdChatView") as! ChatViewController
         let selectedChatModel = self.chatRoomViewModel.getChatRoomData(indexPath: indexPath)
-        chatVC.selectedChatModel = selectedChatModel
+        
         UserContexManager.shared.setLastChatRoom(model: selectedChatModel)
         self.navigationController?.pushViewController(chatVC, animated: true)
     }
