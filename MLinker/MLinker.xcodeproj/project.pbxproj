@@ -56,12 +56,43 @@
 		0BFF17602319CDA500CD6561 /* FriendshipListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF175F2319CDA500CD6561 /* FriendshipListModel.swift */; };
 		B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */; };
 		E34818DA24B42E3C00498932 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818D924B42E3C00498932 /* UserViewModel.swift */; };
+		E34AE7682519542C00E860A0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34AE7672519542C00E860A0 /* WidgetKit.framework */; };
+		E34AE76A2519542C00E860A0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34AE7692519542C00E860A0 /* SwiftUI.framework */; };
+		E34AE76D2519542C00E860A0 /* MLinkerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AE76C2519542C00E860A0 /* MLinkerWidget.swift */; };
+		E34AE7702519542E00E860A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34AE76F2519542E00E860A0 /* Assets.xcassets */; };
+		E34AE7722519542E00E860A0 /* MLinkerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E34AE76E2519542C00E860A0 /* MLinkerWidget.intentdefinition */; };
+		E34AE7732519542E00E860A0 /* MLinkerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E34AE76E2519542C00E860A0 /* MLinkerWidget.intentdefinition */; };
+		E34AE7762519542E00E860A0 /* MLinkerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E34AE7662519542C00E860A0 /* MLinkerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E368FBC724B67B360088AF28 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBC624B67B360088AF28 /* ProfileViewModel.swift */; };
 		E368FBC924BBF2200088AF28 /* FriendshipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBC824BBF2200088AF28 /* FriendshipViewModel.swift */; };
 		E368FBCB24BC04050088AF28 /* AddChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBCA24BC04050088AF28 /* AddChatRoomViewModel.swift */; };
 		E368FBCD24BD78450088AF28 /* ChatViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368FBCC24BD78450088AF28 /* ChatViewViewModel.swift */; };
 		E36C710924B530B100BEFA19 /* chatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C710824B530B100BEFA19 /* chatRoomViewModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E34AE7742519542E00E860A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B44C4A522FA2E1700B55D21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E34AE7652519542C00E860A0;
+			remoteInfo = MLinkerWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E34AE7772519542E00E860A0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E34AE7762519542E00E860A0 /* MLinkerWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0B076A5423397B7100B5AF43 /* ChatYourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatYourCell.swift; sourceTree = "<group>"; };
@@ -133,6 +164,13 @@
 		98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.release.xcconfig"; sourceTree = "<group>"; };
 		A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLinker.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MLinker/Pods-MLinker.debug.xcconfig"; sourceTree = "<group>"; };
 		E34818D924B42E3C00498932 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		E34AE7662519542C00E860A0 /* MLinkerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MLinkerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E34AE7672519542C00E860A0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		E34AE7692519542C00E860A0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		E34AE76C2519542C00E860A0 /* MLinkerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLinkerWidget.swift; sourceTree = "<group>"; };
+		E34AE76E2519542C00E860A0 /* MLinkerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MLinkerWidget.intentdefinition; sourceTree = "<group>"; };
+		E34AE76F2519542E00E860A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E34AE7712519542E00E860A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E368FBC624B67B360088AF28 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E368FBC824BBF2200088AF28 /* FriendshipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipViewModel.swift; sourceTree = "<group>"; };
 		E368FBCA24BC04050088AF28 /* AddChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatRoomViewModel.swift; sourceTree = "<group>"; };
@@ -146,6 +184,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6D8D98FD8523B787E14A926 /* Pods_MLinker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E34AE7632519542C00E860A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E34AE76A2519542C00E860A0 /* SwiftUI.framework in Frameworks */,
+				E34AE7682519542C00E860A0 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				0B44C4AF22FA2E1800B55D21 /* MLinker */,
+				E34AE76B2519542C00E860A0 /* MLinkerWidget */,
 				0B44C4AE22FA2E1700B55D21 /* Products */,
 				E3D034AFCBEA09F01A3CC530 /* Pods */,
 				5ED431E42908BA123B355FDF /* Frameworks */,
@@ -175,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				0B44C4AD22FA2E1700B55D21 /* MLinker.app */,
+				E34AE7662519542C00E860A0 /* MLinkerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				1E1C6B03E61547F8786B6D66 /* Pods_MLinker.framework */,
+				E34AE7672519542C00E860A0 /* WidgetKit.framework */,
+				E34AE7692519542C00E860A0 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -302,6 +353,17 @@
 				E368FBCC24BD78450088AF28 /* ChatViewViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E34AE76B2519542C00E860A0 /* MLinkerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E34AE76C2519542C00E860A0 /* MLinkerWidget.swift */,
+				E34AE76E2519542C00E860A0 /* MLinkerWidget.intentdefinition */,
+				E34AE76F2519542E00E860A0 /* Assets.xcassets */,
+				E34AE7712519542E00E860A0 /* Info.plist */,
+			);
+			path = MLinkerWidget;
 			sourceTree = "<group>";
 		};
 		E3D034AFCBEA09F01A3CC530 /* Pods */ = {
@@ -325,15 +387,34 @@
 				0B44C4AA22FA2E1700B55D21 /* Frameworks */,
 				0B44C4AB22FA2E1700B55D21 /* Resources */,
 				69BD7AE6BBA82CE884879667 /* [CP] Embed Pods Frameworks */,
+				E34AE7772519542E00E860A0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E34AE7752519542E00E860A0 /* PBXTargetDependency */,
 			);
 			name = MLinker;
 			productName = MLinker;
 			productReference = 0B44C4AD22FA2E1700B55D21 /* MLinker.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E34AE7652519542C00E860A0 /* MLinkerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E34AE77A2519542E00E860A0 /* Build configuration list for PBXNativeTarget "MLinkerWidgetExtension" */;
+			buildPhases = (
+				E34AE7622519542C00E860A0 /* Sources */,
+				E34AE7632519542C00E860A0 /* Frameworks */,
+				E34AE7642519542C00E860A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MLinkerWidgetExtension;
+			productName = MLinkerWidgetExtension;
+			productReference = E34AE7662519542C00E860A0 /* MLinkerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -341,12 +422,15 @@
 		0B44C4A522FA2E1700B55D21 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "John Kim";
 				TargetAttributes = {
 					0B44C4AC22FA2E1700B55D21 = {
 						CreatedOnToolsVersion = 10.3;
+					};
+					E34AE7652519542C00E860A0 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
@@ -365,6 +449,7 @@
 			projectRoot = "";
 			targets = (
 				0B44C4AC22FA2E1700B55D21 /* MLinker */,
+				E34AE7652519542C00E860A0 /* MLinkerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -392,6 +477,14 @@
 				0B1B419623F06B2E004C426F /* SigninStoryboard.storyboard in Resources */,
 				0B1B41B223F06B8F004C426F /* AddChatRoomSB.storyboard in Resources */,
 				0B44C4B622FA2E1800B55D21 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E34AE7642519542C00E860A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E34AE7702519542E00E860A0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B44C4CE230210D600B55D21 /* ChatRoomsViewController.swift in Sources */,
+				E34AE7732519542E00E860A0 /* MLinkerWidget.intentdefinition in Sources */,
 				0B44C4C822FB868300B55D21 /* UserModel.swift in Sources */,
 				0B1D801023E236B600CAA4BD /* ChatDateDisplayCell.swift in Sources */,
 				0B44C4D22302115D00B55D21 /* SettingViewController.swift in Sources */,
@@ -482,7 +576,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E34AE7622519542C00E860A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E34AE76D2519542C00E860A0 /* MLinkerWidget.swift in Sources */,
+				E34AE7722519542E00E860A0 /* MLinkerWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E34AE7752519542E00E860A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E34AE7652519542C00E860A0 /* MLinkerWidgetExtension */;
+			targetProxy = E34AE7742519542E00E860A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0B1B419123F06B1A004C426F /* SignUp.storyboard */ = {
@@ -697,6 +808,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3C2BE87FBE122759DE590E9 /* Pods-MLinker.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MLinker/MLinker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -720,6 +832,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98A3E97E35773BDB46AE8252 /* Pods-MLinker.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MLinker/MLinker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -734,6 +847,54 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeno.MLinker2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E34AE7782519542E00E860A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZSYAXC2PYL;
+				INFOPLIST_FILE = MLinkerWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeno.MLinker2.MLinkerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E34AE7792519542E00E860A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZSYAXC2PYL;
+				INFOPLIST_FILE = MLinkerWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeno.MLinker2.MLinkerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -756,6 +917,15 @@
 			buildConfigurations = (
 				0B44C4C022FA2E1F00B55D21 /* Debug */,
 				0B44C4C122FA2E1F00B55D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E34AE77A2519542E00E860A0 /* Build configuration list for PBXNativeTarget "MLinkerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E34AE7782519542E00E860A0 /* Debug */,
+				E34AE7792519542E00E860A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
